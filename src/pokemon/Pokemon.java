@@ -19,6 +19,5 @@ public class Pokemon {
 	private Type type;
 	private String status;
 	private Obj obj;
-	private int A;
 
 }
