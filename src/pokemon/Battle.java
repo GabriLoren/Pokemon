@@ -4,33 +4,79 @@ import java.util.Scanner;
 
 public class Battle {
 
-// ataque de un pokemon a su oponente
-	public void pelea(Pokemon myPokemon, Pokemon oponentPokemon, Move move) {
+	private static int ganadasYo = 0;
+	private static int ganadasOponente = 0;
 
-		Scanner sc = new Scanner(System.in);
+	public void batallaCompleta(Pokemon[] myPokemon, Pokemon[] oponentPokemon) {
+
+		int i = 0;
+		int j = 0;
+		int peleasRealizadas=0;
+		Pokemon pokemonWinner; 
 
 		do {
+			peleasRealizadas++;
+			
+			System.out.println("miPokemon nº "+j+" vs "+" pokemonOponente nº "+i);
+			pokemonWinner=pelea(myPokemon[j], oponentPokemon[i]);
+			
+			if (pokemonWinner == myPokemon[j]) {
+				i++;
+				System.out.println("La pelea número "+peleasRealizadas+" la has ganado tu");
+			}
+				
 
-			checkMove(myPokemon, oponentPokemon, move);
+			else {
+				j++;
+				System.out.println("La pelea número "+peleasRealizadas+" la ha ganado tu oponente");
+			}
+				
 
-			System.out.println(oponentPokemon.getVit());
-
-			checkMove(oponentPokemon, myPokemon, move);
-
-			System.out.println(oponentPokemon.getVit());
-
-		} while (myPokemon.getVit() != 0 && oponentPokemon.getVit() != 0);
+		} while (ganadasYo < myPokemon.length || ganadasOponente < oponentPokemon.length);
 
 	}
 
-//comprueba la categoria del ataque
-	public static void checkMove(Pokemon myPokemon, Pokemon oponentPokemon, Move move) {
+// ataque de un pokemon a su oponente
+	public Pokemon pelea(Pokemon myPokemon, Pokemon oponentPokemon) {
 
-		if (move.getCategory() == Category.ATK) {
+		Pokemon pokemonWinner;
 
-			int VitOponent = oponentPokemon.getVit() - move.getPower();
+		do {
 
-			oponentPokemon.setVit(VitOponent);
+			checkMove(myPokemon, oponentPokemon);// , move);
+
+			System.out.println("Vida oponente " + oponentPokemon.getVit());
+			
+			if(oponentPokemon.getVit()==0)break;
+
+			checkMove(oponentPokemon, myPokemon);
+
+			System.out.println("Vida mi pokemon " + myPokemon.getVit());
+
+		} while (myPokemon.getVit() != 0 && oponentPokemon.getVit() != 0);
+		
+
+		if (myPokemon.getVit() != 0) {
+			pokemonWinner = myPokemon;
+			
+		}
+
+		else {
+			pokemonWinner = oponentPokemon;
+			
+		}
+
+		return pokemonWinner;
+	}
+
+//comprueba la categoria del ataque y ataca, el ataque solo tiene en cuenta el power del move
+	public static void checkMove(Pokemon pokemonAtacante, Pokemon pokemonDefensor) {// , Move move) {
+
+		if (pokemonAtacante.getMove().getCategory() == Category.ATK) {
+
+			int VitOponent = pokemonDefensor.getVit() - pokemonAtacante.getMove().getPower();
+
+			pokemonDefensor.setVit(VitOponent);
 
 		}
 	}

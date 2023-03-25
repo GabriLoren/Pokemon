@@ -15,14 +15,15 @@ public class Pokemon {
 	private int speed;
 	private int stamina;
 	private int level;
-	private ArrayList<Move> moves;
+//	private ArrayList<Move> moves;
+	private Move move; //Hago pruebas con un solo movimiento
 	private int fertility;
 	private boolean gender;
 	private Types type;
 	private String status;
 	private Obj object;
 
-	public Pokemon() {
+	public Pokemon(Move move) {
 
 		this.id = 0;
 		this.name = "";
@@ -35,7 +36,8 @@ public class Pokemon {
 		this.speed = 0;
 		this.stamina = 0;
 		this.level = 0;
-		this.moves = new ArrayList<Move>();
+		this.move=move;
+//		this.moves = new ArrayList<Move>();
 		this.fertility = 0;
 		this.gender = false;
 		this.type = Types.NORMAL;
@@ -44,28 +46,29 @@ public class Pokemon {
 
 	}
 
-	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
-			int stamina, int level, ArrayList<Move> moves, int fertility, boolean gender, Types type, String status,
-			Obj obj) {
-
-		this.id = id;
-		this.name = name;
-		this.nickname = nickname;
-		this.vit = vit;
-		this.atk = atk;
-		this.def = def;
-		this.spAtk = spAtk;
-		this.spDef = spDef;
-		this.speed = speed;
-		this.stamina = stamina;
-		this.level = level;
-		this.moves = moves;
-		this.fertility = fertility;
-		this.gender = gender;
-		this.type = type;
-		this.status = status;
-		this.object = obj;
-	}
+//	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+//			int stamina, int level, ArrayList<Move> moves, int fertility, boolean gender, Types type, String status,
+//			Obj obj) {
+//
+//		this.id = id;
+//		this.name = name;
+//		this.nickname = nickname;
+//		this.vit = vit;
+//		this.atk = atk;
+//		this.def = def;
+//		this.spAtk = spAtk;
+//		this.spDef = spDef;
+//		this.speed = speed;
+//		this.stamina = stamina;
+//		this.level = level;
+//		this.moves = moves;
+//		
+//		this.fertility = fertility;
+//		this.gender = gender;
+//		this.type = type;
+//		this.status = status;
+//		this.object = obj;
+//	}
 	
 	
 	
@@ -159,13 +162,17 @@ public int getId() {
 		this.level = level;
 	}
 
-	public ArrayList<Move> getMoves() {
-		return moves;
-	}
+//	public ArrayList<Move> getMoves() {
+//		return moves;
+//	}
 
-	public void setMoves(ArrayList<Move> moves) {
-		this.moves = moves;
-	}
+//	public void setMoves(ArrayList<Move> moves) {
+//		this.moves = moves;
+//	}
+	
+	public Move getMove() {//Pruebo con un solo movimiento
+	return move;
+}
 
 	public int getFertility() {
 		return fertility;
@@ -235,13 +242,13 @@ public int getId() {
 
 	}
 
-	@Override
-	public String toString() {
-		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
-				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
-				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
-				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
+//	}
 
 	
 	
