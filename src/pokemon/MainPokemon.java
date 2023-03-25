@@ -9,11 +9,11 @@ public class MainPokemon {
 
 //		Obj obj = new Obj(1, "piedra", 0, 1.5, 0, 0, 0);
 
-		Move move1 = new Move(1, Category.ATK, 10, Types.NORMAL, " ", 0, 0);
+		Move move1 = new Move("Patada", 1, Category.ATK, 10, Types.NORMAL, "", 0, 0);
 
-		Move move2 = new Move(1, Category.ATK, 20, Types.NORMAL, " ", 0, 0);
+		Move move2 = new Move("cabezazo",1, Category.ATK, 20, Types.NORMAL, "", 0, 0);
 		
-		Move move3 = new Move(1, Category.ATK, 30, Types.NORMAL, " ", 0, 0);
+		Move move3 = new Move("puñetazo",1, Category.ATK, 30, Types.NORMAL, "", 0, 0);
 		
 		LinkedList<Move> moves= new LinkedList<Move>();
 		
@@ -38,20 +38,22 @@ public class MainPokemon {
 		equipoPokemon1.add(myPokemon3);
 		
 		equipoPokemon2.add(pokemonOponente1);
-		equipoPokemon2.add(pokemonOponente2);
-		equipoPokemon2.add(pokemonOponente3);
+//		equipoPokemon2.add(pokemonOponente2);
+//		equipoPokemon2.add(pokemonOponente3);
 		
 		
 		
-		Trainer Gabriel= new Trainer("Gabriel",equipoPokemon1);
-		Trainer Alejandro= new Trainer("Alejandro", equipoPokemon2);
+		Trainer gabriel= new Trainer("Gabriel",equipoPokemon1);
+		Trainer alejandro= new Trainer("Alejandro", equipoPokemon2);
 		
 		
-		Battle batalla1 = new Battle(Gabriel,Alejandro);
+		Battle batalla1 = new Battle(gabriel,alejandro);
 		
 		batalla1.trainer1VsTrainer2();
 
-
+		
+		
+		
 	}
 
 }

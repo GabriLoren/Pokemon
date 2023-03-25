@@ -10,8 +10,8 @@ public class Battle {
 	private static int ganadasOponente = 0;
 	private static Trainer trainer;
 	private static boolean winner;
-	private Trainer trainer1;
-	private Trainer trainer2;
+	private static Trainer trainer1;
+	private static Trainer trainer2;
 //	private LinkedList<Turn>;
 
 //	public Battle() {
@@ -65,7 +65,7 @@ public class Battle {
 
 		} while (ganadasYo < oponentPokemon.size() && ganadasOponente < misPokemon.size());
 
-		if (ganadasYo > ganadasOponente)
+		if (ganadasYo == oponentPokemon.size())
 			return true;
 		else
 			return false;
@@ -77,13 +77,13 @@ public class Battle {
 		Pokemon pokemonWinner;
 		System.out.println("Vida oponente " + oponentPokemon.getVit());
 		System.out.println("Vida mi pokemon " + myPokemon.getVit());
-		while (myPokemon.getVit() != 0 && oponentPokemon.getVit() != 0) {
+		while (myPokemon.getVit() > 0 && oponentPokemon.getVit() > 0) {
 
 			checkMove(myPokemon, oponentPokemon);// , move);
 
 			System.out.println("Vida oponente " + oponentPokemon.getVit());
 
-			if (oponentPokemon.getVit() == 0)
+			if (oponentPokemon.getVit() <= 0)
 				break;
 
 			checkMove(oponentPokemon, myPokemon);
@@ -91,7 +91,7 @@ public class Battle {
 			System.out.println("Vida mi pokemon " + myPokemon.getVit());
 		}
 
-		if (myPokemon.getVit() != 0) {
+		if (myPokemon.getVit() > 0) {
 			pokemonWinner = myPokemon;
 			ganadasYo++;
 		}
@@ -109,40 +109,60 @@ public class Battle {
 
 		// formula provisional ataque= (vit pokemonDefensor)-(power atk pokemon
 		// atacante)
-		Move movimientoSeleccionado=seleccionaMovimiento(pokemonAtacante);
 		
+		Move movimientoSeleccionado;
+		
+		if(pokemonAtacante == trainer1.getEquipoPokemon().get(0)||
+				pokemonAtacante == trainer1.getEquipoPokemon().get(1)||
+				pokemonAtacante == trainer1.getEquipoPokemon().get(2)) {
+			
+			movimientoSeleccionado= seleccionaMovimiento(pokemonAtacante);
+			
+		}
+		
+		else movimientoSeleccionado = moveAleatorio( pokemonAtacante);
+			
+		
+		
+
 		if (movimientoSeleccionado.getCategory() == Category.ATK) {
 
-			int VitOponent = pokemonDefensor.getVit()
-					- (movimientoSeleccionado.getPower() + pokemonAtacante.getAtk());
+			int VitOponent = pokemonDefensor.getVit() - (movimientoSeleccionado.getPower() + pokemonAtacante.getAtk());
 
 			pokemonDefensor.setVit(VitOponent);
 
 		}
 	}
-	
+
 //seleccionamos el movimieto que vamos a utilizar en nuestro turno	
 	public static Move seleccionaMovimiento(Pokemon pokemonAtacante) {
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("Selecciona el movimiento que quieres utilizar");
+
+//		int i = 0;
+//		while (i < pokemonAtacante.getMoves().size()) {
+//
+//			System.out.print("Posición " + i + " ");
+//			System.out.println(pokemonAtacante.getMoves().get(i).toString());
+//
+//			i++;
+//		}
+
+		// introducimos por scaner la posicion del movimiento seleccionado<
+		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(sc.nextInt());
+
+		return movimientoSeleccionado;
+
+	}
+// seleciona un movimiento del contricante aleatoriamente
+	public static Move moveAleatorio(Pokemon pokemonAtacante) {
 		
+		int posicionAleatoria=(int) (Math.random()*3);
 		
-		//introducimos por scaner la posicion del movimiento seleccionado<
-		Move movimientoSeleccionado= pokemonAtacante.getMoves().get(sc.nextInt());
+		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(posicionAleatoria);
+		
+		System.out.println("tu oponente ha elegido el movimiento "+movimientoSeleccionado.toString());
 		
 		return movimientoSeleccionado;
-		
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
