@@ -3,7 +3,7 @@ package pokemon;
 public class Move {
 
 	private int id;
-	private String category;
+	private Category category;
 	private int power;
 	private Types type;
 	private String status;
@@ -13,15 +13,15 @@ public class Move {
 	public Move() {
 		super();
 		this.id = 0;
-		this.category = "";
+		this.category = Category.ATK;
 		this.power = 0;
-		this.type = new Type();
+		this.type = Types.NORMAL;
 		this.status = "";
 		this.turns = 0;
 		this.buff = 0;
 	}
 	
-	public Move(int id, String category, int power, Types type, String status, int turns, double buff) {
+	public Move(int id, Category category, int power, Types type, String status, int turns, double buff) {
 		super();
 		this.id = id;
 		this.category = category;
@@ -31,5 +31,34 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public int getPower() {
+		return power;
+	}
+
+	public Types getType() {
+		return type;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public int getTurns() {
+		return turns;
+	}
+
+	public double getBuff() {
+		return buff;
+	}
+	
 	
 }
