@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class Trainer {
 
+	private int id;
 	private String name;
 	private LinkedList<Pokemon> equipoPokemon;
 
@@ -13,10 +14,11 @@ public class Trainer {
 //		this.equipoPokemon = new Pokemon[6];
 //	}
 
-	public Trainer(String name, LinkedList<Pokemon> equipoPokemon) {
+	public Trainer(int id, String name) {
 		super();
+		this.id=id;
 		this.name = name;
-		this.equipoPokemon = equipoPokemon;
+		this.equipoPokemon = null;
 	}
 
 	public String getName() {
@@ -25,6 +27,14 @@ public class Trainer {
 
 	public LinkedList<Pokemon> getEquipoPokemon() {
 		return equipoPokemon;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEquipoPokemon(LinkedList<Pokemon> equipoPokemon) {
+		this.equipoPokemon = equipoPokemon;
 	}
 
 }

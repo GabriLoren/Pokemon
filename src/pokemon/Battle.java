@@ -36,6 +36,9 @@ public class Battle {
 			System.out.println("Enhorabuena has ganado la batalla");
 		else
 			System.out.println("Has perdido, otra vez será");
+		
+		System.out.println("ganadas tu: "+ganadasYo);
+		System.out.println("ganadas oponente: "+ganadasOponente);
 
 	}
 
@@ -117,6 +120,7 @@ public class Battle {
 		if(pokemonAtacante == trainer1.getEquipoPokemon().get(0)||
 				pokemonAtacante == trainer1.getEquipoPokemon().get(1)||
 				pokemonAtacante == trainer1.getEquipoPokemon().get(2)) {
+			System.out.println(trainer1.getEquipoPokemon().get(0).toString());
 			
 			movimientoSeleccionado= seleccionaMovimiento(pokemonAtacante);
 			

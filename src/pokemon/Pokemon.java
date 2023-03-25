@@ -22,13 +22,13 @@ public class Pokemon {
 	private Types type;
 	private String status;
 	private Obj object;
+	
+	public Pokemon(int id,String name, int vit ) {
 
-	public Pokemon(LinkedList<Move> moves) {
-
-		this.id = 0;
-		this.name = "";
+		this.id = id;
+		this.name = name;
 		this.nickname = "";
-		this.vit = 100;
+		this.vit = vit;
 		this.atk = 0;
 		this.def = 20;
 		this.spAtk = 0;
@@ -36,7 +36,7 @@ public class Pokemon {
 		this.speed = 0;
 		this.stamina = 0;
 		this.level = 0;
-		this.moves = moves;
+		this.moves = null;
 		this.fertility = 0;
 		this.gender = false;
 		this.type = Types.NORMAL;
@@ -44,6 +44,28 @@ public class Pokemon {
 		this.object = new Obj();
 
 	}
+
+//	public Pokemon() {
+//
+//		this.id = 0;
+//		this.name = "";
+//		this.nickname = "";
+//		this.vit = 100;
+//		this.atk = 0;
+//		this.def = 20;
+//		this.spAtk = 0;
+//		this.spDef = 0;
+//		this.speed = 0;
+//		this.stamina = 0;
+//		this.level = 0;
+//		this.moves = null;
+//		this.fertility = 0;
+//		this.gender = false;
+//		this.type = Types.NORMAL;
+//		this.status = "";
+//		this.object = new Obj();
+//
+//	}
 
 //	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
 //			int stamina, int level, ArrayList<Move> moves, int fertility, boolean gender, Types type, String status,
