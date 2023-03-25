@@ -1,21 +1,23 @@
 package pokemon;
 
+import java.util.LinkedList;
+
 public class Trainer {
 	
 
 
 	private String name;
-	private Pokemon[] equipoPokemon;
+	private LinkedList<Pokemon> equipoPokemon;
 	
 	
-	public Trainer() {
-		super();
-		this.name = "";
-		this.equipoPokemon = new Pokemon[6];
-	}
+//	public Trainer() {
+//		super();
+//		this.name = "";
+//		this.equipoPokemon = new Pokemon[6];
+//	}
 
 	
-	public Trainer(String name, Pokemon[] equipoPokemon) {
+	public Trainer(String name, LinkedList<Pokemon> equipoPokemon) {
 		super();
 		this.name = name;
 		this.equipoPokemon = equipoPokemon;
@@ -27,19 +29,13 @@ public class Trainer {
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-
-	public Pokemon[] getEquipoPokemon() {
+	public LinkedList<Pokemon> getEquipoPokemon() {
 		return equipoPokemon;
 	}
 
 
-	public void setEquipoPokemon(Pokemon[] equipoPokemon) {
-		this.equipoPokemon = equipoPokemon;
-	}
+	
 	
 	
 	

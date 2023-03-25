@@ -2,12 +2,10 @@ package pokemon;
 
 import java.util.LinkedList;
 
-public class MainPokemon {
+public class Pruebas {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-//		Obj obj = new Obj(1, "piedra", 0, 1.5, 0, 0, 0);
 
 		Move move1 = new Move(1, Category.ATK, 10, Types.NORMAL, " ", 0, 0);
 
@@ -25,24 +23,16 @@ public class MainPokemon {
 		LinkedList<Pokemon> equipoPokemon2= new LinkedList<Pokemon>();
 		
 		equipoPokemon1.add(myPokemon1);
-		equipoPokemon1.add(myPokemon2);
-		equipoPokemon1.add(myPokemon3);
+		equipoPokemon1.add(myPokemon1);
+		equipoPokemon1.add(myPokemon1);
 		
 		equipoPokemon2.add(pokemonOponente1);
-		equipoPokemon2.add(pokemonOponente2);
-		equipoPokemon2.add(pokemonOponente3);
+		equipoPokemon2.add(pokemonOponente1);
+		equipoPokemon2.add(pokemonOponente1);
 		
+		System.out.println(equipoPokemon1.size());
 		
-		
-		Trainer Gabriel= new Trainer("Gabriel",equipoPokemon1);
-		Trainer Alejandro= new Trainer("Alejandro", equipoPokemon2);
-		
-		
-		Battle batalla1 = new Battle(Gabriel,Alejandro);
-		
-		batalla1.trainer1VsTrainer2();
-
-
+		System.out.println(equipoPokemon1.get(0));
 	}
 
 }
