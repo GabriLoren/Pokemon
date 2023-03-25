@@ -109,13 +109,40 @@ public class Battle {
 
 		// formula provisional ataque= (vit pokemonDefensor)-(power atk pokemon
 		// atacante)
-		if (pokemonAtacante.getMove().getCategory() == Category.ATK) {
+		Move movimientoSeleccionado=seleccionaMovimiento(pokemonAtacante);
+		
+		if (movimientoSeleccionado.getCategory() == Category.ATK) {
 
 			int VitOponent = pokemonDefensor.getVit()
-					- (pokemonAtacante.getMove().getPower() + pokemonAtacante.getAtk());
+					- (movimientoSeleccionado.getPower() + pokemonAtacante.getAtk());
 
 			pokemonDefensor.setVit(VitOponent);
 
 		}
 	}
+	
+//seleccionamos el movimieto que vamos a utilizar en nuestro turno	
+	public static Move seleccionaMovimiento(Pokemon pokemonAtacante) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Selecciona el movimiento que quieres utilizar");
+		
+		
+		//introducimos por scaner la posicion del movimiento seleccionado<
+		Move movimientoSeleccionado= pokemonAtacante.getMoves().get(sc.nextInt());
+		
+		return movimientoSeleccionado;
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

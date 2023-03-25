@@ -1,6 +1,6 @@
 package pokemon;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Pokemon {
 
@@ -15,15 +15,15 @@ public class Pokemon {
 	private int speed;
 	private int stamina;
 	private int level;
-//	private ArrayList<Move> moves;
-	private Move move; //Hago pruebas con un solo movimiento
+	private LinkedList<Move> moves;
+//	private Move move; //Hago pruebas con un solo movimiento
 	private int fertility;
 	private boolean gender;
 	private Types type;
 	private String status;
 	private Obj object;
 
-	public Pokemon(Move move) {
+	public Pokemon(LinkedList<Move> moves) {
 
 		this.id = 0;
 		this.name = "";
@@ -36,8 +36,7 @@ public class Pokemon {
 		this.speed = 0;
 		this.stamina = 0;
 		this.level = 0;
-		this.move=move;
-//		this.moves = new ArrayList<Move>();
+		this.moves = moves;
 		this.fertility = 0;
 		this.gender = false;
 		this.type = Types.NORMAL;
@@ -69,12 +68,8 @@ public class Pokemon {
 //		this.status = status;
 //		this.object = obj;
 //	}
-	
-	
-	
-	
-	
-public int getId() {
+
+	public int getId() {
 		return id;
 	}
 
@@ -162,17 +157,17 @@ public int getId() {
 		this.level = level;
 	}
 
-//	public ArrayList<Move> getMoves() {
-//		return moves;
-//	}
+	public LinkedList<Move>getMoves() {
+		return moves;
+	}
 
-//	public void setMoves(ArrayList<Move> moves) {
-//		this.moves = moves;
-//	}
-	
-	public Move getMove() {//Pruebo con un solo movimiento
-	return move;
-}
+	public void setMoves(LinkedList<Move> moves) {
+		this.moves = moves;
+	}
+
+//	public Move getMove() {//Pruebo con un solo movimiento
+//	return move;
+//}
 
 	public int getFertility() {
 		return fertility;
@@ -214,7 +209,7 @@ public int getId() {
 		this.object = object;
 	}
 
-	//pone el objeto al pokemon
+	// pone el objeto al pokemon
 	public void apllyObj(Obj objetc) {
 
 		this.object = objetc;
@@ -228,7 +223,7 @@ public int getId() {
 
 	}
 
-	//quita el objeto al pokemon
+	// quita el objeto al pokemon
 	public void removeObj() {
 
 //		this.atk /= object.getAtk();
@@ -250,6 +245,4 @@ public int getId() {
 //				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
 //	}
 
-	
-	
 }

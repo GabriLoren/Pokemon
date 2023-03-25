@@ -12,14 +12,23 @@ public class MainPokemon {
 		Move move1 = new Move(1, Category.ATK, 10, Types.NORMAL, " ", 0, 0);
 
 		Move move2 = new Move(1, Category.ATK, 20, Types.NORMAL, " ", 0, 0);
-
-		Pokemon myPokemon1 = new Pokemon(move1);
-		Pokemon myPokemon2 = new Pokemon(move1);
-		Pokemon myPokemon3 = new Pokemon(move1);
 		
-		Pokemon pokemonOponente1 = new Pokemon(move2);
-		Pokemon pokemonOponente2 = new Pokemon(move2);
-		Pokemon pokemonOponente3 = new Pokemon(move2);
+		Move move3 = new Move(1, Category.ATK, 30, Types.NORMAL, " ", 0, 0);
+		
+		LinkedList<Move> moves= new LinkedList<Move>();
+		
+		moves.add(move1);
+		moves.add(move2);
+		moves.add(move3);
+		
+
+		Pokemon myPokemon1 = new Pokemon(moves);
+		Pokemon myPokemon2 = new Pokemon(moves);
+		Pokemon myPokemon3 = new Pokemon(moves);
+		
+		Pokemon pokemonOponente1 = new Pokemon(moves);
+		Pokemon pokemonOponente2 = new Pokemon(moves);
+		Pokemon pokemonOponente3 = new Pokemon(moves);
 		
 		LinkedList<Pokemon> equipoPokemon1= new LinkedList<Pokemon>();
 		LinkedList<Pokemon> equipoPokemon2= new LinkedList<Pokemon>();
