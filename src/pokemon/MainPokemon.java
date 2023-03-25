@@ -15,20 +15,22 @@ public class MainPokemon {
 		Pokemon myPokemon2 = new Pokemon(move1);
 		Pokemon myPokemon3 = new Pokemon(move1);
 		
-		Pokemon pokemonOponente1 = new Pokemon(move1);
-		Pokemon pokemonOponente2 = new Pokemon(move1);
-		Pokemon pokemonOponente3 = new Pokemon(move1);
+		Pokemon pokemonOponente1 = new Pokemon(move2);
+		Pokemon pokemonOponente2 = new Pokemon(move2);
+		Pokemon pokemonOponente3 = new Pokemon(move2);
 		
 		Pokemon [] misPokemon={myPokemon1,myPokemon2,myPokemon3};
 		Pokemon [] oponentesPokemon={pokemonOponente1,pokemonOponente2,pokemonOponente3};
 		
 		
 		
-		Battle batalla1 = new Battle();
+		Trainer Gabriel= new Trainer("Gabriel", misPokemon);
+		Trainer Alejandro= new Trainer("Alejandro", oponentesPokemon);
 		
-		batalla1.batallaCompleta(misPokemon, oponentesPokemon);
-
-	
+		
+		Battle batalla1 = new Battle(Gabriel,Alejandro);
+		
+		batalla1.trainer1VsTrainer2();
 
 
 	}
