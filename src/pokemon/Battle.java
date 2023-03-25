@@ -20,6 +20,8 @@ public class Battle {
 //		this.trainer2 = new Trainer();
 //	}
 
+	//gana el entrenador que acaba antes con los pokemon del oponente independientemente del número de pokemon
+	//que tenga cada uno
 	public Battle(Trainer trainer1, Trainer trainer2) {
 		super();
 		this.trainer1 = trainer1;

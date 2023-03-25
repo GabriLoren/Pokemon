@@ -66,6 +66,40 @@ public class Move {
 		return buff;
 	}
 
+	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setPower(int power) {
+		this.power = power;
+	}
+
+	public void setType(Types type) {
+		this.type = type;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setTurns(int turns) {
+		this.turns = turns;
+	}
+
+	public void setBuff(double buff) {
+		this.buff = buff;
+	}
+
 	@Override
 	public String toString() {
 	
