@@ -1,8 +1,11 @@
-package pokemon;
+package modelo;
 
 import java.lang.annotation.Retention;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 
 public class Battle {
 
@@ -122,6 +125,8 @@ public class Battle {
 				pokemonAtacante == trainer1.getEquipoPokemon().get(2)) {
 			System.out.println(trainer1.getEquipoPokemon().get(0).toString());
 			
+			
+			
 			movimientoSeleccionado= seleccionaMovimiento(pokemonAtacante);
 			
 		}
@@ -153,9 +158,15 @@ public class Battle {
 //
 //			i++;
 //		}
-
-		// introducimos por scaner la posicion del movimiento seleccionado<
-		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(sc.nextInt());
+	
+//		EscenaPrincipalController.returnn();
+		
+		int entero=EscenaPrincipalController.patada(null);
+		
+		// introducimos por scaner la posicion del movimiento seleccionado
+		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(entero);
+		
+//		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(sc.nextInt());
 
 		return movimientoSeleccionado;
 

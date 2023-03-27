@@ -1,4 +1,4 @@
-package pokemon;
+package modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +13,7 @@ public class CargarEntrenador {
 	
 
 	public static Trainer cargarEntrenador(String id_entrenador) {
+		
 
 		Pokemon pokemon1;
 

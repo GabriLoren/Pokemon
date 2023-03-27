@@ -1,4 +1,4 @@
-package pokemon;
+package modelo;
 
 import java.util.LinkedList;
 
@@ -13,12 +13,19 @@ public class Trainer {
 //		this.name = "";
 //		this.equipoPokemon = new Pokemon[6];
 //	}
+	
+	public Trainer() {
+		super();
+		this.id=0;
+		this.name = "";
+		this.equipoPokemon = new LinkedList<Pokemon>();
+	}
 
 	public Trainer(int id, String name) {
 		super();
 		this.id=id;
 		this.name = name;
-		this.equipoPokemon = null;
+		this.equipoPokemon = new LinkedList<Pokemon>();
 	}
 
 	public String getName() {
