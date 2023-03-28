@@ -1,7 +1,12 @@
-package modelo;
+package cargar;
 
 import java.sql.*;
 import java.util.LinkedList;
+
+import pokemon.Category;
+import pokemon.Move;
+import pokemon.Pokemon;
+import pokemon.Types;
 
 public class CargarMoves {
 

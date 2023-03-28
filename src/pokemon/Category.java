@@ -1,4 +1,4 @@
-package modelo;
+package pokemon;
 
 public enum Category {
 

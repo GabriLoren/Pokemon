@@ -7,8 +7,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemon.EscenaPrincipalController">
    <children>
-      <Button fx:id="botonPatada" layoutX="300.0" layoutY="124.0" mnemonicParsing="false" onAction="#patada" prefHeight="110.0" prefWidth="167.0" text="patada" />
-      <TextField fx:id="resultado" editable="false" layoutX="50.0" layoutY="187.0" />
-      <Label fx:id="label1" layoutX="85.0" layoutY="93.0" prefHeight="45.0" prefWidth="156.0" />
+      <Button fx:id="btnabrir" layoutX="311.0" layoutY="94.0" mnemonicParsing="false" onAction="#abrir" prefHeight="110.0" prefWidth="167.0" text="abrir" />
+      <TextField fx:id="resultado" layoutX="68.0" layoutY="162.0" />
+      <Label fx:id="label1" layoutX="68.0" layoutY="71.0" prefHeight="45.0" prefWidth="156.0" />
    </children>
 </AnchorPane>

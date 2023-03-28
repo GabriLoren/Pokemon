@@ -2,9 +2,9 @@ package conectarBbDd;
 
 import java.sql.*;
 
-import modelo.Category;
-import modelo.Move;
-import modelo.Types;
+import pokemon.Category;
+import pokemon.Move;
+import pokemon.Types;
 
 public class ConexionBbDd1 {
 

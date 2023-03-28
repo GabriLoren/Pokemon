@@ -2,13 +2,13 @@ package conectarBbDd;
 
 import java.sql.*;
 
-import modelo.Category;
-import modelo.Move;
-import modelo.Types;
+import pokemon.Category;
+import pokemon.Move;
+import pokemon.Types;
 
 public class ConexionBbDd {
 
-	public static void main(String[] args) {
+	public static void main() {
 
 		try {
 			// 1.Crear conexion

@@ -1,0 +1,111 @@
+package pokemon;
+
+public class Move {
+
+	private int id;
+	private String name;
+	private Category category;
+	private int power;
+	private Types type;
+	private String status;
+	private int turns;
+	private double buff;
+	
+//	public Move() {
+//		super();
+//		this.id = 0;
+//		this.category = Category.ATK;
+//		this.power = 0;
+//		this.type = Types.NORMAL;
+//		this.status = "";
+//		this.turns = 0;
+//		this.buff = 0;
+//	}
+	
+	public Move(String name,int id, Category category, int power, Types type, String status, int turns, double buff) {
+		super();
+		this.name=name;
+		this.id = id;
+		this.category = category;
+		this.power = power;
+		this.type = type;
+		this.status = status;
+		this.turns = turns;
+		this.buff = buff;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public int getPower() {
+		return power;
+	}
+
+	public Types getType() {
+		return type;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public int getTurns() {
+		return turns;
+	}
+
+	public double getBuff() {
+		return buff;
+	}
+
+	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setPower(int power) {
+		this.power = power;
+	}
+
+	public void setType(Types type) {
+		this.type = type;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setTurns(int turns) {
+		this.turns = turns;
+	}
+
+	public void setBuff(double buff) {
+		this.buff = buff;
+	}
+
+	@Override
+	public String toString() {
+	
+		return name +" "+ category + " power=" + power;
+		
+	}
+	
+	
+}

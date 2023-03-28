@@ -1,4 +1,7 @@
-package modelo;
+package pokemon;
+
+import java.io.IOException;
+
 
 import java.lang.annotation.Retention;
 import java.util.LinkedList;
@@ -6,6 +9,10 @@ import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class Battle {
 
@@ -23,8 +30,9 @@ public class Battle {
 //		this.trainer2 = new Trainer();
 //	}
 
-	//gana el entrenador que acaba antes con los pokemon del oponente independientemente del número de pokemon
-	//que tenga cada uno
+	// gana el entrenador que acaba antes con los pokemon del oponente
+	// independientemente del número de pokemon
+	// que tenga cada uno
 	public Battle(Trainer trainer1, Trainer trainer2) {
 		super();
 		this.trainer1 = trainer1;
@@ -39,9 +47,9 @@ public class Battle {
 			System.out.println("Enhorabuena has ganado la batalla");
 		else
 			System.out.println("Has perdido, otra vez será");
-		
-		System.out.println("ganadas tu: "+ganadasYo);
-		System.out.println("ganadas oponente: "+ganadasOponente);
+
+		System.out.println("ganadas tu: " + ganadasYo);
+		System.out.println("ganadas oponente: " + ganadasOponente);
 
 	}
 
@@ -94,7 +102,7 @@ public class Battle {
 			if (oponentPokemon.getVit() <= 0)
 				break;
 
-			checkMove(oponentPokemon, myPokemon);
+			checkMoveOponente(oponentPokemon, myPokemon);
 
 			System.out.println("Vida mi pokemon " + myPokemon.getVit());
 		}
@@ -117,24 +125,28 @@ public class Battle {
 
 		// formula provisional ataque= (vit pokemonDefensor)-(power atk pokemon
 		// atacante)
-		
+
 		Move movimientoSeleccionado;
-		
-		if(pokemonAtacante == trainer1.getEquipoPokemon().get(0)||
-				pokemonAtacante == trainer1.getEquipoPokemon().get(1)||
-				pokemonAtacante == trainer1.getEquipoPokemon().get(2)) {
-			System.out.println(trainer1.getEquipoPokemon().get(0).toString());
-			
-			
-			
-			movimientoSeleccionado= seleccionaMovimiento(pokemonAtacante);
-			
+
+			movimientoSeleccionado = seleccionaMovimiento(pokemonAtacante);
+
+			if (movimientoSeleccionado.getCategory() == Category.ATK) {
+
+				int VitOponent = pokemonDefensor.getVit() - (movimientoSeleccionado.getPower() + pokemonAtacante.getAtk());
+
+				pokemonDefensor.setVit(VitOponent);
 		}
-		
-		else movimientoSeleccionado = moveAleatorio( pokemonAtacante);
-			
-		
-		
+	}
+	
+	public static void checkMoveOponente(Pokemon pokemonAtacante, Pokemon pokemonDefensor) {// , Move move) {
+
+		// formula provisional ataque= (vit pokemonDefensor)-(power atk pokemon
+		// atacante)
+
+		Move movimientoSeleccionado;
+
+
+			movimientoSeleccionado = moveAleatorio(pokemonAtacante);
 
 		if (movimientoSeleccionado.getCategory() == Category.ATK) {
 
@@ -158,28 +170,30 @@ public class Battle {
 //
 //			i++;
 //		}
-	
-//		EscenaPrincipalController.returnn();
 		
-		int entero=EscenaPrincipalController.patada(null);
+
+//		int i=Integer.parseInt(EscenaPrincipalController.resultado.getText()) ;
 		
+//		MainPokemon.click()
+
 		// introducimos por scaner la posicion del movimiento seleccionado
-		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(entero);
-		
+		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(MainPokemon.click());
+
 //		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(sc.nextInt());
 
 		return movimientoSeleccionado;
 
 	}
+
 // seleciona un movimiento del contricante aleatoriamente
 	public static Move moveAleatorio(Pokemon pokemonAtacante) {
-		
-		int posicionAleatoria=(int) (Math.random()*3);
-		
+
+		int posicionAleatoria = (int) (Math.random() * 3);
+
 		Move movimientoSeleccionado = pokemonAtacante.getMoves().get(posicionAleatoria);
-		
-		System.out.println("tu oponente ha elegido el movimiento "+movimientoSeleccionado.toString());
-		
+
+		System.out.println("tu oponente ha elegido el movimiento " + movimientoSeleccionado.toString());
+
 		return movimientoSeleccionado;
 	}
 }
