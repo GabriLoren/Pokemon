@@ -29,6 +29,9 @@ public class LuchaController {
 
 	Pokemon pokemon1 = new Pokemon();
 	Pokemon pokemon2 = new Pokemon();
+	
+	int contador1=0;
+	int contador2=0;
 
 	// Event Listener on Button[#pegar].onAction
 	@FXML
@@ -81,13 +84,17 @@ public class LuchaController {
 		if (pokemon1.getVit() == 0) {
 			label2.setText("El pokemon1 ha muerto");
 			
+			contador1++;
 			
 		}
 			
 		if (pokemon2.getVit() == 0) {
 			label2.setText("El pokemon2 ha muerto");
 			pokemon2 = new Pokemon();
+			contador2++;
 		}
+		
+		if(contador2>1)label.setText("has ganado la batalla");
 	}
 
 	// Event Listener on Button[#salir].onAction
