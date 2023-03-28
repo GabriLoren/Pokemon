@@ -12,10 +12,11 @@ import pokemon.Trainer;
 
 public class CargarEntrenador {
 
-	public static Trainer entrenador;
-	
+	private static Trainer entrenador;
+	private static String nombre = "";
+	private static int id = 0;
 
-	public static Trainer cargarEntrenador(String id_entrenador) {
+	public static String cargarEntrenador(String numero) {
 		
 
 		Pokemon pokemon1;
@@ -28,11 +29,10 @@ public class CargarEntrenador {
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// cargo el pokemon1
-			miPSt.setString(1, id_entrenador);
+			miPSt.setString(1, numero);
 			ResultSet miRs = miPSt.executeQuery();
 
-			String nombre = "";
-			int id = 0;
+			
 
 			while (miRs.next()) {
 
@@ -46,6 +46,6 @@ public class CargarEntrenador {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return entrenador;
+		return entrenador.getName();
 	}
 }

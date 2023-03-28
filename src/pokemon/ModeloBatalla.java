@@ -29,6 +29,9 @@ public class ModeloBatalla {
 			while (miRs.next()) {
 
 			power = Integer.parseInt(miRs.getString(3));
+			
+			
+
 
 			}
 
@@ -36,14 +39,12 @@ public class ModeloBatalla {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return power;
+		
 	}
 	
-	
-	public static void restarVida(Pokemon pokemon2) {
-		
-		this.pokemon2
-		
+
 	}
 	
 	
