@@ -26,13 +26,16 @@ public class VistaCapturaController {
 	private Label pokemonCapturado;
 	
 	private Pokemon pokemon;
+	
+	private Trainer entrenador;
 
 	// Event Listener on Button[#capturarPokemon].onAction
 	@FXML
 	public void capturarPokemon(ActionEvent event) {
+		entrenador=new Trainer(2);
 		
 		if(pokemon!=null) {
-			Captura.capturaPokemon(pokemon);
+			Captura.capturaPokemon(pokemon,entrenador);
 			
 		}
 	
@@ -41,6 +44,8 @@ public class VistaCapturaController {
 	// Event Listener on Button[#bucarPokemon].onAction
 	@FXML
 	public void bucarPokemon(ActionEvent event) {
+		
+		
 
 		pokemon=Captura.generaPokemonAleatorio();
 		

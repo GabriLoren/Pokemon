@@ -76,7 +76,7 @@ public class Captura {
 
 	// inserta en la tabla pokemon_entrenador el pokemon capturado que pasa a formar
 	// parte de nuestros pokemon
-	public static void capturaPokemon(Pokemon pokemon) {
+	public static void capturaPokemon(Pokemon pokemon, Trainer entrenador) {
 		
 		try {
 			// 1.Crear conexion
@@ -99,7 +99,7 @@ public class Captura {
 			miPSt.setString(4, "2");// movimiento2
 			miPSt.setString(5, "3");// movimiento3
 			miPSt.setString(6, "1");// movimiento4
-			miPSt.setString(7, "1");// id_entrenador
+			miPSt.setLong(7, entrenador.getId());// id_entrenador
 
 			// 3.Crear instrucción sql (Insertar en tabla)
 //			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_ENTRENADOR,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4,)"
