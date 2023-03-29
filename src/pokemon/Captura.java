@@ -23,12 +23,8 @@ public class Captura {
 //MULTIPLICAMOS POR EL NÚMERO DE POKEMON QUE HAY EN LA TABLA POKEMON Y LE SUMAMOS UNO PARA SACAR A UN POKEMON ALEATORIO QUE SE ENCUENTRE EN LA TBALA POKEMON
 			int aleatorio = (int) ((Math.random() * 3) + 1);
 			miPSt.setLong(1, aleatorio);
-			
-			
 
 			ResultSet miRs = miPSt.executeQuery();
-
-		
 
 			while (miRs.next()) {
 
@@ -39,8 +35,6 @@ public class Captura {
 			pokemonCazar = new Pokemon(name);
 
 			CargarMoves.cargarMovimientos(pokemonCazar);
-
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,7 +57,7 @@ public class Captura {
 
 			ResultSet miRs = miPSt.executeQuery();
 
-			miRs.close();
+		
 
 			while (miRs.next()) {
 
@@ -77,34 +71,35 @@ public class Captura {
 			e.printStackTrace();
 		}
 
-		return id;
+		return id+1;
 	}
 
 	// inserta en la tabla pokemon_entrenador el pokemon capturado que pasa a formar
 	// parte de nuestros pokemon
-	public static void capturaPokemon() {
-
+	public static void capturaPokemon(Pokemon pokemon) {
+		
 		try {
 			// 1.Crear conexion
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
 			// 2.crear statement
 //			Statement miSt = miCon.createStatement();
-			
-			//2.crear prepareStatemen
+
+			// 2.crear prepareStatemen
 			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE_POKEMON,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4,ID_ENTRENADOR)"
 					+ " VALUES (?,?,?,?,?,?,?)";
-//			String sentecia="SELECT * FROM MOVE where id=?";
-			PreparedStatement miPSt=miCon.prepareStatement(inSQL);
+//			
+			PreparedStatement miPSt = miCon.prepareStatement(inSQL);
 			miPSt.setLong(1, generaID());//id
-			miPSt.setString(2, generaPokemonAleatorio().getName());//nombre
-			miPSt.setString(3, "1");//movimiento1
-			miPSt.setString(4, "2");//movimiento2
-			miPSt.setString(5, "3");//movimiento3
-			miPSt.setString(6, "1");//movimiento4
-			miPSt.setString(7, "1");//id_entrenador
-		
-			
+			miPSt.setString(2, pokemon.getName());// nombre
+//			miPSt.setLong(1, (int)(Math.random()*1000+1));// id
+//		
+
+			miPSt.setString(3, "1");// movimiento1
+			miPSt.setString(4, "2");// movimiento2
+			miPSt.setString(5, "3");// movimiento3
+			miPSt.setString(6, "1");// movimiento4
+			miPSt.setString(7, "1");// id_entrenador
 
 			// 3.Crear instrucción sql (Insertar en tabla)
 //			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_ENTRENADOR,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4,)"
@@ -115,13 +110,12 @@ public class Captura {
 			// 3.Ejecutar instrucción sql
 //			ResultSet miRs = miPSt.executeQuery("SELECT * FROM MOVE");  
 //			ResultSet miRs = miPSt.executeQuery(); 
-		 
-			
-			//4.EJECUTAR SQL
+
+			// 4.EJECUTAR SQL
 			miPSt.executeUpdate();
-			
+
 //			miRs.close();
-			
+
 //			miCon.close();
 
 			// 4.leer resultado
@@ -138,8 +132,6 @@ public class Captura {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 }
