@@ -9,8 +9,9 @@ public class Move {
 	private String status;
 	private int turns;
 	private float buff;
+	private int staminaCost;
 
-	public Move(int id, String name, int power, Types type, String status, int turns, float buff) {
+	public Move(int id, String name, int power, Types type, String status, int turns, float buff, int stamina) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,6 +20,7 @@ public class Move {
 		this.status = status;
 		this.turns = turns;
 		this.buff = buff;
+		this.staminaCost = stamina;
 	}
 
 	public int getId() {
@@ -75,6 +77,14 @@ public class Move {
 
 	public void setBuff(float buff) {
 		this.buff = buff;
+	}
+
+	public int getStaminaCost() {
+		return staminaCost;
+	}
+
+	public void setStaminaCost(int staminaCost) {
+		this.staminaCost = staminaCost;
 	}
 
 	public static void applyMove() {

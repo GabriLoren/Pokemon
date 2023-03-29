@@ -1,0 +1,2 @@
+Add stamina cost to attacks
+Add id to Class Diagram
