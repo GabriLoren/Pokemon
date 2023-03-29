@@ -16,7 +16,7 @@ public class MainPokemon extends Application {
 	public void start(Stage primaryStage) {
 	
 			try {
-				Parent root=FXMLLoader.load(getClass().getResource("/vista/EscenaPrincipal.fxml"));
+				Parent root=FXMLLoader.load(getClass().getResource("VistaCaptura.fxml"));
 //				hace lo mismo que la sentencia anterior
 //				Parent root=new FXMLLoader(getClass().getResource("/vista/EscenaPrincipal.fxml")).load();
 				Scene scene= new Scene(root);

@@ -23,10 +23,10 @@ public class Pokemon {
 	private String status;
 	private Obj object;
 	
-	public Pokemon() {
+	public Pokemon(String name) {
 
 		this.id = 0;
-		this.name = "";
+		this.name = name;
 		this.nickname = "";
 		this.vit = 100;
 		this.atk = 0;
@@ -45,10 +45,10 @@ public class Pokemon {
 
 	}
 
-	public Pokemon(LinkedList<Move> moves) {
+	public Pokemon(String name, LinkedList<Move> moves) {
 
 		this.id = 0;
-		this.name = "";
+		this.name = name;
 		this.nickname = "";
 		this.vit = 100;
 		this.atk = 0;
