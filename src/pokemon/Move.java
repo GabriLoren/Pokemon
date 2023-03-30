@@ -5,13 +5,14 @@ public class Move {
 	private int id;
 	private String name;
 	private int power;
-	private Types type;
+	private Types.types type;
 	private String status;
 	private int turns;
 	private float buff;
 	private int staminaCost;
+	private int lvlRequirement;
 
-	public Move(int id, String name, int power, Types type, String status, int turns, float buff, int stamina) {
+	public Move(int id, String name, int power, Types.types type, String status, int turns, float buff, int stamina, int lvlReq) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,6 +22,7 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 		this.staminaCost = stamina;
+		this.setLvlRequirement(lvlReq);
 	}
 
 	public int getId() {
@@ -47,11 +49,11 @@ public class Move {
 		this.power = power;
 	}
 
-	public Types getType() {
+	public Types.types getType() {
 		return type;
 	}
 
-	public void setType(Types type) {
+	public void setType(Types.types type) {
 		this.type = type;
 	}
 
@@ -85,6 +87,14 @@ public class Move {
 
 	public void setStaminaCost(int staminaCost) {
 		this.staminaCost = staminaCost;
+	}
+
+	public int getLvlRequirement() {
+		return lvlRequirement;
+	}
+
+	public void setLvlRequirement(int lvlRequirement) {
+		this.lvlRequirement = lvlRequirement;
 	}
 
 	public static void applyMove() {
