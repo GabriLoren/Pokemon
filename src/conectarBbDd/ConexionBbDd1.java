@@ -2,13 +2,13 @@ package conectarBbDd;
 
 import java.sql.*;
 
-import pokemon.Category;
-import pokemon.Move;
-import pokemon.Types;
+import modelo.Category;
+import modelo.Move;
+import modelo.Types;
 
 public class ConexionBbDd1 {
 
-	public static void main(String[] args) {
+	
 
 		try {
 
@@ -40,6 +40,6 @@ public class ConexionBbDd1 {
 		
 		
 		
-	}
+	
 
 }

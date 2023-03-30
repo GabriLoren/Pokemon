@@ -3,10 +3,10 @@ package cargar;
 import java.sql.*;
 import java.util.LinkedList;
 
-import pokemon.Category;
-import pokemon.Move;
-import pokemon.Pokemon;
-import pokemon.Types;
+import modelo.Category;
+import modelo.Move;
+import modelo.Pokemon;
+import modelo.Types;
 
 public class CargarMoves {
 

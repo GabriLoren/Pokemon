@@ -2,9 +2,9 @@ package conectarBbDd;
 
 import java.sql.*;
 
-import pokemon.Category;
-import pokemon.Move;
-import pokemon.Types;
+import modelo.Category;
+import modelo.Move;
+import modelo.Types;
 
 public class ConexionBbDd {
 
@@ -30,7 +30,7 @@ public class ConexionBbDd {
 //			String inSQL = "DELETE FROM MOVE WHERE NOMBRE='RODILLAZO'";
 
 			// 3.Ejecutar instrucción sql
-//			ResultSet miRs = miPSt.executeQuery("SELECT * FROM MOVE");  
+//			ResultSet miRs = miSt.executeQuery("SELECT * FROM MOVE");  
 			ResultSet miRs = miPSt.executeQuery(); 
 		 
 			

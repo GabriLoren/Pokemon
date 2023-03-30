@@ -1,4 +1,4 @@
-package pokemon;
+package modelo;
 
 import javafx.fxml.FXML;
 

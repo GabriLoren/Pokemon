@@ -1,4 +1,4 @@
-package pokemon;
+package modelo;
 
 public class Obj {
 	
@@ -10,10 +10,10 @@ public class Obj {
 	private double speed;
 	private double stamina;
 
-	public Obj() {
+	public Obj(String name) {
 		super();
 		this.id=0;
-		this.name="Sin Objeto";
+		this.name=name;
 		this.atk = 1;
 		this.def = 1;
 		this.spDef = 1;

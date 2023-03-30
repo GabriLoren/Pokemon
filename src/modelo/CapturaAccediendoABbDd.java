@@ -1,4 +1,4 @@
-package pokemon;
+package modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 import cargar.CargarMoves;
 
-public class Captura {
+public class CapturaAccediendoABbDd {
 	// genera un pokemon aleatorio de la tabla pokemon para capturarlo
 	public static Pokemon generaPokemonAleatorio() {
 		Pokemon pokemonCazar = null;
-		String name = "";
+		String name = ""; 
 
 		try {
 
@@ -90,44 +90,19 @@ public class Captura {
 					+ " VALUES (?,?,?,?,?,?,?)";
 //			
 			PreparedStatement miPSt = miCon.prepareStatement(inSQL);
+			
 			miPSt.setLong(1, generaID());//id
+			//id_entrenador que está actualmemnte jugando
 			miPSt.setString(2, pokemon.getName());// nombre
-//			miPSt.setLong(1, (int)(Math.random()*1000+1));// id
-//		
-
 			miPSt.setString(3, "1");// movimiento1
 			miPSt.setString(4, "2");// movimiento2
 			miPSt.setString(5, "3");// movimiento3
 			miPSt.setString(6, "1");// movimiento4
 			miPSt.setLong(7, entrenador.getId());// id_entrenador
 
-			// 3.Crear instrucción sql (Insertar en tabla)
-//			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_ENTRENADOR,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4,)"
-//					+ " VALUES (4,'RODILLAZO',40)";
-//			String inSQL = "UPDATE MOVE SET POWE=50 WHERE NOMBRE='RODILLAZO'";
-//			String inSQL = "DELETE FROM MOVE WHERE NOMBRE='RODILLAZO'";
 
-			// 3.Ejecutar instrucción sql
-//			ResultSet miRs = miPSt.executeQuery("SELECT * FROM MOVE");  
-//			ResultSet miRs = miPSt.executeQuery(); 
-
-			// 4.EJECUTAR SQL
 			miPSt.executeUpdate();
 
-//			miRs.close();
-
-//			miCon.close();
-
-			// 4.leer resultado
-
-//			while (miRs.next()) {
-//
-////				System.out.println(miRs.getString(1) + " " + miRs.getString(2) + " " + miRs.getString(3));
-//				System.out.println(miRs.getString(1));
-//			}
-//			
-//			miRs.close();
-//			miCon.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

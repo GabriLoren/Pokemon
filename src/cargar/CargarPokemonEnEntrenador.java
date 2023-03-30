@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import pokemon.Pokemon;
-import pokemon.Trainer;
+import modelo.Pokemon;
+import modelo.Trainer;
 
 public class CargarPokemonEnEntrenador {
 	

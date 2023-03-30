@@ -1,7 +1,8 @@
-package pokemon;
+package modelo;
 
 import java.util.Objects;
 
+import cargar.CargarPokemon;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,7 +17,7 @@ public class MainPokemon extends Application {
 	public void start(Stage primaryStage) {
 	
 			try {
-				Parent root=FXMLLoader.load(getClass().getResource("VistaCaptura.fxml"));
+				Parent root=FXMLLoader.load(getClass().getResource("/vista/Captura.fxml"));
 //				hace lo mismo que la sentencia anterior
 //				Parent root=new FXMLLoader(getClass().getResource("/vista/EscenaPrincipal.fxml")).load();
 				Scene scene= new Scene(root);
@@ -31,6 +32,7 @@ public class MainPokemon extends Application {
 
 
 	public static void main(String[] args) {
+		
 		launch(args);
 
 

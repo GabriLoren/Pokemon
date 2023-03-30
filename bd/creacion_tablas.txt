@@ -9,3 +9,8 @@ id_movimiento4 int,
 id_entrenador int,
 CONSTRAINT movimiento1_fk FOREIGN KEY (id_movimiento1)
 REFERENCES move(id));
+
+CREATE table object(
+id INT,
+nombre varchar(20)
+);

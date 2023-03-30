@@ -1,4 +1,4 @@
-package pokemon;
+package controlador;
 
 import javafx.fxml.FXML;
 
@@ -14,8 +14,11 @@ import cargar.CargarMoves;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
+import modelo.Captura;
+import modelo.Pokemon;
+import modelo.Trainer;
 
-public class VistaCapturaController {
+public class CapturaController {
 	@FXML
 	private Button capturarPokemon;
 	@FXML
@@ -37,6 +40,9 @@ public class VistaCapturaController {
 		if(pokemon!=null) {
 			Captura.capturaPokemon(pokemon,entrenador);
 			
+			pokemonCapturado.setText("Enhorabuenas has capturado un nuevo "+pokemon.getName());
+			
+			
 		}
 	
 		else pokemonEncontrado.setText("Aún no has encontrado ningun pokemon");
@@ -52,36 +58,6 @@ public class VistaCapturaController {
 		pokemonEncontrado.setText("has enconrado un "+pokemon.getName());
 		
 		
-	
-//		try {
-//
-//			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-//
-//			String sentecia = "SELECT * FROM POKEMON where id=?";
-//			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-//
-////			int aleatorio = (int) ((Math.random() * 3) + 1);
-//			miPSt.setString(1, "1");
-//
-//			ResultSet miRs = miPSt.executeQuery();
-//
-//		
-//
-//			while (miRs.next()) {
-//
-//				String name = miRs.getString(2);
-//				int power = Integer.parseInt(miRs.getString(3));
-//			}
-//
-//			pokemonCazar = new Pokemon(name);
-//
-//			CargarMoves.cargarMovimientos(pokemonCazar);
-//
-//			
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-		
+
 	}
 }

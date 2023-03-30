@@ -1,8 +1,13 @@
-package pokemon;
+package modelo;
 
 import java.util.LinkedList;
 
 public class Pokemon {
+
+	@Override
+	public String toString() {
+		return "Pokemon [id=" + id + ", name=" + name + ", vit=" + vit + "]";
+	}
 
 	private int id;
 	private String name;
@@ -41,7 +46,7 @@ public class Pokemon {
 		this.gender = false;
 		this.type = Types.NORMAL;
 		this.status = "";
-		this.object = new Obj();
+//		this.object = new Obj();
 
 	}
 
@@ -63,7 +68,7 @@ public class Pokemon {
 		this.gender = false;
 		this.type = Types.NORMAL;
 		this.status = "";
-		this.object = new Obj();
+//		this.object = new Obj();
 
 	}
 
@@ -252,17 +257,6 @@ public class Pokemon {
 
 	}
 
-	// quita el objeto al pokemon
-	public void removeObj() {
-
-//		this.atk /= object.getAtk();
-		this.def /= object.getDef();
-		this.spAtk = 0;
-		this.spDef = 0;
-		this.speed = 0;
-		this.stamina = 0;
-
-		object = new Obj();
 
 	}
 
@@ -274,5 +268,5 @@ public class Pokemon {
 //				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
 //	}
 
-}
+
 
