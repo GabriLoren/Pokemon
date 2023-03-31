@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ElegirAccionController">
+   <children>
+      <Button fx:id="btnCapturar" layoutX="169.0" layoutY="79.0" mnemonicParsing="false" onAction="#capturar" text="Capturar" />
+      <Button fx:id="btnPelear" layoutX="344.0" layoutY="75.0" mnemonicParsing="false" onAction="#pelear" prefHeight="32.0" prefWidth="78.0" text="Pelear" />
+      <Button fx:id="btnTienda" layoutX="169.0" layoutY="175.0" mnemonicParsing="false" onAction="#tienda" prefHeight="25.0" prefWidth="78.0" text="Tienda" />
+      <Button fx:id="btnCriar" layoutX="343.0" layoutY="175.0" mnemonicParsing="false" onAction="#criar" prefHeight="32.0" prefWidth="71.0" text="Criar" />
+      <Button fx:id="BtnEquipo" layoutX="252.0" layoutY="253.0" mnemonicParsing="false" onAction="#hacerEquipo" text="Crear equipo" />
+   </children>
+</AnchorPane>

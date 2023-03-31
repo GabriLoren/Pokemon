@@ -1,24 +1,25 @@
 package controlador;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.LinkedList;
+import java.util.ResourceBundle;
 
-import cargar.CargarMoves;
+import cargar.CargarEntrenador;
+import cargar.CargarPokemon;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
-import modelo.Captura;
+
+import modelo.GeneraPokemonAleatorio;
 import modelo.Pokemon;
 import modelo.Trainer;
 
-public class CapturaController {
+public class CapturaController implements Initializable {
 	@FXML
 	private Button capturarPokemon;
 	@FXML
@@ -27,37 +28,54 @@ public class CapturaController {
 	private Label pokemonEncontrado;
 	@FXML
 	private Label pokemonCapturado;
-	
+
 	private Pokemon pokemon;
+
+	private Trainer entrenador=CargarEntrenador.getEntrenador();
 	
-	private Trainer entrenador;
+	private boolean insertado=false;
 
 	// Event Listener on Button[#capturarPokemon].onAction
 	@FXML
 	public void capturarPokemon(ActionEvent event) {
-		entrenador=new Trainer(2);
 		
-		if(pokemon!=null) {
-			Captura.capturaPokemon(pokemon,entrenador);
+		
+
+		if (pokemon != null && insertado==false) {
 			
-			pokemonCapturado.setText("Enhorabuenas has capturado un nuevo "+pokemon.getName());
+//Pokemon p=new Pokemon(1, null)
 			
 			
+			CargarEntrenador.getEntrenador().insertarEnBbDdElPokemonEncontrado(pokemon);
+
+			pokemonCapturado.setText("Enhorabuenas has capturado un nuevo " + pokemon.getName());
+			
+			insertado=true;
+
 		}
-	
-		else pokemonEncontrado.setText("Aún no has encontrado ningun pokemon");
+
+		else if (pokemon==null)
+			pokemonEncontrado.setText("Aún no has encontrado ningun pokemon");
 	}
+
 	// Event Listener on Button[#bucarPokemon].onAction
 	@FXML
 	public void bucarPokemon(ActionEvent event) {
-		
-		
 
-		pokemon=Captura.generaPokemonAleatorio();
-		
-		pokemonEncontrado.setText("has enconrado un "+pokemon.getName());
-		
-		
+		pokemon = GeneraPokemonAleatorio.mostrarPokemonEncontrado();
 
+		pokemonEncontrado.setText("has enconrado un " + pokemon.getName());
+
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+//		CargarPokemon.cargarPokemonDesdeBbDd();
+
+//		for (int i = 0; i < pokemon.size(); i++) {
+//            System.out.println(pokemon.get(i).toString());
+//		}
+//		
 	}
 }

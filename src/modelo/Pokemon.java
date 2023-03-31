@@ -6,7 +6,7 @@ public class Pokemon {
 
 	@Override
 	public String toString() {
-		return "Pokemon [id=" + id + ", name=" + name + ", vit=" + vit + "]";
+		return " id=" + id + ", name=" + name + ", vit=" + vit + "]\n";
 	}
 
 	private int id;
@@ -28,9 +28,9 @@ public class Pokemon {
 	private String status;
 	private Obj object;
 	
-	public Pokemon(String name) {
+	public Pokemon(int id, String name) {
 
-		this.id = 0;
+		this.id = id;
 		this.name = name;
 		this.nickname = "";
 		this.vit = 100;
@@ -41,7 +41,7 @@ public class Pokemon {
 		this.speed = 0;
 		this.stamina = 0;
 		this.level = 0;
-		this.moves = moves;
+		this.moves = new LinkedList<Move>();
 		this.fertility = 0;
 		this.gender = false;
 		this.type = Types.NORMAL;
@@ -242,6 +242,9 @@ public class Pokemon {
 	public void setObject(Obj object) {
 		this.object = object;
 	}
+	
+	
+	
 
 	// pone el objeto al pokemon
 	public void apllyObj(Obj objetc) {

@@ -8,20 +8,20 @@ import modelo.Move;
 import modelo.Pokemon;
 import modelo.Types;
 
-public class CargarPokemon { 
+public class CargarPokemons { 
 
-	private static LinkedList<Pokemon> pokemon = new LinkedList<>();
+	private static LinkedList<Pokemon> pokemons = new LinkedList<>();
 	
 	public static LinkedList<Pokemon> getPokemon() {
-		return pokemon;
+		return pokemons;
 	}
 
-	static Pokemon pokemon1;
+	static Pokemon pokemon;
 	static int id;
 	static String nombre;
 	static int vida;
-
-	public static  LinkedList<Pokemon> cargarPokemonDesdeBbDd() {
+//carga todos los pokemon que existen en la aplicacion
+	public static  void cargarPokemonDesdeBbDd() {
 
 		try {
 
@@ -37,14 +37,14 @@ public class CargarPokemon {
 				nombre = miRs.getString(2);
 				vida = Integer.parseInt(miRs.getString(1));
 
-				pokemon1 = new Pokemon(id, nombre, vida);
-				pokemon.add(pokemon1);
+				pokemon = new Pokemon(id, nombre, vida);
+				pokemons.add(pokemon);
 			}
 			System.out.println("La carga ha sido satisfactoria");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return pokemon;
+	
 
 
 	}

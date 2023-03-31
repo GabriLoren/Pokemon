@@ -9,6 +9,18 @@ public class Obj {
 	private double spDef;
 	private double speed;
 	private double stamina;
+	
+	public Obj() {
+		super();
+		this.id=0;
+		this.name=name;
+		this.atk = 1;
+		this.def = 1;
+		this.spDef = 1;
+		this.speed = 1;
+		this.stamina = 1;
+
+	}
 
 	public Obj(String name) {
 		super();
