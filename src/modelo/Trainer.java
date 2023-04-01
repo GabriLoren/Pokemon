@@ -120,9 +120,10 @@ public class Trainer {
 
 	}
 
-	public void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon) {
+	public void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon,String mote) {
 		int idGenerado = generaID();
 		
+		//nombre del pokemon encontrado previamente
 		String nombre=pokemon.getName();
 
 		try {
@@ -133,16 +134,16 @@ public class Trainer {
 //				Statement miSt = miCon.createStatement();
 
 			// 2.crear prepareStatemen
-			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE_POKEMON,ID_MOVIMIENTO1,ID_ENTRENADOR)"
-					+ " VALUES (?,?,?,?)";
+			String inSQL = "INSERT INTO POKEMON_ENTRENADOR (ID,MOTE,NOMBRE_POKEMON,ID_MOVIMIENTO1,ID_ENTRENADOR)"
+					+ " VALUES (?,?,?,?,?)";
 //				
 			PreparedStatement miPSt = miCon.prepareStatement(inSQL);
 
 			miPSt.setLong(1, idGenerado);// id
-			// id_entrenador que está actualmemnte jugando
-			miPSt.setString(2, nombre);// nombre
-			miPSt.setString(3, "1");// movimiento1
-			miPSt.setLong(4, this.id);// id_entrenador
+			miPSt.setString(2, mote);// MOTE
+			miPSt.setString(3, nombre);// nombre
+			miPSt.setString(4, "1");// movimiento1
+			miPSt.setLong(5, this.id);// id_entrenador que está actualmemnte jugando
 
 			miPSt.executeUpdate();
 
@@ -177,7 +178,13 @@ public class Trainer {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("numero aleatorio bien generadfo");
+		
 		return id + 1;
+	}
+	
+	public static void insertaMote() {
+		
+		
+		
 	}
 }

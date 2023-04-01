@@ -1,5 +1,6 @@
 package cargar;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,13 +18,14 @@ public class CargarEntrenador {
 	private static int id = 0;
 	
 
-	public static Trainer getEntrenador() {
+	public static Trainer getEntrenador(){
 		return entrenador;
 	}
 
 
-	public static void cargarEntrenador(String nombre) {
+	public static void cargarEntrenador(String nombreEntrenador) throws IOException  {
 
+		IOException mia=new IOException();
 		
 
 		try {
@@ -32,7 +34,7 @@ public class CargarEntrenador {
 
 			String sentecia = "SELECT * FROM ENTRENADOR WHERE NOMBRE=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-			miPSt.setString(1, nombre);
+			miPSt.setString(1, nombreEntrenador);
 			ResultSet miRs = miPSt.executeQuery();
 
 			while (miRs.next()) {
@@ -43,10 +45,15 @@ public class CargarEntrenador {
 				System.out.println(nombre);
 
 			}
-
+			
+			
 			entrenador = new Trainer(id, nombre);
 			
+			if(nombre=="")throw mia;
+			
 			entrenador.cargarPokemonEnEntrenador();
+			
+			
 			
 			System.out.println("carga completa");
 

@@ -1,13 +1,14 @@
 package modelo;
 
 import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import cargar.CargarPokemon;
+import cargar.CargarPokemons;
 
 public class GeneraPokemonAleatorio {
 
@@ -21,7 +22,7 @@ public class GeneraPokemonAleatorio {
 //accedo a la linkedlist de los pokemons que previamente se han cargado y entre ellos elijo uno al azar
 
 		try {
-			todosLosPokemon = CargarPokemon.getPokemon();
+			todosLosPokemon = CargarPokemons.getPokemon();
 //			
 			sizeTodosLosPokemon = todosLosPokemon.size();
 			numeroAleatorio = (int) (Math.random() * sizeTodosLosPokemon);

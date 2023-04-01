@@ -6,7 +6,7 @@ public class Pokemon {
 
 	@Override
 	public String toString() {
-		return " id=" + id + ", name=" + name + ", vit=" + vit + "]\n";
+		return " mote=" + nickname + ", name=" + name + ", vit=" + vit + "]\n";
 	}
 
 	private int id;
