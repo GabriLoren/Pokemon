@@ -4,10 +4,7 @@ import java.util.LinkedList;
 
 public class Pokemon {
 
-	@Override
-	public String toString() {
-		return " mote=" + nickname + ", name=" + name + ", vit=" + vit + "]\n";
-	}
+
 
 	private int id;
 	private String name;
@@ -27,12 +24,12 @@ public class Pokemon {
 	private Types type;
 	private String status;
 	private Obj object;
-	
-	public Pokemon(int id, String name) {
+
+	public Pokemon(String name, String mote) {
 
 		this.id = id;
 		this.name = name;
-		this.nickname = "";
+		this.nickname = mote;
 		this.vit = 100;
 		this.atk = 0;
 		this.def = 20;
@@ -191,7 +188,7 @@ public class Pokemon {
 		this.level = level;
 	}
 
-	public LinkedList<Move>getMoves() {
+	public LinkedList<Move> getMoves() {
 		return moves;
 	}
 
@@ -242,9 +239,16 @@ public class Pokemon {
 	public void setObject(Obj object) {
 		this.object = object;
 	}
-	
-	
-	
+
+	// si el mote es una palabrota devuelve falso
+	public static boolean comprobarMote(String mote) {
+
+		if (mote.equalsIgnoreCase("mierda"))
+			return false;
+		else
+			return true;
+
+	}
 
 	// pone el objeto al pokemon
 	public void apllyObj(Obj objetc) {
@@ -260,8 +264,13 @@ public class Pokemon {
 
 	}
 
-
+	@Override
+	public String toString() {
+		return " [name " + name + " nickname " + nickname + "]\n";
 	}
+	
+
+}
 
 //	@Override
 //	public String toString() {
@@ -270,6 +279,3 @@ public class Pokemon {
 //				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 //				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
 //	}
-
-
-

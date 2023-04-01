@@ -84,6 +84,10 @@ public class Trainer {
 	public void setEquipoPokemon(LinkedList<Pokemon> equipoPokemon) {
 		this.equipoPokemon = equipoPokemon;
 	}
+	public void insertraPokemonCapturado(Pokemon pokemon) {
+		
+		this.todosLosPokemon.add(pokemon);
+	}
 
 
 
@@ -93,22 +97,22 @@ public class Trainer {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-			String sentecia = "SELECT ID, NOMBRE_POKEMON FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT MOTE, NOMBRE_POKEMON FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamenre
 			miPSt.setLong(1, id);
 			ResultSet miRs = miPSt.executeQuery();
 
-			int id = 0;
+			String mote = "";
 			String nombre = "";
 
 			while (miRs.next()) {
 
-				id = Integer.parseInt(miRs.getString(1));
+				mote = miRs.getString(1);
 				nombre = miRs.getString(2);
 
-				Pokemon pokemon = new Pokemon(id, nombre);
+				Pokemon pokemon = new Pokemon(nombre,mote);
 
 				todosLosPokemon.add(pokemon);
 
