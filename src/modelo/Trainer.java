@@ -66,7 +66,9 @@ public class Trainer {
 		this.equipoPokemon = equipoPokemon;
 	}
 
-	public void insertraPokemonCapturado(Pokemon pokemon) {
+	public void insertraPokemonCapturado(Pokemon pokemon, String mote) {
+		
+		pokemon.setNickname(mote);
 
 		this.todosLosPokemon.add(pokemon);
 	}
@@ -145,10 +147,28 @@ public class Trainer {
 
 				objetosEntrenador += objetos.get(i).getName() + "\n";
 			}
-System.out.println(objetosEntrenador);
+
 		}
 
 		return objetosEntrenador;
+
+	}
+	
+	
+	public String mostraTodosLosPokemons() {
+		String pokemonsEntrenador = "";
+		if (todosLosPokemon.size() > 0) {
+
+			for (int i = 0; i < todosLosPokemon.size(); i++) {
+
+				pokemonsEntrenador +=todosLosPokemon.get(i).getNickname()+"      " +todosLosPokemon.get(i).getName()+ "\n";
+			}
+
+		}
+		
+		pokemonsEntrenador=" MOTE      "+" RAZA\n"+"\n"+ pokemonsEntrenador;
+
+		return pokemonsEntrenador;
 
 	}
 	

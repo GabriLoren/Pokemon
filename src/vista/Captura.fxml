@@ -8,6 +8,6 @@
    <children>
       <Button fx:id="capturarPokemon" layoutX="382.0" layoutY="175.0" mnemonicParsing="false" onAction="#capturarPokemon" text="capturarPokemon" />
       <Button fx:id="bucarPokemon" layoutX="382.0" layoutY="95.0" mnemonicParsing="false" onAction="#bucarPokemon" text="bucarPokemon" />
-      <Label fx:id="pokemonEncontrado" layoutX="53.0" layoutY="131.0" prefHeight="44.0" prefWidth="247.0" />
+      <Label fx:id="pokemonEncontrado" layoutX="25.0" layoutY="131.0" prefHeight="44.0" prefWidth="320.0" />
    </children>
 </AnchorPane>

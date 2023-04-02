@@ -100,7 +100,7 @@ public class InsertarEnEquipoController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-		String todosPokemon = entrenador.getTodosLosPokemon().toString();
+		String todosPokemon = entrenador.mostraTodosLosPokemons();
 
 		String equipo = entrenador.getEquipoPokemon().toString();
 
