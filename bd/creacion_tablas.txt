@@ -14,3 +14,8 @@ CREATE table object(
 id INT,
 nombre varchar(20)
 );
+create table objeto_entrenador(
+id Int,
+nombre varchar(20),
+id_objeto Int,
+id_entrenador int);

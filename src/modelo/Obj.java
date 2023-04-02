@@ -22,9 +22,9 @@ public class Obj {
 
 	}
 
-	public Obj(String name) {
+	public Obj(int id,String name) {
 		super();
-		this.id=0;
+		this.id=id;
 		this.name=name;
 		this.atk = 1;
 		this.def = 1;
@@ -45,7 +45,20 @@ public class Obj {
 		this.stamina = stamina;
 
 	}
-	public String name() {
+	
+	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
 		return name;
 	}
 
@@ -71,7 +84,7 @@ public class Obj {
 
 	@Override
 	public String toString() {
-		return "Obj [name=" + name + "]";
+		return  name;
 	}
 
 	

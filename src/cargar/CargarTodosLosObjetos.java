@@ -31,17 +31,21 @@ public class CargarTodosLosObjetos {
 
 			while (miRs.next()) {
 
-//				id = Integer.parseInt(miRs.getString(1));
+				id = Integer.parseInt(miRs.getString(1));
 				nombre = miRs.getString(2);
 				
 
-				objeto = new Obj(nombre);
+				objeto = new Obj(id,nombre);
 				todosLosObjetos.add(objeto);
 			}
 			System.out.println("metodo cargarTododLosObjetos funciona");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static LinkedList<Obj> getTodosLosObjetos() {
+		return todosLosObjetos;
 	}
 
 }

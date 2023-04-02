@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import cargar.CargarEntrenador;
 import cargar.CargarPokemons;
+import cargar.CargarTodosLosObjetos;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -48,7 +49,13 @@ public class SeleccionarJugadorController {
 			if (CargarEntrenador.ComprobarUsuario(entrenador) == false)
 				lblMostrarUsuario.setText("El usuario no existe");
 			else {
+				
+				//cargamos todos los pokemon existentes en el juego
 				CargarPokemons.cargarPokemonDesdeBbDd();
+				
+				//cargamos todos los objetos existentes en el juego
+				CargarTodosLosObjetos.cargarTododLosObjetos();
+				
 
 				// abrir la siguiente ventana
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/ElegirAccion.fxml"));

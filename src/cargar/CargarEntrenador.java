@@ -23,42 +23,44 @@ public class CargarEntrenador {
 		return entrenador;
 	}
 
-	public static void cargarEntrenador(String nombreEntrenador) {
+//	public static void cargarEntrenador(String nombreEntrenador) {
 
-		IOException mia = new IOException();
-
-		if (ComprobarUsuarioExiste.ComprobarUsuarioExiste(nombreEntrenador))
-
-			try {
-
-				Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-
-				String sentecia = "SELECT * FROM ENTRENADOR WHERE NOMBRE=?";
-				PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-				miPSt.setString(1, nombreEntrenador);
-				ResultSet miRs = miPSt.executeQuery();
-
-				while (miRs.next()) {
-
-					id = Integer.parseInt(miRs.getString(1));
-					System.out.println(id);
-					nombre = miRs.getString(2);
-					System.out.println(nombre);
-
-				}
-
-				entrenador = new Trainer(id, nombre);
-
-				entrenador.cargarPokemonEnEntrenador();
-
-				System.out.println("carga completa");
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-	}
-
+//		IOException mia = new IOException();
+//
+//		if (ComprobarUsuarioExiste.ComprobarUsuarioExiste(nombreEntrenador))
+//
+//			try {
+//
+//				Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+//
+//				String sentecia = "SELECT * FROM ENTRENADOR WHERE NOMBRE=?";
+//				PreparedStatement miPSt = miCon.prepareStatement(sentecia);
+//				miPSt.setString(1, nombreEntrenador);
+//				ResultSet miRs = miPSt.executeQuery();
+//
+//				while (miRs.next()) {
+//
+//					id = Integer.parseInt(miRs.getString(1));
+//					System.out.println(id);
+//					nombre = miRs.getString(2);
+//					System.out.println(nombre);
+//
+//				}
+//
+//				entrenador = new Trainer(id, nombre);
+//
+//				entrenador.cargarPokemonEnEntrenador();
+//				
+//				entrenador.cargarObjetosEnEntrenador();
+//
+//				System.out.println("metodo cargar entrenador correcto");
+//
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//
+//	}
+//comprueba si el usuario existe y si es así lo carga en el programa
 	public static boolean ComprobarUsuario(String nombreUsuario) throws SQLException {
 
 		boolean usuarioExiste = false;
@@ -78,6 +80,9 @@ public class CargarEntrenador {
 					entrenador = new Trainer(id, nombre);
 					
 					entrenador.cargarPokemonEnEntrenador();
+					
+					entrenador.cargarObjetosEnEntrenador();
+					
 
 					System.out.println("carga completa");
 					
