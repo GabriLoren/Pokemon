@@ -15,6 +15,7 @@ public class Trainer {
 	private String name;
 	private LinkedList<Pokemon> todosLosPokemon;
 	private LinkedList<Pokemon> equipoPokemon;
+	private LinkedList<Object>objetos;
 
 	public Trainer(int id, String name) {
 		super();
@@ -63,6 +64,11 @@ public class Trainer {
 	public void insertraPokemonCapturado(Pokemon pokemon) {
 
 		this.todosLosPokemon.add(pokemon);
+	}
+	
+	public void insertarObjetoComprado(Obj objeto) {
+
+		this.objetos.add(objeto);
 	}
 
 	public void cargarPokemonEnEntrenador() {
@@ -126,7 +132,5 @@ public class Trainer {
 
 	}
 
-	public static void insertaMote() {
-
-	}
+	
 }
