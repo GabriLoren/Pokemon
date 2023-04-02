@@ -7,8 +7,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.SeleccionarJugadorController">
    <children>
-      <TextField fx:id="TxtInsertarJugador" layoutX="74.0" layoutY="175.0" />
-      <Button fx:id="btbcargarEntrenador" layoutX="375.0" layoutY="175.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" text="Comenzar" />
+      <TextField fx:id="TxtInsertarJugador" layoutX="219.0" layoutY="141.0" />
+      <Button fx:id="btbcargarEntrenador" layoutX="253.0" layoutY="188.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
       <Label fx:id="lblMostrarUsuario" layoutX="142.0" layoutY="49.0" prefHeight="59.0" prefWidth="303.0" />
+      <Button fx:id="btbCrearUsuario" layoutX="256.0" layoutY="236.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
    </children>
 </AnchorPane>

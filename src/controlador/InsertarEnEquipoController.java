@@ -48,8 +48,8 @@ public class InsertarEnEquipoController implements Initializable {
 			
 			int posicion=-1;
 
-//			int idPokemonSacar=Integer.parseInt(lblSacar.getText());
 
+// si existe el mote posicion coge el valor de la posicion de ese pokemon en la linkedlist si no sigue en -1 
 			if (entrenador.getEquipoPokemon().size() < 6) {
 				
 				for(int i=0;i<entrenador.getTodosLosPokemon().size();i++) {

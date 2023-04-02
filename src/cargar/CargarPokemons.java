@@ -40,7 +40,7 @@ public class CargarPokemons {
 				pokemon = new Pokemon(id, nombre, vida);
 				pokemons.add(pokemon);
 			}
-			System.out.println("La carga ha sido satisfactoria");
+			System.out.println("metodo cargarPokemonDesdeBbDd funciona");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
