@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import cargar.CargarPokemonEnEntrenador;
 import funcionalidades.GenerarID;
 
 public class Trainer {
@@ -69,7 +70,7 @@ public class Trainer {
 	}
 
 	public void insertraPokemonCapturado(Pokemon pokemon, String mote) {
-		
+
 		pokemon.setNickname(mote);
 
 		this.todosLosPokemon.add(pokemon);
@@ -80,162 +81,22 @@ public class Trainer {
 		this.objetos.add(objeto);
 	}
 
-	public void cargarPokemonEnEntrenador() {
-
-		try {
-
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-
-			String sentecia = "SELECT MOTE, NOMBRE_POKEMON FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
-			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-
-			// idEntrenador es el id del entrenador que hemos cargado previamenre
-			miPSt.setLong(1, id);
-			ResultSet miRs = miPSt.executeQuery();
-
-			String mote = "";
-			String nombre = "";
-
-			while (miRs.next()) {
-
-				mote = miRs.getString(1);
-				nombre = miRs.getString(2);
-
-				Pokemon pokemon = new Pokemon(nombre, mote);
-
-				todosLosPokemon.add(pokemon);
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, String mote) {
-		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
-
-		// nombre del pokemon encontrado previamente
-		String nombre = pokemon.getName();
-
-		try {
-
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-
-			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,MOTE,NOMBRE_POKEMON,ID_MOVIMIENTO1,ID_ENTRENADOR)"
-					+ " VALUES (?,?,?,?,?)";
-
-			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
-			miPSt.setLong(1, idGenerado);// id
-			miPSt.setString(2, mote);// MOTE
-			miPSt.setString(3, nombre);// nombre
-			miPSt.setString(4, "1");// movimiento1
-			miPSt.setLong(5, this.id);// id_entrenador que está actualmemnte jugando
-
-			miPSt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public String mostraObjetosEntrenador() {
-		String objetosEntrenador = "";
-		if (objetos.size() > 0) {
-
-			for (int i = 0; i < objetos.size(); i++) {
-
-				objetosEntrenador += objetos.get(i).getName() + "\n";
-			}
-
-		}
-
-		return objetosEntrenador;
-
-	}
-	
-	
 	public String mostraTodosLosPokemons() {
 		String pokemonsEntrenador = "";
 		if (todosLosPokemon.size() > 0) {
 
 			for (int i = 0; i < todosLosPokemon.size(); i++) {
 
-				pokemonsEntrenador +=todosLosPokemon.get(i).getNickname()+"      " +todosLosPokemon.get(i).getName()+ "\n";
+				pokemonsEntrenador += todosLosPokemon.get(i).getNickname() + "      " + todosLosPokemon.get(i).getName()
+						+ "\n";
 			}
 
 		}
-		
-		pokemonsEntrenador=" MOTE      "+" RAZA\n"+"\n"+ pokemonsEntrenador;
+
+		pokemonsEntrenador = " MOTE      " + " RAZA\n" + "\n" + pokemonsEntrenador;
 
 		return pokemonsEntrenador;
 
 	}
-	
-	/**
-	 * inserta en la Linkedlist<Obj>objetos todos los objetos que posee el entrenador y se encuentran en la tabla objeto_entrenador
-	 */
 
-	public void cargarObjetosEnEntrenador() {
-
-		try {
-
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-
-			String sentecia = "SELECT * FROM OBJETO_ENTRENADOR WHERE ID_ENTRENADOR=?";
-			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-
-			// idEntrenador es el id del entrenador que hemos cargado previamenre
-			miPSt.setLong(1, id);
-			ResultSet miRs = miPSt.executeQuery();
-
-			int id = 0;
-			String nombre = "";
-
-			while (miRs.next()) {
-
-				id = Integer.parseInt(miRs.getString(1));
-				nombre = miRs.getString(2);
-
-				Obj objeto = new Obj(id, nombre);
-
-				objetos.add(objeto);
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-
-	public void insertarEnBbDdElObjetoComprado(Obj objeto) {
-		int idGenerado = GenerarID.generaID("SELECT ID FROM OBJETO_ENTRENADOR");
-
-		// nombre del OBJETO COMPRADO previamente
-		String nombre = objeto.getName();
-		int idObjeto = objeto.getId();
-
-		try {
-
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-
-			String sentencia = "INSERT INTO OBJETO_ENTRENADOR (ID,NOMBRE,ID_OBJETO,ID_ENTRENADOR)"
-					+ " VALUES (?,?,?,?)";
-
-			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
-			miPSt.setLong(1, idGenerado);// id en la tabla objeto_entrenador
-			miPSt.setString(2, nombre);// nombre del objeto
-			miPSt.setLong(3, idObjeto);// id del objeto en la tabla objeto
-			miPSt.setLong(4, this.id);// id_entrenador que está actualmemnte jugando
-
-			miPSt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
 }

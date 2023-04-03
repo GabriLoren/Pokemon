@@ -13,6 +13,8 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
+import cargar.CargarPokemonEnEntrenador;
+import funcionalidades.Captura;
 import funcionalidades.GeneraPokemonAleatorio;
 import javafx.event.ActionEvent;
 
@@ -56,10 +58,11 @@ public class CapturaController implements Initializable {
 		String mote = txtMote.getText().toUpperCase();
 
 		if (Pokemon.comprobarMote(mote)&&!mote.equals("")) {
-			entrenador.insertarEnBbDdElPokemonEncontrado(pokemon, mote);//inserta en pokemon capturado en la BbDd
+			Captura.insertarEnBbDdElPokemonEncontrado(pokemon, mote, entrenador.getId());//inserta en pokemon capturado en la BbDd
 			entrenador.insertraPokemonCapturado(pokemon,mote  );//inserta el pokemon capturado en LinkedList<Pokemon> todosLosPokemon;
 			
-			Stage stage = (Stage) this.txtMote.getScene().getWindow();
+			Stage stage = (Stage) this.txtMote.getScene().getWindow(); 
+			
 			stage.close();
 			
 			

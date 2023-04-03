@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import funcionalidades.AddObject;
 import funcionalidades.ComprobarUsuarioExiste;
 import modelo.Pokemon;
 import modelo.Trainer;
@@ -61,11 +62,11 @@ public class CargarEntrenador {
 //
 //	}
 //comprueba si el usuario existe y si es así lo carga en el programa
-	public static boolean ComprobarUsuario(String nombreUsuario) throws SQLException {
+	public static boolean comprobarUsuarioYCargarlo(String nombreUsuario) throws SQLException {
 
 		boolean usuarioExiste = false;
 
-//		try {
+		
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 			Statement miSt = miCon.createStatement();
@@ -79,9 +80,9 @@ public class CargarEntrenador {
 					
 					entrenador = new Trainer(id, nombre);
 					
-					entrenador.cargarPokemonEnEntrenador();
+					CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id);
 					
-					entrenador.cargarObjetosEnEntrenador();
+					AddObject.cargarObjetosEnEntrenador(id, entrenador.getObjetos());
 					
 
 					System.out.println("carga completa");

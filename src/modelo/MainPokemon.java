@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.Objects;
 
-import cargar.CargarPokemon;
+
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
 import cargar.CargarTodosLosObjetos;
+import funcionalidades.AddObject;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -57,16 +58,16 @@ public class TiendaController implements Initializable {
 				
 				entrenador.getObjetos().add(objetoElegido);
 				
-				entrenador.insertarEnBbDdElObjetoComprado(objetoElegido);
+				AddObject.insertarEnBbDdElObjetoComprado(objetoElegido, entrenador.getId());
 				
 				
-				lblMisObjetos.setText(entrenador.mostraObjetosEntrenador());
+				lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
 				
 				break;
 				
 			}else {
 				
-				lblMisObjetos.setText("Ese objeto no existe\n"+entrenador.mostraObjetosEntrenador());
+				lblMisObjetos.setText("Ese objeto no existe\n"+AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
 				
 			}
 		}
@@ -78,7 +79,7 @@ public class TiendaController implements Initializable {
 		// TODO Auto-generated method stub
 		
 		if(entrenador.getObjetos().size()>0) {
-			lblMisObjetos.setText(entrenador.mostraObjetosEntrenador());
+			lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
 		}
 		else lblMisObjetos.setText("Mochila vacia");
 		

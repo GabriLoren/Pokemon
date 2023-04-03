@@ -8,10 +8,10 @@ import modelo.Move;
 import modelo.Pokemon;
 import modelo.Types;
 
-public class CargarPokemons { 
+public class CargarTodosPokemons {
 
 	private static LinkedList<Pokemon> pokemons = new LinkedList<>();
-	
+
 	public static LinkedList<Pokemon> getPokemon() {
 		return pokemons;
 	}
@@ -20,6 +20,7 @@ public class CargarPokemons {
 	static int id;
 	static String nombre;
 	static int vida;
+
 //carga todos los pokemon que existen en la aplicacion
 	public static  void cargarPokemonDesdeBbDd() {
 
@@ -45,8 +46,10 @@ public class CargarPokemons {
 			e.printStackTrace();
 		}
 	
-
-
 	}
-
 }
+
+	
+
+
+
