@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import modelo.CrearUsuarioNuevo;
+import funcionalidades.CrearUsuarioNuevo;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;

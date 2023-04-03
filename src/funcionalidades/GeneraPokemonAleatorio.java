@@ -1,4 +1,4 @@
-package modelo;
+package funcionalidades;
 
 import java.io.IOException;
 
@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import cargar.CargarPokemons;
+import modelo.Pokemon;
 
 public class GeneraPokemonAleatorio {
 

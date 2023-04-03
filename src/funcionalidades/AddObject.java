@@ -1,4 +1,4 @@
-package modelo;
+package funcionalidades;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cargar.CargarMoves;
+import modelo.Obj;
+import modelo.Pokemon;
 
 public class AddObject {
 	// muestra los objetos que tiene en la mochila el jugador

@@ -1,4 +1,4 @@
-package modelo;
+package funcionalidades;
 
 import java.io.IOException;
 
@@ -13,6 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.Category;
+import modelo.MainPokemon;
+import modelo.Move;
+import modelo.Pokemon;
+import modelo.Trainer;
 
 public class Battle {
 

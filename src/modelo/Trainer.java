@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import funcionalidades.GenerarID;
+
 public class Trainer {
 
 	private int id;

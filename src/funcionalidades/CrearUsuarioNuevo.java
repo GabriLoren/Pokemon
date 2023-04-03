@@ -1,4 +1,4 @@
-package modelo;
+package funcionalidades;
 
 import java.sql.Connection;
 

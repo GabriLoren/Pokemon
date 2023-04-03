@@ -13,13 +13,12 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
-
+import funcionalidades.GeneraPokemonAleatorio;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import modelo.GeneraPokemonAleatorio;
 import modelo.Pokemon;
 import modelo.Trainer;
 
