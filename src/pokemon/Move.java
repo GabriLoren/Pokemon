@@ -5,14 +5,14 @@ public class Move {
 	private int id;
 	private String name;
 	private int power;
-	private Types.types type;
+	private Types type;
 	private String status;
 	private int turns;
 	private float buff;
 	private int staminaCost;
 	private int lvlRequirement;
 
-	public Move(int id, String name, int power, Types.types type, String status, int turns, float buff, int stamina, int lvlReq) {
+	public Move(int id, String name, int power, Types type, String status, int turns, float buff, int stamina, int lvlReq) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,11 +49,11 @@ public class Move {
 		this.power = power;
 	}
 
-	public Types.types getType() {
+	public Types getType() {
 		return type;
 	}
 
-	public void setType(Types.types type) {
+	public void setType(Types type) {
 		this.type = type;
 	}
 

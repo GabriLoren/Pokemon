@@ -71,7 +71,7 @@ public class Trainer {
 	}
 
 	public void moveToTeam(Pokemon poke) {
-
+		
 	}
 
 	public void moveToBox(Pokemon poke) {

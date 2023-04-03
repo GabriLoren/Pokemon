@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Pokemon {
 
+	private static final int STAMINA = 100;
+	
 	// Generates a number between 1 and 5
 	private static int randomStats() {
 		Random r = new Random();
@@ -25,14 +27,14 @@ public class Pokemon {
 	private LinkedList<Move> moves;
 	private int fertility;
 	private boolean gender;
-	private Types.types type1, type2;
+	private Types type1, type2;
 	private String status;
 	private Obj object;
 	private int exp;
 
 	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int satk, int sdef, int speed,
-			int stamina, int lvl, LinkedList<Move> moves, int fertility, boolean gender, Types.types type1,
-			Types.types type2, String status, Obj object, int exp) {
+			int stamina, int lvl, LinkedList<Move> moves, int fertility, boolean gender, Types type1, Types type2,
+			String status, Obj object, int exp) {
 		super();
 		this.pokedexNum = id;
 		this.name = name;
@@ -167,19 +169,19 @@ public class Pokemon {
 		this.gender = gender;
 	}
 
-	public Types.types getType() {
+	public Types getType() {
 		return type1;
 	}
 
-	public void setType(Types.types type1) {
+	public void setType(Types type1) {
 		this.type1 = type1;
 	}
 
-	public Types.types getType2() {
+	public Types getType2() {
 		return type2;
 	}
 
-	public void setType2(Types.types type2) {
+	public void setType2(Types type2) {
 		this.type2 = type2;
 	}
 
@@ -231,12 +233,25 @@ public class Pokemon {
 		}
 	}
 
-	public void typeCheck(Types.types defType) {
-		
+	// Checks if your pokemon's types has advantage or disadvantage against a specific type
+	public EffectValues typeCheck(Types defType) {
+		if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.INEFFECTIVE)
+				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.INEFFECTIVE)) {
+			return EffectValues.INEFFECTIVE;
+		} else if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.ADVANTAGE)
+				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.ADVANTAGE)) {
+			return EffectValues.ADVANTAGE;
+		} else if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.WEAK)
+				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.WEAK)) {
+			return EffectValues.WEAK;
+		} else {
+			return EffectValues.NEUTRAL;
+		}
 	}
 
+	//Sets a pokemon's stamina to the default value
 	public void rest() {
-		this.stamina = 100;
+		this.stamina = STAMINA;
 	}
 
 	public void learnMove() {
