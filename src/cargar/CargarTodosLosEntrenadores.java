@@ -41,8 +41,10 @@ public class CargarTodosLosEntrenadores {
 				nombre = miRs.getString(2);
 
 				entrenador = new Trainer(id, nombre);
-
-//						entrenador.setTodosLosPokemon(CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id));
+				
+				
+						//inserta en cada entrnador todos sus pokemon
+						entrenador.setTodosLosPokemon(CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id));
 
 //						AddObject.cargarObjetosEnEntrenador(id, entrenador.getObjetos());
 
@@ -54,7 +56,7 @@ public class CargarTodosLosEntrenadores {
 			e.printStackTrace();
 		}
 
-		System.out.println(TodosLosEntrenadores.toString());
+//		System.out.println(TodosLosEntrenadores.toString());
 
 	}
 

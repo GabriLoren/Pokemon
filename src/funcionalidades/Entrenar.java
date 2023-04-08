@@ -25,11 +25,13 @@ public class Entrenar {
 
 		for (int i = 0; i < pokemons.size(); i++) {
 
-			if (mote.toUpperCase().equalsIgnoreCase(pokemons.get(i).getNickname()))
-				;
-			{
+			if (mote.equalsIgnoreCase(pokemons.get(i).getNickname())) {
+				
+			
 
 				pokemonElegido = pokemons.get(i);
+				
+				System.out.println(pokemonElegido.toString());
 				break;
 
 			}
@@ -61,6 +63,8 @@ public class Entrenar {
 			break;
 		}
 		}
+		
+		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemonElegido);
 
 	}
 

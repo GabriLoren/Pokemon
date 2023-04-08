@@ -20,8 +20,16 @@ public class CargarEntrenador {
 	private static String nombre = "";
 	private static int id = 0;
 	private static LinkedList<Trainer> todosLosEntrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
+	
+	
 
-//comprueba si el usuario existe y si es así lo carga en el programa
+public static Trainer getEntrenador() {
+		return entrenador;
+	}
+
+
+
+	//comprueba si el usuario existe y si es así lo carga en el programa
 	public static boolean comprobarUsuarioYCargarlo(String nombreUsuario) {
 
 		boolean usuarioExiste = false;
@@ -37,6 +45,7 @@ public class CargarEntrenador {
 			}
 
 		}
+		System.out.println(entrenador.toString());
 		return usuarioExiste;
 	}
 }

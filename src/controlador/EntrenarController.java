@@ -1,14 +1,16 @@
 package controlador;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import modelo.Pokemon;
 import modelo.Trainer;
 
+import java.net.URL;
 import java.util.LinkedList;
+import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
 import funcionalidades.Entrenar;
@@ -16,7 +18,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
 
-public class EntrenarController {
+public class EntrenarController implements Initializable{
 	@FXML
 	private Button btnEntrenarPokemon;
 	@FXML
@@ -44,16 +46,26 @@ public class EntrenarController {
 		String moteDelPokemonEntrenamos=txtPokemonAEntrenar.getText();
 		String entrenaminetoElegido=txtTipoDeEntrenamiento.getText();
 		
-	Entrenar.entrenar(entrenador, "mio2", "pesado");
+	Entrenar.entrenar(entrenador, moteDelPokemonEntrenamos, entrenaminetoElegido);
 		
 	
-		System.out.println(pokemonsEntrenador.get(1).toString());
+//		System.out.println(pokemonsEntrenador.get(0).toString());
 	
 //	System.out.println(pokemonSeleccionado.toString());
 	
-System.out.println(CargarEntrenador.getEntrenador().getPokeDollar());	
+//System.out.println(CargarEntrenador.getEntrenador().getPokeDollar());	
 	
 	
+		
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+		
+//		System.out.println(pokemonsEntrenador.toString());
+		
 		
 	}
 }

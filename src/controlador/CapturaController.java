@@ -65,6 +65,10 @@ public class CapturaController implements Initializable {
 			
 			stage.close();
 			
+			// se cierra la ventana actual
+			Stage stage2 = (Stage) this.txtMote.getScene().getWindow();
+			stage2.close();
+			
 			
 			
 		}
@@ -101,6 +105,10 @@ public class CapturaController implements Initializable {
 
 				stage.setScene(scene);
 				stage.show();
+				
+				// se cierra la ventana actual
+				Stage stage2 = (Stage) this.pokemonEncontrado.getScene().getWindow();
+				stage2.close();
 				
 				
 				

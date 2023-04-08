@@ -19,15 +19,24 @@ public class Captura {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,MOTE,NOMBRE_POKEMON,ID_MOVIMIENTO1,ID_ENTRENADOR)"
-					+ " VALUES (?,?,?,?,?)";
+			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, idGenerado);// id
-			miPSt.setString(2, mote);// MOTE
-			miPSt.setString(3, nombre);// nombre
-			miPSt.setString(4, "1");// movimiento1
-			miPSt.setLong(5, idEntrenador);// id_entrenador que está actualmemnte jugando
+			miPSt.setString(2, nombre);// MOTE
+			miPSt.setString(3, mote);// nombre
+			miPSt.setLong(4, idEntrenador);// id_entrenador que está actualmemnte jugando
+			miPSt.setLong(5, pokemon.getVit());
+			miPSt.setLong(6, pokemon.getAtk());
+			miPSt.setLong(7, pokemon.getDef());
+			miPSt.setLong(8, pokemon.getSpAtk());
+			miPSt.setLong(9, pokemon.getSpDef());
+			miPSt.setLong(10, pokemon.getSpeed());
+			miPSt.setLong(11, pokemon.getStamina());
+			miPSt.setLong(12, pokemon.getLevel());
+			
+			
 
 			miPSt.executeUpdate();
 

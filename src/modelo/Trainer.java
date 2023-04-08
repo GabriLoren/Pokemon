@@ -14,6 +14,12 @@ import funcionalidades.GenerarID;
 
 public class Trainer {
 
+	@Override
+	public String toString() {
+		return "Trainer [id=" + id + ", name=" + name + ", pokeDollar=" + pokeDollar + ", todosLosPokemon="
+				+ todosLosPokemon + ", equipoPokemon=" + equipoPokemon + ", objetos=" + objetos + "]";
+	}
+
 	private int id;
 	private String name;
 	private int pokeDollar;

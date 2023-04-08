@@ -10,36 +10,60 @@ import java.util.LinkedList;
 import modelo.Pokemon;
 
 public class CargarPokemonEnEntrenador {
-	
-	private static LinkedList<Pokemon>todosLosPokemon=new LinkedList<>();
 
-	
+	private static LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
+
 	public static LinkedList<Pokemon> cargarPokemonEnEntrenador(int idEntrenador) {
 
 		try {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-			String sentecia = "SELECT MOTE, NOMBRE_POKEMON FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT * FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente
 			miPSt.setLong(1, idEntrenador);
 			ResultSet miRs = miPSt.executeQuery();
 
-			String mote = "";
+			int id = 0;
 			String nombre = "";
+			String mote = "";
+//			id_entrenador int
+			int vida = 0;
+			int ataque = 0;
+			int defensa = 0;
+			int ataqueSp = 0;
+			int defensaSp = 0;
+			int velocidad = 0;
+			int stamina = 0;
+			int nivel = 0;
+//			id_movimiento1 int,
+//			id_movimiento2 int,
+//			id_movimiento3 int,
+//			id_movimiento4 int,
+//			id_objeto int);
 
 			while (miRs.next()) {
 
-				mote = miRs.getString(1);
+				id = Integer.parseInt(miRs.getString(1));
 				nombre = miRs.getString(2);
+				mote = miRs.getString(3);
+				vida = Integer.parseInt(miRs.getString(5));
+				ataque = Integer.parseInt(miRs.getString(6));
+				defensa = Integer.parseInt(miRs.getString(7));
+				ataqueSp = Integer.parseInt(miRs.getString(8));
+				defensaSp = Integer.parseInt(miRs.getString(9));
+				velocidad = Integer.parseInt(miRs.getString(10));
+				stamina = Integer.parseInt(miRs.getString(11));
+				nivel = Integer.parseInt(miRs.getString(12));
 
-				Pokemon pokemon = new Pokemon(nombre, mote);
+				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
+						stamina, nivel);
 
 				todosLosPokemon.add(pokemon);
-				
-				System.out.println(todosLosPokemon.toString());
+
+//				System.out.println(todosLosPokemon.toString());
 
 			}
 
