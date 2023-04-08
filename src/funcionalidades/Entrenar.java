@@ -63,7 +63,7 @@ public class Entrenar {
 			break;
 		}
 		}
-		
+		//actualiza la BbDd
 		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemonElegido);
 
 	}
