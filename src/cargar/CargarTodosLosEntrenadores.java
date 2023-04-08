@@ -35,12 +35,14 @@ public class CargarTodosLosEntrenadores {
 			Trainer entrenador;
 			String nombre = "";
 			int id = 0;
+			int pokedollar=0;
 
 			while (miRs.next()) {
 				id = Integer.parseInt(miRs.getString(1));
 				nombre = miRs.getString(2);
+				pokedollar=Integer.parseInt(miRs.getString(3));
 
-				entrenador = new Trainer(id, nombre);
+				entrenador = new Trainer(id, nombre, pokedollar);
 				
 				
 						//inserta en cada entrnador todos sus pokemon

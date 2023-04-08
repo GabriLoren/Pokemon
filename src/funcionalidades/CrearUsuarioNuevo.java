@@ -6,32 +6,45 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import cargar.CargarTodosLosEntrenadores;
+import modelo.Trainer;
+
 public class CrearUsuarioNuevo {
+	static Trainer entrenadorNuevo=new Trainer(0, null, 0);
+	
 	// si no existe el nombre de usuario en la BbDd crea el usuario nuevo y devuelve true
 public static boolean crearUsuarioNuevo(String nombreUsuarioNuevo) {
 
+
 	
 		if (ComprobarUsuarioExiste.ComprobarUsuarioExiste(nombreUsuarioNuevo)==false) {
-			insertraUSuarioNuevo(nombreUsuarioNuevo);
+			
+			int idNuevoUsuario = GenerarID.generaID("SELECT ID FROM ENTRENADOR");
+			
+			entrenadorNuevo.setId(idNuevoUsuario);
+			
+			entrenadorNuevo.setName(nombreUsuarioNuevo.toUpperCase());
+			
+			CargarTodosLosEntrenadores.getTodosLosEntrenadores().add(entrenadorNuevo);
+			insertraUSuarioNuevo(entrenadorNuevo);
 			return true;
 		}
 		return false;
 
 	}
 
-	public static void insertraUSuarioNuevo(String nombreUsuarioNuevo) {
+	public static void insertraUSuarioNuevo(Trainer entrenador) {
 
-		int idNuevoUsuario = GenerarID.generaID("SELECT ID FROM ENTRENADOR");
-
-		String nombreUsuarioNuevoMayuscula = nombreUsuarioNuevo.toUpperCase();
 
 		try {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-			String sentecia = "INSERT INTO ENTRENADOR (ID,NOMBRE) VALUES (?,?)";
+			String sentecia = "INSERT INTO ENTRENADOR (ID,NOMBRE,POKEDOLLAR) VALUES (?,?,?)";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-			miPSt.setLong(1, idNuevoUsuario);
-			miPSt.setString(2, nombreUsuarioNuevoMayuscula);
+			miPSt.setLong(1, entrenador.getId());
+			miPSt.setString(2, entrenador.getName());
+			miPSt.setLong(3, 1000);
+			
 
 			miPSt.executeUpdate();
 

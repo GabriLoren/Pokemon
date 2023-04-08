@@ -28,14 +28,14 @@ public class Trainer {
 	private LinkedList<Obj> objetos;
 	
 
-	public Trainer(int id, String name) {
+	public Trainer(int id, String name, int pokeDollar) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.todosLosPokemon = new LinkedList<Pokemon>();
 		this.equipoPokemon = new LinkedList<Pokemon>();
 		this.objetos = new LinkedList<>();
-		this.pokeDollar=1000;
+		this.pokeDollar=pokeDollar;
 	}
 	
 	

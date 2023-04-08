@@ -11,41 +11,48 @@ public class Entrenar {
 
 	private static Pokemon pokemonElegido;
 
-/**
- * aumenta las estadísticas dependiendo del entrenamiento seleccionado
- * @param entrenador
- * @param mote
- * @param tipoDeEntrenamiento
- */
+	/**
+	 * aumenta las estadísticas dependiendo del entrenamiento seleccionado
+	 * 
+	 * @param entrenador
+	 * @param mote
+	 * @param tipoDeEntrenamiento
+	 */
 	public static void entrenar(Trainer entrenador, String mote, String tipoDeEntrenamiento) {
-		
-		boolean entrenamientoRealizado=false;
+
+		boolean entrenamientoRealizado = false;
 
 		pokemons = entrenador.getTodosLosPokemon();
 
 		for (int i = 0; i < pokemons.size(); i++) {
 
 			if (mote.equalsIgnoreCase(pokemons.get(i).getNickname())) {
-				
-			
 
 				pokemonElegido = pokemons.get(i);
-				
+
 				System.out.println(pokemonElegido.toString());
 				break;
 
 			}
-		 
+
 		}
 
 		switch (tipoDeEntrenamiento.toLowerCase()) {
 		case "pesado": {
 
-			pokemonElegido.setDef(pokemonElegido.getDef() + 5);
-			pokemonElegido.setSpDef(pokemonElegido.getSpDef() + 5);
-			pokemonElegido.setVit(pokemonElegido.getVit() + 5);
+			if ((entrenador.getPokeDollar() - (20 * pokemonElegido.getLevel())) < 0) {
 
-			entrenador.setPokeDollar(entrenador.getPokeDollar() - (20 * pokemonElegido.getLevel()));
+				System.out.println("no hay suficiente dinero");
+				System.out.println(entrenador.getPokeDollar());
+			} else {
+
+				pokemonElegido.setDef(pokemonElegido.getDef() + 5);
+				pokemonElegido.setSpDef(pokemonElegido.getSpDef() + 5);
+				pokemonElegido.setVit(pokemonElegido.getVit() + 5);
+				entrenador.setPokeDollar(entrenador.getPokeDollar() - (20 * pokemonElegido.getLevel()));
+				
+				System.out.println(entrenador.getPokeDollar());
+			}
 
 			break;
 		}
@@ -63,7 +70,7 @@ public class Entrenar {
 			break;
 		}
 		}
-		//actualiza la BbDd
+		// actualiza la BbDd
 		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemonElegido);
 
 	}
