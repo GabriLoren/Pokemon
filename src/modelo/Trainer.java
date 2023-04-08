@@ -16,9 +16,11 @@ public class Trainer {
 
 	private int id;
 	private String name;
+	private int pokeDollar;
 	private LinkedList<Pokemon> todosLosPokemon;
 	private LinkedList<Pokemon> equipoPokemon;
 	private LinkedList<Obj> objetos;
+	
 
 	public Trainer(int id, String name) {
 		super();
@@ -27,7 +29,22 @@ public class Trainer {
 		this.todosLosPokemon = new LinkedList<Pokemon>();
 		this.equipoPokemon = new LinkedList<Pokemon>();
 		this.objetos = new LinkedList<>();
+		this.pokeDollar=1000;
 	}
+	
+	
+
+	public int getPokeDollar() {
+		return pokeDollar;
+	}
+
+
+
+	public void setPokeDollar(int pokeDollar) {
+		this.pokeDollar = pokeDollar;
+	}
+
+
 
 	public LinkedList<Obj> getObjetos() {
 		return objetos;

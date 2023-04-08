@@ -10,7 +10,7 @@ public class InsertarEnEquipo {
 	/**introducimos el mote para identificar el pokemon que queremos añadir al equipo
 	 * @param entrenador
 	 * @param mote del pokemon que queremos añadir
-	 * @return 0 si no hay más pokemon para añadir, 1 si el pokemon no existe, 2 si el equipo está completo y 3 si el Pokemon ha sido añadido satisfactoriamente
+	 * @return 0 si no hay más pokemon para añadir, -1 si el pokemon no existe, 2 si el equipo está completo y 3 si el Pokemon ha sido añadido satisfactoriamente
 	 */
 	public static int insertarEnEquipo(Trainer entrenador, String mote) {
 
@@ -38,7 +38,7 @@ public class InsertarEnEquipo {
 				return 3;//El Pokemon ha sido añadido satisfactoriamente
 				
 			}else {
-				return 1;//Ese pokemon no existe
+				return -1;//Ese pokemon no existe
 			}
 
 		}

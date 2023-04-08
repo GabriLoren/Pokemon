@@ -20,6 +20,16 @@ public class CargarTodosPokemons {
 	static int id;
 	static String nombre;
 	static int vida;
+	static int ataque;
+	static int defensa;
+	static int ataqueSp;
+	static int defensaSp;
+	static int velocidad;
+	static int stamina;
+	static int nivel;
+	
+	
+	
 
 //carga todos los pokemon que existen en la aplicacion
 	public static  void cargarPokemonDesdeBbDd() {
@@ -36,9 +46,17 @@ public class CargarTodosPokemons {
 
 				id = Integer.parseInt(miRs.getString(1));
 				nombre = miRs.getString(2);
-				vida = Integer.parseInt(miRs.getString(1));
+				vida = Integer.parseInt(miRs.getString(3));
+				ataque = Integer.parseInt(miRs.getString(4));
+				defensa = Integer.parseInt(miRs.getString(5));
+				ataqueSp = Integer.parseInt(miRs.getString(6));
+				defensaSp = Integer.parseInt(miRs.getString(7));
+				velocidad = Integer.parseInt(miRs.getString(8));
+				stamina = Integer.parseInt(miRs.getString(9));
+				nivel = Integer.parseInt(miRs.getString(10));
+				
 
-				pokemon = new Pokemon(id, nombre, vida);
+				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel);
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");

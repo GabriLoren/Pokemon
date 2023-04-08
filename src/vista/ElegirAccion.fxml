@@ -5,10 +5,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ElegirAccionController">
    <children>
-      <Button fx:id="btnCapturar" layoutX="169.0" layoutY="79.0" mnemonicParsing="false" onAction="#capturar" text="Capturar" />
-      <Button fx:id="btnPelear" layoutX="344.0" layoutY="75.0" mnemonicParsing="false" onAction="#pelear" prefHeight="32.0" prefWidth="78.0" text="Pelear" />
-      <Button fx:id="btnTienda" layoutX="169.0" layoutY="175.0" mnemonicParsing="false" onAction="#tienda" prefHeight="25.0" prefWidth="78.0" text="Tienda" />
-      <Button fx:id="btnCriar" layoutX="343.0" layoutY="175.0" mnemonicParsing="false" onAction="#criar" prefHeight="32.0" prefWidth="71.0" text="Criar" />
-      <Button fx:id="BtnEquipo" layoutX="252.0" layoutY="253.0" mnemonicParsing="false" onAction="#hacerEquipo" text="Crear equipo" />
+      <Button fx:id="btnCapturar" layoutX="160.0" layoutY="85.0" mnemonicParsing="false" onAction="#capturar" prefHeight="38.0" prefWidth="71.0" text="Capturar" />
+      <Button fx:id="btnPelear" layoutX="344.0" layoutY="75.0" mnemonicParsing="false" onAction="#pelear" prefHeight="57.0" prefWidth="86.0" text="Pelear" />
+      <Button fx:id="btnTienda" layoutX="160.0" layoutY="167.0" mnemonicParsing="false" onAction="#tienda" prefHeight="48.0" prefWidth="71.0" text="Tienda" />
+      <Button fx:id="btnCriar" layoutX="343.0" layoutY="165.0" mnemonicParsing="false" onAction="#criar" prefHeight="48.0" prefWidth="93.0" text="Criar" />
+      <Button fx:id="BtnEquipo" layoutX="343.0" layoutY="243.0" mnemonicParsing="false" onAction="#hacerEquipo" prefHeight="48.0" prefWidth="93.0" text="Crear equipo" />
+      <Button fx:id="btnEntrenar" layoutX="160.0" layoutY="248.0" mnemonicParsing="false" onAction="#entrenar" prefHeight="38.0" prefWidth="71.0" text="Entrenar" />
    </children>
 </AnchorPane>

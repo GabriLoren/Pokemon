@@ -14,7 +14,7 @@ public class CargarPokemonEnEntrenador {
 	private static LinkedList<Pokemon>todosLosPokemon=new LinkedList<>();
 
 	
-	public static void cargarPokemonEnEntrenador(int idEntrenador) {
+	public static LinkedList<Pokemon> cargarPokemonEnEntrenador(int idEntrenador) {
 
 		try {
 
@@ -23,7 +23,7 @@ public class CargarPokemonEnEntrenador {
 			String sentecia = "SELECT MOTE, NOMBRE_POKEMON FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
-			// idEntrenador es el id del entrenador que hemos cargado previamenre
+			// idEntrenador es el id del entrenador que hemos cargado previamente
 			miPSt.setLong(1, idEntrenador);
 			ResultSet miRs = miPSt.executeQuery();
 
@@ -38,12 +38,15 @@ public class CargarPokemonEnEntrenador {
 				Pokemon pokemon = new Pokemon(nombre, mote);
 
 				todosLosPokemon.add(pokemon);
+				
+				System.out.println(todosLosPokemon.toString());
 
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return todosLosPokemon;
 
 	}
 }

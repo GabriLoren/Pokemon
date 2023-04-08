@@ -55,26 +55,29 @@ public class InsertarEnEquipoController implements Initializable {
 		int pokemonInsertado = InsertarEnEquipo.insertarEnEquipo(entrenador, mote);
 
 		switch (pokemonInsertado) {
-		
+
 		case 0: {
 
 			lblEquipo.setText("no hay pokemon para añadir\n" + equipo);
+			break;
 
 		}
-		
-		case 1: {
+
+		case -1: {
 
 			lblEquipo.setText("El pokemon no existe\n" + equipo);
-
+			break;
 		}
 		case 2: {
 
 			lblEquipo.setText("El está completo, saca uno primero\n" + equipo);
-
+			break;
 		}
 		case 3: {
 			lblEquipo.setText("Añadido correctamente\n" + equipo);
+			break;
 		}
+			
 		}
 
 	}
@@ -86,6 +89,8 @@ public class InsertarEnEquipoController implements Initializable {
 		todosPokemon = entrenador.mostraTodosLosPokemons();
 
 		equipo = entrenador.getEquipoPokemon().toString();
+		
+		System.out.println(todosPokemon);
 
 		lblTodos.setText(todosPokemon);
 

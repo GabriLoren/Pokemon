@@ -24,6 +24,32 @@ public class Pokemon {
 	private Types type;
 	private String status;
 	private Obj object;
+	
+	
+	
+	
+	
+	
+	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level) {
+		super();
+		this.id = id;
+		this.name = name;
+		
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.moves = moves;
+		
+	
+	
+		this.status = status;
+		
+	}
 
 	public Pokemon(String name, String mote) {
 
@@ -266,8 +292,13 @@ public class Pokemon {
 
 	@Override
 	public String toString() {
-		return " [name " + name + " nickname " + nickname + "]\n";
+		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
 	}
+
+
 	
 
 }

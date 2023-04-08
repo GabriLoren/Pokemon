@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.EntrenarController">
+   <children>
+      <Button fx:id="btnEntrenarPokemon" layoutX="370.0" layoutY="97.0" mnemonicParsing="false" onAction="#entrenamiento" text="Entrenamiento" />
+      <Label fx:id="lblDescripcion" layoutX="83.0" layoutY="224.0" prefHeight="60.0" prefWidth="370.0" />
+      <Label fx:id="lblEntrenamiento" layoutX="242.0" layoutY="134.0" text="entrenamiento" />
+      <Label fx:id="lblPokemonAEntrenar" layoutX="242.0" layoutY="67.0" text="Pokemon" />
+      <TextField fx:id="txtPokemonAEntrenar" layoutX="65.0" layoutY="63.0" />
+      <TextField fx:id="txtTipoDeEntrenamiento" layoutX="65.0" layoutY="130.0" />
+   </children>
+</AnchorPane>

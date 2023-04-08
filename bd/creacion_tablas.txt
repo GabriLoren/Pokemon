@@ -19,3 +19,24 @@ id Int,
 nombre varchar(20),
 id_objeto Int,
 id_entrenador int);
+
+insert into pokemon VALUES (1,'PIKACHU',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (2,'CHARMANDER',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (3,'RAICHU',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (4,'SCUIRTEL',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (5,'RATATA',100,100,100,100,100,100,100,100);
+
+
+
+
+create table pokemon(
+id int,
+nombre varchar(20),
+vida int,
+ataque int,
+defensa	int,
+ataqueSp int,
+defensaSpint int,
+velocidad int,
+stamina	int,
+nivel int);

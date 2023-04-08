@@ -2,8 +2,9 @@ package modelo;
 
 import java.util.Objects;
 
-
-
+import cargar.CargarTodosLosEntrenadores;
+import cargar.CargarTodosLosObjetos;
+import cargar.CargarTodosPokemons;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,30 +17,24 @@ import javafx.scene.layout.BorderPane;
 public class MainPokemon extends Application {
 	@Override
 	public void start(Stage primaryStage) {
-	
-			try {
-				Parent root=FXMLLoader.load(getClass().getResource("/vista/SeleccionarJugador.fxml"));
+
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/vista/SeleccionarJugador.fxml"));
 //				hace lo mismo que la sentencia anterior
 //				Parent root=new FXMLLoader(getClass().getResource("/vista/EscenaPrincipal.fxml")).load();
-				Scene scene= new Scene(root);
-				primaryStage.setScene(scene);
-				primaryStage.show();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-
+	}
 
 	public static void main(String[] args) {
-		
+
 		launch(args);
-
-
 
 	}
 
 }
-
-

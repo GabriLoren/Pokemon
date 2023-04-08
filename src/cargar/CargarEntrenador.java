@@ -19,88 +19,24 @@ public class CargarEntrenador {
 	private static Trainer entrenador;
 	private static String nombre = "";
 	private static int id = 0;
+	private static LinkedList<Trainer> todosLosEntrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
 
-	public static Trainer getEntrenador() {
-		return entrenador;
-	}
-
-//	public static void cargarEntrenador(String nombreEntrenador) {
-
-//		IOException mia = new IOException();
-//
-//		if (ComprobarUsuarioExiste.ComprobarUsuarioExiste(nombreEntrenador))
-//
-//			try {
-//
-//				Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-//
-//				String sentecia = "SELECT * FROM ENTRENADOR WHERE NOMBRE=?";
-//				PreparedStatement miPSt = miCon.prepareStatement(sentecia);
-//				miPSt.setString(1, nombreEntrenador);
-//				ResultSet miRs = miPSt.executeQuery();
-//
-//				while (miRs.next()) {
-//
-//					id = Integer.parseInt(miRs.getString(1));
-//					System.out.println(id);
-//					nombre = miRs.getString(2);
-//					System.out.println(nombre);
-//
-//				}
-//
-//				entrenador = new Trainer(id, nombre);
-//
-//				entrenador.cargarPokemonEnEntrenador();
-//				
-//				entrenador.cargarObjetosEnEntrenador();
-//
-//				System.out.println("metodo cargar entrenador correcto");
-//
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//
-//	}
 //comprueba si el usuario existe y si es así lo carga en el programa
-	public static boolean comprobarUsuarioYCargarlo(String nombreUsuario) throws SQLException {
+	public static boolean comprobarUsuarioYCargarlo(String nombreUsuario) {
 
 		boolean usuarioExiste = false;
 
-		
+		for (int i = 0; i < todosLosEntrenadores.size(); i++) {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
-			Statement miSt = miCon.createStatement();
-			ResultSet miRs = miSt.executeQuery("SELECT * FROM ENTRENADOR");
-			
-			while (miRs.next()) {
-				id = Integer.parseInt(miRs.getString(1));
-				nombre = miRs.getString(2);
+			if (nombreUsuario.equalsIgnoreCase(todosLosEntrenadores.get(i).getName())) {
 
-				if (nombre.equalsIgnoreCase(nombreUsuario)) {
-					
-					entrenador = new Trainer(id, nombre);
-					
-					CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id);
-					
-					AddObject.cargarObjetosEnEntrenador(id, entrenador.getObjetos());
-					
+				entrenador = todosLosEntrenadores.get(i);
+				usuarioExiste = true;
+				break;
 
-					System.out.println("carga completa");
-					
-					usuarioExiste = true;
-					break;
-				}
 			}
-			
 
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			
-//
-//		}
-
+		}
 		return usuarioExiste;
-
 	}
-
 }

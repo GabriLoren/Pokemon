@@ -24,18 +24,16 @@ public class GeneraPokemonAleatorio {
 	public static Pokemon mostrarPokemonEncontrado()  {
 //accedo a la linkedlist de los pokemons que previamente se han cargado y entre ellos elijo uno al azar
 
-		try {
+
 			todosLosPokemon = CargarTodosPokemons.getPokemon();
+			
+			System.out.println(todosLosPokemon.size());
 		
 			sizeTodosLosPokemon = todosLosPokemon.size();
 			numeroAleatorio = (int) (Math.random() * sizeTodosLosPokemon);
 			
 			pokemonEncontrado = todosLosPokemon.get(numeroAleatorio);
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("no se encontro pokemon, intenrtalo de nuevo");
 			
-		}
 		return pokemonEncontrado;
 
 	}
