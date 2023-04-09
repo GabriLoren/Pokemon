@@ -11,9 +11,13 @@ import modelo.Pokemon;
 
 public class CargarPokemonEnEntrenador {
 
-	private static LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
+//	private LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
+	
 
 	public static LinkedList<Pokemon> cargarPokemonEnEntrenador(int idEntrenador) {
+		
+		LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
+		
 
 		try {
 

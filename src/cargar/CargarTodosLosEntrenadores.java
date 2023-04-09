@@ -45,8 +45,13 @@ public class CargarTodosLosEntrenadores {
 				entrenador = new Trainer(id, nombre, pokedollar);
 				
 				
+				
+				
 						//inserta en cada entrnador todos sus pokemon
 						entrenador.setTodosLosPokemon(CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id));
+						
+						System.out.println(entrenador.toString());
+						System.out.println();
 
 //						AddObject.cargarObjetosEnEntrenador(id, entrenador.getObjetos());
 
