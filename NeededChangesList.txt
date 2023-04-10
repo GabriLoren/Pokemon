@@ -2,4 +2,3 @@ Add stamina cost to attacks
 Add exp to pokemon
 Add id to Class Diagram
 Add lvlRequirement to move
-Divide Types.java into multiple classes

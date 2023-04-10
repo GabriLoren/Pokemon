@@ -21,7 +21,7 @@ public class Pokemon {
 	private int def;
 	private int satk;
 	private int sdef;
-	private int speed;
+	private int spd;
 	private int stamina;
 	private int lvl;
 	private LinkedList<Move> moves;
@@ -44,7 +44,7 @@ public class Pokemon {
 		this.def = def;
 		this.satk = satk;
 		this.sdef = sdef;
-		this.speed = speed;
+		this.spd = speed;
 		this.stamina = stamina;
 		this.lvl = lvl;
 		this.moves = moves;
@@ -121,12 +121,12 @@ public class Pokemon {
 		this.sdef = sdef;
 	}
 
-	public int getSpeed() {
-		return speed;
+	public int getSpd() {
+		return spd;
 	}
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
+	public void setSpd(int speed) {
+		this.spd = speed;
 	}
 
 	public int getStamina() {
@@ -219,7 +219,7 @@ public class Pokemon {
 		this.def += randomStats();
 		this.satk += randomStats();
 		this.sdef += randomStats();
-		this.speed += randomStats();
+		this.spd += randomStats();
 	}
 
 	// A pokemon uses 1 of its moves to attack, if it is a normal attack, it can
@@ -234,18 +234,18 @@ public class Pokemon {
 	}
 
 	// Checks if your pokemon's types has advantage or disadvantage against a specific type
-	public EffectValues typeCheck(Types defType) {
+	public String typeCheck(Types defType) {
 		if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.INEFFECTIVE)
 				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.INEFFECTIVE)) {
-			return EffectValues.INEFFECTIVE;
+			return "Ineffective";
 		} else if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.ADVANTAGE)
 				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.ADVANTAGE)) {
-			return EffectValues.ADVANTAGE;
+			return "Advantage";
 		} else if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.WEAK)
 				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.WEAK)) {
-			return EffectValues.WEAK;
+			return "Weak";
 		} else {
-			return EffectValues.NEUTRAL;
+			return "Neutral";
 		}
 	}
 
