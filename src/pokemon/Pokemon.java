@@ -28,13 +28,35 @@ public class Pokemon {
 	private int fertility;
 	private boolean gender;
 	private Types type1, type2;
-	private String status;
+	private Status status;
 	private Obj object;
 	private int exp;
+	
+	public Pokemon() {
+		this.pokedexNum = 0;
+		this.name = "";
+		this.nickname = "";
+		this.vit = 0;
+		this.atk = 0;
+		this.def = 0;
+		this.satk = 0;
+		this.sdef = 0;
+		this.spd = 0;
+		this.stamina = 0;
+		this.lvl = 0;
+		this.moves = new LinkedList<Move>();
+		this.fertility = 5;
+		this.gender = true;
+		this.type1 = null;
+		this.type2 = null;
+		this.status = null;
+		this.object = null;
+		this.exp = 0;
+	}
 
 	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int satk, int sdef, int speed,
 			int stamina, int lvl, LinkedList<Move> moves, int fertility, boolean gender, Types type1, Types type2,
-			String status, Obj object, int exp) {
+			Status status, Obj object, int exp) {
 		super();
 		this.pokedexNum = id;
 		this.name = name;
@@ -185,11 +207,11 @@ public class Pokemon {
 		this.type2 = type2;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 

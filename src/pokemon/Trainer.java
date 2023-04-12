@@ -72,12 +72,30 @@ public class Trainer {
 		this.objects = objects;
 	}
 
+	// Adds a Pokemon to team if the team is not full, if the added Pokemon was in
+	// the box it gets removed from it
 	public void moveToTeam(Pokemon poke) {
-
+		if (this.team.size() < 6) {
+			this.team.add(poke);
+			for (int i = 0; i <= this.box.size(); i++) {
+				if (this.box.get(i).equals(poke)) {
+					this.box.remove(i);
+				}
+			}
+		} else {
+			System.out.println("Team is full");
+		}
 	}
 
+	// Adds a pokemon to box, if the added Pokemon was in the team it gets removed
+	// from it
 	public void moveToBox(Pokemon poke) {
-
+		this.box.add(poke);
+		for (int i = 0; i <= this.team.size(); i++) {
+			if (this.team.get(i).equals(poke)) {
+				this.team.remove(i);
+			}
+		}
 	}
 
 	// Improves a pokemon's stats by expending pokedollars
@@ -178,14 +196,25 @@ public class Trainer {
 		}
 	}
 
+	// Pokemon p is temporary, later to test the method I will make a collection of
+	// pokemon and randomly select one which later will be replaced by the database
+	// If the trainer's team is not full the Pokemon gets added to the team
+	// otherwise
+	// it is added to the box
 	public void capture() {
-
+		Pokemon p = new Pokemon();
+		if (this.team.size() < 6) {
+			this.team.add(p);
+		} else {
+			this.box.add(p);
+		}
 	}
 
+	// Creates a new battle with another trainer as rival
 	public void fight(Trainer trainer) {
-
 	}
 
+	// Pokemon name???? new pokemon??? parent's name randomly selected???
 	public void breed(Pokemon male, Pokemon female) {
 
 	}
