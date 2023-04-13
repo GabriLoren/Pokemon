@@ -42,8 +42,8 @@ public class Pokemon {
 		this.satk = 0;
 		this.sdef = 0;
 		this.spd = 0;
-		this.stamina = 0;
-		this.lvl = 0;
+		this.stamina = STAMINA;
+		this.lvl = 1;
 		this.moves = new LinkedList<Move>();
 		this.fertility = 5;
 		this.gender = true;

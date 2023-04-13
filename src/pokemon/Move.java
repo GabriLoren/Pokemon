@@ -4,18 +4,21 @@ public class Move {
 
 	private int id;
 	private String name;
+	private MoveCategory category;
 	private int power;
 	private Types type;
-	private String status;
+	private Status status;
 	private int turns;
 	private float buff;
 	private int staminaCost;
 	private int lvlRequirement;
 
-	public Move(int id, String name, int power, Types type, String status, int turns, float buff, int stamina, int lvlReq) {
+	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns, float buff,
+			int stamina, int lvlReq) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.category = category;
 		this.power = power;
 		this.type = type;
 		this.status = status;
@@ -41,6 +44,14 @@ public class Move {
 		this.name = name;
 	}
 
+	public MoveCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(MoveCategory category) {
+		this.category = category;
+	}
+
 	public int getPower() {
 		return power;
 	}
@@ -57,11 +68,11 @@ public class Move {
 		this.type = type;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -97,8 +108,15 @@ public class Move {
 		this.lvlRequirement = lvlRequirement;
 	}
 
-	public static void applyMove() {
-
+	// Sets a StaminaCost depending on the category of the move, if the move is an
+	// attack the stamina cost is equal to its power divided by 2 otherwise its
+	// stamina cost is equal to the amount of turns it is active times 10
+	public void applyStaminaCost() {
+		if (this.getCategory().equals(MoveCategory.ATTACK)) {
+			this.setStaminaCost(this.getPower() / 2);
+		} else {
+			this.setStaminaCost(this.getTurns() * 10);
+		}
 	}
 
 }

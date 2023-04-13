@@ -80,4 +80,22 @@ public class Battle {
 		this.turns = turns;
 	}
 
+	// If the player won the battle the player gets 1/3 of the rival's money
+	// otherwise the rival gets 1/3 of the player's money
+	public void victoryMoney() {
+		if (this.winner == true) {
+			int money = this.rival.getPokedollar() / 3;
+			this.player.setPokedollar(this.player.getPokedollar() + money);
+			this.rival.setPokedollar(this.rival.getPokedollar() - money);
+		} else {
+			int money = this.player.getPokedollar() / 3;
+			this.rival.setPokedollar(this.rival.getPokedollar() + money);
+			this.player.setPokedollar(this.player.getPokedollar() - money);
+		}
+	}
+
+	// Active pokemon?? all pokemon depending on rival's pokemon???
+	public void giveExp() {
+
+	}
 }

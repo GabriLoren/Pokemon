@@ -1,9 +1,19 @@
 package pokemon;
 
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Trainer {
+	
+	// Generates a random quantity of Pokedollars between 800 and 1000
+	private int PokedollarGenerator() {
+		Random r = new Random();
+		int low = 800;
+		int high = 1000;
+		int result = r.nextInt(high-low) + low;
+		return result;
+	}
 
 	private LinkedList<Pokemon> team;
 	private LinkedList<Pokemon> box;
@@ -13,6 +23,15 @@ public class Trainer {
 	private LinkedList<Obj> objects;
 	private Scanner sc;
 
+	public Trainer() {
+		this.team = new LinkedList<>();
+		this.box = new LinkedList<>();
+		this.id = 0;
+		this.name = "";
+		this.pokedollar = PokedollarGenerator();
+		this.objects = new LinkedList<>();
+	}
+	
 	public Trainer(LinkedList<Pokemon> team, LinkedList<Pokemon> box, int id, String name, int pokedollar,
 			LinkedList<Obj> objects) {
 		super();

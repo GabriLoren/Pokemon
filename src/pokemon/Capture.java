@@ -8,6 +8,8 @@ public class Capture {
 		return forbiddenWords;
 	}
 
+	// We need a temporary collection of Pokemon which will be later replaced by the
+	// database
 	public void randomPokemon() {
 
 	}
