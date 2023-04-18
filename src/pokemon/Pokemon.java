@@ -3,10 +3,11 @@ package pokemon;
 import java.util.LinkedList;
 import java.util.Random;
 
+
 public class Pokemon {
 
 	private static final int STAMINA = 100;
-	
+
 	// Generates a number between 1 and 5
 	private static int randomStats() {
 		Random r = new Random();
@@ -31,7 +32,7 @@ public class Pokemon {
 	private Status status;
 	private Obj object;
 	private int exp;
-	
+
 	public Pokemon() {
 		this.pokedexNum = 0;
 		this.name = "";
@@ -255,7 +256,8 @@ public class Pokemon {
 		}
 	}
 
-	// Checks if your pokemon's types has advantage or disadvantage against a specific type
+	// Checks if your pokemon's types has advantage or disadvantage against a
+	// specific type
 	public String typeCheck(Types defType) {
 		if (TypeChart.getTypeAdvantage(defType, this.type1).equals(EffectValues.INEFFECTIVE)
 				|| TypeChart.getTypeAdvantage(defType, this.type2).equals(EffectValues.INEFFECTIVE)) {
@@ -271,13 +273,13 @@ public class Pokemon {
 		}
 	}
 
-	//Sets a pokemon's stamina to the default value
+	// Sets a pokemon's stamina to the default value
 	public void rest() {
 		this.stamina = STAMINA;
 	}
 
 	public void learnMove() {
-
+		
 	}
 
 }

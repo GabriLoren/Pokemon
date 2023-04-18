@@ -12,6 +12,19 @@ public class Move {
 	private float buff;
 	private int staminaCost;
 	private int lvlRequirement;
+	
+	public Move() {
+		this.id = 0;
+		this.name = "";
+		this.category = null;
+		this.power = 0;
+		this.type = null;
+		this.status = null;
+		this.turns = 0;
+		this.buff = 0;
+		this.staminaCost = 0;
+		this.lvlRequirement = 0;
+	}
 
 	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns, float buff,
 			int stamina, int lvlReq) {
@@ -25,7 +38,7 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 		this.staminaCost = stamina;
-		this.setLvlRequirement(lvlReq);
+		this.lvlRequirement = lvlReq;
 	}
 
 	public int getId() {
@@ -117,6 +130,13 @@ public class Move {
 		} else {
 			this.setStaminaCost(this.getTurns() * 10);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Move [id=" + id + ", name=" + name + ", category=" + category + ", power=" + power + ", type=" + type
+				+ ", status=" + status + ", turns=" + turns + ", buff=" + buff + ", staminaCost=" + staminaCost
+				+ ", lvlRequirement=" + lvlRequirement + "]";
 	}
 
 }
