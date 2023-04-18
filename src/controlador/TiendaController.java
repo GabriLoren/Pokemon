@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import cargar.CargarEntrenador;
 import cargar.CargarTodosLosObjetos;
 import funcionalidades.AddObject;
+import funcionalidades.ComprarObjeto;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -58,7 +59,9 @@ public class TiendaController implements Initializable {
 				
 				entrenador.getObjetos().add(objetoElegido);
 				
-				AddObject.insertarEnBbDdElObjetoComprado(objetoElegido, entrenador.getId());
+//				AddObject.insertarEnBbDdElObjetoComprado(objetoElegido, entrenador.getId());
+				
+				ComprarObjeto.comprarObjeto(entrenador, objetoElegido);
 				
 				
 				lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));

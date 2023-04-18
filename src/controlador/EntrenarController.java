@@ -47,19 +47,11 @@ public class EntrenarController implements Initializable {
 		String moteDelPokemonEntrenamos = txtPokemonAEntrenar.getText();
 		String entrenaminetoElegido = txtTipoDeEntrenamiento.getText();
 
-		try {
-			Entrenar.entrenar(entrenador, moteDelPokemonEntrenamos, entrenaminetoElegido);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			txtTipoDeEntrenamiento.setText("El entrenamiento no existe");
-		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
+		if (Entrenar.entrenar(entrenador, moteDelPokemonEntrenamos, entrenaminetoElegido))
+			txtPokemonAEntrenar.setText("Entrenamiento finalizado");
+
+		else
 			txtPokemonAEntrenar.setText("El pokemon no existe");
-		}
-
-//		System.out.println(pokemonsEntrenador.get(0).toString());
-
-//	System.out.println(pokemonSeleccionado.toString());
 
 		System.out.println(entrenador.getPokeDollar());
 
@@ -68,9 +60,6 @@ public class EntrenarController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
-		System.out.println(entrenador.toString());
-//		System.out.println(pokemonsEntrenador.toString());
 
 	}
 }

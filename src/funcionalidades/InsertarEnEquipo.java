@@ -31,8 +31,19 @@ public class InsertarEnEquipo {
 			// linkedlist, si no sigue en -1
 			if (posicion != -1) {
 				Pokemon insertar = entrenador.getTodosLosPokemon().get(posicion);
+				
+				insertar.setEquipo("SI");
+				
+
+				System.out.println(insertar.toString());
 
 				entrenador.getEquipoPokemon().add(insertar);
+				
+				ActualizarEquipoBbDd.actualizarEquipoBbDd(insertar);
+				
+				
+				
+				
 
 				entrenador.getTodosLosPokemon().remove(insertar);
 				return 3;//El Pokemon ha sido añadido satisfactoriamente

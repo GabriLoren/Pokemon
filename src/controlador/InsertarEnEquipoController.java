@@ -77,9 +77,23 @@ public class InsertarEnEquipoController implements Initializable {
 			lblEquipo.setText("Añadido correctamente\n" + equipo);
 			break;
 		}
-			
+
 		}
 
+		todosPokemon = entrenador.mostraTodosLosPokemons();
+
+		String NombresEquipo = "";
+		for (int i = 0; i < entrenador.getEquipoPokemon().size(); i++) {
+
+			NombresEquipo += entrenador.getEquipoPokemon().get(i).getName()+"\n";
+
+		}
+
+		System.out.println(todosPokemon);
+
+		lblTodos.setText(todosPokemon);
+
+		lblEquipo.setText(NombresEquipo);
 	}
 
 	@Override
@@ -89,7 +103,7 @@ public class InsertarEnEquipoController implements Initializable {
 		todosPokemon = entrenador.mostraTodosLosPokemons();
 
 		equipo = entrenador.getEquipoPokemon().toString();
-		
+
 		System.out.println(todosPokemon);
 
 		lblTodos.setText(todosPokemon);

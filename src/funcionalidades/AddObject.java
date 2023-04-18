@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import cargar.CargarMoves;
 import modelo.Obj;
 import modelo.Pokemon;
+import modelo.Trainer;
 
 public class AddObject {
 	// muestra los objetos que tiene en la mochila el jugador
@@ -72,7 +73,9 @@ public class AddObject {
 	 * inserta en la Linkedlist<Obj>objetos todos los objetos que posee el entrenador y se encuentran en la tabla objeto_entrenador
 	 */
 
-	public static void cargarObjetosEnEntrenador(int idEntrenador, LinkedList<Obj>objetos) {
+	public static void cargarObjetosEnEntrenador(Trainer entrenador) {
+		
+		
 
 		try {
 
@@ -82,7 +85,7 @@ public class AddObject {
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamenre
-			miPSt.setLong(1, idEntrenador);
+			miPSt.setLong(1, entrenador.getId());
 			ResultSet miRs = miPSt.executeQuery();
 
 			int id = 0;
@@ -95,7 +98,7 @@ public class AddObject {
 
 				Obj objeto = new Obj(id, nombre);
 
-				objetos.add(objeto);
+				entrenador.getObjetos().add(objeto);
 
 			}
 

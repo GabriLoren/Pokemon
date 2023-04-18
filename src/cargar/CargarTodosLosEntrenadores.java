@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import funcionalidades.AddObject;
 import modelo.Trainer;
 
 public class CargarTodosLosEntrenadores {
@@ -47,13 +48,16 @@ public class CargarTodosLosEntrenadores {
 				
 				
 				
-						//inserta en cada entrnador todos sus pokemon
-						entrenador.setTodosLosPokemon(CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(id));
+						//inserta en cada entrenador todos sus pokemon tanto en el equipo como en la caja (no están en elequipo)
+						CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(entrenador);
+						
+						
 						
 						System.out.println(entrenador.toString());
 						System.out.println();
 
-//						AddObject.cargarObjetosEnEntrenador(id, entrenador.getObjetos());
+						
+						AddObject.cargarObjetosEnEntrenador(entrenador);
 
 				TodosLosEntrenadores.add(entrenador);
 

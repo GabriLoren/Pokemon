@@ -24,6 +24,7 @@ public class Pokemon {
 	private Types type;
 	private String status;
 	private Obj object;
+	private String equipo;
 	
 	
 	
@@ -42,6 +43,27 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
+		
+//		this.moves = moves;
+//		this.status = status;
+		
+	}
+	
+	public Pokemon(int id, String name, String nickname , int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level, String equipo) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.nickname= nickname;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.equipo=equipo;
+		
 //		this.moves = moves;
 //		this.status = status;
 		
@@ -53,7 +75,6 @@ public class Pokemon {
 		super();
 		this.id = id;
 		this.name = name;
-		
 		this.vit = vit;
 		this.atk = atk;
 		this.def = def;
@@ -280,6 +301,17 @@ public class Pokemon {
 
 	public void setObject(Obj object) {
 		this.object = object;
+	}
+	
+	
+	
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
 	}
 
 	// si el mote es una palabrota devuelve falso

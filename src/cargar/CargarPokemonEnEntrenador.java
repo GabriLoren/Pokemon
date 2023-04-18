@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.Pokemon;
+import modelo.Trainer;
 
 public class CargarPokemonEnEntrenador {
 
 //	private LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
-	
 
-	public static LinkedList<Pokemon> cargarPokemonEnEntrenador(int idEntrenador) {
-		
-		LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
-		
+	public static void cargarPokemonEnEntrenador(Trainer entrenador) {
+
+//		LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
+//		LinkedList<Pokemon> equipoPokemon = new LinkedList<>();
 
 		try {
 
@@ -27,7 +27,7 @@ public class CargarPokemonEnEntrenador {
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente
-			miPSt.setLong(1, idEntrenador);
+			miPSt.setLong(1, entrenador.getId());
 			ResultSet miRs = miPSt.executeQuery();
 
 			int id = 0;
@@ -42,6 +42,7 @@ public class CargarPokemonEnEntrenador {
 			int velocidad = 0;
 			int stamina = 0;
 			int nivel = 0;
+			String equipo = "si";
 //			id_movimiento1 int,
 //			id_movimiento2 int,
 //			id_movimiento3 int,
@@ -61,20 +62,34 @@ public class CargarPokemonEnEntrenador {
 				velocidad = Integer.parseInt(miRs.getString(10));
 				stamina = Integer.parseInt(miRs.getString(11));
 				nivel = Integer.parseInt(miRs.getString(12));
+				equipo = miRs.getString(18);
+				
+				System.out.println(equipo);
 
-				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
-						stamina, nivel);
+				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
+						velocidad, stamina, nivel, equipo);
+				
+				if (equipo.equalsIgnoreCase("SI")) {
 
-				todosLosPokemon.add(pokemon);
+					
+					entrenador.getEquipoPokemon().add(pokemon);
+				}
 
-//				System.out.println(todosLosPokemon.toString());
+				else {
+				
+					entrenador.getTodosLosPokemon().add(pokemon);
+				}
+
+				System.out.println(entrenador.getEquipoPokemon().toString());
+				System.out.println("TODOS"+entrenador.getTodosLosPokemon().toString());
+				
+//	System.out.println(todosLosPokemon.toString());
 
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return todosLosPokemon;
 
 	}
 }
