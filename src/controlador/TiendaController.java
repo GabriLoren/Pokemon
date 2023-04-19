@@ -46,34 +46,40 @@ public class TiendaController implements Initializable {
 		
 		String objetoComprado=txtObjetoComprar.getText();
 		
+		
+		
+		if(ComprarObjeto.objetoSeleccionado(objetosTienda, objetoComprado, entrenador))
+		lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
+		else lblMisObjetos.setText("Ese objeto no existe\n"+AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
+		
 
-		for(int i=0;i<objetosTienda.size();i++) {
-			
-			Obj objetoElegido=objetosTienda.get(i);
-			
-			System.out.println(objetosTienda.get(i).getName());
-			
-			if(objetoComprado.equalsIgnoreCase(objetoElegido.getName())) {
-				
-				System.out.println("ha entrado");
-				
-				entrenador.getObjetos().add(objetoElegido);
-				
-//				AddObject.insertarEnBbDdElObjetoComprado(objetoElegido, entrenador.getId());
-				
-				ComprarObjeto.comprarObjeto(entrenador, objetoElegido);
-				
-				
-				lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
-				
-				break;
-				
-			}else {
-				
-				lblMisObjetos.setText("Ese objeto no existe\n"+AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
-				
-			}
-		}
+//		for(int i=0;i<objetosTienda.size();i++) {
+//			
+//			Obj objetoElegido=objetosTienda.get(i);
+//			
+//			System.out.println(objetosTienda.get(i).getName());
+//			
+//			if(objetoComprado.equalsIgnoreCase(objetoElegido.getName())) {
+//				
+//				System.out.println("ha entrado");
+//				
+//				entrenador.getObjetos().add(objetoElegido);
+//				
+////				AddObject.insertarEnBbDdElObjetoComprado(objetoElegido, entrenador.getId());
+//				
+//				ComprarObjeto.comprarObjeto(entrenador, objetoElegido);
+//				
+//				
+//				lblMisObjetos.setText(AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
+//				
+//				break;
+//				
+//			}else {
+//				
+//				lblMisObjetos.setText("Ese objeto no existe\n"+AddObject.mostraObjetosEntrenador(entrenador.getObjetos()));
+//				
+//			}
+//		}
 		
 	}
 
