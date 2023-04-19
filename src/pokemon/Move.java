@@ -9,7 +9,7 @@ public class Move {
 	private Types type;
 	private Status status;
 	private int turns;
-	private float buff;
+	private double buff;
 	private int staminaCost;
 	private int lvlRequirement;
 	
@@ -26,7 +26,7 @@ public class Move {
 		this.lvlRequirement = 0;
 	}
 
-	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns, float buff,
+	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns, double buff,
 			int stamina, int lvlReq) {
 		super();
 		this.id = id;
@@ -97,11 +97,11 @@ public class Move {
 		this.turns = turns;
 	}
 
-	public float getBuff() {
+	public double getBuff() {
 		return buff;
 	}
 
-	public void setBuff(float buff) {
+	public void setBuff(double buff) {
 		this.buff = buff;
 	}
 
