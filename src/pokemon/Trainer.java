@@ -5,13 +5,38 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Trainer {
-	
+
 	// Generates a random quantity of Pokedollars between 800 and 1000
 	private int PokedollarGenerator() {
 		Random r = new Random();
 		int low = 800;
 		int high = 1000;
-		int result = r.nextInt(high-low) + low;
+		int result = r.nextInt(high - low) + low;
+		return result;
+	}
+
+	// Generates a random number between 0 and 1 and returns true or false in order
+	// to know which pokemon name it should get
+	private boolean PokemonNameGenerator() {
+		Random r = new Random();
+		int low = 0;
+		int high = 1;
+		int result = r.nextInt(high - low) + low;
+		if (result == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private String PokemonNicknameGenerator(Pokemon p1, Pokemon p2) {
+		String result = "";
+		for (int i = 0; i < p1.getNickname().length() / 2; i++) {
+			result += p1.getNickname().charAt(i);
+		}
+		for (int i = 0; i < p2.getNickname().length() / 2; i++) {
+			result += p2.getNickname().charAt(i);
+		}
 		return result;
 	}
 
@@ -31,7 +56,7 @@ public class Trainer {
 		this.pokedollar = PokedollarGenerator();
 		this.objects = new LinkedList<>();
 	}
-	
+
 	public Trainer(LinkedList<Pokemon> team, LinkedList<Pokemon> box, int id, String name, int pokedollar,
 			LinkedList<Obj> objects) {
 		super();
@@ -142,6 +167,7 @@ public class Trainer {
 				System.out.println("Def: " + poke.getDef());
 				System.out.println("S. Def: " + poke.getSdef());
 				System.out.println("Vit: " + poke.getVit());
+				poke.checkMaxStats();
 			} else {
 				System.out.println("Not enough Pokedollars");
 			}
@@ -161,6 +187,7 @@ public class Trainer {
 				System.out.println("Atk: " + poke.getAtk());
 				System.out.println("S. Atk: " + poke.getSatk());
 				System.out.println("Spd: " + poke.getSpd());
+				poke.checkMaxStats();
 			} else {
 				System.out.println("Not enough Pokedollars");
 			}
@@ -183,6 +210,7 @@ public class Trainer {
 				System.out.println("Def: " + poke.getDef());
 				System.out.println("Spd: " + poke.getSpd());
 				System.out.println("Vit: " + poke.getVit());
+				poke.checkMaxStats();
 			} else {
 				System.out.println("Not enough Pokedollars");
 			}
@@ -205,6 +233,7 @@ public class Trainer {
 				System.out.println("S. Def: " + poke.getSdef());
 				System.out.println("Spd: " + poke.getSpd());
 				System.out.println("Vit: " + poke.getVit());
+				poke.checkMaxStats();
 			} else {
 				System.out.println("Not enough Pokedollars");
 			}
@@ -235,7 +264,12 @@ public class Trainer {
 
 	// Pokemon name???? new pokemon??? parent's name randomly selected???
 	public void breed(Pokemon male, Pokemon female) {
-
+		Pokemon p = new Pokemon();
+		p.setNickname(PokemonNicknameGenerator(male, female));
+		if (PokemonNameGenerator()) {
+			p.setPokedexNum(male.getPokedexNum());
+			p.setName(male.getName());
+		}
 	}
 
 	@Override
