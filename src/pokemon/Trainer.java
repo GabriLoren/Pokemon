@@ -134,7 +134,7 @@ public class Trainer {
 				System.out.println("Def: " + poke.getDef());
 				System.out.println("S. Def: " + poke.getSdef());
 				System.out.println("Vit: " + poke.getVit());
-				this.pokedollar = -(poke.getLvl() * 20);
+				this.pokedollar -= (poke.getLvl() * 20);
 				poke.setDef(poke.getDef() + 5);
 				poke.setSdef(poke.getSdef() + 5);
 				poke.setVit(poke.getVit() + 5);
@@ -153,7 +153,7 @@ public class Trainer {
 				System.out.println("Atk: " + poke.getAtk());
 				System.out.println("S. Atk: " + poke.getSatk());
 				System.out.println("Spd: " + poke.getSpd());
-				this.pokedollar = -(poke.getLvl() * 30);
+				this.pokedollar -= (poke.getLvl() * 30);
 				poke.setAtk(poke.getAtk() + 5);
 				poke.setSatk(poke.getSatk() + 5);
 				poke.setSpd(poke.getSpd() + 5);
@@ -173,7 +173,7 @@ public class Trainer {
 				System.out.println("Def: " + poke.getDef());
 				System.out.println("Spd: " + poke.getSpd());
 				System.out.println("Vit: " + poke.getVit());
-				this.pokedollar = -(poke.getLvl() * 40);
+				this.pokedollar -= (poke.getLvl() * 40);
 				poke.setAtk(poke.getAtk() + 5);
 				poke.setDef(poke.getDef() + 5);
 				poke.setSpd(poke.getSpd() + 5);
@@ -195,7 +195,7 @@ public class Trainer {
 				System.out.println("S. Def: " + poke.getDef());
 				System.out.println("Spd: " + poke.getSpd());
 				System.out.println("Vit: " + poke.getVit());
-				this.pokedollar = -(poke.getLvl() * 40);
+				this.pokedollar -= (poke.getLvl() * 40);
 				poke.setAtk(poke.getSatk() + 5);
 				poke.setDef(poke.getDef() + 5);
 				poke.setSpd(poke.getSpd() + 5);
@@ -236,5 +236,11 @@ public class Trainer {
 	// Pokemon name???? new pokemon??? parent's name randomly selected???
 	public void breed(Pokemon male, Pokemon female) {
 
+	}
+
+	@Override
+	public String toString() {
+		return "Trainer [team=" + team + ", box=" + box + ", id=" + id + ", name=" + name + ", pokedollar=" + pokedollar
+				+ ", objects=" + objects + ", sc=" + sc + "]";
 	}
 }

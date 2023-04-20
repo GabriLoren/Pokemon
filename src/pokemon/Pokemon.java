@@ -3,7 +3,6 @@ package pokemon;
 import java.util.LinkedList;
 import java.util.Random;
 
-
 public class Pokemon {
 
 	private static final int STAMINA = 100;
@@ -15,6 +14,7 @@ public class Pokemon {
 	}
 
 	private int pokedexNum;
+	private int trainerId;
 	private String name;
 	private String nickname;
 	private int vit;
@@ -27,14 +27,16 @@ public class Pokemon {
 	private int lvl;
 	private LinkedList<Move> moves;
 	private int fertility;
-	private boolean gender;
+	private char gender;
 	private Types type1, type2;
 	private Status status;
 	private Obj object;
 	private int exp;
+	private String sprite;
 
 	public Pokemon() {
 		this.pokedexNum = 0;
+		this.trainerId = 0;
 		this.name = "";
 		this.nickname = "";
 		this.vit = 0;
@@ -47,19 +49,21 @@ public class Pokemon {
 		this.lvl = 1;
 		this.moves = new LinkedList<Move>();
 		this.fertility = 5;
-		this.gender = true;
+		this.gender = ' ';
 		this.type1 = null;
 		this.type2 = null;
 		this.status = null;
 		this.object = null;
 		this.exp = 0;
+		this.sprite = "";
 	}
 
-	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int satk, int sdef, int speed,
-			int stamina, int lvl, LinkedList<Move> moves, int fertility, boolean gender, Types type1, Types type2,
+	public Pokemon(int id, int trainerId, String name, String nickname, int vit, int atk, int def, int satk, int sdef, int speed,
+			int stamina, int lvl, LinkedList<Move> moves, int fertility, char gender, Types type1, Types type2,
 			Status status, Obj object, int exp) {
 		super();
 		this.pokedexNum = id;
+		this.trainerId = trainerId;
 		this.name = name;
 		this.nickname = nickname;
 		this.vit = vit;
@@ -80,12 +84,20 @@ public class Pokemon {
 		this.exp = exp;
 	}
 
-	public int getId() {
+	public int getPokedexNum() {
 		return pokedexNum;
 	}
 
-	public void setId(int id) {
+	public void setPokedexNum(int id) {
 		this.pokedexNum = id;
+	}
+
+	public int getTrainerId() {
+		return trainerId;
+	}
+
+	public void setTrainerId(int trainerId) {
+		this.trainerId = trainerId;
 	}
 
 	public String getName() {
@@ -184,19 +196,19 @@ public class Pokemon {
 		this.fertility = fertility;
 	}
 
-	public boolean isGender() {
+	public char getGender() {
 		return gender;
 	}
 
-	public void setGender(boolean gender) {
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
 
-	public Types getType() {
+	public Types getType1() {
 		return type1;
 	}
 
-	public void setType(Types type1) {
+	public void setType1(Types type1) {
 		this.type1 = type1;
 	}
 
@@ -230,6 +242,14 @@ public class Pokemon {
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public String getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(String sprite) {
+		this.sprite = sprite;
 	}
 
 	// A Pokemon levels up when its exp value equals or exceeds 10 * lvl, then its
@@ -278,8 +298,10 @@ public class Pokemon {
 		this.stamina = STAMINA;
 	}
 
+	// We need a temporary collection of Pokemon which will be later replaced or
+	// filled by the database
 	public void learnMove() {
-		
+
 	}
 
 }
