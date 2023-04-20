@@ -1,6 +1,4 @@
-Add id to Class Diagram
 Add activePokemon to battle
 Add maxStats to Pokemon
 Add baseStats to Pokemon
-Add trainerId to Pokemon
-Add sprite to Pokemon
+Add evolutionLvl to Pokemon
