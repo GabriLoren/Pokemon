@@ -121,5 +121,24 @@ public class Trainer {
 		return pokemonsEntrenador;
 
 	}
+	
+	//igual que el anterior pero static
+	public static String mostraTodosLosPokemonsStatic( LinkedList<Pokemon>todosLosPokemon) {
+		String pokemonsEntrenador = "";
+		if (todosLosPokemon.size() > 0) {
+
+			for (int i = 0; i < todosLosPokemon.size(); i++) {
+
+				pokemonsEntrenador += todosLosPokemon.get(i).getNickname() + "      " + todosLosPokemon.get(i).getName()
+						+ "\n";
+			}
+
+		}
+
+		pokemonsEntrenador = " MOTE      " + " RAZA\n" + "\n" + pokemonsEntrenador;
+
+		return pokemonsEntrenador;
+
+	}
 
 }

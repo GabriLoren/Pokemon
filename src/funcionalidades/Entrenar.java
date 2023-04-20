@@ -26,7 +26,9 @@ public class Entrenar {
 
 		boolean entrenamientoRealizado = false;
 
-		pokemons = entrenador.getTodosLosPokemon();
+		pokemons = entrenador.getEquipoPokemon();
+		
+		System.out.println(pokemons);
 
 		for (int i = 0; i < pokemons.size(); i++) {
 

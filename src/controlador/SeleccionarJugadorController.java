@@ -27,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Corresponde a la primera vista del programa
 public class SeleccionarJugadorController implements Initializable {
 	@FXML
 	private TextField TxtInsertarJugador;

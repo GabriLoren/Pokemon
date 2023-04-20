@@ -47,13 +47,17 @@ public class EntrenarController implements Initializable {
 		String moteDelPokemonEntrenamos = txtPokemonAEntrenar.getText();
 		String entrenaminetoElegido = txtTipoDeEntrenamiento.getText();
 
-		if (Entrenar.entrenar(entrenador, moteDelPokemonEntrenamos, entrenaminetoElegido))
+		if (Entrenar.entrenar(entrenador, moteDelPokemonEntrenamos, entrenaminetoElegido)) {
+			
 			txtPokemonAEntrenar.setText("Entrenamiento finalizado");
+			System.out.println(entrenador.getPokeDollar());
+		}
+		
 
 		else
 			txtPokemonAEntrenar.setText("El pokemon no existe");
 
-		System.out.println(entrenador.getPokeDollar());
+	
 
 	}
 

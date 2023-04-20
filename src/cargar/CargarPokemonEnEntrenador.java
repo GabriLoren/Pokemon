@@ -64,7 +64,7 @@ public class CargarPokemonEnEntrenador {
 				nivel = Integer.parseInt(miRs.getString(12));
 				equipo = miRs.getString(18);
 				
-				System.out.println(equipo);
+//				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
 						velocidad, stamina, nivel, equipo);
@@ -80,8 +80,8 @@ public class CargarPokemonEnEntrenador {
 					entrenador.getTodosLosPokemon().add(pokemon);
 				}
 
-				System.out.println(entrenador.getEquipoPokemon().toString());
-				System.out.println("TODOS"+entrenador.getTodosLosPokemon().toString());
+//				System.out.println("equio: "+entrenador.getEquipoPokemon().toString());
+//				System.out.println("TODOS: "+entrenador.getTodosLosPokemon().toString());
 				
 //	System.out.println(todosLosPokemon.toString());
 

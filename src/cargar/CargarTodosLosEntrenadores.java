@@ -53,7 +53,7 @@ public class CargarTodosLosEntrenadores {
 						
 						
 						
-						System.out.println(entrenador.toString());
+						System.out.println("Cargamos el entrenador con sus pokemon "+entrenador.toString());
 						System.out.println();
 
 						
