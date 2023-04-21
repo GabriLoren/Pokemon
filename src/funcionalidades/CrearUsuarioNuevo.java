@@ -25,6 +25,9 @@ public static boolean crearUsuarioNuevo(String nombreUsuarioNuevo) {
 			
 			entrenadorNuevo.setName(nombreUsuarioNuevo.toUpperCase());
 			
+			//por defecto al crear un usuario nuevo se le inserta un número de pokedollar determinado
+			entrenadorNuevo.setPokeDollar(1000);
+			
 			CargarTodosLosEntrenadores.getTodosLosEntrenadores().add(entrenadorNuevo);
 			insertraUSuarioNuevo(entrenadorNuevo);
 			return true;

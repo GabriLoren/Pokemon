@@ -58,7 +58,7 @@ public class CapturaController implements Initializable {
 		String mote = txtMote.getText().toUpperCase();
 
 		if (Pokemon.comprobarMote(mote)&&!mote.equals("")) {
-			Captura.insertarEnBbDdElPokemonEncontrado(pokemon, mote, entrenador.getId());//inserta en pokemon capturado en la BbDd
+			Captura.insertarEnBbDdElPokemonEncontrado(pokemon, mote, entrenador.getId());//inserta el pokemon capturado en la BbDd
 			entrenador.insertraPokemonCapturado(pokemon,mote );//inserta el pokemon capturado en LinkedList<Pokemon> todosLosPokemon;
 			
 			Stage stage = (Stage) this.txtMote.getScene().getWindow(); 
@@ -127,6 +127,8 @@ public class CapturaController implements Initializable {
 	public void bucarPokemon(ActionEvent event) {
 
 		pokemon = GeneraPokemonAleatorio.mostrarPokemonEncontrado();
+		
+		System.out.println("el id es: "+ pokemon.getId());
 
 		pokemonEncontrado.setText("has enconrado un " + pokemon.getName());
 

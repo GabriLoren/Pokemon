@@ -10,6 +10,8 @@ import modelo.Pokemon;
 public class ActualizarCaracteristicasPokemon {
 
 	public static void actualizarPokemonEnBbDd(Pokemon pokemon) {
+		
+		System.out.println("VITALIDAD POKEMON:"+pokemon.getVit());
 
 		try {
 

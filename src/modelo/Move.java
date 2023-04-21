@@ -4,7 +4,7 @@ public class Move {
 
 	private int id;
 	private String name;
-	private Category category;
+	private String category;
 	private int power;
 	private Types type;
 	private String status;
@@ -22,7 +22,16 @@ public class Move {
 //		this.buff = 0;
 //	}
 	
-	public Move(String name,int id, Category category, int power, Types type, String status, int turns, double buff) {
+	
+	public Move(String name) {
+		super();
+		this.name=name;
+		
+	}
+	
+	
+	
+	public Move(String name,int id, String category, int power, Types type, String status, int turns, double buff) {
 		super();
 		this.name=name;
 		this.id = id;
@@ -42,7 +51,7 @@ public class Move {
 		return id;
 	}
 
-	public Category getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
@@ -76,7 +85,7 @@ public class Move {
 		this.name = name;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 

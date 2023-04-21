@@ -56,8 +56,8 @@ public class CargarTodosLosEntrenadores {
 						System.out.println("Cargamos el entrenador con sus pokemon "+entrenador.toString());
 						System.out.println();
 
-						
-						AddObject.cargarObjetosEnEntrenador(entrenador);
+						//tengo que quitar el comentario
+//						AddObject.cargarObjetosEnEntrenador(entrenador);
 
 				TodosLosEntrenadores.add(entrenador);
 

@@ -43,7 +43,7 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
-		
+	
 //		this.moves = moves;
 //		this.status = status;
 		
@@ -63,8 +63,8 @@ public class Pokemon {
 		this.stamina = stamina;
 		this.level = level;
 		this.equipo=equipo;
-		
-//		this.moves = moves;
+	
+		this.moves = new LinkedList<Move>();
 //		this.status = status;
 		
 	}
@@ -343,8 +343,16 @@ public class Pokemon {
 		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
 				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
-				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
+				+ ", type=" + type + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
+//	}
 
 
 	

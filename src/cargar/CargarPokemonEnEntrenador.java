@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;
 
@@ -68,6 +69,10 @@ public class CargarPokemonEnEntrenador {
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
 						velocidad, stamina, nivel, equipo);
+				
+				//prueba para ver si va el método criar, luego lo borraré
+//				pokemon.getMoves().add(new Move("patada"));
+//				pokemon.getMoves().add(new Move("puñetazo"));
 				
 				if (equipo.equalsIgnoreCase("SI")) {
 
