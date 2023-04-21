@@ -92,11 +92,26 @@ public class Pokemon {
 		this.object = null;
 		this.exp = 0;
 		this.sprite = "";
+		this.baseVit = 0;
+		this.baseAtk = 0;
+		this.baseDef = 0;
+		this.baseSatk = 0;
+		this.baseSdef = 0;
+		this.baseSpd = 0;
+		this.maxVit = 0;
+		this.maxAtk = 0;
+		this.maxDef = 0;
+		this.maxSatk = 0;
+		this.maxSdef = 0;
+		this.maxSpd = 0;
+		this.evolutionLvl = 0;
 	}
 
 	public Pokemon(int id, int trainerId, String name, String nickname, int vit, int atk, int def, int satk, int sdef,
 			int speed, int stamina, int lvl, LinkedList<Move> moves, int fertility, char gender, Types type1,
-			Types type2, Status status, Obj object, int exp, String sprite) {
+			Types type2, Status status, Obj object, int exp, String sprite, int baseVit, int baseAtk, int baseDef,
+			int baseSatk, int baseSdef, int baseSpd, int maxVit, int maxAtk, int maxDef, int maxSatk, int maxSdef,
+			int maxSpd, int evolutionLvl) {
 		super();
 		this.pokedexNum = id;
 		this.trainerId = trainerId;
@@ -119,6 +134,18 @@ public class Pokemon {
 		this.object = object;
 		this.exp = exp;
 		this.sprite = sprite;
+		this.baseVit = baseVit;
+		this.baseAtk = baseAtk;
+		this.baseDef = baseDef;
+		this.baseSatk = baseSatk;
+		this.baseSdef = baseSdef;
+		this.baseSpd = baseSpd;
+		this.maxVit = maxVit;
+		this.maxAtk = maxAtk;
+		this.maxDef = maxDef;
+		this.maxSatk = maxSatk;
+		this.maxSdef = maxSdef;
+		this.maxSpd = maxSpd;
 	}
 
 	public int getPokedexNum() {

@@ -1,5 +1,6 @@
 package pokemon;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class Trainer {
 
 	// Generates a random quantity of Pokedollars between 800 and 1000
-	private int PokedollarGenerator() {
+	private int pokedollarGenerator() {
 		Random r = new Random();
 		int low = 800;
 		int high = 1000;
@@ -17,7 +18,7 @@ public class Trainer {
 
 	// Generates a random number between 0 and 1 and returns true or false in order
 	// to know which pokemon name it should get
-	private boolean PokemonNameGenerator() {
+	private boolean pokemonNameSelector() {
 		Random r = new Random();
 		int low = 0;
 		int high = 1;
@@ -28,8 +29,9 @@ public class Trainer {
 			return false;
 		}
 	}
-	
-	private String PokemonNicknameGenerator(Pokemon p1, Pokemon p2) {
+
+	// Generates a nickname for a pokemon based on the nickname of its parents
+	private String pokemonNicknameGenerator(Pokemon p1, Pokemon p2) {
 		String result = "";
 		for (int i = 0; i < p1.getNickname().length() / 2; i++) {
 			result += p1.getNickname().charAt(i);
@@ -38,6 +40,44 @@ public class Trainer {
 			result += p2.getNickname().charAt(i);
 		}
 		return result;
+	}
+
+	private Types pokemonTypeGenerator(Pokemon p1, Pokemon p2) {
+		Random r = new Random();
+		int low = 0;
+		int high = 3;
+		int result = r.nextInt(high - low) + low;
+		switch (result) {
+		case 0:
+			return p1.getType1();
+		case 1:
+			return p1.getType2();
+		case 2:
+			return p2.getType1();
+		default:
+			return p2.getType2();
+		}
+	}
+	
+	private Move pokemonMoveGenerator(Pokemon p1, Pokemon p2) {
+		Random r = new Random();
+		int low = 0;
+		int high = 1;
+		int result = r.nextInt(high - low) + low;
+		switch (result) {
+		case 0:
+			r = new Random();
+			low = 0;
+			high = p1.getMoves().size();
+			result = r.nextInt(high - low) + low;
+			return p1.getMoves().get(result);
+		default:
+			r = new Random();
+			low = 0;
+			high = p2.getMoves().size();
+			result = r.nextInt(high - low) + low;
+			return p2.getMoves().get(result);
+		}
 	}
 
 	private LinkedList<Pokemon> team;
@@ -53,7 +93,7 @@ public class Trainer {
 		this.box = new LinkedList<>();
 		this.id = 0;
 		this.name = "";
-		this.pokedollar = PokedollarGenerator();
+		this.pokedollar = pokedollarGenerator();
 		this.objects = new LinkedList<>();
 	}
 
@@ -265,11 +305,70 @@ public class Trainer {
 	// Pokemon name???? new pokemon??? parent's name randomly selected???
 	public void breed(Pokemon male, Pokemon female) {
 		Pokemon p = new Pokemon();
-		p.setNickname(PokemonNicknameGenerator(male, female));
-		if (PokemonNameGenerator()) {
+		p.setNickname(pokemonNicknameGenerator(male, female));
+		if (pokemonNameSelector()) {
 			p.setPokedexNum(male.getPokedexNum());
 			p.setName(male.getName());
+			p.setMaxAtk(male.getMaxAtk());
+			p.setMaxDef(male.getMaxDef());
+			p.setMaxSatk(male.getMaxSatk());
+			p.setMaxSdef(male.getMaxSdef());
+			p.setMaxSpd(male.getMaxSpd());
+			p.setMaxVit(male.getMaxVit());
+			p.setEvolutionLvl(male.getEvolutionLvl());
+			p.setSprite(male.getSprite());
+		} else {
+			p.setPokedexNum(female.getPokedexNum());
+			p.setName(female.getName());
+			p.setMaxAtk(female.getMaxAtk());
+			p.setMaxDef(female.getMaxDef());
+			p.setMaxSatk(female.getMaxSatk());
+			p.setMaxSdef(female.getMaxSdef());
+			p.setMaxSpd(female.getMaxSpd());
+			p.setMaxVit(female.getMaxVit());
+			p.setEvolutionLvl(female.getEvolutionLvl());
+			p.setSprite(female.getSprite());
 		}
+		if (male.getVit() >= female.getVit()) {
+			p.setVit(male.getVit());
+		} else {
+			p.setVit(female.getVit());
+		}
+		if (male.getAtk() >= female.getAtk()) {
+			p.setAtk(male.getAtk());
+		} else {
+			p.setAtk(female.getAtk());
+		}
+		if (male.getDef() >= female.getDef()) {
+			p.setDef(male.getDef());
+		} else {
+			p.setDef(female.getDef());
+		}
+		if (male.getSatk() >= female.getSatk()) {
+			p.setSatk(male.getSatk());
+		} else {
+			p.setSatk(female.getSatk());
+		}
+		if (male.getSdef() >= female.getSdef()) {
+			p.setSdef(male.getSdef());
+		} else {
+			p.setSdef(female.getSdef());
+		}
+		if (male.getSpd() >= female.getSpd()) {
+			p.setSpd(male.getSpd());
+		} else {
+			p.setSpd(female.getSpd());
+		}
+		p.checkMaxStats();
+		p.setType1(pokemonTypeGenerator(male, female));
+		Types type2 = null;
+		do {
+			type2 = pokemonTypeGenerator(male, female);
+		} while (type2 == p.getType1());
+		p.setType2(type2);
+		p.setTrainerId(id);
+		
+
 	}
 
 	@Override

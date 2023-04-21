@@ -1,4 +1,2 @@
 Add activePokemon to battle
-Add maxStats to Pokemon
-Add baseStats to Pokemon
-Add evolutionLvl to Pokemon
+Add stat to Move
