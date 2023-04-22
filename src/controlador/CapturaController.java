@@ -59,7 +59,7 @@ public class CapturaController implements Initializable {
 
 		if (Pokemon.comprobarMote(mote)&&!mote.equals("")) {
 			Captura.captura(pokemon, mote, entrenador.getId());//inserta el pokemon capturado en la BbDd
-			entrenador.insertraPokemonCapturado(pokemon,mote );//inserta el pokemon capturado en LinkedList<Pokemon> todosLosPokemon;
+			entrenador.insertraPokemonCapturado(pokemon,mote);//inserta el pokemon capturado en LinkedList<Pokemon> todosLosPokemon;
 			
 			Stage stage = (Stage) this.txtMote.getScene().getWindow(); 
 			

@@ -63,7 +63,7 @@ public class Entrenar2Controller implements Initializable {
 				//si es true muestra en el label "no hay suficiente dinero"
 				if(Entrenar2.tipoEntrenamiento(entrenador, tipoEntrenamiento,entrenador.getEquipoPokemon().get(i)))noSuficienteDinero.setText("no hay suficiente dinero");
 				
-//				entrenador.getEquipoPokemon().get(i).setVit(300);
+
 				
 				System.out.println(entrenador.getEquipoPokemon().get(i).getVit());
 				

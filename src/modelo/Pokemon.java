@@ -84,7 +84,7 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
-		this.moves = moves;
+		this.moves =new LinkedList<Move>();
 		this.status = status;
 		this.fertility=fertility;
 		

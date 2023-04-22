@@ -209,6 +209,7 @@ public class Criar {
 			mitaMote += motePadre.charAt(i);
 
 		}
+		System.out.println(mitaMote);
 		return mitaMote;
 	}
 
@@ -256,7 +257,8 @@ public class Criar {
 		else
 			pokemonHijo.setStamina(pokemon2.getStamina());
 
-		// fertility
+		// fertilidad, el hijo tendrá la mayor de los dos padres antes de que se le reste uno, ya que
+		//cada vez que crían los padres pierden un punto de fertilidad
 		if (pokemon1.getFertility() > pokemon2.getFertility())
 			pokemonHijo.setFertility(pokemon1.getFertility());
 		else
