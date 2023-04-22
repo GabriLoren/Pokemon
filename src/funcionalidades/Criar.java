@@ -16,8 +16,16 @@ public class Criar {
 //	private static Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
 
 	public static Pokemon Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
+		
+		//Los padres pierden un punto de fertilidad cada vez que crien
+		pokemon1.setFertility(pokemon1.getFertility()-1);
+		pokemon2.setFertility(pokemon2.getFertility()-1);
+		System.out.println("fertilidad"+pokemon1.getFertility());
+		
+		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon1);
+		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon2);
 
-		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
+		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0,0, null);
 		
 		//mote del pokemon
 		pokemonHijo.setNickname(creaMoteHijo(pokemon1, pokemon2));
@@ -25,13 +33,17 @@ public class Criar {
 		// nombre del pokemon hijo
 		pokemonHijo.setName(elegirAleatoriamenteNombrePokemonHijo(pokemon1, pokemon2));
 
+
 		insertarMovimientosEnHijo(pokemon1.getMoves(), pokemon2.getMoves());
 		
 		pokemonHijo.setMoves(movimientosHijo);
 
 		entrenador.getTodosLosPokemon().add(pokemonHijo);
 
-		Captura.insertarEnBbDdElPokemonEncontrado(pokemonHijo, "NoProgramado", entrenador.getId());
+		//Reutilizamos el método de la clase cpatura para insertra en la BbDd el nuevo pokemon creado 
+		//mediante de la crianza
+		Captura.insertarEnBbDdElPokemonEncontrado(pokemonHijo, entrenador.getId());
+		
 		return pokemonHijo;
 
 	}
@@ -49,7 +61,7 @@ public class Criar {
 
 	}
 
-	// inserta en el hijo movimietos hasta un máximo de 4 a partir de la linkedlist
+	// Inserta en el hijo movimietos hasta un máximo de 4 a partir de la linkedlist
 	// creada con los movimientos de los dos padres
 	private static void insertarMovimientosEnHijo(LinkedList<Move> movimientosPadre1,
 			LinkedList<Move> movimientosPadre2) {

@@ -43,6 +43,7 @@ public class CargarPokemonEnEntrenador {
 			int velocidad = 0;
 			int stamina = 0;
 			int nivel = 0;
+			int fertilidad=0;
 			String equipo = "si";
 //			id_movimiento1 int,
 //			id_movimiento2 int,
@@ -64,11 +65,12 @@ public class CargarPokemonEnEntrenador {
 				stamina = Integer.parseInt(miRs.getString(11));
 				nivel = Integer.parseInt(miRs.getString(12));
 				equipo = miRs.getString(18);
+				fertilidad=miRs.getInt("fertilidad");
 				
 //				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
-						velocidad, stamina, nivel, equipo);
+						velocidad, stamina, nivel,fertilidad, equipo);
 				
 				//prueba para ver si va el método criar, luego lo borraré
 //				pokemon.getMoves().add(new Move("patada"));

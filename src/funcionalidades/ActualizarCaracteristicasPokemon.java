@@ -17,10 +17,9 @@ public class ActualizarCaracteristicasPokemon {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-//			UPDATE articulo SET nom_articulo='Impresora Láser' WHERE cod_articulo=8;
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,STAMINA=?,NIVEL=? WHERE ID=?";
+					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=? WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -34,8 +33,9 @@ public class ActualizarCaracteristicasPokemon {
 			miPSt.setLong(6, pokemon.getSpeed());
 			miPSt.setLong(7, pokemon.getStamina());
 			miPSt.setLong(8, pokemon.getLevel());
-			miPSt.setLong(9, pokemon.getId());
-//			
+			miPSt.setLong(9, pokemon.getFertility());
+			miPSt.setLong(10, pokemon.getId());
+			
 
 			miPSt.executeUpdate();
 

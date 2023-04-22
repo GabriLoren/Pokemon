@@ -1,9 +1,9 @@
 package cargar;
 
 import java.sql.*;
+
 import java.util.LinkedList;
 
-import modelo.Category;
 import modelo.Move;
 import modelo.Pokemon;
 import modelo.Types;
@@ -27,6 +27,7 @@ public class CargarTodosPokemons {
 	static int velocidad;
 	static int stamina;
 	static int nivel;
+	static int fertilidad;
 	
 	
 	
@@ -54,9 +55,9 @@ public class CargarTodosPokemons {
 				velocidad = Integer.parseInt(miRs.getString(8));
 				stamina = Integer.parseInt(miRs.getString(9));
 				nivel = Integer.parseInt(miRs.getString(10));
-				
+				fertilidad=miRs.getInt("fertilidad");
 
-				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel);
+				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad);
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");

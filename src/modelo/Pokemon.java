@@ -49,7 +49,7 @@ public class Pokemon {
 		
 	}
 	
-	public Pokemon(int id, String name, String nickname , int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level, String equipo) {
+	public Pokemon(int id, String name, String nickname , int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level,int fertility, String equipo) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -63,6 +63,7 @@ public class Pokemon {
 		this.stamina = stamina;
 		this.level = level;
 		this.equipo=equipo;
+		this.fertility=fertility;
 	
 		this.moves = new LinkedList<Move>();
 //		this.status = status;
@@ -71,7 +72,7 @@ public class Pokemon {
 	
 	
 	
-	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level) {
+	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level, int fertility) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -85,6 +86,7 @@ public class Pokemon {
 		this.level = level;
 		this.moves = moves;
 		this.status = status;
+		this.fertility=fertility;
 		
 	}
 
