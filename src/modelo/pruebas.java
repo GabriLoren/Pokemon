@@ -23,7 +23,7 @@ public class pruebas {
 		p1.getMoves().add(new Move("hostia"));
 		p1.getMoves().add(new Move("escupitajo"));
 		p2.getMoves().add(new Move("torta"));
-		p2.getMoves().add(new Move("cabezazo"));
+		p2.getMoves().add(new Move("cabezazo")); 
 		p2.getMoves().add(new Move("mareo"));
 		
 		System.out.println(p1.toString());

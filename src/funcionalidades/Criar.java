@@ -15,36 +15,39 @@ public class Criar {
 
 //	private static Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
 
-	public static Pokemon Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
-		
-		//Los padres pierden un punto de fertilidad cada vez que crien
-		pokemon1.setFertility(pokemon1.getFertility()-1);
-		pokemon2.setFertility(pokemon2.getFertility()-1);
-		System.out.println("fertilidad"+pokemon1.getFertility());
-		
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon1);
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon2);
+	public static void Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
 
-		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0,0, null);
-		
-		//mote del pokemon
+		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null);
+
+		// tendrá por defecto el nivel 1
+		pokemonHijo.setLevel(1);
+
+		// mote del pokemon
 		pokemonHijo.setNickname(creaMoteHijo(pokemon1, pokemon2));
 
 		// nombre del pokemon hijo
 		pokemonHijo.setName(elegirAleatoriamenteNombrePokemonHijo(pokemon1, pokemon2));
 
+		// Estadísticas
+		insertarEstadisticasEnHijo(pokemon1, pokemon2, pokemonHijo);
 
+		// movimientos
 		insertarMovimientosEnHijo(pokemon1.getMoves(), pokemon2.getMoves());
-		
 		pokemonHijo.setMoves(movimientosHijo);
 
+		// añadimos al entrenador el pokemon que acabamos de crear con la crianza
 		entrenador.getTodosLosPokemon().add(pokemonHijo);
 
-		//Reutilizamos el método de la clase cpatura para insertra en la BbDd el nuevo pokemon creado 
-		//mediante de la crianza
+		// Reutilizamos el método de la clase captura para insertra en la BbDd el nuevo
+		// pokemon creado
+		// mediante de la crianza
 		Captura.insertarEnBbDdElPokemonEncontrado(pokemonHijo, entrenador.getId());
-		
-		return pokemonHijo;
+
+		// Los padres pierden un punto de fertilidad cada vez que crien
+		pokemon1.setFertility(pokemon1.getFertility() - 1);
+		pokemon2.setFertility(pokemon2.getFertility() - 1);
+		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon1);
+		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon2);
 
 	}
 
@@ -55,8 +58,8 @@ public class Criar {
 
 			Move movimietoDelPadre = movimientosPadre1.get(i);
 			movimientosPadres.add(movimietoDelPadre);
-			
-			System.out.println("movimientos del padre1: "+movimientosPadres.toString());
+
+			System.out.println("movimientos del padre1: " + movimientosPadres.toString());
 		}
 
 	}
@@ -67,11 +70,11 @@ public class Criar {
 			LinkedList<Move> movimientosPadre2) {
 
 		insertarMovimientosDeLos2Padres(movimientosPadre1, movimientosPadre2);
-		
+
 		System.out.println();
-		System.out.println("Estos son los movimientos de los 2 padres:"+movimientosPadres.toString() );
+		System.out.println("Estos son los movimientos de los 2 padres:" + movimientosPadres.toString());
 		System.out.println();
-		
+
 		int posicionAleatoriaMovimientosPadres;
 
 		// irá insertado en el hijo movimietos hasta que haya un maximo de 4 movimietos
@@ -82,19 +85,20 @@ public class Criar {
 
 			// genera una posición aleatoria
 			posicionAleatoriaMovimientosPadres = (int) (Math.random() * movimientosPadres.size());
-			
-			System.out.println("posicion aleatoria "+posicionAleatoriaMovimientosPadres);
+
+			System.out.println("posicion aleatoria " + posicionAleatoriaMovimientosPadres);
 
 			// añade el movimiento que se encuentra en la posición aleatoria generada
 			// anteriormente
-			System.out.println("movimiento añadido "+movimientosPadres.get(posicionAleatoriaMovimientosPadres).getName());
+			System.out.println(
+					"movimiento añadido " + movimientosPadres.get(posicionAleatoriaMovimientosPadres).getName());
 			movimientosHijo.add(movimientosPadres.get(posicionAleatoriaMovimientosPadres));
-			System.out.println("movimitosHijo "+movimientosHijo.toString());
+			System.out.println("movimitosHijo " + movimientosHijo.toString());
 
 			// borra de los movimientos de los dos padres el movimiento insertado en el hijo
 			// para que no lo tenga en cuenta en la siguiente insercción
 			movimientosPadres.remove(posicionAleatoriaMovimientosPadres);
-			System.out.println("movimientro padres despues de eliminar "+movimientosPadres.toString());
+			System.out.println("movimientro padres despues de eliminar " + movimientosPadres.toString());
 
 		}
 
@@ -108,11 +112,11 @@ public class Criar {
 		// si entra en el if toma el valor true y por lo tanto está repetido el
 		// movimieto y no lo inserta en la linkedlist de los movimietos de los dos
 		// padres
-		boolean existe; 
+		boolean existe;
 
 		for (int i = 0; i < movimientosPadre2.size(); i++) {
-			
-			existe=false;
+
+			existe = false;
 
 			// comprueba que no coinciden los movimetos de los padres
 			for (int j = 0; j < movimientosPadres.size(); j++) {
@@ -123,15 +127,13 @@ public class Criar {
 //					break;
 				}
 
-				
-
 			}
-			if (existe==false) {
-				
+			if (existe == false) {
+
 				movimientosPadres.add(movimientosPadre2.get(i));
 			}
 			System.out.println(movimientosPadre2.get(i).getName());
-			System.out.println("movimientos del padre2: "+movimientosPadres.toString());
+			System.out.println("movimientos del padre2: " + movimientosPadres.toString());
 		}
 
 	}
@@ -159,68 +161,107 @@ public class Criar {
 		insertarMovimientosPadre2(movimientosPadre2);
 
 	}
-	
-	
-	//Devuelve un String creado con la unión de la primera mitad del mote de cada padre siendo la primera
-	//parte del String la primera mitad de uno de los motes de los padres seleccionado aleatoriamente
+
+	// Devuelve un String creado con la unión de la primera mitad del mote de cada
+	// padre siendo la primera
+	// parte del String la primera mitad de uno de los motes de los padres
+	// seleccionado aleatoriamente
 	private static String creaMoteHijo(Pokemon pokemon1, Pokemon pokemon2) {
-		
+
 		String moteHijo;
-		
-		//Devuelve un String con la primera mitad del mote del pokemon1
-		String mitaMote1=recorreMote(pokemon1);
-		//Devuelve un String con la primera mitad del mote del padre pokemon2
-		String mitaMote2=recorreMote(pokemon2);
-		
-		//Genera un número aleatorio que pued ser un 0 o un 1;
-		int aleatorio=(int) (Math.random()*2);
-		
-		//Si sale un 0 la primera parte del mote será la primera mitad del mote del pokemon1
-		//y si sale un 1 la primera parte del mote será la primera mitad del mote del pokemon2
-		
-		if(aleatorio==0)moteHijo=mitaMote1+mitaMote2;
-		else moteHijo=mitaMote2+mitaMote1;
-		
+
+		// Devuelve un String con la primera mitad del mote del pokemon1
+		String mitaMote1 = recorreMote(pokemon1);
+		// Devuelve un String con la primera mitad del mote del padre pokemon2
+		String mitaMote2 = recorreMote(pokemon2);
+
+		// Genera un número aleatorio que pued ser un 0 o un 1;
+		int aleatorio = (int) (Math.random() * 2);
+
+		// Si sale un 0 la primera parte del mote será la primera mitad del mote del
+		// pokemon1
+		// y si sale un 1 la primera parte del mote será la primera mitad del mote del
+		// pokemon2
+
+		if (aleatorio == 0)
+			moteHijo = mitaMote1 + mitaMote2;
+		else
+			moteHijo = mitaMote2 + mitaMote1;
+
 		return moteHijo;
-	
-		
-		
+
 	}
-	
-	//Devuelve un String con la primera mitad del mote del padre
+
+	// Devuelve un String con la primera mitad del mote del padre
 	private static String recorreMote(Pokemon pokemonPadre) {
-		
-		String motePadre=pokemonPadre.getNickname();
-		
-		int mitadNumLetrasMotePadre=motePadre.length()/2;
-		
-		if(mitadNumLetrasMotePadre<1)mitadNumLetrasMotePadre=1;
-		
-		String mitaMote="";
-		
-	for(int i=0;i<mitadNumLetrasMotePadre;i++) {
-			
-			mitaMote+=motePadre.charAt(i);
-			
+
+		String motePadre = pokemonPadre.getNickname();
+
+		int mitadNumLetrasMotePadre = motePadre.length() / 2;
+
+		if (mitadNumLetrasMotePadre < 1)
+			mitadNumLetrasMotePadre = 1;
+
+		String mitaMote = "";
+
+		for (int i = 0; i < mitadNumLetrasMotePadre; i++) {
+
+			mitaMote += motePadre.charAt(i);
+
 		}
 		return mitaMote;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	// Se inserta en el hijo las estadísticas del padre que sean de mayor valor
+	private static void insertarEstadisticasEnHijo(Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemonHijo) {
+
+		// vitalidad
+		if (pokemon1.getVit() > pokemon2.getVit())
+			pokemonHijo.setVit(pokemon1.getVit());
+		else
+			pokemonHijo.setVit(pokemon2.getVit());
+
+		// ataque
+		if (pokemon1.getAtk() > pokemon2.getAtk())
+			pokemonHijo.setAtk(pokemon1.getAtk());
+		else
+			pokemonHijo.setAtk(pokemon2.getAtk());
+
+		// defensa
+		if (pokemon1.getDef() > pokemon2.getDef())
+			pokemonHijo.setDef(pokemon1.getDef());
+		else
+			pokemonHijo.setDef(pokemon2.getDef());
+
+		// spAtk
+		if (pokemon1.getSpAtk() > pokemon2.getSpAtk())
+			pokemonHijo.setSpAtk(pokemon1.getSpAtk());
+		else
+			pokemonHijo.setSpAtk(pokemon2.getSpAtk());
+		// spDef
+		if (pokemon1.getSpDef() > pokemon2.getSpDef())
+			pokemonHijo.setSpDef(pokemon1.getSpDef());
+		else
+			pokemonHijo.setSpDef(pokemon2.getSpDef());
+
+		// velocidad
+		if (pokemon1.getSpeed() > pokemon2.getSpeed())
+			pokemonHijo.setSpeed(pokemon1.getSpeed());
+		else
+			pokemonHijo.setSpeed(pokemon2.getSpeed());
+
+		// stamina
+		if (pokemon1.getStamina() > pokemon2.getStamina())
+			pokemonHijo.setStamina(pokemon1.getStamina());
+		else
+			pokemonHijo.setStamina(pokemon2.getStamina());
+
+		// fertility
+		if (pokemon1.getFertility() > pokemon2.getFertility())
+			pokemonHijo.setFertility(pokemon1.getFertility());
+		else
+			pokemonHijo.setFertility(pokemon2.getStamina());
+
+	}
 
 }
