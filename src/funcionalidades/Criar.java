@@ -18,6 +18,9 @@ public class Criar {
 	public static Pokemon Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
 
 		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
+		
+		//mote del pokemon
+		pokemonHijo.setNickname(creaMoteHijo(pokemon1, pokemon2));
 
 		// nombre del pokemon hijo
 		pokemonHijo.setName(elegirAleatoriamenteNombrePokemonHijo(pokemon1, pokemon2));
@@ -144,5 +147,68 @@ public class Criar {
 		insertarMovimientosPadre2(movimientosPadre2);
 
 	}
+	
+	
+	//Devuelve un String creado con la unión de la primera mitad del mote de cada padre siendo la primera
+	//parte del String la primera mitad de uno de los motes de los padres seleccionado aleatoriamente
+	private static String creaMoteHijo(Pokemon pokemon1, Pokemon pokemon2) {
+		
+		String moteHijo;
+		
+		//Devuelve un String con la primera mitad del mote del pokemon1
+		String mitaMote1=recorreMote(pokemon1);
+		//Devuelve un String con la primera mitad del mote del padre pokemon2
+		String mitaMote2=recorreMote(pokemon2);
+		
+		//Genera un número aleatorio que pued ser un 0 o un 1;
+		int aleatorio=(int) (Math.random()*2);
+		
+		//Si sale un 0 la primera parte del mote será la primera mitad del mote del pokemon1
+		//y si sale un 1 la primera parte del mote será la primera mitad del mote del pokemon2
+		
+		if(aleatorio==0)moteHijo=mitaMote1+mitaMote2;
+		else moteHijo=mitaMote2+mitaMote1;
+		
+		return moteHijo;
+	
+		
+		
+	}
+	
+	//Devuelve un String con la primera mitad del mote del padre
+	private static String recorreMote(Pokemon pokemonPadre) {
+		
+		String motePadre=pokemonPadre.getNickname();
+		
+		int mitadNumLetrasMotePadre=motePadre.length()/2;
+		
+		if(mitadNumLetrasMotePadre<1)mitadNumLetrasMotePadre=1;
+		
+		String mitaMote="";
+		
+	for(int i=0;i<mitadNumLetrasMotePadre;i++) {
+			
+			mitaMote+=motePadre.charAt(i);
+			
+		}
+		return mitaMote;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
