@@ -265,5 +265,8 @@ public class Criar {
 			pokemonHijo.setFertility(pokemon2.getStamina());
 
 	}
+	
+	
+	
 
 }
