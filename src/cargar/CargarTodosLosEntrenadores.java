@@ -22,6 +22,12 @@ public class CargarTodosLosEntrenadores {
 
 
 
+	public static void setTodosLosEntrenadores(LinkedList<Trainer> todosLosEntrenadores) {
+		TodosLosEntrenadores = todosLosEntrenadores;
+	}
+
+
+
 	public static void cargarTodosLosEntrenadores() {
 
 	

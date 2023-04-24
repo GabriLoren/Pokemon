@@ -37,6 +37,13 @@ public class CargarEntrenador {
 			if (nombreUsuario.equalsIgnoreCase(todosLosEntrenadores.get(i).getName())) {
 
 				entrenador = todosLosEntrenadores.get(i);
+
+				// sacamos de la lista de todos los entrenadores que tenemos el entrenador que
+				// va a iniciar la partida
+				// para que cuando sellecionemos uno aleatorio en la batalla no se encuentre el
+				// que tenemos en ese momento en juego
+				CargarTodosLosEntrenadores.getTodosLosEntrenadores().remove(todosLosEntrenadores.get(i));
+
 				usuarioExiste = true;
 				break;
 
@@ -47,4 +54,18 @@ public class CargarEntrenador {
 		return usuarioExiste;
 
 	}
+
+	// devuelve un entrenador aleatorio de la lista que se le pasa por parámetro
+	public static Trainer obtenerEntrenadorAleatorio(LinkedList<Trainer> entrenadores) {
+
+		Trainer entrenadorContrincante = null;
+
+		int posicionEntrenador = (int) (Math.random() * entrenadores.size());
+
+		entrenadorContrincante = entrenadores.get(posicionEntrenador);
+
+		return entrenadorContrincante;
+
+	}
+
 }

@@ -19,7 +19,7 @@ public class ActualizarCaracteristicasPokemon {
 
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=? WHERE ID=?";
+					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=?, EQUIPO=? WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -34,7 +34,9 @@ public class ActualizarCaracteristicasPokemon {
 			miPSt.setLong(7, pokemon.getStamina());
 			miPSt.setLong(8, pokemon.getLevel());
 			miPSt.setLong(9, pokemon.getFertility());
-			miPSt.setLong(10, pokemon.getId());
+			miPSt.setString(10, pokemon.getEquipo());
+			miPSt.setLong(11, pokemon.getId());
+			
 			
 
 			miPSt.executeUpdate();

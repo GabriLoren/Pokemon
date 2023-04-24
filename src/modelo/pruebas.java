@@ -11,39 +11,31 @@ public class pruebas {
 	
 	public static void main(String[] args) {
 		
-
 		CargarTodosLosEntrenadores.cargarTodosLosEntrenadores();
-		Trainer yo= CargarTodosLosEntrenadores.getTodosLosEntrenadores().get(0);
 		
-		Pokemon p1= yo.getEquipoPokemon().get(0);
-		Pokemon p2= yo.getEquipoPokemon().get(1);
+		CargarTodosPokemons.cargarPokemonDesdeBbDd();
 		
-		p1.getMoves().add(new Move("patada"));
-		p1.getMoves().add(new Move("torta"));
-		p1.getMoves().add(new Move("hostia"));
-		p1.getMoves().add(new Move("escupitajo"));
-		p2.getMoves().add(new Move("torta"));
-		p2.getMoves().add(new Move("cabezazo")); 
-		p2.getMoves().add(new Move("mareo"));
+		Trainer t=new Trainer(0, null, 0);
 		
-		System.out.println(p1.toString());
-		System.out.println();
-		System.out.println(p2.toString());
-		System.out.println();
+		LinkedList<Pokemon>p=CargarTodosPokemons.getPokemon();
 		
-//		System.out.println(p1.getMoves()+"  "+p2.getName());
+		t.setEquipoPokemon(p);
 		
-//		System.out.println("todos los pokemon "+yo.getTodosLosPokemon().toString());
+		t.getEquipoPokemon().removeLast();
 		
-		Criar.Criar(p1, p2, yo);
+				
+		for(int i=0;i<p.size();i++) {
+			
+			System.out.println(p.get(i).getName());
+		}
 		
-		
-		
-		System.out.println(yo.getTodosLosPokemon().getLast().toString());
-		
-
+	System.out.println();
 	
+	
+	for(int i=0;i<p.size();i++) {
 		
+		System.out.println(p.get(i).getName());
+	}
 		
 	}
 

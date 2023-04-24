@@ -231,6 +231,7 @@ public class CriarController implements Initializable {
 
 	}
 
+	//añadimos a la ObservableList todos los pokemon del equipo del entrenador
 	public ObservableList<Pokemon> metodo() {
 
 		ObservableList<Pokemon> lista = FXCollections.observableArrayList();
