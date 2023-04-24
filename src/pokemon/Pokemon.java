@@ -478,4 +478,16 @@ public class Pokemon {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Pokemon [pokedexNum=" + pokedexNum + ", trainerId=" + trainerId + ", name=" + name + ", nickname="
+				+ nickname + ", vit=" + vit + ", atk=" + atk + ", def=" + def + ", satk=" + satk + ", sdef=" + sdef
+				+ ", spd=" + spd + ", stamina=" + stamina + ", lvl=" + lvl + ", moves=" + moves + ", fertility="
+				+ fertility + ", gender=" + gender + ", type1=" + type1 + ", type2=" + type2 + ", status=" + status
+				+ ", object=" + object + ", exp=" + exp + ", sprite=" + sprite + ", baseVit=" + baseVit + ", baseAtk="
+				+ baseAtk + ", baseDef=" + baseDef + ", baseSatk=" + baseSatk + ", baseSdef=" + baseSdef + ", baseSpd="
+				+ baseSpd + ", maxVit=" + maxVit + ", maxAtk=" + maxAtk + ", maxDef=" + maxDef + ", maxSatk=" + maxSatk
+				+ ", maxSdef=" + maxSdef + ", maxSpd=" + maxSpd + ", evolutionLvl=" + evolutionLvl + "]";
+	}
+
 }

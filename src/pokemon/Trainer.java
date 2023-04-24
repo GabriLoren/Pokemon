@@ -29,7 +29,9 @@ public class Trainer {
 		}
 	}
 
-	// Generates a nickname for a pokemon based on the nickname of its parents
+	// Generates a nickname for a pokemon based on the nickname of its parents, the
+	// first half of the nickname is half of one of its parents while the other
+	// half is the first half of the other parent
 	private String pokemonNicknameGenerator(Pokemon p1, Pokemon p2) {
 		String result = "";
 		for (int i = 0; i < p1.getNickname().length() / 2; i++) {
@@ -41,6 +43,8 @@ public class Trainer {
 		return result;
 	}
 
+	// Needs to be reviewed, probably going to lead to errors gotta test it on
+	// main()
 	private Types pokemonTypeGenerator(Pokemon p1, Pokemon p2) {
 		Random r = new Random();
 		int low = 0;
@@ -57,24 +61,29 @@ public class Trainer {
 			return p2.getType2();
 		}
 	}
-	
+
+	// The method creates a linked list with both parents' moves which are different
+	// from each other, then it randomly selects 4 moves to add to the moves that
+	// the bred pokemon will have and each time a move gets added to the collection
+	// it gets removed from the original linkedlist in order to avoid repeating
+	// moves
 	private LinkedList<Move> pokemonMoveGenerator(Pokemon p1, Pokemon p2) {
 		LinkedList<Move> parentMoves = new LinkedList<>();
 		LinkedList<Move> inheritedMoves = new LinkedList<>();
-		
+
 		for (int i = 0; i < p1.getMoves().size(); i++) {
 			parentMoves.add(p1.getMoves().get(i));
 		}
-		
+
 		for (int i = 0; i < p2.getMoves().size(); i++) {
 			for (int j = 0; j < parentMoves.size(); j++) {
 				if (!p2.getMoves().get(j).equals(parentMoves.get(j))) {
 					parentMoves.add(p2.getMoves().get(i));
 				}
 			}
-			
+
 		}
-		
+
 		for (int i = 0; i < 4; i++) {
 			Random r = new Random();
 			int low = 0;
@@ -83,7 +92,7 @@ public class Trainer {
 			inheritedMoves.add(parentMoves.get(result));
 			parentMoves.remove(result);
 		}
-		
+
 		return inheritedMoves;
 	}
 
@@ -309,7 +318,16 @@ public class Trainer {
 	public void fight(Trainer trainer) {
 	}
 
-	// Pokemon name???? new pokemon??? parent's name randomly selected???
+	// Creates a new default Pokemon object and sets its attributes depending on the
+	// attributes of it's parents, firstly it calls the pokemonNicknameGenerator in
+	// order to set a nickname, then it calls the pokemonNameSelector in order to
+	// get which pokemon is the new object and sets values according to this
+	// information, afterwards the pokemon stats get assigned based on the highest
+	// of its parents stats, then calls the checkMaxStats method in order to check
+	// if those stats are higher than the max, (types needs reviewing) following
+	// this the method calls the moveGenerator method to get the pokemon moves,
+	// finally its trainerId gets set to the id of the trainer which is calling the
+	// method
 	public void breed(Pokemon male, Pokemon female) {
 		Pokemon p = new Pokemon();
 		p.setNickname(pokemonNicknameGenerator(male, female));
@@ -373,8 +391,8 @@ public class Trainer {
 			type2 = pokemonTypeGenerator(male, female);
 		} while (type2 == p.getType1());
 		p.setType2(type2);
-		p.setTrainerId(id);
 		p.setMoves(pokemonMoveGenerator(male, female));
+		p.setTrainerId(id);
 
 	}
 

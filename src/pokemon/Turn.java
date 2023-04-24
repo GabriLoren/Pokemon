@@ -37,4 +37,9 @@ public class Turn {
 		this.rivalMove = rivalMove;
 	}
 
+	@Override
+	public String toString() {
+		return "Turn [turn=" + turn + ", playerMove=" + playerMove + ", rivalMove=" + rivalMove + "]";
+	}
+
 }

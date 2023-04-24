@@ -5,14 +5,14 @@ public class Obj {
 	private int objId;
 	private String name;
 	private double buff;
-	private double debuffs;
+	private double debuff;
 
-	public Obj(int objID, String name, double buff, double debuffs) {
+	public Obj(int objID, String name, double buff, double debuff) {
 		super();
 		this.objId = objID;
 		this.name = name;
 		this.buff = buff;
-		this.debuffs = debuffs;
+		this.debuff = debuff;
 	}
 
 	public int getObjId() {
@@ -39,17 +39,17 @@ public class Obj {
 		this.buff = buff;
 	}
 
-	public double getDebuffs() {
-		return debuffs;
+	public double getDebuff() {
+		return debuff;
 	}
 
-	public void setDebuffs(double debuffs) {
-		this.debuffs = debuffs;
+	public void setDebuff(double debuff) {
+		this.debuff = debuff;
 	}
 
 	@Override
 	public String toString() {
-		return "Obj [objId=" + objId + ", name=" + name + ", buff=" + buff + ", debuffs=" + debuffs + "]";
+		return "Obj [objId=" + objId + ", name=" + name + ", buff=" + buff + ", debuff=" + debuff + "]";
 	}
 
 }
