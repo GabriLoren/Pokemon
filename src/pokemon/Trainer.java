@@ -1,6 +1,5 @@
 package pokemon;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
@@ -59,25 +58,33 @@ public class Trainer {
 		}
 	}
 	
-	private Move pokemonMoveGenerator(Pokemon p1, Pokemon p2) {
-		Random r = new Random();
-		int low = 0;
-		int high = 1;
-		int result = r.nextInt(high - low) + low;
-		switch (result) {
-		case 0:
-			r = new Random();
-			low = 0;
-			high = p1.getMoves().size();
-			result = r.nextInt(high - low) + low;
-			return p1.getMoves().get(result);
-		default:
-			r = new Random();
-			low = 0;
-			high = p2.getMoves().size();
-			result = r.nextInt(high - low) + low;
-			return p2.getMoves().get(result);
+	private LinkedList<Move> pokemonMoveGenerator(Pokemon p1, Pokemon p2) {
+		LinkedList<Move> parentMoves = new LinkedList<>();
+		LinkedList<Move> inheritedMoves = new LinkedList<>();
+		
+		for (int i = 0; i < p1.getMoves().size(); i++) {
+			parentMoves.add(p1.getMoves().get(i));
 		}
+		
+		for (int i = 0; i < p2.getMoves().size(); i++) {
+			for (int j = 0; j < parentMoves.size(); j++) {
+				if (!p2.getMoves().get(j).equals(parentMoves.get(j))) {
+					parentMoves.add(p2.getMoves().get(i));
+				}
+			}
+			
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			Random r = new Random();
+			int low = 0;
+			int high = parentMoves.size() - 1;
+			int result = r.nextInt(high - low) + low;
+			inheritedMoves.add(parentMoves.get(result));
+			parentMoves.remove(result);
+		}
+		
+		return inheritedMoves;
 	}
 
 	private LinkedList<Pokemon> team;
@@ -367,7 +374,7 @@ public class Trainer {
 		} while (type2 == p.getType1());
 		p.setType2(type2);
 		p.setTrainerId(id);
-		
+		p.setMoves(pokemonMoveGenerator(male, female));
 
 	}
 

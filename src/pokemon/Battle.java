@@ -8,20 +8,24 @@ public class Battle {
 	private Trainer player;
 	private Trainer rival;
 	private Turn turn;
-	private int pokemonPlayer;
-	private int pokemonRival;
+	private int playerKOs;
+	private int rivalKOs;
 	private LinkedList<Turn> turns;
+	private Pokemon playerActivePokemon;
+	private Pokemon rivalActivePokemon;
 
 	public Battle(boolean winner, Trainer player, Trainer rival, Turn turn, int pokemonPlayer, int pokemonRival,
-			LinkedList<Turn> turns) {
+			LinkedList<Turn> turns, Pokemon playerActivePokemon, Pokemon rivalActivePokemon) {
 		super();
 		this.winner = winner;
 		this.player = player;
 		this.rival = rival;
 		this.turn = turn;
-		this.pokemonPlayer = pokemonPlayer;
-		this.pokemonRival = pokemonRival;
+		this.playerKOs = pokemonPlayer;
+		this.rivalKOs = pokemonRival;
 		this.turns = turns;
+		this.playerActivePokemon = playerActivePokemon;
+		this.rivalActivePokemon = rivalActivePokemon;
 	}
 
 	public boolean isWinner() {
@@ -56,20 +60,20 @@ public class Battle {
 		this.turn = turn;
 	}
 
-	public int getPokemonPlayer() {
-		return pokemonPlayer;
+	public int getPlayerKOs() {
+		return playerKOs;
 	}
 
-	public void setPokemonPlayer(int pokemonPlayer) {
-		this.pokemonPlayer = pokemonPlayer;
+	public void setPlayerKOs(int playerKOs) {
+		this.playerKOs = playerKOs;
 	}
 
-	public int getPokemonRival() {
-		return pokemonRival;
+	public int getRivalKOs() {
+		return rivalKOs;
 	}
 
-	public void setPokemonRival(int pokemonRival) {
-		this.pokemonRival = pokemonRival;
+	public void setRivalKOs(int rivalKOs) {
+		this.rivalKOs = rivalKOs;
 	}
 
 	public LinkedList<Turn> getTurns() {
@@ -78,6 +82,22 @@ public class Battle {
 
 	public void setTurns(LinkedList<Turn> turns) {
 		this.turns = turns;
+	}
+
+	public Pokemon getPlayerActivePokemon() {
+		return playerActivePokemon;
+	}
+
+	public void setPlayerActivePokemon(Pokemon playerActivePokemon) {
+		this.playerActivePokemon = playerActivePokemon;
+	}
+
+	public Pokemon getRivalActivePokemon() {
+		return rivalActivePokemon;
+	}
+
+	public void setRivalActivePokemon(Pokemon rivalActivePokemon) {
+		this.rivalActivePokemon = rivalActivePokemon;
 	}
 
 	// If the player won the battle the player gets 1/3 of the rival's money
@@ -94,8 +114,15 @@ public class Battle {
 		}
 	}
 
-	// Active pokemon?? all pokemon depending on rival's pokemon???
+	// Active pokemon gets experience after defeating a pokemon based on the
+	// following formula ([POKEMON_LEVEL] + [RIVAL_POKEMON_LEVEL] * 10) / 4, then if
+	// the exp value of the pokemon exceeds or equals its level times 10 it levels
+	// up
 	public void giveExp() {
-
+		playerActivePokemon.setExp(
+				playerActivePokemon.getExp() + ((playerActivePokemon.getLvl() + rivalActivePokemon.getLvl() * 10) / 4));
+		while (playerActivePokemon.getExp() >= (playerActivePokemon.getLvl() * 10)) {
+			playerActivePokemon.levelUp();
+		}
 	}
 }
