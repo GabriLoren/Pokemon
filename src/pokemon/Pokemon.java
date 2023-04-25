@@ -472,7 +472,7 @@ public class Pokemon {
 		this.stamina = STAMINA;
 	}
 
-	// We need a temporary collection of Pokemon which will be later replaced or
+	// We need a temporary collection of moves which will be later replaced or
 	// filled by the database
 	public void learnMove() {
 

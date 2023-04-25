@@ -27,8 +27,10 @@ public class Capture {
 		String nick = sc.nextLine();
 		if (nick.equals("")) {
 			poke.setNickname(poke.getName());
+			checkNickname();
 		} else {
 			poke.setNickname(nick);
+			checkNickname();
 		}
 
 	}
