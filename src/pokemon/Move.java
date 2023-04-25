@@ -12,7 +12,8 @@ public class Move {
 	private double buff;
 	private int staminaCost;
 	private int lvlRequirement;
-	
+	private Stats stat;
+
 	public Move() {
 		this.id = 0;
 		this.name = "";
@@ -24,10 +25,11 @@ public class Move {
 		this.buff = 0;
 		this.staminaCost = 0;
 		this.lvlRequirement = 0;
+		this.stat = null;
 	}
 
-	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns, double buff,
-			int stamina, int lvlReq) {
+	public Move(int id, String name, MoveCategory category, int power, Types type, Status status, int turns,
+			double buff, int stamina, int lvlReq, Stats stat) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,6 +41,7 @@ public class Move {
 		this.buff = buff;
 		this.staminaCost = stamina;
 		this.lvlRequirement = lvlReq;
+		this.stat = stat;
 	}
 
 	public int getId() {
@@ -119,6 +122,14 @@ public class Move {
 
 	public void setLvlRequirement(int lvlRequirement) {
 		this.lvlRequirement = lvlRequirement;
+	}
+
+	public Stats getStat() {
+		return stat;
+	}
+
+	public void setStat(Stats stat) {
+		this.stat = stat;
 	}
 
 	// Sets a StaminaCost depending on the category of the move, if the move is an

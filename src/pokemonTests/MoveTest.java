@@ -2,6 +2,7 @@ package pokemonTests;
 
 import pokemon.Move;
 import pokemon.MoveCategory;
+import pokemon.Stats;
 import pokemon.Status;
 import pokemon.Types;
 
@@ -9,7 +10,7 @@ public class MoveTest {
 
 	public static void main(String[] args) {
 
-		Move tackle = new Move(0, "Tackle", MoveCategory.ATTACK, 35, Types.NORMAL, null, 0, 0, 0, 1);
+		Move tackle = new Move(0, "Tackle", MoveCategory.ATTACK, 35, Types.NORMAL, null, 0, 0, 0, 1, null);
 
 		System.out.println(tackle.toString());
 		tackle.applyStaminaCost();
@@ -24,12 +25,13 @@ public class MoveTest {
 		defenseCurl.setTurns(5);
 		defenseCurl.setBuff(1.5);
 		defenseCurl.setLvlRequirement(4);
+		defenseCurl.setStat(Stats.DEFENSE);
 
 		System.out.println(defenseCurl.toString());
 		defenseCurl.applyStaminaCost();
 		System.out.println(defenseCurl.toString());
 
-		Move poisonPowder = new Move(2, "Growl", MoveCategory.STATUS, 0, Types.POISON, Status.POISON, 0, 0, 0, 4);
+		Move poisonPowder = new Move(2, "Poison Powder", MoveCategory.STATUS, 0, Types.POISON, Status.POISON, 0, 0, 0, 4, null);
 
 		System.out.println(poisonPowder.toString());
 		poisonPowder.applyStaminaCost();
