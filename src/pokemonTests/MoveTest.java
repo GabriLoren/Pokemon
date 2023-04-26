@@ -1,5 +1,6 @@
 package pokemonTests;
 
+import pokemon.DmgTypes;
 import pokemon.Move;
 import pokemon.MoveCategory;
 import pokemon.Stats;
@@ -10,7 +11,7 @@ public class MoveTest {
 
 	public static void main(String[] args) {
 
-		Move tackle = new Move(0, "Tackle", MoveCategory.ATTACK, 35, Types.NORMAL, null, 0, 0, 0, 1, null);
+		Move tackle = new Move(0, "Tackle", MoveCategory.ATTACK, 35, Types.NORMAL, null, 0, 0, 0, 1, null, DmgTypes.PHYSICAL);
 
 		System.out.println(tackle.toString());
 		tackle.applyStaminaCost();
@@ -31,7 +32,7 @@ public class MoveTest {
 		defenseCurl.applyStaminaCost();
 		System.out.println(defenseCurl.toString());
 
-		Move poisonPowder = new Move(2, "Poison Powder", MoveCategory.STATUS, 0, Types.POISON, Status.POISON, 0, 0, 0, 4, null);
+		Move poisonPowder = new Move(2, "Poison Powder", MoveCategory.STATUS, 0, Types.POISON, Status.POISON, 0, 0, 0, 4, null, null);
 
 		System.out.println(poisonPowder.toString());
 		poisonPowder.applyStaminaCost();

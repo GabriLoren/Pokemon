@@ -1,8 +1,46 @@
 package pokemon;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Battle {
+
+	// Generates a random number between 217 and 255, then checks if the previous
+	// steps of the damage formula equal 1, if it does it returns 1 otherwise it
+	// returns the generated number divided by 255
+	private int dmgRnd(Pokemon p, Pokemon r, Move m) {
+		Random rnd = new Random();
+		int low = 217;
+		int high = 255;
+		int result = rnd.nextInt(high - low) + low;
+		if (m.getDmgType().equals(DmgTypes.PHYSICAL)) {
+			if ((int) ((((((2 * p.getLvl() * (17 / 256)) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef())) / 50 + 2)
+					* stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
+				return 1;
+			} else {
+				return result / 255;
+			}
+		} else {
+			if ((int) ((((((2 * p.getLvl() * (17 / 256)) / 5) + 2) * m.getPower() * (p.getSatk() / r.getSdef())) / 50
+					+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
+				return 1;
+			} else {
+				return result / 255;
+			}
+		}
+	}
+
+	// Checks if a pokemon's move shares type with any of the pokemon types and if
+	// it does it returns 1.5 otherwise it returns 1
+	private double stab(Pokemon p, Move m) {
+		if (p.getType1().equals(m.getType()) || p.getType2().equals(m.getType())) {
+			return 1.5;
+		} else {
+			return 1;
+		}
+	}
 
 	private boolean winner;
 	private Trainer player;
@@ -124,5 +162,21 @@ public class Battle {
 		while (playerActivePokemon.getExp() >= (playerActivePokemon.getLvl() * 10)) {
 			playerActivePokemon.levelUp();
 		}
+	}
+
+	// This is the official way of calculating the damage of attack moves on generation
+	// 1 pokemon. Formula: https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_I
+	public int dmg(Pokemon p, Pokemon r, Move m) {
+		int dmg = 0;
+		if (m.getDmgType().equals(DmgTypes.PHYSICAL)) {
+			dmg = (int) ((((((2 * p.getLvl() * (17 / 256)) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef())) / 50
+					+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
+		} else {
+			dmg = (int) ((((((2 * p.getLvl() * (17 / 256)) / 5) + 2) * m.getPower() * (p.getSatk() / r.getSdef())) / 50
+					+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
+		}
+		return dmg;
 	}
 }
