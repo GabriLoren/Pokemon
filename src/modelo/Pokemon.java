@@ -4,8 +4,6 @@ import java.util.LinkedList;
 
 public class Pokemon {
 
-
-
 	private int id;
 	private String name;
 	private String nickname;
@@ -25,16 +23,33 @@ public class Pokemon {
 	private String status;
 	private Obj object;
 	private String equipo;
-	
-	
-	
 
-	
-	public Pokemon(int id, String name, String nickname , int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level) {
+	public Pokemon(Pokemon p) {
+
+		this.id = p.id;
+		this.name = p.name;
+		this.nickname = p.nickname;
+		this.vit = p.vit;
+		this.atk = p.atk;
+		this.def = p.def;
+		this.spAtk = p.spAtk;
+		this.spDef = p.spDef;
+		this.speed = p.speed;
+		this.stamina = p.stamina;
+		this.level = p.level;
+		this.equipo = p.equipo;
+		this.fertility = p.fertility;
+		this.status=p.status;
+		this.moves = p.moves;
+		
+	}
+
+	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+			int stamina, int level) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.nickname= nickname;
+		this.nickname = nickname;
 		this.vit = vit;
 		this.atk = atk;
 		this.def = def;
@@ -43,17 +58,18 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
-	
+
 //		this.moves = moves;
 //		this.status = status;
-		
+
 	}
-	
-	public Pokemon(int id, String name, String nickname , int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level,int fertility, String equipo) {
+
+	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+			int stamina, int level, int fertility, String equipo, String status) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.nickname= nickname;
+		this.nickname = nickname;
 		this.vit = vit;
 		this.atk = atk;
 		this.def = def;
@@ -62,17 +78,15 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
-		this.equipo=equipo;
-		this.fertility=fertility;
-	
+		this.equipo = equipo;
+		this.fertility = fertility;
 		this.moves = new LinkedList<Move>();
-//		this.status = status;
-		
+		this.status = status;
+
 	}
-	
-	
-	
-	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina, int level, int fertility) {
+
+	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
+			int level, int fertility) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -84,10 +98,10 @@ public class Pokemon {
 		this.speed = speed;
 		this.stamina = stamina;
 		this.level = level;
-		this.moves =new LinkedList<Move>();
+		this.moves = new LinkedList<Move>();
 		this.status = status;
-		this.fertility=fertility;
-		
+		this.fertility = fertility;
+
 	}
 
 	public Pokemon(String name, String mote) {
@@ -304,9 +318,6 @@ public class Pokemon {
 	public void setObject(Obj object) {
 		this.object = object;
 	}
-	
-	
-	
 
 	public String getEquipo() {
 		return equipo;
@@ -355,9 +366,6 @@ public class Pokemon {
 //				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 //				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
 //	}
-
-
-	
 
 }
 

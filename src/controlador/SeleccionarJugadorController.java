@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
+import cargar.CargarMoves;
 import cargar.CargarTodosLosEntrenadores;
 import cargar.CargarTodosLosObjetos;
 import cargar.CargarTodosPokemons;
@@ -99,6 +100,10 @@ public class SeleccionarJugadorController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+		
+		//cargamos todos los movimientos
+		CargarMoves.cargarMovimientos();
 
 		// cargamos todos los pokemon existentes en el juego
 		CargarTodosPokemons.cargarPokemonDesdeBbDd();
@@ -108,6 +113,7 @@ public class SeleccionarJugadorController implements Initializable {
 
 		// cargamos todos los entrenadores existentes en el juego
 		CargarTodosLosEntrenadores.cargarTodosLosEntrenadores();
+	
 
 	}
 	

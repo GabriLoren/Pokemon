@@ -1,6 +1,19 @@
 create table pokemon_entrenador(
 id int,
 nombre varchar(20),
+categoria varchar(20),
+potencia int,
+tipo varchar(20),
+estado varchar(20),
+turnos int,
+mejora float);
+
+
+insert into movimieto (id,nombre,categoria,potencia) VALUES(1,'PATADA','ATAQUE',10);
+
+create table pokemon_entrenador(
+id int,
+nombre varchar(20),
 mote varchar(20),
 id_entrenador int,
 vida int,

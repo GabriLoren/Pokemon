@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ElegirMovimientoController">
+   <children>
+      <TableView fx:id="tablaElegirMovimiento" layoutX="58.0" layoutY="54.0" prefHeight="261.0" prefWidth="485.0">
+        <columns>
+          <TableColumn fx:id="nombre" prefWidth="75.0" text="NOMBRE" />
+          <TableColumn fx:id="potencia" prefWidth="75.0" text="POTENCIA" />
+        </columns>
+      </TableView>
+      <Button fx:id="seleccionar" layoutX="249.0" layoutY="327.0" mnemonicParsing="false" onAction="#seleccionar" prefHeight="41.0" prefWidth="108.0" text="SELECCIONAR" />
+   </children>
+</AnchorPane>

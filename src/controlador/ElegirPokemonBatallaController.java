@@ -69,12 +69,12 @@ public class ElegirPokemonBatallaController implements Initializable{
 		
 		ObservableList<Pokemon> pokemonSeleccionado = tabla.getSelectionModel().getSelectedItems();
 
-		 BatallaController.setPokemonElegidoObjeto(pokemonSeleccionado.get(0));
+		 BatallaController.setPokemonElegidoJugador(pokemonSeleccionado.get(0));
 
 		
 		// se cierra la ventana actual
-				Stage stage2 = (Stage) this.tabla.getScene().getWindow();
-				stage2.close();
+				Stage stage = (Stage) this.tabla.getScene().getWindow();
+				stage.close();
 				
 				
 				

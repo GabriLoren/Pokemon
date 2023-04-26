@@ -45,6 +45,7 @@ public class CargarPokemonEnEntrenador {
 			int nivel = 0;
 			int fertilidad=0;
 			String equipo = "si";
+			String estado="SinEstado";
 //			id_movimiento1 int,
 //			id_movimiento2 int,
 //			id_movimiento3 int,
@@ -70,7 +71,13 @@ public class CargarPokemonEnEntrenador {
 //				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
-						velocidad, stamina, nivel,fertilidad, equipo);
+						velocidad, stamina, nivel,fertilidad, equipo, estado);
+				
+				
+				//para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos los entrenadores
+				pokemon.setMoves(CargarMoves.getMovimientos());
+				
+				System.out.println("estos son los movimientos "+pokemon.getMoves().toString());
 				
 				//prueba para ver si va el método criar, luego lo borraré
 //				pokemon.getMoves().add(new Move("patada"));
