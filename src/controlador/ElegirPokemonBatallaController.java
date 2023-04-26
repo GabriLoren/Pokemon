@@ -77,7 +77,6 @@ public class ElegirPokemonBatallaController implements Initializable{
 				stage.close();
 				
 				
-				
 
 		
 		

@@ -8,6 +8,8 @@ import modelo.Trainer;
 
 public class Batalla {
 
+	private static int turnos = 0;
+
 	private LinkedList<Pokemon> equipoJugador = new LinkedList<Pokemon>();
 
 	private LinkedList<Pokemon> equipoContrincante = new LinkedList<Pokemon>();
@@ -42,17 +44,19 @@ public class Batalla {
 	 *         debido a que se encuentra en un estado que se lo impide y pasa el
 	 *         turno sin atacar
 	 */
-	public static boolean atacar(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1, int turnos) {
+	public static boolean atacar(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
 
-		if (comprobarEstado(pokemon1, turnos)) {
+		if (comprobarEstado(pokemon1)) {
 			Elegirataque(pokemon1, pokemon2, movimientoPokemon1);
 			return true;
 		} else
 			return false;
-		
-		
 
 	}
+
+
+
+
 
 	// Segun el movimiento elegido se ejecutará un bloque distinto
 	private static void Elegirataque(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
@@ -62,13 +66,16 @@ public class Batalla {
 
 			pokemon2.setVit(pokemon2.getVit() - movimientoPokemon1.getPower());
 
+			break;
 		}
 		case "ESTADO": {
-			
-			pokemon2.setStatus(movimientoPokemon1.getName()); 
+
+			pokemon2.setStatus(movimientoPokemon1.getName());
+			break;
 		}
 
 		case "MEJORA": {
+			break;
 
 		}
 		default:
@@ -95,44 +102,39 @@ public class Batalla {
 	}
 
 	// comprueba el estado que tiene el pokemon que va a atacar
-	// devuelve false si al pokemon turno que le corresponde atacar no puede
+	// devuelve false si al pokemon que le corresponde atacar no puede
 	// debido a que se encuentra en un estado que se lo impide
-	private static boolean comprobarEstado(Pokemon pokemon, int turnos) {
-		
+	private static boolean comprobarEstado(Pokemon pokemon) {
+
 		boolean puedeAtacar = true;
 
-		
 		switch (pokemon.getStatus()) {
 		case "CONGELADO": {
 
 			puedeAtacar = false;
+//			
+//			int seHadescongelado = (int) (Math.random() * 5);
+//
+//			if (seHadescongelado == 0)
+//				pokemon.setStatus("SINESTADO");
+//			else
+//				System.out.println("ESTA CONGELADO");
 
-			// tiene un 20% de probabilidad de descongelarse, si sale 0 se descongela
-			int seHadescongelado = (int) (Math.random() * 5);
-
-			if (seHadescongelado == 0)
-				pokemon.setStatus("SINESTADO");
-			else
-				System.out.println("ESTA CONGELADO");
-			
 			turnos++;
-			
-			if(turnos==3) {
-				pokemon.setStatus("SINESTADO");
-				turnos=0;
-			}
 
-			
+			if (turnos == 3) {
+				pokemon.setStatus("SINESTADO");
+				turnos = 0;
+			}
+			break;
+
 		}
 		default:
 
-			
-			puedeAtacar=true;
+			puedeAtacar = true;
 		}
 		return puedeAtacar;
 	}
-	
-	
 
 //	private static void cambiarPokemon(Pokemon pokemon) {
 //		
