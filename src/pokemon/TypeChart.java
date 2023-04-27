@@ -33,10 +33,12 @@ public class TypeChart {
 		             // norm  fght  fly   pois  grnd  rock  bug   ghst  stel  fire  wter  grss  elec  psyc  ice   drag  dark
 	};
 
+	// Returns the type advantage between 2 types
 	public static EffectValues getTypeAdvantage(Types defenseType, Types attackType) {
 		return genII[defenseType.ordinal()][attackType.ordinal()];
 	}
 
+	// Returns a double depending on the type advantage between 2 types
 	public static double getAdvantageValue(Types defenseType, Types attackType) {
 		if (!defenseType.equals(null)) {
 			EffectValues v = getTypeAdvantage(defenseType, attackType);
