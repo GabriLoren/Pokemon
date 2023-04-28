@@ -10,18 +10,18 @@ public class Batalla {
 
 	private static int turnos = 0;
 
-	private LinkedList<Pokemon> equipoJugador = new LinkedList<Pokemon>();
-
-	private LinkedList<Pokemon> equipoContrincante = new LinkedList<Pokemon>();
-
-	public void batalla(Trainer jugador, Trainer contrincante) {
-
-		int vecesGanadasusuario = 0;
-		int vecesGanadascontrincante = 0;
-
-//		atacar(null, null, null, vecesGanadascontrincante);
-
-	}
+//	private LinkedList<Pokemon> equipoJugador = new LinkedList<Pokemon>();
+//
+//	private LinkedList<Pokemon> equipoContrincante = new LinkedList<Pokemon>();
+//
+//	public void batalla(Trainer jugador, Trainer contrincante) {
+//
+//		int vecesGanadasusuario = 0;
+//		int vecesGanadascontrincante = 0;
+//
+////		atacar(null, null, null, vecesGanadascontrincante);
+//
+//	}
 
 	/**
 	 * @param pokemonAtacado
@@ -53,10 +53,6 @@ public class Batalla {
 			return false;
 
 	}
-
-
-
-
 
 	// Segun el movimiento elegido se ejecutará un bloque distinto
 	private static void Elegirataque(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
@@ -136,11 +132,14 @@ public class Batalla {
 		return puedeAtacar;
 	}
 
-//	private static void cambiarPokemon(Pokemon pokemon) {
-//		
-//		entrenador
-//		
-//		
-//	}
+	// si no hay suficiente estamina para realizar el movimiento delvuelve false
+	public static boolean comprobraEstamina(Pokemon pokemon, Move movimiento) {
+
+		if (pokemon.getStamina() >= movimiento.getStaminaCost())
+			return true;
+		else
+
+			return false;
+	}
 
 }

@@ -36,6 +36,7 @@ public class CargarMoves {
 			String nombre = "";
 			String categoria = "";
 			int potencia = 0;
+			int costeEstamina=0;
 
 			while (miRs.next()) {
 
@@ -43,8 +44,9 @@ public class CargarMoves {
 				nombre = miRs.getString("nombre");
 				categoria = miRs.getString("categoria");
 				potencia = miRs.getInt("potencia");
+				costeEstamina=miRs.getInt("coste_estamina");
 
-				movimiento = new Move(nombre, id, categoria, potencia, null, " ", 0, 0);
+				movimiento = new Move(nombre, id, categoria, potencia, null, " ", 0, 0,costeEstamina);
 				
 				System.out.println("movimiento "+movimiento.toString());
 

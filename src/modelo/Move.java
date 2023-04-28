@@ -10,7 +10,8 @@ public class Move {
 	private String status;
 	private int turns;
 	private double buff;
-	
+	private int staminaCost;
+
 //	public Move() {
 //		super();
 //		this.id = 0;
@@ -21,19 +22,17 @@ public class Move {
 //		this.turns = 0;
 //		this.buff = 0;
 //	}
-	
-	
+
 	public Move(String name) {
 		super();
-		this.name=name;
-		
+		this.name = name;
+
 	}
-	
-	
-	
-	public Move(String name,int id, String category, int power, Types type, String status, int turns, double buff) {
+
+	public Move(String name, int id, String category, int power, Types type, String status, int turns, double buff,
+			int staminaCost) {
 		super();
-		this.name=name;
+		this.name = name;
 		this.id = id;
 		this.category = category;
 		this.power = power;
@@ -41,8 +40,9 @@ public class Move {
 		this.status = status;
 		this.turns = turns;
 		this.buff = buff;
+		this.staminaCost=staminaCost;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -75,8 +75,6 @@ public class Move {
 		return buff;
 	}
 
-	
-	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -109,12 +107,19 @@ public class Move {
 		this.buff = buff;
 	}
 
+	public int getStaminaCost() {
+		return staminaCost;
+	}
+
+	public void setStaminaCost(int staminaCost) {
+		this.staminaCost = staminaCost;
+	}
+
 	@Override
 	public String toString() {
-	
-		return name +" "+ category + " power=" + power;
-		
+
+		return name + " " + category + " power=" + power;
+
 	}
-	
-	
+
 }

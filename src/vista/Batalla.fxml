@@ -8,7 +8,6 @@
    <children>
       <Button fx:id="atacar" layoutX="401.0" layoutY="251.0" mnemonicParsing="false" onAction="#atacar" prefHeight="45.0" prefWidth="143.0" text="ATACAR" />
       <Button fx:id="cambiarPokemon" layoutX="208.0" layoutY="251.0" mnemonicParsing="false" onAction="#cambiarPokemon" prefHeight="45.0" prefWidth="143.0" text="CAMBIAR POKEMON" />
-      <Button fx:id="elegirMovimiento" layoutX="401.0" layoutY="318.0" mnemonicParsing="false" onAction="#elegirMovimiento" prefHeight="45.0" prefWidth="143.0" text="ELEGIR MOVIMIENTO" />
       <Label fx:id="muestraTurno" layoutX="48.0" layoutY="41.0" prefHeight="173.0" prefWidth="344.0" text="Label" />
    </children>
 </AnchorPane>
