@@ -1,11 +1,11 @@
 package pokemonTests;
 
-import pokemon.DmgTypes;
-import pokemon.Move;
-import pokemon.MoveCategory;
-import pokemon.Stats;
-import pokemon.Status;
-import pokemon.Types;
+import model.DmgTypes;
+import model.Move;
+import model.MoveCategory;
+import model.Stats;
+import model.Status;
+import model.Types;
 
 public class MoveTest {
 

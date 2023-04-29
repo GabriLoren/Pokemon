@@ -1,4 +1,4 @@
-package pokemon;
+package model;
 
 /* Types.java
  * Contains all the information for the pokemon types.

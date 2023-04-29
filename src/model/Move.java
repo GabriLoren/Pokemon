@@ -1,4 +1,4 @@
-package pokemon;
+package model;
 
 public class Move {
 

@@ -1,4 +1,4 @@
-package pokemon;
+package model;
 
 //Contains the values for what type advantage will deal in extra damage 
 public enum EffectValues {
