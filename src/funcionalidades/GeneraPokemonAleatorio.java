@@ -28,6 +28,7 @@ public class GeneraPokemonAleatorio {
 			todosLosPokemon = CargarTodosPokemons.getPokemon();
 		
 			sizeTodosLosPokemon = todosLosPokemon.size();
+			
 			numeroAleatorio = (int) (Math.random() * sizeTodosLosPokemon);
 			
 			pokemonEncontrado = todosLosPokemon.get(numeroAleatorio);

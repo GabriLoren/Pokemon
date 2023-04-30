@@ -48,8 +48,11 @@ public class ElegirPokemonBatallaController implements Initializable{
 	@FXML
 	private TableColumn tipo2;
 	
-	private LinkedList<Pokemon> equipoJugador=BatallaController.getEquipoJugador();
+	static LinkedList<Pokemon> equipoJugador;
 	
+	static Pokemon pokemonElegido;
+
+
 	public ObservableList<Pokemon> muestraEquipo() {
 
 		ObservableList<Pokemon> lista = FXCollections.observableArrayList();
@@ -69,7 +72,7 @@ public class ElegirPokemonBatallaController implements Initializable{
 		
 		ObservableList<Pokemon> pokemonSeleccionado = tabla.getSelectionModel().getSelectedItems();
 
-		 BatallaController.setPokemonElegidoJugador(pokemonSeleccionado.get(0));
+		pokemonElegido=pokemonSeleccionado.get(0);
 
 		
 		// se cierra la ventana actual
@@ -86,6 +89,7 @@ public class ElegirPokemonBatallaController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		equipoJugador=BatallaController.equipoJugador;
 		
 		tabla.setItems(muestraEquipo());
 

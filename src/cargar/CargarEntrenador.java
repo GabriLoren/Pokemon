@@ -14,6 +14,10 @@ import funcionalidades.ComprobarUsuarioExiste;
 import modelo.Pokemon;
 import modelo.Trainer;
 
+/**
+ * @author 34661
+ *
+ */
 public class CargarEntrenador {
 
 	private static Trainer entrenador;
@@ -55,12 +59,27 @@ public class CargarEntrenador {
 
 	}
 
-	// devuelve un entrenador aleatorio de la lista que se le pasa por parámetro
-	public static Trainer obtenerEntrenadorAleatorio(LinkedList<Trainer> entrenadores) {
+	/**
+	 * Devuelve un Tainer aleatorio de los que se han cargado al inicio del juego
+	 * distinto del Trainer del usuario
+	 * 
+	 * @return Trainer
+	 */
+	public static Trainer obtenerEntrenadorAleatorio() {
 
-		Trainer entrenadorContrincante = null;
+		Trainer entrenadorJugador = CargarEntrenador.getEntrenador();
 
-		int posicionEntrenador = (int) (Math.random() * entrenadores.size());
+		LinkedList<Trainer> entrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
+
+		Trainer entrenadorContrincante;
+
+		// podriamos controlar esta excepcion si nos dav timepo a acabar la aplicación
+		int posicionEntrenador = -1;
+
+		do {
+
+			posicionEntrenador = (int) (Math.random() * entrenadores.size());
+		} while (entrenadorJugador.getId() == entrenadores.get(posicionEntrenador).getId());
 
 		entrenadorContrincante = entrenadores.get(posicionEntrenador);
 

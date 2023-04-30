@@ -17,7 +17,7 @@ public class Criar {
 
 	public static void Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
 
-		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null);
+		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null,"");
 
 		// tendrá por defecto el nivel 1
 		pokemonHijo.setLevel(1);
