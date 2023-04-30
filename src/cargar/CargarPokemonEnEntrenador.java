@@ -47,10 +47,10 @@ public class CargarPokemonEnEntrenador {
 			String equipo = "si";
 			String estado="SinEstado";
 			String imagen="";
-//			id_movimiento1 int,
-//			id_movimiento2 int,
-//			id_movimiento3 int,
-//			id_movimiento4 int,
+//			int id_movimiento1=0;
+//			int id_movimiento2=0;
+//			int id_movimiento3=0;
+//			int id_movimiento4=0;
 //			id_objeto int);
 
 			while (miRs.next()) {
