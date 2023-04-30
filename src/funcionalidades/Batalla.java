@@ -8,18 +8,7 @@ import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;
 
-/**
- * @author 34661
- *
- */
-/**
- * @author 34661
- *
- */
-/**
- * @author 34661
- *
- */
+
 public class Batalla {
 
 	private static int turnos = 0;
@@ -51,8 +40,8 @@ public class Batalla {
 	}
 
 	/**
-	 * @param pokemon1           pokemon atacante
-	 * @param pokemon2           pokemon defensor
+	 * @param pokemon1 pokemon atacante
+	 * @param pokemon2 pokemon defensor
 	 * @param movimientoPokemon1 movimiento elegido en ese turno
 	 * @return true si ha podido efectuar un movimiento y false si no ha podido
 	 *         debido a que se encuentra en un estado que se lo impide y pasa el
@@ -60,10 +49,18 @@ public class Batalla {
 	 */
 	public static boolean atacar(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
 
+		if (turnos == 3 && pokemon1.getStatus().equals("CONGELADO")) {
+			pokemon1.setStatus("SINESTADO");
+			turnos = 0;
+		}
+
+		System.out.println("estado del pokemon atacante " + pokemon1.getStatus());
+
 		if (comprobarEstado(pokemon1)) {
 			// resta la estamina que consume le movimiento
 			pokemon1.setStamina(pokemon1.getStamina() - movimientoPokemon1.getStaminaCost());
 			elegirAtaque(pokemon1, pokemon2, movimientoPokemon1);
+
 			return true;
 		} else
 			return false;
@@ -99,6 +96,8 @@ public class Batalla {
 		case "ESTADO": {
 
 			pokemon2.setStatus(movimientoPokemon1.getName());
+			turnos = 0;
+
 			break;
 		}
 
@@ -130,13 +129,19 @@ public class Batalla {
 //				pokemon.setStatus("SINESTADO");
 //			else
 //				System.out.println("ESTA CONGELADO");
+			turnos++;
+
+			System.out.println("turnos de estadso " + turnos);
+
+			break;
+
+		}
+		case "ATURDIDO": {
+
+			puedeAtacar = false;
 
 			turnos++;
 
-			if (turnos == 3) {
-				pokemon.setStatus("SINESTADO");
-				turnos = 0;
-			}
 			break;
 
 		}
@@ -199,23 +204,23 @@ public class Batalla {
 		}
 
 	}
-	
+
 	/**
-	 * El entrenador que pierda el combate entrega al entrenador ganador 1/3 
-	 * de su número de pokédollars en valor entero 
+	 * El entrenador que pierda el combate entrega al entrenador ganador 1/3 de su
+	 * número de pokédollars en valor entero
 	 */
 	public static void premioGanadorBatalla(Trainer ganador, Trainer perdedor) {
-		
-		int premio=perdedor.getPokeDollar()/3;
-		
-		ganador.setPokeDollar(ganador.getPokeDollar()+premio);
-		
-		perdedor.setPokeDollar(perdedor.getPokeDollar()-premio);
-		
+
+		int premio = perdedor.getPokeDollar() / 3;
+
+		ganador.setPokeDollar(ganador.getPokeDollar() + premio);
+
+		perdedor.setPokeDollar(perdedor.getPokeDollar() - premio);
+
 		ActualizarPokedollarEntrenador.actualizarPokedollarEntrenador(ganador);
-		
+
 		ActualizarPokedollarEntrenador.actualizarPokedollarEntrenador(perdedor);
-		
+
 	}
 
 //	/**
