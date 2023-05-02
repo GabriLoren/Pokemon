@@ -4,13 +4,15 @@ public class Move {
 
 	private int id;
 	private String name;
-	private String category;
+	private MoveCategory category;
 	private int power;
 	private Types type;
-	private String status;
+	private Status status;
 	private int turns;
 	private double buff;
 	private int staminaCost;
+	private Stats stat;
+	private DmgTypes dmgTypes;
 
 //	public Move() {
 //		super();
@@ -29,8 +31,8 @@ public class Move {
 
 	}
 
-	public Move(String name, int id, String category, int power, Types type, String status, int turns, double buff,
-			int staminaCost) {
+	public Move(String name, int id, MoveCategory category, int power, Types type, Status status, int turns, double buff,
+			int staminaCost, Stats stat, DmgTypes dmgTypes) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -41,6 +43,8 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 		this.staminaCost=staminaCost;
+		this.stat = stat;
+		this.dmgTypes = dmgTypes;
 	}
 
 	public String getName() {
@@ -51,7 +55,7 @@ public class Move {
 		return id;
 	}
 
-	public String getCategory() {
+	public MoveCategory getCategory() {
 		return category;
 	}
 
@@ -63,7 +67,7 @@ public class Move {
 		return type;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
@@ -83,7 +87,7 @@ public class Move {
 		this.name = name;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(MoveCategory category) {
 		this.category = category;
 	}
 
@@ -95,7 +99,7 @@ public class Move {
 		this.type = type;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -113,6 +117,22 @@ public class Move {
 
 	public void setStaminaCost(int staminaCost) {
 		this.staminaCost = staminaCost;
+	}
+
+	public Stats getStats() {
+		return stat;
+	}
+
+	public void setStats(Stats stat) {
+		this.stat = stat;
+	}
+
+	public DmgTypes getDmgTypes() {
+		return dmgTypes;
+	}
+
+	public void setDmgTypes(DmgTypes dmgTypes) {
+		this.dmgTypes = dmgTypes;
 	}
 
 	@Override

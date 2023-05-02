@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 import modelo.Move;
+import modelo.MoveCategory;
 import modelo.Pokemon;
 import modelo.Trainer;
 import modelo.Types;
@@ -46,7 +47,7 @@ public class CargarMoves {
 				potencia = miRs.getInt("potencia");
 				costeEstamina=miRs.getInt("coste_estamina");
 
-				movimiento = new Move(nombre, id, categoria, potencia, null, " ", 0, 0,costeEstamina);
+				movimiento = new Move(nombre, id, categoria, potencia, null, MoveCategory.valueOf(categoria), 0, 0,costeEstamina);
 				
 				System.out.println("movimiento "+movimiento.toString());
 
