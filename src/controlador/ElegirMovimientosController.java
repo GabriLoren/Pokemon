@@ -21,13 +21,14 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;
 import javafx.scene.control.TableColumn;
 
-public class ElegirMovimientosController implements Initializable{
+public class ElegirMovimientosController implements Initializable {
 	@FXML
 	private TableView tablaElegirMovimiento;
 	@FXML
@@ -37,42 +38,31 @@ public class ElegirMovimientosController implements Initializable{
 	@FXML
 	private Button seleccionar;
 
-	private static int contadorJugador = 0;
+	private Move movimietoSeleccionado;
 
-	private static int contadorMaquina = 0;
-
-	// todos los entrenadores que hay en la base de datos
-	private static LinkedList<Trainer> todosLosEntrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
-
-	private static Trainer entrenadorJugador = CargarEntrenador.getEntrenador();
-
-	private static Trainer entrenadorAleatorio = CargarEntrenador.obtenerEntrenadorAleatorio(todosLosEntrenadores);
-
-	private static LinkedList<Pokemon> equipoJugador = new LinkedList<Pokemon>(entrenadorJugador.getEquipoPokemon());
-
-	private static LinkedList<Pokemon> equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
-	
-	private static Pokemon pokemonElegidoJugador = equipoJugador.get(contadorJugador);
-
-	private static Pokemon pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
-	
-	private static LinkedList<Move> movimientosPokemonEnCombate;
-	
-	String turno;
+	private LinkedList<Move> movimientosPokemonEnCombate;
+	public Move getMovimietoSeleccionado() {
+		return movimietoSeleccionado;
+	}
 
 
+	public void setMovimientosPokemonEnCombate(LinkedList<Move> movimientosPokemonEnCombate) {
+		this.movimientosPokemonEnCombate = movimientosPokemonEnCombate;
+	}
 
-	public ObservableList<Move> muestraMovimientos() {
+	public ObservableList<Move> mostrar() {
 
-		ObservableList<Move> lista = FXCollections.observableArrayList();
+		ObservableList<Move> listaObservableList = FXCollections.observableArrayList();
 
 		for (int i = 0; i < movimientosPokemonEnCombate.size(); i++) {
 
-			lista.add(movimientosPokemonEnCombate.get(i));
+			listaObservableList.add(movimientosPokemonEnCombate.get(i));
 
 		}
-		return lista;
+		return listaObservableList;
 	}
+
+
 
 	// Event Listener on Button[#seleccionar].onAction
 	@FXML
@@ -81,113 +71,24 @@ public class ElegirMovimientosController implements Initializable{
 
 		ObservableList<Move> movimientos = tablaElegirMovimiento.getSelectionModel().getSelectedItems();
 
-		Move movimietoJugador = movimientos.get(0);
+		movimietoSeleccionado= movimientos.get(0);
 
-		if (Batalla.atacar(pokemonElegidoJugador, pokemonElegidoMaquina, movimietoJugador)) {
-
-			if (Batalla.vidaPokemonAtacado(pokemonElegidoMaquina)) {
-				System.out.println("valor del contadorMaquina " + contadorMaquina);
-
-				contadorMaquina++;
-
-//				System.out.println("La máquina a elegido a " + pokemonElegidoMaquina.getName() + "\n"
-//						+ "Tú has elegido a " + pokemonElegidoJugador.getName());
-
-				if (contadorMaquina < equipoMaquina.size())
-					pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
-			}
-
-		}
-
-//		System.out.println("vida del pokemonMaquina DEPUES DEL ATAQUE" + pokemonElegidoMaquina.getVit());
-//		System.out.println();
-
-		// para hacer pruebas, cuando los pokemon tengan sus movimientos no será
-		// necesario
-
-		// para hacer pruebas
-		Move movimietoMaquina = pokemonElegidoMaquina.getMoves().getFirst();
-
-		System.out.println("EL ESTADO DEL PONKEMON ES " + pokemonElegidoMaquina.getStatus());
-
-//		System.out.println("vida del pokemonJugador ANTES DEL ATAQUE " + pokemonElegidoJugador.getVit());
-
-//		System.out.println("la máquina ha elegido el movimiento " + movimietoMaquina.getName());
-
-		if (Batalla.atacar(pokemonElegidoMaquina, pokemonElegidoJugador, movimietoMaquina)) {
-
-			if (Batalla.vidaPokemonAtacado(pokemonElegidoJugador)) {
-
-				contadorJugador++;
-
-				equipoJugador.remove(pokemonElegidoJugador);
-
-				if (equipoJugador.size() > 0) {
-					// elimina el pokemon que ha muerto de la lista de los pokemon disponible para
-					// luchar
-
-					// se abre la ventana con los pokemon del jugador para que seleccione otro
-					FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/vista/ElegirPokemonBatalla.fxml"));
-
-					Parent root2 = loader2.load();
-
-					Scene scene2 = new Scene(root2);
-
-					Stage stage2 = new Stage();
-//							stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
-
-					stage2.setScene(scene2);
-					stage2.show();
-				}
-
-			}
-
-		}
-
-		if (contadorMaquina == entrenadorAleatorio.getEquipoPokemon().size()) {
-
-			System.out.println("has ganado el combate");
-
-			// se cierra la ventana actual
-//			Stage stage2 = (Stage) this.atacar.getScene().getWindow();
-//			stage2.close();
-
-		}
-
-		else if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
-
-			System.out.println("has perdido el combate");
-			// se cierra la ventana actual
-//			Stage stage2 = (Stage) this.atacar.getScene().getWindow();
-//			stage2.close();
-			
-		
-		}
-		turno="la vida de "+pokemonElegidoJugador.getName()+" del jugador es "+pokemonElegidoJugador.getVit()+"\n"+
-				"la vida de "+pokemonElegidoMaquina.getName()+" de la máquina es "+pokemonElegidoMaquina.getVit()+"\n"+
-				"has elegido "+movimietoJugador.getName()+"\n"+
-				"la máquina ha elegido "+movimietoMaquina.getName();
-				;
-		
 		// se cierra la ventana actual
 		Stage stage2 = (Stage) this.seleccionar.getScene().getWindow();
 		stage2.close();
-	}
 
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+		movimientosPokemonEnCombate=BatallaController.movimientosPokemonEnCombate;
 
-	
-
-		movimientosPokemonEnCombate = pokemonElegidoJugador.getMoves();
-
-		tablaElegirMovimiento.setItems(muestraMovimientos());
+		tablaElegirMovimiento.setItems(mostrar());
 
 		nombre.setCellValueFactory(new PropertyValueFactory<Move, String>("name"));
 		potencia.setCellValueFactory(new PropertyValueFactory<Move, String>("power"));
-		
+
 	}
 }

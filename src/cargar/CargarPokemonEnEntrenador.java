@@ -46,10 +46,11 @@ public class CargarPokemonEnEntrenador {
 			int fertilidad=0;
 			String equipo = "si";
 			String estado="SinEstado";
-//			id_movimiento1 int,
-//			id_movimiento2 int,
-//			id_movimiento3 int,
-//			id_movimiento4 int,
+			String imagen="";
+//			int id_movimiento1=0;
+//			int id_movimiento2=0;
+//			int id_movimiento3=0;
+//			int id_movimiento4=0;
 //			id_objeto int);
 
 			while (miRs.next()) {
@@ -67,11 +68,12 @@ public class CargarPokemonEnEntrenador {
 				nivel = Integer.parseInt(miRs.getString(12));
 				equipo = miRs.getString(18);
 				fertilidad=miRs.getInt("fertilidad");
+				imagen= miRs.getString("imagen");
 				
 //				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
-						velocidad, stamina, nivel,fertilidad, equipo, estado);
+						velocidad, stamina, nivel,fertilidad, equipo, estado,imagen);
 				
 				
 				//para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos los entrenadores

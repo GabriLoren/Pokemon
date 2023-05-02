@@ -23,6 +23,7 @@ public class Pokemon {
 	private String status;
 	private Obj object;
 	private String equipo;
+	private String imagen;
 
 	public Pokemon(Pokemon p) {
 
@@ -41,6 +42,7 @@ public class Pokemon {
 		this.fertility = p.fertility;
 		this.status=p.status;
 		this.moves = p.moves;
+		this.imagen=p.imagen;
 		
 	}
 
@@ -65,7 +67,7 @@ public class Pokemon {
 	}
 
 	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
-			int stamina, int level, int fertility, String equipo, String status) {
+			int stamina, int level, int fertility, String equipo, String status, String imagen) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -82,11 +84,12 @@ public class Pokemon {
 		this.fertility = fertility;
 		this.moves = new LinkedList<Move>();
 		this.status = status;
+		this.setImagen(imagen);
 
 	}
 
 	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
-			int level, int fertility) {
+			int level, int fertility, String imagen) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -101,6 +104,7 @@ public class Pokemon {
 		this.moves = new LinkedList<Move>();
 		this.status = status;
 		this.fertility = fertility;
+		this.setImagen(imagen);
 
 	}
 
@@ -327,6 +331,14 @@ public class Pokemon {
 		this.equipo = equipo;
 	}
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	// si el mote es una palabrota devuelve falso
 	public static boolean comprobarMote(String mote) {
 
@@ -349,6 +361,11 @@ public class Pokemon {
 		this.speed = 0;
 		this.stamina = 0;
 
+	}
+	
+	public void recuperarEstamina() {
+		
+		stamina+=20;
 	}
 
 	@Override

@@ -27,8 +27,8 @@ public class Captura {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL,FERTILIDAD,EQUIPO)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL,FERTILIDAD,EQUIPO,IMAGEN)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, idGenerado);// id
@@ -45,6 +45,7 @@ public class Captura {
 			miPSt.setLong(12, pokemon.getLevel());
 			miPSt.setLong(13, pokemon.getFertility());
 			miPSt.setString(14, "NO");
+			miPSt.setString(15, pokemon.getImagen());
 			
 			
 
