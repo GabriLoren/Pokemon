@@ -18,15 +18,9 @@ public class Entrenar2 {
 
 		switch (tipoDeEntrenamiento.toLowerCase()) {
 		case "pesado": {
-
-			System.out.println("dinero entrenador: "+entrenador.getPokeDollar());
-			
-			System.out.println("costo pokemon: "+20 * pokemonElegido.getLevel());
 			
 			if ((entrenador.getPokeDollar() - (20 * pokemonElegido.getLevel())) < 0) {
 
-				System.out.println("no hay suficiente dinero");
-				System.out.println(entrenador.getPokeDollar());
 
 				noSuficienteDinero = true;
 			} else {
@@ -44,8 +38,6 @@ public class Entrenar2 {
 
 			if ((entrenador.getPokeDollar() - (30 * pokemonElegido.getLevel())) < 0) {
 
-				System.out.println("no hay suficiente dinero");
-				System.out.println(entrenador.getPokeDollar());
 				noSuficienteDinero = true;
 			} else {
 
@@ -61,8 +53,7 @@ public class Entrenar2 {
 
 			if ((entrenador.getPokeDollar() - (40 * pokemonElegido.getLevel())) < 0) {
 
-				System.out.println("no hay suficiente dinero");
-				System.out.println(entrenador.getPokeDollar());
+				
 				noSuficienteDinero = true;
 			} else {
 
@@ -80,8 +71,7 @@ public class Entrenar2 {
 
 			if ((entrenador.getPokeDollar() - (40 * pokemonElegido.getLevel())) < 0) {
 
-				System.out.println("no hay suficiente dinero");
-				System.out.println(entrenador.getPokeDollar());
+		
 				noSuficienteDinero = true;
 			} else {
 

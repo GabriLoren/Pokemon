@@ -4,21 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Entrenar2Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Entrenar2Controller">
    <children>
-      <TableView fx:id="tabla" layoutX="102.0" layoutY="54.0" prefHeight="433.0" prefWidth="449.0">
-        <columns>
-          <TableColumn fx:id="c1" prefWidth="155.0" text="C1" />
-          <TableColumn fx:id="c2" prefWidth="122.0" text="C2" />
-            <TableColumn fx:id="c3" minWidth="0.0" prefWidth="171.0" text="C3" />
-        </columns>
+      <ImageView fitHeight="520.0" fitWidth="814.0" layoutX="-6.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/vistaEntrenar.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="292.0" layoutY="295.0" mnemonicParsing="false" onAction="#furioso" onMouseEntered="#precioFurioso" onMouseExited="#furiosoExited" prefHeight="25.0" prefWidth="82.0" text="FURIOSO" />
+      <Button layoutX="142.0" layoutY="295.0" mnemonicParsing="false" onAction="#funcional" onMouseEntered="#precioFuncional" onMouseExited="#funcionalExited" text="FUNCIONAL" />
+      <Button layoutX="417.0" layoutY="295.0" mnemonicParsing="false" onAction="#onirico" onMouseEntered="#precioOnirico" onMouseExited="#oniricoExited" prefHeight="25.0" prefWidth="82.0" text="ONIRICO" />
+      <Button layoutX="565.0" layoutY="295.0" mnemonicParsing="false" onAction="#pesado" onMouseEntered="#precioPesado" onMouseExited="#pesadoExited" prefHeight="25.0" prefWidth="82.0" text="PESADO" />
+      <Label fx:id="pokedollarEntrenador" alignment="TOP_LEFT" layoutX="15.0" layoutY="355.0" prefHeight="80.0" prefWidth="337.0" text="SALDO" textFill="#111010">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <TableView fx:id="tabla" layoutX="45.0" layoutY="115.0" prefHeight="147.0" prefWidth="724.0">
+         <columns>
+            <TableColumn fx:id="moteEquipo" prefWidth="68.0" text="MOTE" />
+            <TableColumn fx:id="nombreEquipo" prefWidth="82.0" text="NOMBRE" />
+            <TableColumn fx:id="ataqueEquipo" prefWidth="75.0" text="ATAQUE" />
+            <TableColumn fx:id="defensaEquipo" prefWidth="75.0" text="DEFENSA" />
+            <TableColumn fx:id="ataqueSpEquipo" prefWidth="75.0" text="ATAQUESP" />
+            <TableColumn fx:id="defensaSpEquipo" prefWidth="75.0" text="DEFENSASP" />
+            <TableColumn fx:id="velocidadEquipo" prefWidth="75.0" text="VELOCIDAD" />
+            <TableColumn fx:id="estaminaEquipo" prefWidth="75.0" text="ESTAMINA" />
+            <TableColumn fx:id="nivelEquipo" prefWidth="52.0" text="NIVEL" />
+            <TableColumn fx:id="vitalidadEquipo" prefWidth="71.0" text="VITALIDAD" />
+         </columns>
       </TableView>
-      <Button layoutX="26.0" layoutY="224.0" mnemonicParsing="false" onAction="#furioso" prefHeight="25.0" prefWidth="65.0" text="furioso" />
-      <Button layoutX="26.0" layoutY="126.0" mnemonicParsing="false" onAction="#funcional" text="funcional" />
-      <Button layoutX="26.0" layoutY="172.0" mnemonicParsing="false" onAction="#onirico" prefHeight="25.0" prefWidth="65.0" text="onirico" />
-      <Button layoutX="26.0" layoutY="270.0" mnemonicParsing="false" onAction="#pesado" prefHeight="25.0" prefWidth="65.0" text="pesado" />
-      <Label fx:id="noSuficienteDinero" layoutX="152.0" layoutY="487.0" prefHeight="43.0" prefWidth="337.0" />
+      <Label alignment="TOP_LEFT" layoutX="198.0" layoutY="14.0" prefHeight="80.0" prefWidth="457.0" text="ENTRENAMIENTO" textFill="#111010">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="precioEntrenamiento" alignment="TOP_RIGHT" layoutX="367.0" layoutY="355.0" prefHeight="110.0" prefWidth="375.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

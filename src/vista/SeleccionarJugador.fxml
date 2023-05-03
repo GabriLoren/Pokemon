@@ -3,13 +3,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.SeleccionarJugadorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.SeleccionarJugadorController">
    <children>
-      <TextField fx:id="TxtInsertarJugador" layoutX="219.0" layoutY="141.0" />
-      <Button fx:id="btbcargarEntrenador" layoutX="253.0" layoutY="188.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
-      <Label fx:id="lblMostrarUsuario" layoutX="142.0" layoutY="49.0" prefHeight="59.0" prefWidth="303.0" />
-      <Button fx:id="btbCrearUsuario" layoutX="256.0" layoutY="236.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
+      <ImageView fitHeight="406.0" fitWidth="497.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/vistaPrincipal.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="TxtInsertarJugador" layoutX="156.0" layoutY="125.0" />
+      <Button fx:id="btbcargarEntrenador" layoutX="184.0" layoutY="170.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
+      <Label fx:id="lblMostrarUsuario" layoutX="107.0" layoutY="23.0" prefHeight="59.0" prefWidth="303.0" />
+      <Button fx:id="btbCrearUsuario" layoutX="184.0" layoutY="216.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
    </children>
 </AnchorPane>
