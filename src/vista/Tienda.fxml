@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.TiendaController">
    <children>
       <TableView fx:id="tienda" layoutX="19.0" layoutY="43.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="176.0" prefWidth="534.0">
          <columns>
@@ -43,11 +42,11 @@
       <Label alignment="CENTER" layoutX="248.0" layoutY="11.0" prefHeight="21.0" prefWidth="48.0" text="TIENDA" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="658.0" layoutY="11.0" prefHeight="21.0" prefWidth="62.0" text="MOCHILA" textAlignment="CENTER" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="225.0" prefHeight="21.0" prefWidth="48.0" text="EQUIPO" textAlignment="CENTER" />
-      <Button fx:id="comprar" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#comprar" prefHeight="39.0" prefWidth="130.0" text="COMPRAR" />
       <Button fx:id="quitar" layoutX="488.0" layoutY="447.0" mnemonicParsing="false" onAction="#quitar" prefHeight="39.0" prefWidth="130.0" text="QUITAR" />
       <Button fx:id="vender" layoutX="156.0" layoutY="447.0" mnemonicParsing="false" onAction="#vender" prefHeight="39.0" prefWidth="130.0" text="VENDER" />
       <Button fx:id="insertar" layoutX="635.0" layoutY="447.0" mnemonicParsing="false" onAction="#insertar" prefHeight="39.0" prefWidth="130.0" text="INSERTAR" />
       <Label fx:id="pokedollarEntrenador" layoutX="128.0" layoutY="495.0" prefHeight="31.0" prefWidth="265.0" />
       <Label layoutX="421.0" layoutY="502.0" prefHeight="13.0" prefWidth="110.0" text="SALDO" />
+      <Button fx:id="comprar" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" onAction="#comprar" prefHeight="39.0" prefWidth="130.0" text="COMPRAR" />
    </children>
 </AnchorPane>
