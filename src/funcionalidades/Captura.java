@@ -9,9 +9,9 @@ import modelo.Pokemon;
 
 public class Captura {
 	
-	public static void captura(Pokemon pokemon, String mote, int idEntrenador) {
+	public static void captura(Pokemon pokemon, int idEntrenador) {
 		
-		pokemon.setNickname(mote);
+//		pokemon.setNickname(mote);
 		
 		insertarEnBbDdElPokemonEncontrado(pokemon, idEntrenador);
 		
@@ -33,7 +33,7 @@ public class Captura {
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, idGenerado);// id
 			miPSt.setString(2, nombre);// MOTE
-			miPSt.setString(3, pokemon.getNickname());// nombre
+			miPSt.setString(3, pokemon.getName());// nombre
 			miPSt.setLong(4, idEntrenador);// id_entrenador que está actualmemnte jugando
 			miPSt.setLong(5, pokemon.getVit());
 			miPSt.setLong(6, pokemon.getAtk());

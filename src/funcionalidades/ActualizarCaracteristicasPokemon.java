@@ -10,16 +10,15 @@ import modelo.Pokemon;
 public class ActualizarCaracteristicasPokemon {
 
 	public static void actualizarPokemonEnBbDd(Pokemon pokemon) {
+
 		
-		System.out.println("VITALIDAD POKEMON:"+pokemon.getVit());
 
 		try {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
 
-
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=?, EQUIPO=? WHERE ID=?";
+					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?  WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -35,9 +34,8 @@ public class ActualizarCaracteristicasPokemon {
 			miPSt.setLong(8, pokemon.getLevel());
 			miPSt.setLong(9, pokemon.getFertility());
 			miPSt.setString(10, pokemon.getEquipo());
-			miPSt.setLong(11, pokemon.getId());
-			
-			
+			miPSt.setString(11, pokemon.getNickname());
+			miPSt.setLong(12, pokemon.getId());
 
 			miPSt.executeUpdate();
 

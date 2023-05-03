@@ -92,9 +92,8 @@ public class Trainer {
 		this.equipoPokemon = equipoPokemon;
 	}
 
-	public void insertraPokemonCapturado(Pokemon pokemon, String mote) {
-
-		pokemon.setNickname(mote);
+	public void insertraPokemonCapturado(Pokemon pokemon) {
+		pokemon.setEquipo("NO");
 
 		this.todosLosPokemon.add(pokemon);
 	}
