@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-
+import cargar.CargarMoves;
 import cargar.CargarTodosPokemons;
 import modelo.Pokemon;
 
@@ -42,6 +42,9 @@ public class GeneraPokemonAleatorio {
 //			pokemonEncontrado.getMoves().add(null);
 			
 			pokemonEncontrado.setId(idGenerado);
+			
+			//añade el movimeinto id 1 de la tabla moves por defecto
+			pokemonEncontrado.getMoves().add(CargarMoves.cargarMovesEnPokemon(1));
 			
 		return pokemonEncontrado;
 

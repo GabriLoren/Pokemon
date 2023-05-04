@@ -79,7 +79,7 @@ public class BatallaController implements Initializable {
 
 	private static LinkedList<Pokemon> equipoMaquina;
 
-	private static Pokemon pokemonElegidoJugador;
+	static Pokemon pokemonElegidoJugador;
 
 	private static Pokemon pokemonElegidoMaquina;
 
@@ -511,6 +511,7 @@ public class BatallaController implements Initializable {
 		imagenOponente.setImage(imagenMaquina);
 
 		barra.setProgress(1);
+		
 
 	}
 }

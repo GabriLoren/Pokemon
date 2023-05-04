@@ -51,6 +51,8 @@ public class ElegirMovimientosController implements Initializable {
 	}
 
 	public ObservableList<Move> mostrar() {
+		
+		System.out.println("tamanino "+movimientosPokemonEnCombate.size());
 
 		ObservableList<Move> listaObservableList = FXCollections.observableArrayList();
 
@@ -83,7 +85,7 @@ public class ElegirMovimientosController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
-		movimientosPokemonEnCombate=BatallaController.movimientosPokemonEnCombate;
+		movimientosPokemonEnCombate=BatallaController.pokemonElegidoJugador.getMoves();
 
 		tablaElegirMovimiento.setItems(mostrar());
 

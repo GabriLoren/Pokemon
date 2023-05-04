@@ -11,7 +11,7 @@ public class ActualizarCaracteristicasPokemon {
 
 	public static void actualizarPokemonEnBbDd(Pokemon pokemon) {
 
-		
+		System.out.println("mote "+pokemon.getNickname());
 
 		try {
 

@@ -42,9 +42,9 @@ public class CargarEntrenador {
 
 				entrenador = todosLosEntrenadores.get(i);
 
-				// sacamos de la lista de todos los entrenadores que tenemos el entrenador que
+				// sacamos de la lista de todos los entrenadores que tenemos, el entrenador que
 				// va a iniciar la partida
-				// para que cuando sellecionemos uno aleatorio en la batalla no se encuentre el
+				// para que al seleccionar uno aleatorio en la batalla no coincida con el
 				// que tenemos en ese momento en juego
 				CargarTodosLosEntrenadores.getTodosLosEntrenadores().remove(todosLosEntrenadores.get(i));
 

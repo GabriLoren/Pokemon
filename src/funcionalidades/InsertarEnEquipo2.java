@@ -19,6 +19,8 @@ public class InsertarEnEquipo2 {
 
 				entrenador.getTodosLosPokemon().remove(entrenador.getTodosLosPokemon().get(i));
 
+				System.out.println("mote2 "+entrenador.getEquipoPokemon().getLast().getNickname());
+				
 				ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(entrenador.getEquipoPokemon().getLast());
 
 			}

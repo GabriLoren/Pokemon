@@ -61,5 +61,17 @@ public class CargarMoves {
 		}
 
 	}
+	//devuelve el movimiento correspondiente al id del movimiento introducido por parámetro
+	public static Move cargarMovesEnPokemon(int idMove) {
+		Move movimiento=null;
+		
+		for(int i=0;i<movimientos.size();i++) {
+			
+			if(idMove==movimientos.get(i).getId())
+			
+			movimiento=movimientos.get(i);
+		}
+		return movimiento;
+	}
 
 }
