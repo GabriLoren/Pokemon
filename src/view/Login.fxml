@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="316.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="379.0" fitWidth="564.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/world-map.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtfUser" layoutX="209.0" layoutY="78.0" />
+      <Label fx:id="lblUser" layoutX="209.0" layoutY="61.0" text="User" textFill="WHITE" />
+      <Button fx:id="btnCheckUser" layoutX="256.0" layoutY="201.0" mnemonicParsing="false" onAction="#checkUser" text="Login" />
+      <TextField fx:id="txtfPass" layoutX="207.0" layoutY="132.0" />
+      <Label fx:id="lblPass" layoutX="209.0" layoutY="114.0" text="Password" textFill="WHITE" />
+   </children>
+</AnchorPane>
