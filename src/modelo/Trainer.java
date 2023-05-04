@@ -95,7 +95,7 @@ public class Trainer {
 	public void insertraPokemonCapturado(Pokemon pokemon) {
 		pokemon.setEquipo("NO");
 		
-		pokemon.setStatus("sinEstado");
+		pokemon.setStatus(null);
 		
 		pokemon.setNickname(pokemon.getName());
 

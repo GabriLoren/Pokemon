@@ -1,16 +1,78 @@
 package funcionalidades;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import modelo.DmgTypes;
 import modelo.Move;
 import modelo.Pokemon;
+import modelo.Status;
 import modelo.Trainer;
+import modelo.TypeChart;
 
 
 public class Batalla {
 
+	// Generates a random number and has a 17 / 256 chance of being a critical hit
+		private static int critChance() {
+			boolean crit = false;
+			Random rnd = new Random();
+			int low = 0;
+			int high = 256;
+			int result = rnd.nextInt(high - low) + low;
+			for (int i = 0; i < 17; i++) {
+				if (result == i) {
+					crit = true;
+				}
+			}
+			if (crit) {
+				return 2;
+			} else {
+				return 1;
+			}
+		}
+
+		// Checks if a pokemon's move shares type with any of the pokemon types and if
+			// it does it returns 1.5 otherwise it returns 1
+			private static double stab(Pokemon p, Move m) {
+				if (p.getType().equals(m.getType()) || p.getType2().equals(m.getType())) {
+					return 1.5;
+				} else {
+					return 1;
+				}
+			}
+
+		// Generates a random number between 217 and 255, then checks if the previous
+		// steps of the damage formula equal 1, if it does it returns 1 otherwise it
+		// returns the generated number divided by 255
+		private static int dmgRnd(Pokemon p, Pokemon r, Move m) {
+			Random rnd = new Random();
+			int low = 217;
+			int high = 255;
+			int result = rnd.nextInt(high - low) + low;
+			if (m.getDmgTypes().equals(DmgTypes.PHYSICAL)) {
+				if ((int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef())) / 50
+						+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+						* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
+					return 1;
+				} else {
+					return result / 255;
+				}
+			} else {
+				if ((int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getSpAtk() / r.getSpDef()))
+						/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+						* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
+					return 1;
+				} else {
+					return result / 255;
+				}
+			}
+		}
+
+
+	
 	private static int turnos = 0;
 
 //	private LinkedList<Pokemon> equipoJugador = new LinkedList<Pokemon>();
@@ -49,8 +111,8 @@ public class Batalla {
 	 */
 	public static boolean atacar(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
 
-		if (turnos == 3 && pokemon1.getStatus().equals("CONGELADO")) {
-			pokemon1.setStatus("SINESTADO");
+		if (turnos == 3 && pokemon1.getStatus().equals(Status.FREEZE)) {
+			pokemon1.setStatus(null);
 			turnos = 0;
 		}
 
@@ -87,21 +149,21 @@ public class Batalla {
 	private static void elegirAtaque(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
 
 		switch (movimientoPokemon1.getCategory()) {
-		case "ATAQUE": {
+		case ATTACK: {
 
-			pokemon2.setVit(pokemon2.getVit() - movimientoPokemon1.getPower());
+			pokemon2.setVit(pokemon2.getVit() - dmg(pokemon1, pokemon2, movimientoPokemon1));
 
 			break;
 		}
-		case "ESTADO": {
+		case STATUS: {
 
-			pokemon2.setStatus(movimientoPokemon1.getName());
+			pokemon2.setStatus(movimientoPokemon1.getStatus());
 			turnos = 0;
 
 			break;
 		}
 
-		case "MEJORA": {
+		case BUFF: {
 			break;
 
 		}
@@ -119,7 +181,7 @@ public class Batalla {
 		boolean puedeAtacar = true;
 
 		switch (pokemon.getStatus()) {
-		case "CONGELADO": {
+		case FREEZE: {
 
 			puedeAtacar = false;
 //			
@@ -136,7 +198,7 @@ public class Batalla {
 			break;
 
 		}
-		case "ATURDIDO": {
+		case FLINCHED: {
 
 			puedeAtacar = false;
 
@@ -221,6 +283,24 @@ public class Batalla {
 
 		ActualizarPokedollarEntrenador.actualizarPokedollarEntrenador(perdedor);
 
+	}
+	
+	// This is the official way of calculating the damage of attack moves on
+	// generation
+	// 1 pokemon. Formula:
+	// https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_I
+	public static int dmg(Pokemon p, Pokemon r, Move m) {
+		int dmg = 0;
+		if (m.getDmgTypes().equals(DmgTypes.PHYSICAL)) {
+			dmg = (int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef())) / 50
+					+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
+		} else {
+			dmg = (int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getSpAtk() / r.getSpDef())) / 50
+					+ 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
+		}
+		return dmg;
 	}
 
 //	/**
