@@ -1,0 +1,63 @@
+create table pokemon_entrenador(
+id int,
+nombre varchar(20),
+categoria varchar(20),
+potencia int,
+tipo varchar(20),
+estado varchar(20),
+turnos int,
+mejora float);
+
+
+insert into movimieto (id,nombre,categoria,potencia) VALUES(1,'PATADA','ATAQUE',10);
+
+create table pokemon_entrenador(
+id int,
+nombre varchar(20),
+mote varchar(20),
+id_entrenador int,
+vida int,
+ataque int,
+defensa	int,
+ataque_sp int,
+defensa_sp int,
+velocidad int,
+stamina	int,
+nivel int,
+id_movimiento1 int,
+id_movimiento2 int,
+id_movimiento3 int,
+id_movimiento4 int,
+id_objeto int,
+equipo varchar(2));
+
+CREATE table object(
+id INT,
+nombre varchar(20)
+);
+create table objeto_entrenador(
+id Int,
+nombre varchar(20),
+id_objeto Int,
+id_entrenador int);
+
+insert into pokemon VALUES (1,'PIKACHU',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (2,'CHARMANDER',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (3,'RAICHU',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (4,'SCUIRTEL',100,100,100,100,100,100,100,100);
+insert into pokemon VALUES (5,'RATATA',100,100,100,100,100,100,100,100);
+
+
+
+
+create table pokemon(
+id int,
+nombre varchar(20),
+vida int,
+ataque int,
+defensa	int,
+ataqueSp int,
+defensaSpint int,
+velocidad int,
+stamina	int,
+nivel int);

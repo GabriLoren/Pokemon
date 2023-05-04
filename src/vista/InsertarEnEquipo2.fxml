@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InsertarEnEquio2Controller">
+   <children>
+      <ImageView fitHeight="525.0" fitWidth="850.0" layoutX="-4.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/vistaEquipo.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="quitar" layoutX="427.0" layoutY="442.0" mnemonicParsing="false" onAction="#quitar" prefHeight="25.0" prefWidth="92.0" text="QUITAR" />
+      <Button fx:id="seleccionar" layoutX="307.0" layoutY="442.0" mnemonicParsing="false" onAction="#seleccionar" prefHeight="25.0" prefWidth="100.0" text="SELECCIONAR" />
+      <TableView fx:id="tablaEquipo" layoutX="8.0" layoutY="260.0" prefHeight="147.0" prefWidth="826.0">
+         <columns>
+            <TableColumn fx:id="moteEquipo" prefWidth="68.0" text="MOTE" />
+            <TableColumn fx:id="nombreEquipo" prefWidth="82.0" text="NOMBRE" />
+            <TableColumn fx:id="ataqueEquipo" prefWidth="75.0" text="ATAQUE" />
+            <TableColumn fx:id="defensaEquipo" prefWidth="75.0" text="DEFENSA" />
+            <TableColumn fx:id="ataqueSpEquipo" prefWidth="75.0" text="ATAQUESP" />
+            <TableColumn fx:id="defensaSpEquipo" prefWidth="75.0" text="DEFENSASP" />
+            <TableColumn fx:id="velocidadEquipo" prefWidth="75.0" text="VELOCIDAD" />
+            <TableColumn fx:id="estaminaEquipo" prefWidth="75.0" text="ESTAMINA" />
+            <TableColumn fx:id="nivelEquipo" prefWidth="52.0" text="NIVEL" />
+            <TableColumn fx:id="vitalidadEquipo" prefWidth="71.0" text="VITALIDAD" />
+            <TableColumn fx:id="tipo1Equipo" prefWidth="52.0" text="TIPO1" />
+            <TableColumn fx:id="tipo2Equipo" prefWidth="49.0" text="TIPO2" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tabla" layoutX="5.0" layoutY="77.0" prefHeight="155.0" prefWidth="826.0">
+        <columns>
+          <TableColumn fx:id="mote" prefWidth="68.0" text="MOTE" />
+          <TableColumn fx:id="nombre" prefWidth="82.0" text="NOMBRE" />
+            <TableColumn fx:id="ataque" prefWidth="75.0" text="ATAQUE" />
+            <TableColumn fx:id="defensa" prefWidth="75.0" text="DEFENSA" />
+            <TableColumn fx:id="ataqueSp" prefWidth="75.0" text="ATAQUESP" />
+            <TableColumn fx:id="defensaSp" prefWidth="75.0" text="DEFENSASP" />
+            <TableColumn fx:id="velocidad" prefWidth="75.0" text="VELOCIDAD" />
+            <TableColumn fx:id="estamina" prefWidth="75.0" text="ESTAMINA" />
+            <TableColumn fx:id="nivel" prefWidth="47.0" text="NIVEL" />
+            <TableColumn fx:id="vitalidad" prefWidth="73.0" text="VITALIDAD" />
+            <TableColumn fx:id="tipo1" prefWidth="45.0" text="TIPO1" />
+            <TableColumn fx:id="tipo2" prefWidth="61.0" text="TIPO2" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
