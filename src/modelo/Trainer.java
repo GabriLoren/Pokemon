@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Connection;
 
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 import cargar.CargarPokemonEnEntrenador;
+
 import funcionalidades.GenerarID;
+import funcionalidades.PokemonEntrenadorCrud;
 
 public class Trainer {
 
@@ -92,7 +95,8 @@ public class Trainer {
 		this.equipoPokemon = equipoPokemon;
 	}
 
-	public void insertraPokemonCapturado(Pokemon pokemon) {
+	//inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
+	public void capturar(Pokemon pokemon) {
 		pokemon.setEquipo("NO");
 		
 		pokemon.setStatus("sinEstado");
@@ -100,6 +104,9 @@ public class Trainer {
 		pokemon.setNickname(pokemon.getName());
 
 		this.todosLosPokemon.add(pokemon);
+		
+		PokemonEntrenadorCrud.insertarEnBbDdElPokemonEncontrado(pokemon, this.id);
+		
 	}
 
 	public void insertarObjetoComprado(Obj objeto) {
@@ -144,6 +151,6 @@ public class Trainer {
 
 	}
 	
- 
+
 
 }

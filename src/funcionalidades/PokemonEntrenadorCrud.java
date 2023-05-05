@@ -7,15 +7,15 @@ import java.sql.SQLException;
 
 import modelo.Pokemon;
 
-public class Captura {
+public class PokemonEntrenadorCrud {
 	
-	public static void captura(Pokemon pokemon, int idEntrenador) {
-		
-//		pokemon.setNickname(mote);
-		
-		insertarEnBbDdElPokemonEncontrado(pokemon, idEntrenador);
-		
-	}
+//	public static void captura(Pokemon pokemon, int idEntrenador) {
+//		
+////		pokemon.setNickname(mote);
+//		
+//		insertarEnBbDdElPokemonEncontrado(pokemon, idEntrenador);
+//		
+//	}
 
 	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, int idEntrenador) {
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");

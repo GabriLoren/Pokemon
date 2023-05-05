@@ -41,7 +41,7 @@ public class Criar {
 		// Reutilizamos el método de la clase captura para insertra en la BbDd el nuevo
 		// pokemon creado
 		// mediante de la crianza
-		Captura.insertarEnBbDdElPokemonEncontrado(pokemonHijo, entrenador.getId());
+		PokemonEntrenadorCrud.insertarEnBbDdElPokemonEncontrado(pokemonHijo, entrenador.getId());
 
 		// Los padres pierden un punto de fertilidad cada vez que crien
 		pokemon1.setFertility(pokemon1.getFertility() - 1);

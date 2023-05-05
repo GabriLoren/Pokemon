@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import cargar.CargarEntrenador;
 import cargar.CargarPokemonEnEntrenador;
 import funcionalidades.ActualizarCaracteristicasPokemon;
-import funcionalidades.Captura;
+
 import funcionalidades.GeneraPokemonAleatorio;
 import javafx.event.ActionEvent;
 
@@ -169,8 +169,8 @@ public class CapturaController implements Initializable {
 
 			if (aletorio == cazado) {
 
-				Captura.captura(pokemon, entrenador.getId());// inserta el pokemon capturado en la BbDd
-				entrenador.insertraPokemonCapturado(pokemon);// inserta el pokemon capturado en LinkedList<Pokemon>
+//				Captura.captura(pokemon, entrenador.getId());// inserta el pokemon capturado en la BbDd
+				entrenador.capturar(pokemon);// inserta el pokemon capturado en LinkedList<Pokemon> y en la BbDd
 																// todosLosPokemon;
 //				FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/InsertarMote.fxml"));
 //
