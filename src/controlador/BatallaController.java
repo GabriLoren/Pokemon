@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import cargar.CargarEntrenador;
@@ -487,7 +488,7 @@ public class BatallaController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1)throws NoSuchElementException {
 		// TODO Auto-generated method stub
 
 		equipoJugador = new LinkedList<Pokemon>(entrenadorJugador.getEquipoPokemon());
