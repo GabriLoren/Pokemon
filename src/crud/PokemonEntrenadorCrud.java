@@ -12,20 +12,12 @@ import modelo.Pokemon;
 import modelo.Trainer;
 
 public class PokemonEntrenadorCrud {
+
 	
-//	public static void captura(Pokemon pokemon, int idEntrenador) {
-//		
-////		pokemon.setNickname(mote);
-//		
-//		insertarEnBbDdElPokemonEncontrado(pokemon, idEntrenador);
-//		
-//	}
-
+	//inserta en la BbDd(tabla POKEMON_ENTRENADOR) el pokemon que se le pasa por parámetro con el idEntrenador que se le pasa por parámetro
 	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, int idEntrenador) {
+		
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
-
-		// nombre del pokemon encontrado previamente
-//		String nombre = pokemon.getName();
 
 		try {
 
@@ -37,7 +29,7 @@ public class PokemonEntrenadorCrud {
 
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, idGenerado);// id
-			miPSt.setString(2, pokemon.getName());// nombre 
+			miPSt.setString(2, pokemon.getName());// nombre
 			miPSt.setString(3, pokemon.getName());// el mote por defecto es el ombre del pokemon
 			miPSt.setLong(4, idEntrenador);// id_entrenador que está actualmemnte jugando
 			miPSt.setLong(5, pokemon.getVit());
@@ -51,14 +43,13 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(13, pokemon.getFertility());
 			miPSt.setString(14, "NO");
 			miPSt.setString(15, pokemon.getImagen());
-			//AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA MOVE
+			// AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA
+			// MOVE
 			miPSt.setLong(16, pokemon.getMoves().get(0).getId());
-			//EL RESTO DE MOVES EL ID ES 0 QUE ES LO MISMO QUE NO HBER MOVIMIENTO
+			// EL RESTO DE MOVES EL ID ES 0 QUE ES LO MISMO QUE NO HBER MOVIMIENTO
 			miPSt.setLong(17, 0);
 			miPSt.setLong(18, 0);
 			miPSt.setLong(19, 0);
-			
-			
 
 			miPSt.executeUpdate();
 
@@ -67,6 +58,7 @@ public class PokemonEntrenadorCrud {
 		}
 
 	}
+
 	public static void cargarPokemonEnEntrenador(Trainer entrenador) {
 
 //		LinkedList<Pokemon> todosLosPokemon = new LinkedList<>();
@@ -100,9 +92,9 @@ public class PokemonEntrenadorCrud {
 			String estado = "SinEstado";
 			String imagen = "";
 			int id_movimiento1 = 0;
-			int id_movimiento2=0;
-			int id_movimiento3=0;
-			int id_movimiento4=0;
+			int id_movimiento2 = 0;
+			int id_movimiento3 = 0;
+			int id_movimiento4 = 0;
 //			id_objeto int);
 
 			while (miRs.next()) {
@@ -131,11 +123,11 @@ public class PokemonEntrenadorCrud {
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
 						stamina, nivel, fertilidad, equipo, estado, imagen);
 
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				
+				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
+
 				// para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos
 				// los entrenadores
 //				pokemon.setMoves(CargarMoves.getMovimientos());
@@ -168,10 +160,12 @@ public class PokemonEntrenadorCrud {
 		}
 
 	}
-	//comprueba que el la tabla pokemon_entrenador el id_movimiento no esté a cero, si es asi inserta el movimiento
-	//en la lista de movimiento del pokemon
+
+	// comprueba que el la tabla pokemon_entrenador el id_movimiento no esté a cero,
+	// si es asi inserta el movimiento
+	// en la lista de movimiento del pokemon
 	private static void comprobarSiExisteMovimiento(Pokemon p, int idMovimiento) {
-		
+
 		if (idMovimiento != 0) {
 
 			Move movimiento = CargarMoves.cargarMovesEnPokemon(idMovimiento);
