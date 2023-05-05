@@ -15,11 +15,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarMoves;
-import cargar.CargarTodosLosEntrenadores;
-import cargar.CargarTodosLosObjetos;
-import cargar.CargarTodosPokemons;
+import crud.CargarEntrenador;
+import crud.CargarMoves;
+import crud.CargarTodosLosEntrenadores;
+import crud.CargarTodosLosObjetos;
+import crud.CargarTodosPokemons;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;

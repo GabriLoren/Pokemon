@@ -13,8 +13,8 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarTodosLosEntrenadores;
+import crud.CargarEntrenador;
+import crud.CargarTodosLosEntrenadores;
 import funcionalidades.ActualizarPokedollarEntrenador;
 import funcionalidades.Batalla;
 import javafx.event.ActionEvent;

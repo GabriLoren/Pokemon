@@ -12,8 +12,8 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarPokemonEnEntrenador;
+import crud.CargarEntrenador;
+import crud.CargarPokemonEnEntrenador;
 import funcionalidades.ActualizarCaracteristicasPokemon;
 
 import funcionalidades.GeneraPokemonAleatorio;

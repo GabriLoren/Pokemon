@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import cargar.CargarTodosLosEntrenadores;
+import crud.CargarTodosLosEntrenadores;
 import modelo.Trainer;
 
 public class CrearUsuarioNuevo {

@@ -2,8 +2,8 @@ package modelo;
 
 import java.util.LinkedList;
 
-import cargar.CargarTodosLosEntrenadores;
-import cargar.CargarTodosPokemons;
+import crud.CargarTodosLosEntrenadores;
+import crud.CargarTodosPokemons;
 import funcionalidades.Criar;
 
 

@@ -2,9 +2,9 @@ package modelo;
 
 import java.util.Objects;
 
-import cargar.CargarTodosLosEntrenadores;
-import cargar.CargarTodosLosObjetos;
-import cargar.CargarTodosPokemons;
+import crud.CargarTodosLosEntrenadores;
+import crud.CargarTodosLosObjetos;
+import crud.CargarTodosPokemons;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

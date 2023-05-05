@@ -2,6 +2,7 @@ package funcionalidades;
 
 import java.util.LinkedList;
 
+import crud.PokemonEntrenadorCrud;
 import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;

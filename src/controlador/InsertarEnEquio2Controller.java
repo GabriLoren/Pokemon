@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
+import crud.CargarEntrenador;
 import funcionalidades.InsertarEnEquipo2;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

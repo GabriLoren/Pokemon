@@ -10,10 +10,9 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import cargar.CargarPokemonEnEntrenador;
-
+import crud.CargarPokemonEnEntrenador;
+import crud.PokemonEntrenadorCrud;
 import funcionalidades.GenerarID;
-import funcionalidades.PokemonEntrenadorCrud;
 
 public class Trainer {
 

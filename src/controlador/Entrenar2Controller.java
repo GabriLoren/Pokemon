@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarTodosPokemons;
+import crud.CargarEntrenador;
+import crud.CargarTodosPokemons;
 import funcionalidades.ActualizarCaracteristicasPokemon;
 import funcionalidades.Entrenar2;
 import javafx.collections.FXCollections;

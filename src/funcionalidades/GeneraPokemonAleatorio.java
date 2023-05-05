@@ -9,8 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import cargar.CargarMoves;
-import cargar.CargarTodosPokemons;
+import crud.CargarMoves;
+import crud.CargarTodosPokemons;
 import modelo.Pokemon;
 
 public class GeneraPokemonAleatorio {

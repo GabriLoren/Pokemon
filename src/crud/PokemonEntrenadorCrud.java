@@ -1,10 +1,11 @@
-package funcionalidades;
+package crud;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import funcionalidades.GenerarID;
 import modelo.Pokemon;
 
 public class PokemonEntrenadorCrud {
