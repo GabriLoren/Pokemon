@@ -1,6 +1,7 @@
 package controlador;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -13,7 +14,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import crud.CargarEntrenador;
-import crud.CargarPokemonEnEntrenador;
+import crud.PokemonEntrenadorCrud;
 import funcionalidades.ActualizarCaracteristicasPokemon;
 
 import funcionalidades.GeneraPokemonAleatorio;
@@ -109,7 +110,7 @@ public class CapturaController implements Initializable {
 			Pokemon pokemonCapturado = entrenador.getTodosLosPokemon().getLast();
 			System.out.println(pokemonCapturado.getEquipo());
 			pokemonCapturado.setNickname(mote);
-			ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemonCapturado);
+			PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonCapturado);
 //			Captura.captura(pokemon, mote, entrenador.getId());//inserta el pokemon capturado en la BbDd
 //			entrenador.insertraPokemonCapturado(pokemon,mote);//inserta el pokemon capturado en LinkedList<Pokemon> todosLosPokemon;
 

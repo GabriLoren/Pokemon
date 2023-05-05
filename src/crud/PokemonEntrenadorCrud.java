@@ -160,6 +160,40 @@ public class PokemonEntrenadorCrud {
 		}
 
 	}
+	public static void actualizarPokemonEnBbDd(Pokemon pokemon) {
+
+		System.out.println("mote "+pokemon.getNickname());
+
+		try {
+
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+
+			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
+					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?  WHERE ID=?";
+
+//					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
+//					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
+			miPSt.setLong(1, pokemon.getVit());
+			miPSt.setLong(2, pokemon.getAtk());
+			miPSt.setLong(3, pokemon.getDef());
+			miPSt.setLong(4, pokemon.getSpAtk());
+			miPSt.setLong(5, pokemon.getSpDef());
+			miPSt.setLong(6, pokemon.getSpeed());
+			miPSt.setLong(7, pokemon.getStamina());
+			miPSt.setLong(8, pokemon.getLevel());
+			miPSt.setLong(9, pokemon.getFertility());
+			miPSt.setString(10, pokemon.getEquipo());
+			miPSt.setString(11, pokemon.getNickname());
+			miPSt.setLong(12, pokemon.getId());
+
+			miPSt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// comprueba que el la tabla pokemon_entrenador el id_movimiento no esté a cero,
 	// si es asi inserta el movimiento
