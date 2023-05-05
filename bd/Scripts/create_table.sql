@@ -37,13 +37,14 @@ move_id INT PRIMARY KEY,
 name VARCHAR(20) UNIQUE NOT NULL,
 type VARCHAR(10),
 power INT,
-status VARCHAR(10),
+status VARCHAR(20),
 turns INT,
 buff DOUBLE,
 stat VARCHAR(10),
 stamina_cost INT,
 lvl_requirement INT,
-category VARCHAR(10)
+category VARCHAR(10),
+dmg_type VARCHAR(10)
 );
 
 CREATE TABLE pokemon_trainer(

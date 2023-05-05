@@ -13,6 +13,7 @@ public class Move {
 	private int staminaCost;
 	private Stats stat;
 	private DmgTypes dmgTypes;
+	private int lvlRequirement;
 	
 
 //	public Move() {
@@ -33,7 +34,7 @@ public class Move {
 	}
 
 	public Move(String name, int id, MoveCategory category, int power, Types type, Status status, int turns, double buff,
-			int staminaCost) {
+			int staminaCost, Stats stat, DmgTypes dmgType, int lvlRequirement) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -44,6 +45,9 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 		this.staminaCost=staminaCost;
+		this.stat = stat;
+		this.dmgTypes = dmgType;
+		this.setLvlRequirement(lvlRequirement);
 	}
 
 	public String getName() {
@@ -132,6 +136,14 @@ public class Move {
 
 	public void setDmgTypes(DmgTypes dmgTypes) {
 		this.dmgTypes = dmgTypes;
+	}
+
+	public int getLvlRequirement() {
+		return lvlRequirement;
+	}
+
+	public void setLvlRequirement(int lvlRequirement) {
+		this.lvlRequirement = lvlRequirement;
 	}
 
 	@Override
