@@ -37,6 +37,8 @@ public class CargarMoves {
 			String categoria = "";
 			int potencia = 0;
 			int costeEstamina=0;
+			
+			
 
 			while (miRs.next()) {
 

@@ -29,6 +29,9 @@ public class CargarTodosPokemons {
 	static int nivel;
 	static int fertilidad;
 	static String imagen;
+	static String tipo1;
+	static String tipo2;
+	
 	
 	
 	
@@ -58,8 +61,16 @@ public class CargarTodosPokemons {
 				nivel = Integer.parseInt(miRs.getString(10));
 				fertilidad=miRs.getInt("fertilidad");
 				imagen= miRs.getString("imagen");
+				tipo1=miRs.getString("tipo1");
+				
+//				if(miRs.getString("tipo2")!=null) {
+//					tipo2=miRs.getString("tipo2");
+//				}tipo2
+				
+				
+				
 
-				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen);
+				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),null);
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");

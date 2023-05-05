@@ -19,7 +19,8 @@ public class Pokemon {
 //	private Move move; //Hago pruebas con un solo movimiento
 	private int fertility;
 	private boolean gender;
-	private Types type;
+	private Types type1;
+	private Types type2;
 	private String status;
 	private Obj object;
 	private String equipo;
@@ -89,7 +90,7 @@ public class Pokemon {
 	}
 
 	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
-			int level, int fertility, String imagen) {
+			int level, int fertility, String imagen, Types tipo1,Types tipo2) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -105,30 +106,32 @@ public class Pokemon {
 		this.status = status;
 		this.fertility = fertility;
 		this.setImagen(imagen);
+		this.type1=tipo1;
+		this.type2=tipo2;
 
 	}
 
-	public Pokemon(String name, String mote) {
-
-		this.id = id;
-		this.name = name;
-		this.nickname = mote;
-		this.vit = 100;
-		this.atk = 0;
-		this.def = 20;
-		this.spAtk = 0;
-		this.spDef = 0;
-		this.speed = 0;
-		this.stamina = 0;
-		this.level = 0;
-		this.moves = new LinkedList<Move>();
-		this.fertility = 0;
-		this.gender = false;
-		this.type = Types.NORMAL;
-		this.status = "";
-//		this.object = new Obj();
-
-	}
+//	public Pokemon(String name, String mote) {
+//
+//		this.id = id;
+//		this.name = name;
+//		this.nickname = mote;
+//		this.vit = 100;
+//		this.atk = 0;
+//		this.def = 20;
+//		this.spAtk = 0;
+//		this.spDef = 0;
+//		this.speed = 0;
+//		this.stamina = 0;
+//		this.level = 0;
+//		this.moves = new LinkedList<Move>();
+//		this.fertility = 0;
+//		this.gender = false;
+//		this.type1 = Types.NORMAL;
+//		this.status = "";
+////		this.object = new Obj();
+//
+//	}
 
 	public Pokemon(String name, LinkedList<Move> moves) {
 
@@ -146,7 +149,7 @@ public class Pokemon {
 		this.moves = moves;
 		this.fertility = 0;
 		this.gender = false;
-		this.type = Types.NORMAL;
+		this.type1 = Types.NORMAL;
 		this.status = "";
 //		this.object = new Obj();
 
@@ -300,11 +303,11 @@ public class Pokemon {
 	}
 
 	public Types getType() {
-		return type;
+		return type1;
 	}
 
 	public void setType(Types type) {
-		this.type = type;
+		this.type1 = type;
 	}
 
 	public String getStatus() {
@@ -373,7 +376,7 @@ public class Pokemon {
 		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
 				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
-				+ ", type=" + type + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
+				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
 	}
 
 //	@Override
