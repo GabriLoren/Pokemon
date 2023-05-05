@@ -34,7 +34,7 @@ public class Captura {
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, idGenerado);// id
 			miPSt.setString(2, pokemon.getName());// nombre 
-			miPSt.setString(3, pokemon.getName());// el mote por defecto es el ombre del pokemon
+			miPSt.setString(3, pokemon.getNickname());// el mote por defecto es el ombre del pokemon
 			miPSt.setLong(4, idEntrenador);// id_entrenador que está actualmemnte jugando
 			miPSt.setLong(5, pokemon.getVit());
 			miPSt.setLong(6, pokemon.getAtk());

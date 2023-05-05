@@ -257,12 +257,10 @@ public class Criar {
 		else
 			pokemonHijo.setStamina(pokemon2.getStamina());
 
-		// fertilidad, el hijo tendrá la mayor de los dos padres antes de que se le reste uno, ya que
-		//cada vez que crían los padres pierden un punto de fertilidad
-		if (pokemon1.getFertility() > pokemon2.getFertility())
-			pokemonHijo.setFertility(pokemon1.getFertility());
-		else
-			pokemonHijo.setFertility(pokemon2.getStamina());
+		// fertilidad, el hijo tendrá por defecto 5
+	
+			pokemonHijo.setFertility(5);
+		
 
 	}
 	

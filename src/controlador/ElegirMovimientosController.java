@@ -86,6 +86,8 @@ public class ElegirMovimientosController implements Initializable {
 		// TODO Auto-generated method stub
 		
 		movimientosPokemonEnCombate=BatallaController.pokemonElegidoJugador.getMoves();
+		
+		System.out.println("tamanio "+movimientosPokemonEnCombate.size());
 
 		tablaElegirMovimiento.setItems(mostrar());
 

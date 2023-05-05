@@ -80,9 +80,9 @@ public class CargarPokemonEnEntrenador {
 						stamina, nivel, fertilidad, equipo, estado, imagen);
 
 				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
+				comprobarSiExisteMovimiento(pokemon,id_movimiento2);
+				comprobarSiExisteMovimiento(pokemon,id_movimiento3);
+				comprobarSiExisteMovimiento(pokemon,id_movimiento4);
 				
 				// para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos
 				// los entrenadores
