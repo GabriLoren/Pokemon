@@ -55,7 +55,7 @@ public class CargarTodosLosEntrenadores {
 				
 				
 						//inserta en cada entrenador todos sus pokemon tanto en el equipo como en la caja (no están en elequipo)
-						CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(entrenador);
+						PokemonEntrenadorCrud.cargarPokemonEnEntrenador(entrenador);
 						
 						
 						
