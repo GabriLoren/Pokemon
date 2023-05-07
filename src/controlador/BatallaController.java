@@ -500,6 +500,8 @@ public class BatallaController implements Initializable {
 		entrenadorAleatorio = CargarEntrenador.obtenerEntrenadorAleatorio();
 
 		equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
+		
+		System.out.println("equipo maquina "+equipoMaquina.toString());
 
 		pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
 

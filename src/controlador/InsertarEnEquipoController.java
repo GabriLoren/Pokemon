@@ -15,7 +15,6 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import crud.CargarEntrenador;
-import crud.CargarPokemonEnEntrenador;
 import crud.CargarTodosLosObjetos;
 import crud.CargarTodosPokemons;
 import funcionalidades.InsertarEnEquipo;

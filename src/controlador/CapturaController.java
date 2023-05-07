@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 import crud.CargarEntrenador;
 import crud.PokemonEntrenadorCrud;
-import funcionalidades.ActualizarCaracteristicasPokemon;
+
 
 import funcionalidades.GeneraPokemonAleatorio;
 import javafx.event.ActionEvent;

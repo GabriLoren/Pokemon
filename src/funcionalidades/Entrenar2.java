@@ -1,5 +1,6 @@
 package funcionalidades;
 
+import crud.PokemonEntrenadorCrud;
 import modelo.Pokemon;
 import modelo.Trainer;
 
@@ -89,7 +90,7 @@ public class Entrenar2 {
 		}
 
 		// actualiza la BbDd
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemonElegido);
+		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonElegido);
 		ActualizarPokedollarEntrenador.actualizarPokedollarEntrenador(entrenador);
 		return noSuficienteDinero;
 

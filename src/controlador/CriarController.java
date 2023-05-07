@@ -1,6 +1,7 @@
 package controlador;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import crud.CargarEntrenador;
-import funcionalidades.ActualizarCaracteristicasPokemon;
+
 import funcionalidades.Criar;
 import funcionalidades.Entrenar2;
 import javafx.collections.FXCollections;

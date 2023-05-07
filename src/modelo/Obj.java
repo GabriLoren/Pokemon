@@ -4,6 +4,7 @@ public class Obj {
 	
 	private int id;
 	private String name;
+	private int precio;
 	private double atk;
 	private double def;
 	private double spDef;
@@ -34,10 +35,11 @@ public class Obj {
 
 	}
 
-	public Obj(int id, String name, double atk, double def, double spDef, double speed, double stamina) {
+	public Obj(int id, String name, int precio, double atk, double def, double spDef, double speed, double stamina) {
 		super();
 		this.id=id;
 		this.name=name;
+		this.precio=precio;
 		this.atk = atk;
 		this.def = def;
 		this.spDef = spDef;

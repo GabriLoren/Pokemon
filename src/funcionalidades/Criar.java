@@ -47,8 +47,8 @@ public class Criar {
 		// Los padres pierden un punto de fertilidad cada vez que crien
 		pokemon1.setFertility(pokemon1.getFertility() - 1);
 		pokemon2.setFertility(pokemon2.getFertility() - 1);
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon1);
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon2);
+		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon1);
+		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon2);
 
 	}
 

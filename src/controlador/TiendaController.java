@@ -5,14 +5,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
+import crud.CargarEntrenador;
+import crud.CargarMoves;
+import crud.CargarTodosLosObjetos;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
 
 import javafx.scene.control.TableView;
-
+import javafx.scene.control.cell.PropertyValueFactory;
+import modelo.Obj;
+import modelo.Pokemon;
 import javafx.scene.control.TableColumn;
 
 public class TiendaController implements Initializable{
@@ -93,5 +101,30 @@ public class TiendaController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
+
+//		tienda.setItems(muestraTodoLosObjetos());
+
+
+		objeto.setCellValueFactory(new PropertyValueFactory<Obj, String>("name"));
+		precio.setCellValueFactory(new PropertyValueFactory<Obj, String>("precio"));
+		ataque.setCellValueFactory(new PropertyValueFactory<Obj, String>("atk"));
+		defensa.setCellValueFactory(new PropertyValueFactory<Obj, String>("def"));
+		defensaSp.setCellValueFactory(new PropertyValueFactory<Obj, String>("spDef"));
+		velocidad.setCellValueFactory(new PropertyValueFactory<Obj, String>("speed"));
+		estamina.setCellValueFactory(new PropertyValueFactory<Obj, String>("stamina"));
 	}
+	// añade a la ObservableList todos los objetos que hay en la tienda
+		public ObservableList<Obj> muestraTodoLosObjetos() {
+
+			
+
+			ObservableList<Obj> lista = FXCollections.observableArrayList();
+
+			for (int i = 0; i < CargarTodosLosObjetos.getTodosLosObjetos().size(); i++) {
+
+				lista.add(CargarTodosLosObjetos.getTodosLosObjetos().get(i));
+
+			}
+			return lista;
+		}
 }

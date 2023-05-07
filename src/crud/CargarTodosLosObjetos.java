@@ -16,7 +16,12 @@ public class CargarTodosLosObjetos {
 	
 	private static int id;
 	private static  String nombre;
-	private static  Obj objeto;
+	private static int precio;
+	private static int atk;
+	private static int def;
+	private static int spDef;
+	private static int speed;
+	private static int stamina;
 	
 	public static void cargarTododLosObjetos() {
 		
@@ -31,11 +36,17 @@ public class CargarTodosLosObjetos {
 
 			while (miRs.next()) {
 
-				id = Integer.parseInt(miRs.getString(1));
+				id = miRs.getInt(1);
 				nombre = miRs.getString(2);
-				
+				precio=miRs.getInt("precio");
+				atk=miRs.getInt("ataque");
+				def=miRs.getInt("defensa");
+				spDef=miRs.getInt("defensa_sp");
+				speed=miRs.getInt("velocidad");
+				stamina=miRs.getInt("estamina");
+		
 
-				objeto = new Obj(id,nombre);
+				Obj objeto = new Obj(id, nombre, precio,atk, def, spDef, 2, stamina);
 				todosLosObjetos.add(objeto);
 			}
 			System.out.println("metodo cargarTododLosObjetos funciona");

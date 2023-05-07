@@ -1,5 +1,6 @@
 package funcionalidades;
 
+import crud.PokemonEntrenadorCrud;
 import modelo.Pokemon;
 import modelo.Trainer;
 
@@ -21,7 +22,7 @@ public class InsertarEnEquipo2 {
 
 				System.out.println("mote2 "+entrenador.getEquipoPokemon().getLast().getNickname());
 				
-				ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(entrenador.getEquipoPokemon().getLast());
+				PokemonEntrenadorCrud.actualizarPokemonEnBbDd(entrenador.getEquipoPokemon().getLast());
 
 			}
 
@@ -41,7 +42,7 @@ public class InsertarEnEquipo2 {
 
 				entrenador.getTodosLosPokemon().getLast().setEquipo("NO");
 
-				ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(entrenador.getTodosLosPokemon().getLast());
+				PokemonEntrenadorCrud.actualizarPokemonEnBbDd(entrenador.getTodosLosPokemon().getLast());
 
 			}
 		}
@@ -55,7 +56,7 @@ public class InsertarEnEquipo2 {
 
 				entrenador.getTodosLosPokemon().getLast().setEquipo("NO");
 
-				ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(entrenador.getTodosLosPokemon().getLast());
+				PokemonEntrenadorCrud.actualizarPokemonEnBbDd(entrenador.getTodosLosPokemon().getLast());
 
 			
 		

@@ -13,10 +13,10 @@ import modelo.Trainer;
 
 public class PokemonEntrenadorCrud {
 
-	
-	//inserta en la BbDd(tabla POKEMON_ENTRENADOR) el pokemon que se le pasa por parámetro con el idEntrenador que se le pasa por parámetro
+	// inserta en la BbDd(tabla POKEMON_ENTRENADOR) el pokemon que se le pasa por
+	// parámetro con el idEntrenador que se le pasa por parámetro
 	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, int idEntrenador) {
-		
+
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
 
 		try {
@@ -117,16 +117,23 @@ public class PokemonEntrenadorCrud {
 				id_movimiento4 = miRs.getInt("id_movimiento4");
 				fertilidad = miRs.getInt("fertilidad");
 				imagen = miRs.getString("imagen");
+				
+				System.out.println("movimiento1 " + id_movimiento1);
+				System.out.println("movimiento1 " + id_movimiento2);
+				System.out.println("movimiento1 " + id_movimiento3);
+				System.out.println("movimiento1 " + id_movimiento4);
 
 //				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
 						stamina, nivel, fertilidad, equipo, estado, imagen);
 
+				System.out.println("estos son los movimientos " + pokemon.getMoves().toString());
+
 				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
-				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento2);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento3);
+				comprobarSiExisteMovimiento(pokemon, id_movimiento4);
 
 				// para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos
 				// los entrenadores
@@ -160,9 +167,10 @@ public class PokemonEntrenadorCrud {
 		}
 
 	}
+
 	public static void actualizarPokemonEnBbDd(Pokemon pokemon) {
 
-		System.out.println("mote "+pokemon.getNickname());
+		System.out.println("mote " + pokemon.getNickname());
 
 		try {
 
