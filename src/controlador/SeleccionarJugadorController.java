@@ -109,7 +109,7 @@ public class SeleccionarJugadorController implements Initializable {
 		CargarTodosPokemons.cargarPokemonDesdeBbDd();
 
 		// cargamos todos los objetos existentes en el juego
-		CargarTodosLosObjetos.cargarTododLosObjetos();
+//		CargarTodosLosObjetos.cargarTododLosObjetos();
 
 		// cargamos todos los entrenadores existentes en el juego
 		CargarTodosLosEntrenadores.cargarTodosLosEntrenadores();

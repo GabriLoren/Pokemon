@@ -34,7 +34,7 @@ public class CargarTodosLosEntrenadores {
 
 		Connection miCon;
 		try {
-			miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
 			ResultSet miRs = miSt.executeQuery("SELECT * FROM ENTRENADOR");

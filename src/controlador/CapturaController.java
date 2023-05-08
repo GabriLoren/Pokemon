@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 import crud.CargarEntrenador;
 import crud.PokemonEntrenadorCrud;
 
-
 import funcionalidades.GeneraPokemonAleatorio;
 import javafx.event.ActionEvent;
 
@@ -56,6 +55,8 @@ public class CapturaController implements Initializable {
 	@FXML
 	private TextField txtMote;
 
+	static Pokemon pokemonCapturado;
+
 	int aletorio;
 	int cazado;
 
@@ -88,11 +89,11 @@ public class CapturaController implements Initializable {
 //		imgPokeball.setImage(null);
 
 		if (aletorio != cazado && pokemon != null) {
-			
+
 			imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 			Thread.sleep(1000);
 		}
-			
+
 //		if(pokemon==null&&capturarPokemon.getText().equals(event)) pokemonEncontrado.setText("Aún no has encontrado ningun pokemon");
 
 //		imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
@@ -107,7 +108,11 @@ public class CapturaController implements Initializable {
 		String mote = txtMote.getText().toUpperCase();
 
 		if (Pokemon.comprobarMote(mote) && !mote.equals("")) {
-			Pokemon pokemonCapturado = entrenador.getTodosLosPokemon().getLast();
+			if (pokemon.getEquipo().equals("NO")) {
+				pokemonCapturado = entrenador.getTodosLosPokemon().getLast();
+			} else
+				pokemonCapturado = entrenador.getEquipoPokemon().getLast();
+
 			System.out.println(pokemonCapturado.getEquipo());
 			pokemonCapturado.setNickname(mote);
 			PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonCapturado);
@@ -116,16 +121,13 @@ public class CapturaController implements Initializable {
 
 //			Stage stage = (Stage) this.txtMote.getScene().getWindow(); 
 //			
-			
-			
+
 //			stage.close();
 
 			// se cierra la ventana actual
 			Stage stage2 = (Stage) this.txtMote.getScene().getWindow();
 			stage2.close();
-			
-			
-			
+			pokemon = null;
 
 		} else {
 
@@ -150,18 +152,20 @@ public class CapturaController implements Initializable {
 			Scene scene = new Scene(root);
 
 			Stage stage = new Stage();
-			
+
 			capturarPokemon.setText("CAPTURAR");
-			
+
 			imgPokemon.setImage(null);
 
 			stage.setScene(scene);
 			stage.showAndWait();
 //			imgPokemon.setImage(null);
-			pokemon=null;
-			
+			pokemon = null;
+
 		}
 
+		// tiene 1/3 de probabilidad de capturarlo, si lo captura el boton captura
+		// cambia su nombre a mote
 		aletorio = (int) (Math.random() * 3 + 1);
 		cazado = 3;
 		System.out.println(aletorio);
@@ -169,10 +173,19 @@ public class CapturaController implements Initializable {
 		if (pokemon != null) {
 
 			if (aletorio == cazado) {
+				
+				//SI NO ESTA EL EQUIPO COMPLETO LO METE AL EQUIPO
+				if (entrenador.getEquipoPokemon().size() < 6) {
+					pokemon.setEquipo("SI");
+				}
+					
+				else {
+					pokemon.setEquipo("NO");
+				}
 
 //				Captura.captura(pokemon, entrenador.getId());// inserta el pokemon capturado en la BbDd
 				entrenador.capturar(pokemon);// inserta el pokemon capturado en LinkedList<Pokemon> y en la BbDd
-																// todosLosPokemon;
+												// todosLosPokemon;
 //				FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/InsertarMote.fxml"));
 //
 //				Parent root = loader.load();
@@ -214,7 +227,7 @@ public class CapturaController implements Initializable {
 	// Event Listener on Button[#bucarPokemon].onAction
 	@FXML
 	public void bucarPokemon(ActionEvent event) {
-		
+
 		pokemonEncontrado.setText("");
 
 		capturarPokemon.setText("CAPTURAR");

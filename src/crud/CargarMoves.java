@@ -26,10 +26,10 @@ public class CargarMoves {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
-			ResultSet miRs = miSt.executeQuery("SELECT * FROM MOVIMIETO");
+			ResultSet miRs = miSt.executeQuery("SELECT * FROM MOVIMIENTO");
 
 			Move movimiento;
 			int id = 0;

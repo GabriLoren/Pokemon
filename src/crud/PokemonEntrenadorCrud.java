@@ -15,41 +15,49 @@ public class PokemonEntrenadorCrud {
 
 	// inserta en la BbDd(tabla POKEMON_ENTRENADOR) el pokemon que se le pasa por
 	// parámetro con el idEntrenador que se le pasa por parámetro
-	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, int idEntrenador) {
+	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, Trainer entrenador) {
 
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
+		
+		int idPokedex=pokemon.getId();
+		
+		pokemon.setId(idGenerado);
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL,"
-					+ "FERTILIDAD,EQUIPO,IMAGEN,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_POKEDEX,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,NIVEL,"
+					+ "FERTILIDAD,EQUIPO,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
-			miPSt.setLong(1, idGenerado);// id
-			miPSt.setString(2, pokemon.getName());// nombre
+			miPSt.setLong(1, pokemon.getId());// id
+			miPSt.setLong(2, idPokedex);// id_pokedex
+//			miPSt.setString(2, pokemon.getName());// nombre
 			miPSt.setString(3, pokemon.getName());// el mote por defecto es el ombre del pokemon
-			miPSt.setLong(4, idEntrenador);// id_entrenador que está actualmemnte jugando
+			miPSt.setLong(4, entrenador.getId());// id_entrenador que está actualmemnte jugando
 			miPSt.setLong(5, pokemon.getVit());
 			miPSt.setLong(6, pokemon.getAtk());
 			miPSt.setLong(7, pokemon.getDef());
 			miPSt.setLong(8, pokemon.getSpAtk());
 			miPSt.setLong(9, pokemon.getSpDef());
 			miPSt.setLong(10, pokemon.getSpeed());
-			miPSt.setLong(11, pokemon.getStamina());
-			miPSt.setLong(12, pokemon.getLevel());
-			miPSt.setLong(13, pokemon.getFertility());
-			miPSt.setString(14, "NO");
-			miPSt.setString(15, pokemon.getImagen());
+//			miPSt.setLong(10, pokemon.getStamina());
+			miPSt.setLong(11, pokemon.getLevel());
+			miPSt.setLong(12, pokemon.getFertility());
+			
+			if(entrenador.getEquipoPokemon().size()<6)
+			miPSt.setString(13, "SI");
+			else miPSt.setString(13, "NO");
+//			miPSt.setString(15, pokemon.getImagen());
 			// AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA
 			// MOVE
-			miPSt.setLong(16, pokemon.getMoves().get(0).getId());
+			miPSt.setLong(14, CargarMoves.getMovimientos().get(0).getId());
 			// EL RESTO DE MOVES EL ID ES 0 QUE ES LO MISMO QUE NO HBER MOVIMIENTO
+			miPSt.setLong(15, 0);
+			miPSt.setLong(16, 0);
 			miPSt.setLong(17, 0);
-			miPSt.setLong(18, 0);
-			miPSt.setLong(19, 0);
 
 			miPSt.executeUpdate();
 
@@ -66,9 +74,9 @@ public class PokemonEntrenadorCrud {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-			String sentecia = "SELECT * FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT PE.*,P.nombre,P.imagen,P.tipo1,P.tipo2,P.stamina FROM POKEMON_ENTRENADOR PE JOIN pokemon P ON PE.id_pokedex=P.id WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente
@@ -100,7 +108,7 @@ public class PokemonEntrenadorCrud {
 			while (miRs.next()) {
 
 				id = Integer.parseInt(miRs.getString(1));
-				nombre = miRs.getString(2);
+				nombre = miRs.getString("nombre");
 				mote = miRs.getString(3);
 				vida = miRs.getInt(5);
 				ataque = miRs.getInt(6);
@@ -108,7 +116,7 @@ public class PokemonEntrenadorCrud {
 				ataqueSp = miRs.getInt(8);
 				defensaSp = miRs.getInt(9);
 				velocidad = miRs.getInt(10);
-				stamina = miRs.getInt(11);
+				stamina = miRs.getInt("stamina");
 				nivel = miRs.getInt(12);
 				equipo = miRs.getString(18);
 				id_movimiento1 = miRs.getInt("id_movimiento1");
@@ -174,10 +182,10 @@ public class PokemonEntrenadorCrud {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,STAMINA=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?  WHERE ID=?";
+					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?  WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -189,12 +197,12 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(4, pokemon.getSpAtk());
 			miPSt.setLong(5, pokemon.getSpDef());
 			miPSt.setLong(6, pokemon.getSpeed());
-			miPSt.setLong(7, pokemon.getStamina());
-			miPSt.setLong(8, pokemon.getLevel());
-			miPSt.setLong(9, pokemon.getFertility());
-			miPSt.setString(10, pokemon.getEquipo());
-			miPSt.setString(11, pokemon.getNickname());
-			miPSt.setLong(12, pokemon.getId());
+//			miPSt.setLong(7, pokemon.getStamina());
+			miPSt.setLong(7, pokemon.getLevel());
+			miPSt.setLong(8, pokemon.getFertility());
+			miPSt.setString(9, pokemon.getEquipo());
+			miPSt.setString(10, pokemon.getNickname());
+			miPSt.setLong(11, pokemon.getId());
 
 			miPSt.executeUpdate();
 

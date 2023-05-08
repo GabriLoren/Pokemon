@@ -18,7 +18,7 @@ public class GenerarID {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentecia = sentencia;
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);

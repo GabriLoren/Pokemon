@@ -27,7 +27,7 @@ public class CargarTodosPokemons {
 	static int velocidad;
 	static int stamina;
 	static int nivel;
-	static int fertilidad;
+	static int fertilidad=5;
 	static String imagen;
 	static String tipo1;
 	static String tipo2;
@@ -41,7 +41,7 @@ public class CargarTodosPokemons {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
 
@@ -59,9 +59,9 @@ public class CargarTodosPokemons {
 				velocidad = Integer.parseInt(miRs.getString(8));
 				stamina = Integer.parseInt(miRs.getString(9));
 				nivel = Integer.parseInt(miRs.getString(10));
-				fertilidad=miRs.getInt("fertilidad");
 				imagen= miRs.getString("imagen");
 				tipo1=miRs.getString("tipo1");
+				tipo2=miRs.getString("tipo2");
 				
 //				if(miRs.getString("tipo2")!=null) {
 //					tipo2=miRs.getString("tipo2");
@@ -70,7 +70,7 @@ public class CargarTodosPokemons {
 				
 				
 
-				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),null);
+				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),Types.valueOf(tipo2));
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");
