@@ -302,6 +302,18 @@ public class Batalla {
 		}
 		return dmg;
 	}
+	
+	// Active pokemon gets experience after defeating a pokemon based on the
+		// following formula ([POKEMON_LEVEL] + [RIVAL_POKEMON_LEVEL] * 10) / 4, then if
+		// the exp value of the pokemon exceeds or equals its level times 10 it levels
+		// up
+		public void giveExp(Pokemon p1, Pokemon p2) {
+			p1.setExp(
+					p1.getExp() + ((p1.getLevel() + p2.getLevel() * 10) / 4));
+			while (p1.getExp() >= (p1.getLevel() * 10)) {
+				p1.levelUp();
+			}
+		}
 
 //	/**
 //	 * @param equipoPokemon
