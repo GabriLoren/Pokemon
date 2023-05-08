@@ -47,6 +47,55 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(11, pokemon.getLevel());
 			miPSt.setLong(12, pokemon.getFertility());
 			
+			
+			if(entrenador.getEquipoPokemon().size()<6)
+			miPSt.setString(13, "SI");
+			else miPSt.setString(13, "NO");
+//			miPSt.setString(15, pokemon.getImagen());
+			// AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA
+			// MOVE
+			miPSt.setLong(14, CargarMoves.getMovimientos().get(0).getId());
+			// EL RESTO DE MOVES EL ID ES 0 QUE ES LO MISMO QUE NO HBER MOVIMIENTO
+			miPSt.setLong(15, 0);
+			miPSt.setLong(16, 0);
+			miPSt.setLong(17, 0);
+
+			miPSt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public static void insertarEnBbDdElPokemonHijo(Pokemon pokemon, Trainer entrenador) {
+
+		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
+		
+		pokemon.setId(idGenerado);
+
+		try {
+
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
+
+			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_POKEDEX,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,NIVEL,"
+					+ "FERTILIDAD,EQUIPO,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
+			miPSt.setLong(1, pokemon.getId());// id
+			miPSt.setLong(2, pokemon.getIdPokedex());// id_pokedex
+			miPSt.setString(3, pokemon.getNickname());//
+			miPSt.setLong(4, entrenador.getId());// id_entrenador que está actualmemnte jugando
+			miPSt.setLong(5, pokemon.getVit());
+			miPSt.setLong(6, pokemon.getAtk());
+			miPSt.setLong(7, pokemon.getDef());
+			miPSt.setLong(8, pokemon.getSpAtk());
+			miPSt.setLong(9, pokemon.getSpDef());
+			miPSt.setLong(10, pokemon.getSpeed());
+			miPSt.setLong(11, pokemon.getLevel());
+			miPSt.setLong(12, pokemon.getFertility());
+			
+			
 			if(entrenador.getEquipoPokemon().size()<6)
 			miPSt.setString(13, "SI");
 			else miPSt.setString(13, "NO");
@@ -84,6 +133,7 @@ public class PokemonEntrenadorCrud {
 			ResultSet miRs = miPSt.executeQuery();
 
 			int id = 0;
+			int idPokedex = 0;
 			String nombre = "";
 			String mote = "";
 //			id_entrenador int
@@ -108,6 +158,7 @@ public class PokemonEntrenadorCrud {
 			while (miRs.next()) {
 
 				id = Integer.parseInt(miRs.getString(1));
+				idPokedex=miRs.getInt("id_pokedex");
 				nombre = miRs.getString("nombre");
 				mote = miRs.getString(3);
 				vida = miRs.getInt(5);
@@ -133,7 +184,7 @@ public class PokemonEntrenadorCrud {
 
 //				System.out.println(equipo);
 
-				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
+				Pokemon pokemon = new Pokemon(id,idPokedex, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
 						stamina, nivel, fertilidad, equipo, estado, imagen);
 
 				System.out.println("estos son los movimientos " + pokemon.getMoves().toString());

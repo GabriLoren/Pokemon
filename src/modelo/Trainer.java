@@ -89,8 +89,10 @@ public class Trainer {
 	public void capturar(Pokemon pokemon) {
 
 		pokemon.setStatus("sinEstado");
-
+	
 		pokemon.setNickname(pokemon.getName());
+		
+		pokemon.setIdPokedex(pokemon.getId());
 
 		if (pokemon.getEquipo().equals("SI")) {
 			

@@ -9,6 +9,8 @@ public class InsertarEnEquipo2 {
 	// inserta el pokemon seleccionado en el equip pokemon y o borra de
 	// TodosLosPokemon
 	public static void inserarEnEquipo(int idPokemon, Trainer entrenador) {
+		
+
 
 		for (int i = 0; i < entrenador.getTodosLosPokemon().size(); i++) {
 
@@ -57,6 +59,8 @@ public class InsertarEnEquipo2 {
 				entrenador.getTodosLosPokemon().getLast().setEquipo("NO");
 
 				PokemonEntrenadorCrud.actualizarPokemonEnBbDd(entrenador.getTodosLosPokemon().getLast());
+				
+				System.out.println(entrenador.getEquipoPokemon().size());
 
 			
 		

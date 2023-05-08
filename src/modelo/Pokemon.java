@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Pokemon {
 
 	private int id;
+	private int idPokedex;
 	private String name;
 	private String nickname;
 	private int vit;
@@ -41,10 +42,10 @@ public class Pokemon {
 		this.level = p.level;
 		this.equipo = p.equipo;
 		this.fertility = p.fertility;
-		this.status=p.status;
+		this.status = p.status;
 		this.moves = p.moves;
-		this.imagen=p.imagen;
-		
+		this.imagen = p.imagen;
+
 	}
 
 	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
@@ -67,10 +68,32 @@ public class Pokemon {
 
 	}
 
-	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
-			int stamina, int level, int fertility, String equipo, String status, String imagen) {
+	// constructor para la crianza
+	public Pokemon(int id, int idPokedex, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+			int level, int fertility, String equipo) {
 		super();
 		this.id = id;
+		this.idPokedex = idPokedex;
+		this.nickname = nickname;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.equipo = equipo;
+		this.fertility = fertility;
+		this.moves = new LinkedList<Move>();
+
+	}
+
+	public Pokemon(int id, int idPokedex, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef,
+			int speed, int stamina, int level, int fertility, String equipo, String status, String imagen) {
+		super();
+		this.id = id;
+		this.idPokedex = idPokedex;
 		this.name = name;
 		this.nickname = nickname;
 		this.vit = vit;
@@ -90,7 +113,7 @@ public class Pokemon {
 	}
 
 	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
-			int level, int fertility, String imagen, Types tipo1,Types tipo2) {
+			int level, int fertility, String imagen, Types tipo1, Types tipo2) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -106,8 +129,8 @@ public class Pokemon {
 		this.status = status;
 		this.fertility = fertility;
 		this.setImagen(imagen);
-		this.type1=tipo1;
-		this.type2=tipo2;
+		this.type1 = tipo1;
+		this.setType2(tipo2);
 
 	}
 
@@ -302,11 +325,11 @@ public class Pokemon {
 		this.gender = gender;
 	}
 
-	public Types getType() {
+	public Types getType1() {
 		return type1;
 	}
 
-	public void setType(Types type) {
+	public void setType1(Types type) {
 		this.type1 = type;
 	}
 
@@ -342,6 +365,22 @@ public class Pokemon {
 		this.imagen = imagen;
 	}
 
+	public int getIdPokedex() {
+		return idPokedex;
+	}
+
+	public void setIdPokedex(int idPokedex) {
+		this.idPokedex = idPokedex;
+	}
+
+	public Types getType2() {
+		return type2;
+	}
+
+	public void setType2(Types type2) {
+		this.type2 = type2;
+	}
+
 	// si el mote es una palabrota devuelve falso
 	public static boolean comprobarMote(String mote) {
 
@@ -365,10 +404,10 @@ public class Pokemon {
 		this.stamina = 0;
 
 	}
-	
+
 	public void recuperarEstamina() {
-		
-		stamina+=20;
+
+		stamina += 20;
 	}
 
 	@Override
@@ -378,6 +417,7 @@ public class Pokemon {
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
 	}
+
 
 //	@Override
 //	public String toString() {

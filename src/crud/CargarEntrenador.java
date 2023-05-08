@@ -21,12 +21,18 @@ import modelo.Trainer;
 public class CargarEntrenador {
 
 	private static Trainer entrenador;
+	
+
 	private static String nombre = "";
 	private static int id = 0;
 	private static LinkedList<Trainer> todosLosEntrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
 
 	public static Trainer getEntrenador() {
 		return entrenador;
+	}
+	
+	public static void setEntrenador(Trainer entrenador) {
+		CargarEntrenador.entrenador = entrenador;
 	}
 
 	// comprueba si el usuario existe y si es así lo carga en el programa
