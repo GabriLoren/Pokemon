@@ -35,6 +35,7 @@ public class Pokemon {
 		}
 
 	private int id;
+	private int pokedexNum;
 	private String name;
 	private String nickname;
 	private Types type1;
@@ -65,7 +66,7 @@ public class Pokemon {
 	private int maxSatk;
 	private int maxSdef;
 	private int maxSpd;
-	static int fertility;
+	private int fertility;
 	
 
 	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
@@ -90,6 +91,32 @@ public class Pokemon {
 		this.moves = new LinkedList<Move>();
 		this.status = null;
 		this.fertility=fertility;
+		
+	}
+
+	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
+			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen, int fertility,int pokedexNum) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.nickname = nickname;
+		this.type1 = type1;
+		this.type2 = type2;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.equipo = equipo;
+		this.exp = exp;
+		this.imagen = imagen;
+		this.moves = new LinkedList<Move>();
+		this.status = null;
+		this.fertility=fertility;
+		this.pokedexNum=pokedexNum;
 	}
 
 	public Pokemon(Pokemon p) {
@@ -362,6 +389,32 @@ public class Pokemon {
 
 	public void setMaxSpd(int maxSpd) {
 		this.maxSpd = maxSpd;
+	}
+	
+
+
+	public int getPokedexNum() {
+		return pokedexNum;
+	}
+
+	public void setPokedexNum(int pokedexNum) {
+		this.pokedexNum = pokedexNum;
+	}
+
+	public Types getType1() {
+		return type1;
+	}
+
+	public void setType1(Types type1) {
+		this.type1 = type1;
+	}
+
+	public int getFertility() {
+		return fertility;
+	}
+
+	public void setFertility(int fertility) {
+		this.fertility = fertility;
 	}
 
 	// si el mote es una palabrota devuelve falso

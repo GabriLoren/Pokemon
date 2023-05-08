@@ -53,13 +53,18 @@ public class CargarMoves {
 				name = miRs.getString("name");
 				power = miRs.getInt("power");
 				type = miRs.getString("type");
+
 				status = miRs.getString("status");
+
 				turns = miRs.getInt("turns");
 				buff = miRs.getDouble("buff");
+
 				stat = miRs.getString("stat");
+
 				staminaCost = miRs.getInt("stamina_cost");
 				lvlRequirement = miRs.getInt("lvl_requirement");
 				category = miRs.getString("category");
+
 				dmgType = miRs.getString("dmg_type");
 
 				move = new Move(name, id, MoveCategory.valueOf(category), power, Types.valueOf(type),

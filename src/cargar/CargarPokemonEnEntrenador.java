@@ -26,7 +26,7 @@ public class CargarPokemonEnEntrenador {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-			String sentecia = "SELECT PT.*, P.NAME, P.SPRITE FROM POKEDEX AS JOIN POKEMON_TRAINER AS PT ON P.POKEDEX_NUM=PT.POKEDEX_NUM WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT PT.*, P.NAME, P.SPRITE FROM POKEDEX P JOIN POKEMON_TRAINER PT ON P.POKEDEX_NUM=PT.POKEDEX_NUM WHERE TRAINER_ID=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente

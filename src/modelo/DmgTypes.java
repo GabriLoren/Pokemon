@@ -1,5 +1,5 @@
 package modelo;
 
 public enum DmgTypes {
-	PHYSICAL, SPECIAL;
+	PHYSICAL, SPECIAL, NULL;
 }

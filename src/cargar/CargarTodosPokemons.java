@@ -28,9 +28,11 @@ public class CargarTodosPokemons {
 	static int stamina=100;
 	static int nivel;
 	static int fertilidad=5;
+	static int exp=0;
+	static int vitality=100;
 	static String imagen;
-	String type1 = "";
-	String type2 = "";
+	static String type1 = "";
+	static String type2 = "";
 
 	
 	
@@ -41,11 +43,11 @@ public class CargarTodosPokemons {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
 
-			ResultSet miRs = miSt.executeQuery("SELECT * FROM POKEMON");
+			ResultSet miRs = miSt.executeQuery("SELECT * FROM POKEDEX");
 
 			while (miRs.next()) {
 
@@ -58,12 +60,13 @@ public class CargarTodosPokemons {
 				defensaSp = Integer.parseInt(miRs.getString("base_sdef"));
 				velocidad = Integer.parseInt(miRs.getString("base_spd"));
 				nivel = Integer.parseInt(miRs.getString("base_lvl"));
-				imagen= miRs.getString("imagen");
+				imagen= miRs.getString("sprite");
 				type1 = miRs.getString("type1");
 				type2 = miRs.getString("type2");
 
-				Pokemon pokemon = new Pokemon( id,  nombre,  Types.valueOf(type1),  Types.valueOf(type2),  vitality, ataque, defensa, ataqueSp,
-						defensaSp, velocidad, stamina, nivel, equipo, exp,  imagen, fertilidad);
+				Pokemon pokemon = new Pokemon( id,  nombre,  "", Types.valueOf(type1),  Types.valueOf(type2),  vitality, ataque, defensa, ataqueSp,
+						defensaSp, velocidad, stamina, nivel, false, exp,  imagen, fertilidad);
+			
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");
