@@ -16,7 +16,8 @@ max_sdef INT,
 max_satk INT,
 max_spd INT,
 base_lvl INT DEFAULT(1),
-evolution_lvl INT
+evolution_lvl INT,
+sprite VARCHAR(50)
 );
 
 CREATE TABLE trainer(
@@ -65,17 +66,18 @@ gender CHAR(1),
 level INT,
 in_team BOOLEAN,
 exp INT,
-sprite VARCHAR(50),
 move1 INT,
 move2 INT,
 move3 INT,
 move4 INT,
+object INT,
 CONSTRAINT pokedex_fk FOREIGN KEY (pokedex_num) REFERENCES pokedex(pokedex_num),
 CONSTRAINT trainer_fk FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id),
 CONSTRAINT move1_fk FOREIGN KEY (move1) REFERENCES move(move_id),
 CONSTRAINT move2_fk FOREIGN KEY (move2) REFERENCES move(move_id),
 CONSTRAINT move3_fk FOREIGN KEY (move3) REFERENCES move(move_id),
-CONSTRAINT move4_fk FOREIGN KEY (move4) REFERENCES move(move_id)
+CONSTRAINT move4_fk FOREIGN KEY (move4) REFERENCES move(move_id),
+CONSTRAINT object_fk FOREIGN KEY (object) REFERENCES obj(obj_id)
 );
 
 CREATE TABLE obj_trainer(
