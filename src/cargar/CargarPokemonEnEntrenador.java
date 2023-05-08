@@ -56,8 +56,7 @@ public class CargarPokemonEnEntrenador {
 			int id_movimiento4=0;
 			//aún no lo tengo en cuenta
 			int object=0;
-			
-//			int fertilidad = 0;
+			int fertilidad = 0;
 		
 			
 			
@@ -86,6 +85,7 @@ public class CargarPokemonEnEntrenador {
 				id_movimiento2 = miRs.getInt("move2");
 				id_movimiento3 = miRs.getInt("move3");
 				id_movimiento4 = miRs.getInt("move4");
+				fertilidad=miRs.getInt("fertility");
 				
 				
 				
@@ -95,7 +95,7 @@ public class CargarPokemonEnEntrenador {
 //				System.out.println(equipo);
 
 				Pokemon pokemon = new Pokemon( id,  nombre,  nickname,  Types.valueOf(type1),  Types.valueOf(type2),  vitality, ataque, defensa, ataqueSp,
-						defensaSp, velocidad, stamina, nivel, equipo, exp,  imagen);
+						defensaSp, velocidad, stamina, nivel, equipo, exp,  imagen, fertilidad);
 
 				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
 				comprobarSiExisteMovimiento(pokemon,id_movimiento2);
@@ -112,7 +112,7 @@ public class CargarPokemonEnEntrenador {
 //				pokemon.getMoves().add(new Move("patada"));
 //				pokemon.getMoves().add(new Move("puñetazo"));
 
-				if (equipo.equalsIgnoreCase("SI")) {
+				if (equipo==true) {
 
 					entrenador.getEquipoPokemon().add(pokemon);
 				}

@@ -65,10 +65,11 @@ public class Pokemon {
 	private int maxSatk;
 	private int maxSdef;
 	private int maxSpd;
+	static int fertility;
 	
 
 	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
-			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen) {
+			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen, int fertility) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -88,6 +89,7 @@ public class Pokemon {
 		this.imagen = imagen;
 		this.moves = new LinkedList<Move>();
 		this.status = null;
+		this.fertility=fertility;
 	}
 
 	public Pokemon(Pokemon p) {

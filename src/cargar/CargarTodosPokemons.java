@@ -25,10 +25,13 @@ public class CargarTodosPokemons {
 	static int ataqueSp;
 	static int defensaSp;
 	static int velocidad;
-	static int stamina;
+	static int stamina=100;
 	static int nivel;
-	static int fertilidad;
+	static int fertilidad=5;
 	static String imagen;
+	String type1 = "";
+	String type2 = "";
+
 	
 	
 	
@@ -46,20 +49,21 @@ public class CargarTodosPokemons {
 
 			while (miRs.next()) {
 
-				id = Integer.parseInt(miRs.getString(1));
-				nombre = miRs.getString(2);
-				vida = Integer.parseInt(miRs.getString(3));
-				ataque = Integer.parseInt(miRs.getString(4));
-				defensa = Integer.parseInt(miRs.getString(5));
-				ataqueSp = Integer.parseInt(miRs.getString(6));
-				defensaSp = Integer.parseInt(miRs.getString(7));
-				velocidad = Integer.parseInt(miRs.getString(8));
-				stamina = Integer.parseInt(miRs.getString(9));
-				nivel = Integer.parseInt(miRs.getString(10));
-				fertilidad=miRs.getInt("fertilidad");
+				id = Integer.parseInt(miRs.getString("pokedex_num"));
+				nombre = miRs.getString("name");
+				vida = Integer.parseInt(miRs.getString("base_vit"));
+				ataque = Integer.parseInt(miRs.getString("base_atk"));
+				defensa = Integer.parseInt(miRs.getString("base_def"));
+				ataqueSp = Integer.parseInt(miRs.getString("base_satk"));
+				defensaSp = Integer.parseInt(miRs.getString("base_sdef"));
+				velocidad = Integer.parseInt(miRs.getString("base_spd"));
+				nivel = Integer.parseInt(miRs.getString("base_lvl"));
 				imagen= miRs.getString("imagen");
+				type1 = miRs.getString("type1");
+				type2 = miRs.getString("type2");
 
-				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen);
+				Pokemon pokemon = new Pokemon( id,  nombre,  Types.valueOf(type1),  Types.valueOf(type2),  vitality, ataque, defensa, ataqueSp,
+						defensaSp, velocidad, stamina, nivel, equipo, exp,  imagen, fertilidad);
 				pokemons.add(pokemon);
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");

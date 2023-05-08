@@ -93,7 +93,7 @@ public class Trainer {
 	}
 
 	public void insertraPokemonCapturado(Pokemon pokemon) {
-		pokemon.setEquipo("NO");
+		pokemon.setEquipo(false);
 		
 		pokemon.setStatus(null);
 		
