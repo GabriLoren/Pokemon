@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.Move;
+import modelo.Obj;
 import modelo.Pokemon;
 import modelo.Trainer;
+import modelo.Types;
 
 public class CargarPokemonEnEntrenador {
 
@@ -24,7 +26,7 @@ public class CargarPokemonEnEntrenador {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-			String sentecia = "SELECT * FROM POKEMON_TRAINER WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT PT.*, P.NAME, P.SPRITE FROM POKEDEX AS JOIN POKEMON_TRAINER AS PT ON P.POKEDEX_NUM=PT.POKEDEX_NUM WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente
@@ -52,6 +54,8 @@ public class CargarPokemonEnEntrenador {
 			int id_movimiento2=0;
 			int id_movimiento3=0;
 			int id_movimiento4=0;
+			//aún no lo tengo en cuenta
+			int object=0;
 			
 //			int fertilidad = 0;
 		
@@ -90,8 +94,8 @@ public class CargarPokemonEnEntrenador {
 
 //				System.out.println(equipo);
 
-				Pokemon pokemon = new Pokemon(id, nombre, nickname, vitality, ataque, defensa, ataqueSp, defensaSp, velocidad,
-						stamina, nivel, 0, equipo, imagen);
+				Pokemon pokemon = new Pokemon( id,  nombre,  nickname,  Types.valueOf(type1),  Types.valueOf(type2),  vitality, ataque, defensa, ataqueSp,
+						defensaSp, velocidad, stamina, nivel, equipo, exp,  imagen);
 
 				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
 				comprobarSiExisteMovimiento(pokemon,id_movimiento2);

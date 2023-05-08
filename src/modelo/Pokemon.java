@@ -24,18 +24,9 @@ public class Pokemon {
 	private LinkedList<Move> moves;
 	private Status status;
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
-			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen, Obj object,
-			LinkedList<Move> moves, Status status) {
+			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -53,9 +44,8 @@ public class Pokemon {
 		this.equipo = equipo;
 		this.exp = exp;
 		this.imagen = imagen;
-		this.object = object;
-		this.moves = moves;
-		this.status = status;
+		this.moves = new LinkedList<Move>();
+		this.status = null;
 	}
 
 	public Pokemon(Pokemon p) {
