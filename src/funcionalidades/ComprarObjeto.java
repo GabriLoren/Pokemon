@@ -70,18 +70,4 @@ public class ComprarObjeto {
 		else return false;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

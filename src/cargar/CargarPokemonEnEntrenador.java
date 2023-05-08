@@ -22,9 +22,9 @@ public class CargarPokemonEnEntrenador {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
-			String sentecia = "SELECT * FROM POKEMON_ENTRENADOR WHERE ID_ENTRENADOR=?";
+			String sentecia = "SELECT * FROM POKEMON_TRAINER WHERE ID_ENTRENADOR=?";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 
 			// idEntrenador es el id del entrenador que hemos cargado previamente
@@ -32,52 +32,66 @@ public class CargarPokemonEnEntrenador {
 			ResultSet miRs = miPSt.executeQuery();
 
 			int id = 0;
-			String nombre = "";
-			String mote = "";
-//			id_entrenador int
-			int vida = 0;
+			String nombre="";
+			String nickname = "";
+			String type1 = "";
+			String type2 = "";
+			int vitality = 0;
 			int ataque = 0;
 			int defensa = 0;
 			int ataqueSp = 0;
 			int defensaSp = 0;
 			int velocidad = 0;
 			int stamina = 0;
+			String gender = "";
 			int nivel = 0;
-			int fertilidad = 0;
-			String equipo = "si";
-			String estado = "SinEstado";
+			boolean equipo = false;
+			int exp = 0;
 			String imagen = "";
-			int id_movimiento1 = 0;
+			int id_movimiento1 =0;
 			int id_movimiento2=0;
 			int id_movimiento3=0;
 			int id_movimiento4=0;
+			
+//			int fertilidad = 0;
+		
+			
+			
 //			id_objeto int);
 
 			while (miRs.next()) {
 
-				id = Integer.parseInt(miRs.getString(1));
-				nombre = miRs.getString(2);
-				mote = miRs.getString(3);
-				vida = miRs.getInt(5);
-				ataque = miRs.getInt(6);
-				defensa = miRs.getInt(7);
-				ataqueSp = miRs.getInt(8);
-				defensaSp = miRs.getInt(9);
-				velocidad = miRs.getInt(10);
-				stamina = miRs.getInt(11);
-				nivel = miRs.getInt(12);
-				equipo = miRs.getString(18);
-				id_movimiento1 = miRs.getInt("id_movimiento1");
-				id_movimiento2 = miRs.getInt("id_movimiento2");
-				id_movimiento3 = miRs.getInt("id_movimiento3");
-				id_movimiento4 = miRs.getInt("id_movimiento4");
-				fertilidad = miRs.getInt("fertilidad");
-				imagen = miRs.getString("imagen");
+				id = miRs.getInt("pokemon_id");
+				nombre=miRs.getString("name");
+				nickname = miRs.getString("nickname");
+				type1 = miRs.getString("type1");
+				type2 = miRs.getString("type2");
+				vitality = miRs.getInt("vitality");
+				ataque = miRs.getInt("attack");
+				defensa = miRs.getInt("defense");
+				defensaSp = miRs.getInt("sp_defense");
+				ataqueSp = miRs.getInt("sp_attack");
+				velocidad = miRs.getInt("speed");
+				stamina = miRs.getInt("stamina");
+				gender = miRs.getString("gender");
+				nivel = miRs.getInt("level");
+				equipo = miRs.getBoolean("in_team");
+				exp = miRs.getInt("exp");
+				imagen = miRs.getString("sprite");
+				id_movimiento1 = miRs.getInt("move1");
+				id_movimiento2 = miRs.getInt("move2");
+				id_movimiento3 = miRs.getInt("move3");
+				id_movimiento4 = miRs.getInt("move4");
+				
+				
+				
+//				fertilidad = miRs.getInt("fertilidad");
+				
 
 //				System.out.println(equipo);
 
-				Pokemon pokemon = new Pokemon(id, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
-						stamina, nivel, fertilidad, equipo, estado, imagen);
+				Pokemon pokemon = new Pokemon(id, nombre, nickname, vitality, ataque, defensa, ataqueSp, defensaSp, velocidad,
+						stamina, nivel, 0, equipo, imagen);
 
 				comprobarSiExisteMovimiento(pokemon,id_movimiento1);
 				comprobarSiExisteMovimiento(pokemon,id_movimiento2);
