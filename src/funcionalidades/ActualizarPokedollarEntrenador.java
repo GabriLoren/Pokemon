@@ -14,7 +14,7 @@ public class ActualizarPokedollarEntrenador {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "UPDATE ENTRENADOR SET POKEDOLLAR=? WHERE ID=?";
 

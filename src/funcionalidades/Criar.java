@@ -2,6 +2,7 @@ package funcionalidades;
 
 import java.util.LinkedList;
 
+import crud.PokemonEntrenadorCrud;
 import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;
@@ -13,11 +14,11 @@ public class Criar {
 
 	private static LinkedList<Move> movimientosHijo = new LinkedList<Move>();
 
+	private static Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
+
 //	private static Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
 
 	public static void Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
-
-		Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null,"");
 
 		// tendrá por defecto el nivel 1
 		pokemonHijo.setLevel(1);
@@ -25,8 +26,8 @@ public class Criar {
 		// mote del pokemon
 		pokemonHijo.setNickname(creaMoteHijo(pokemon1, pokemon2));
 
-		// nombre del pokemon hijo
-		pokemonHijo.setName(elegirAleatoriamenteNombrePokemonHijo(pokemon1, pokemon2));
+		// IdPokedex, nombre, imagen del pokemon hijo
+		elegirAleatoriamenteIdPokedexPokemonHijo(pokemon1, pokemon2, pokemonHijo);
 
 		// Estadísticas
 		insertarEstadisticasEnHijo(pokemon1, pokemon2, pokemonHijo);
@@ -35,19 +36,23 @@ public class Criar {
 		insertarMovimientosEnHijo(pokemon1.getMoves(), pokemon2.getMoves());
 		pokemonHijo.setMoves(movimientosHijo);
 
-		// añadimos al entrenador el pokemon que acabamos de crear con la crianza
-		entrenador.getTodosLosPokemon().add(pokemonHijo);
+		// añadimos al entrenador el pokemon que acabamos de crear con la crianza al
+		// equipo o a la caja
+		// dependiendo de si está completo el equipo o no
+		if (entrenador.getEquipoPokemon().size() < 6)
+			entrenador.getEquipoPokemon().add(pokemonHijo);
+		else
+			entrenador.getTodosLosPokemon().add(pokemonHijo);
+//		entrenador.getTodosLosPokemon().add(pokemonHijo);
 
-		// Reutilizamos el método de la clase captura para insertra en la BbDd el nuevo
-		// pokemon creado
-		// mediante de la crianza
-		Captura.insertarEnBbDdElPokemonEncontrado(pokemonHijo, entrenador.getId());
+		// insertamos el hijo en la BbDd
+		PokemonEntrenadorCrud.insertarEnBbDdElPokemonHijo(pokemonHijo, entrenador);
 
 		// Los padres pierden un punto de fertilidad cada vez que crien
 		pokemon1.setFertility(pokemon1.getFertility() - 1);
 		pokemon2.setFertility(pokemon2.getFertility() - 1);
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon1);
-		ActualizarCaracteristicasPokemon.actualizarPokemonEnBbDd(pokemon2);
+		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon1);
+		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon2);
 
 	}
 
@@ -138,18 +143,29 @@ public class Criar {
 
 	}
 
-	// selecciona el nombre de pokemon del hijo a partir de uno de los padres
-	private static String elegirAleatoriamenteNombrePokemonHijo(Pokemon pokemon1, Pokemon pokemon2) {
+	// selecciona el id_pokedex, nombre, imagen, tipo1 y tipo2 del pokemon hijo a
+	// partir de uno de los padres
+	private static void elegirAleatoriamenteIdPokedexPokemonHijo(Pokemon pokemon1, Pokemon pokemon2,
+			Pokemon pokemonHijo) {
 
-		String nombreHijo = "";
+		System.out.println("id_pokedex p1 " + pokemon1.getIdPokedex());
+		System.out.println("id_pokedex p2 " + pokemon2.getIdPokedex());
 
 		int numAleatotio = (int) (Math.random() * 2);
 
-		if (numAleatotio == 0)
-			nombreHijo = pokemon1.getName();
-		else
-			nombreHijo = pokemon2.getName();
-		return nombreHijo;
+		if (numAleatotio == 0) {
+			pokemonHijo.setIdPokedex(pokemon1.getIdPokedex());
+			pokemonHijo.setName(pokemon1.getName());
+			pokemonHijo.setImagen(pokemon1.getImagen());
+			pokemonHijo.setType1(pokemon1.getType1());
+			pokemonHijo.setType2(pokemon1.getType2());
+		} else {
+			pokemonHijo.setIdPokedex(pokemon2.getIdPokedex());
+			pokemonHijo.setName(pokemon2.getName());
+			pokemonHijo.setImagen(pokemon2.getImagen());
+			pokemonHijo.setType1(pokemon2.getType1());
+			pokemonHijo.setType2(pokemon2.getType2());
+		}
 
 	}
 
@@ -202,15 +218,15 @@ public class Criar {
 		if (mitadNumLetrasMotePadre < 1)
 			mitadNumLetrasMotePadre = 1;
 
-		String mitaMote = "";
+		String mitadMote = "";
 
 		for (int i = 0; i < mitadNumLetrasMotePadre; i++) {
 
-			mitaMote += motePadre.charAt(i);
+			mitadMote += motePadre.charAt(i);
 
 		}
-		System.out.println(mitaMote);
-		return mitaMote;
+		System.out.println(mitadMote);
+		return mitadMote;
 	}
 
 	// Se inserta en el hijo las estadísticas del padre que sean de mayor valor
@@ -257,14 +273,10 @@ public class Criar {
 		else
 			pokemonHijo.setStamina(pokemon2.getStamina());
 
-		// fertilidad, el hijo tendrá por defecto 5
-	
-			pokemonHijo.setFertility(5);
-		
+		// fertilidad, el hijo empezará con 5 por defecto
+
+		pokemonHijo.setFertility(5);
 
 	}
-	
-	
-	
 
 }

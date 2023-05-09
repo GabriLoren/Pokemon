@@ -1,4 +1,4 @@
-package cargar;
+package crud;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,7 +34,7 @@ public class CargarTodosLosEntrenadores {
 
 		Connection miCon;
 		try {
-			miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
 			ResultSet miRs = miSt.executeQuery("SELECT * FROM ENTRENADOR");
@@ -55,7 +55,7 @@ public class CargarTodosLosEntrenadores {
 				
 				
 						//inserta en cada entrenador todos sus pokemon tanto en el equipo como en la caja (no están en elequipo)
-						CargarPokemonEnEntrenador.cargarPokemonEnEntrenador(entrenador);
+						PokemonEntrenadorCrud.cargarPokemonEnEntrenador(entrenador);
 						
 						
 						

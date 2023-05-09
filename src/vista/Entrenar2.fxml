@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Entrenar2Controller">
    <children>
-      <ImageView fitHeight="520.0" fitWidth="814.0" layoutX="-6.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="487.0" fitWidth="857.0" layoutX="-6.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/vistaEntrenar.jpg" />
          </image>
@@ -20,9 +20,9 @@
       <Button layoutX="142.0" layoutY="295.0" mnemonicParsing="false" onAction="#funcional" onMouseEntered="#precioFuncional" onMouseExited="#funcionalExited" text="FUNCIONAL" />
       <Button layoutX="417.0" layoutY="295.0" mnemonicParsing="false" onAction="#onirico" onMouseEntered="#precioOnirico" onMouseExited="#oniricoExited" prefHeight="25.0" prefWidth="82.0" text="ONIRICO" />
       <Button layoutX="565.0" layoutY="295.0" mnemonicParsing="false" onAction="#pesado" onMouseEntered="#precioPesado" onMouseExited="#pesadoExited" prefHeight="25.0" prefWidth="82.0" text="PESADO" />
-      <Label fx:id="pokedollarEntrenador" alignment="TOP_LEFT" layoutX="15.0" layoutY="355.0" prefHeight="80.0" prefWidth="337.0" text="SALDO" textFill="#111010">
+      <Label fx:id="pokedollarEntrenador" alignment="TOP_LEFT" layoutX="15.0" layoutY="344.0" prefHeight="131.0" prefWidth="337.0" text="SALDO" textFill="#111010">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Label>
       <TableView fx:id="tabla" layoutX="45.0" layoutY="115.0" prefHeight="147.0" prefWidth="724.0">
          <columns>
@@ -43,7 +43,7 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="precioEntrenamiento" alignment="TOP_RIGHT" layoutX="367.0" layoutY="355.0" prefHeight="110.0" prefWidth="375.0" textFill="WHITE">
+      <Label fx:id="precioEntrenamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="369.0" prefHeight="110.0" prefWidth="375.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

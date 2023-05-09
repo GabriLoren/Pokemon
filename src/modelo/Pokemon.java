@@ -1,123 +1,31 @@
 package modelo;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Pokemon {
-	
-	// Generates a number between 1 and 5
-		private static int randomStats() {
-			Random r = new Random();
-			return r.nextInt(5 - 1) + 1;
-		}
-		
-		// Checks the pokemon's stats and if they are greater than their max value they
-		// get set to the max
-		public void checkMaxStats() {
-			if (this.vit > this.maxVit) {
-				this.setVit(maxVit);
-			}
-			if (this.atk > this.maxAtk) {
-				this.setAtk(maxAtk);
-			}
-			if (this.def > this.maxDef) {
-				this.setDef(maxDef);
-			}
-			if (this.spAtk > this.maxSatk) {
-				this.setSpAtk(maxSatk);
-			}
-			if (this.maxSdef > this.maxSdef) {
-				this.setSpDef(maxSdef);
-			}
-			if (this.speed > this.maxSpd) {
-				this.setSpeed(maxSpd);
-			}
-		}
 
 	private int id;
-	private int pokedexNum;
+	private int idPokedex;
 	private String name;
 	private String nickname;
-	private Types type1;
-	private Types type2;
 	private int vit;
-	private int atk;
+	private int atk = 0;
 	private int def;
 	private int spAtk;
 	private int spDef;
 	private int speed;
 	private int stamina;
 	private int level;
-	private boolean equipo;
-	private int exp;
-	private String imagen;
-	private Obj object;
 	private LinkedList<Move> moves;
-	private Status status;
-	private int baseVit;
-	private int baseAtk;
-	private int baseDef;
-	private int baseSatk;
-	private int baseSdef;
-	private int baseSpd;
-	private int maxVit;
-	private int maxAtk;
-	private int maxDef;
-	private int maxSatk;
-	private int maxSdef;
-	private int maxSpd;
+//	private Move move; //Hago pruebas con un solo movimiento
 	private int fertility;
-	
-
-	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
-			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen, int fertility) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.nickname = nickname;
-		this.type1 = type1;
-		this.type2 = type2;
-		this.vit = vit;
-		this.atk = atk;
-		this.def = def;
-		this.spAtk = spAtk;
-		this.spDef = spDef;
-		this.speed = speed;
-		this.stamina = stamina;
-		this.level = level;
-		this.equipo = equipo;
-		this.exp = exp;
-		this.imagen = imagen;
-		this.moves = new LinkedList<Move>();
-		this.status = null;
-		this.fertility=fertility;
-		
-	}
-
-	public Pokemon(int id, String name, String nickname, Types type1, Types type2, int vit, int atk, int def, int spAtk,
-			int spDef, int speed, int stamina, int level, boolean equipo, int exp, String imagen, int fertility,int pokedexNum) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.nickname = nickname;
-		this.type1 = type1;
-		this.type2 = type2;
-		this.vit = vit;
-		this.atk = atk;
-		this.def = def;
-		this.spAtk = spAtk;
-		this.spDef = spDef;
-		this.speed = speed;
-		this.stamina = stamina;
-		this.level = level;
-		this.equipo = equipo;
-		this.exp = exp;
-		this.imagen = imagen;
-		this.moves = new LinkedList<Move>();
-		this.status = null;
-		this.fertility=fertility;
-		this.pokedexNum=pokedexNum;
-	}
+	private boolean gender;
+	private Types type1;
+	private Types type2;
+	private String status;
+	private Obj object;
+	private String equipo;
+	private String imagen;
 
 	public Pokemon(Pokemon p) {
 
@@ -133,12 +41,172 @@ public class Pokemon {
 		this.stamina = p.stamina;
 		this.level = p.level;
 		this.equipo = p.equipo;
+		this.fertility = p.fertility;
 		this.status = p.status;
 		this.moves = p.moves;
 		this.imagen = p.imagen;
-		this.object = p.object;
-		this.exp = p.exp;
 
+	}
+
+	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+			int stamina, int level) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.nickname = nickname;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+
+//		this.moves = moves;
+//		this.status = status;
+
+	}
+
+	// constructor para la crianza
+	public Pokemon(int id, int idPokedex, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+			int level, int fertility, String equipo) {
+		super();
+		this.id = id;
+		this.idPokedex = idPokedex;
+		this.nickname = nickname;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.equipo = equipo;
+		this.fertility = fertility;
+		this.moves = new LinkedList<Move>();
+
+	}
+
+	public Pokemon(int id, int idPokedex, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef,
+			int speed, int stamina, int level, int fertility, String equipo, String status, String imagen) {
+		super();
+		this.id = id;
+		this.idPokedex = idPokedex;
+		this.name = name;
+		this.nickname = nickname;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.equipo = equipo;
+		this.fertility = fertility;
+		this.moves = new LinkedList<Move>();
+		this.status = status;
+		this.setImagen(imagen);
+
+	}
+
+	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
+			int level, int fertility, String imagen, Types tipo1, Types tipo2) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.vit = vit;
+		this.atk = atk;
+		this.def = def;
+		this.spAtk = spAtk;
+		this.spDef = spDef;
+		this.speed = speed;
+		this.stamina = stamina;
+		this.level = level;
+		this.moves = new LinkedList<Move>();
+		this.status = status;
+		this.fertility = fertility;
+		this.setImagen(imagen);
+		this.type1 = tipo1;
+		this.setType2(tipo2);
+
+	}
+
+//	public Pokemon(String name, String mote) {
+//
+//		this.id = id;
+//		this.name = name;
+//		this.nickname = mote;
+//		this.vit = 100;
+//		this.atk = 0;
+//		this.def = 20;
+//		this.spAtk = 0;
+//		this.spDef = 0;
+//		this.speed = 0;
+//		this.stamina = 0;
+//		this.level = 0;
+//		this.moves = new LinkedList<Move>();
+//		this.fertility = 0;
+//		this.gender = false;
+//		this.type1 = Types.NORMAL;
+//		this.status = "";
+////		this.object = new Obj();
+//
+//	}
+
+	public Pokemon(String name, LinkedList<Move> moves) {
+
+		this.id = 0;
+		this.name = name;
+		this.nickname = "";
+		this.vit = 100;
+		this.atk = 0;
+		this.def = 20;
+		this.spAtk = 0;
+		this.spDef = 0;
+		this.speed = 0;
+		this.stamina = 0;
+		this.level = 0;
+		this.moves = moves;
+		this.fertility = 0;
+		this.gender = false;
+		this.type1 = Types.NORMAL;
+		this.status = "";
+//		this.object = new Obj();
+
+	}
+
+//	public Pokemon(int id, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef, int speed,
+//			int stamina, int level, ArrayList<Move> moves, int fertility, boolean gender, Types type, String status,
+//			Obj obj) {
+//
+//		this.id = id;
+//		this.name = name;
+//		this.nickname = nickname;
+//		this.vit = vit;
+//		this.atk = atk;
+//		this.def = def;
+//		this.spAtk = spAtk;
+//		this.spDef = spDef;
+//		this.speed = speed;
+//		this.stamina = stamina;
+//		this.level = level;
+//		this.moves = moves;
+//		
+//		this.fertility = fertility;
+//		this.gender = gender;
+//		this.type = type;
+//		this.status = status;
+//		this.object = obj;
+//	}
+
+	public Pokemon(int id, String name, int vit) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.name = name;
+		this.vit = vit;
 	}
 
 	public int getId() {
@@ -237,19 +305,39 @@ public class Pokemon {
 		this.moves = moves;
 	}
 
-	public Types getType() {
+//	public Move getMove() {//Pruebo con un solo movimiento
+//	return move;
+//}
+
+	public int getFertility() {
+		return fertility;
+	}
+
+	public void setFertility(int fertility) {
+		this.fertility = fertility;
+	}
+
+	public boolean isGender() {
+		return gender;
+	}
+
+	public void setGender(boolean gender) {
+		this.gender = gender;
+	}
+
+	public Types getType1() {
 		return type1;
 	}
 
-	public void setType(Types type) {
+	public void setType1(Types type) {
 		this.type1 = type;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -261,11 +349,11 @@ public class Pokemon {
 		this.object = object;
 	}
 
-	public boolean getEquipo() {
+	public String getEquipo() {
 		return equipo;
 	}
 
-	public void setEquipo(boolean equipo) {
+	public void setEquipo(String equipo) {
 		this.equipo = equipo;
 	}
 
@@ -277,144 +365,20 @@ public class Pokemon {
 		this.imagen = imagen;
 	}
 
+	public int getIdPokedex() {
+		return idPokedex;
+	}
+
+	public void setIdPokedex(int idPokedex) {
+		this.idPokedex = idPokedex;
+	}
+
 	public Types getType2() {
 		return type2;
 	}
 
 	public void setType2(Types type2) {
 		this.type2 = type2;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	
-	
-	public int getBaseVit() {
-		return baseVit;
-	}
-
-	public void setBaseVit(int baseVit) {
-		this.baseVit = baseVit;
-	}
-
-	public int getBaseAtk() {
-		return baseAtk;
-	}
-
-	public void setBaseAtk(int baseAtk) {
-		this.baseAtk = baseAtk;
-	}
-
-	public int getBaseDef() {
-		return baseDef;
-	}
-
-	public void setBaseDef(int baseDef) {
-		this.baseDef = baseDef;
-	}
-
-	public int getBaseSatk() {
-		return baseSatk;
-	}
-
-	public void setBaseSatk(int baseSatk) {
-		this.baseSatk = baseSatk;
-	}
-
-	public int getBaseSdef() {
-		return baseSdef;
-	}
-
-	public void setBaseSdef(int baseSdef) {
-		this.baseSdef = baseSdef;
-	}
-
-	public int getBaseSpd() {
-		return baseSpd;
-	}
-
-	public void setBaseSpd(int baseSpd) {
-		this.baseSpd = baseSpd;
-	}
-
-	public int getMaxVit() {
-		return maxVit;
-	}
-
-	public void setMaxVit(int maxVit) {
-		this.maxVit = maxVit;
-	}
-
-	public int getMaxAtk() {
-		return maxAtk;
-	}
-
-	public void setMaxAtk(int maxAtk) {
-		this.maxAtk = maxAtk;
-	}
-
-	public int getMaxDef() {
-		return maxDef;
-	}
-
-	public void setMaxDef(int maxDef) {
-		this.maxDef = maxDef;
-	}
-
-	public int getMaxSatk() {
-		return maxSatk;
-	}
-
-	public void setMaxSatk(int maxSatk) {
-		this.maxSatk = maxSatk;
-	}
-
-	public int getMaxSdef() {
-		return maxSdef;
-	}
-
-	public void setMaxSdef(int maxSdef) {
-		this.maxSdef = maxSdef;
-	}
-
-	public int getMaxSpd() {
-		return maxSpd;
-	}
-
-	public void setMaxSpd(int maxSpd) {
-		this.maxSpd = maxSpd;
-	}
-	
-
-
-	public int getPokedexNum() {
-		return pokedexNum;
-	}
-
-	public void setPokedexNum(int pokedexNum) {
-		this.pokedexNum = pokedexNum;
-	}
-
-	public Types getType1() {
-		return type1;
-	}
-
-	public void setType1(Types type1) {
-		this.type1 = type1;
-	}
-
-	public int getFertility() {
-		return fertility;
-	}
-
-	public void setFertility(int fertility) {
-		this.fertility = fertility;
 	}
 
 	// si el mote es una palabrota devuelve falso
@@ -445,21 +409,30 @@ public class Pokemon {
 
 		stamina += 20;
 	}
-	
-	// A Pokemon levels up when its exp value equals or exceeds 10 * lvl, then
-		// its exp value gets reduced by the same amount and its level increased by 1
-		// and all its stats increase by a random number between 1
-		// and 5 which is generated by calling the randomStats() method
-		public void levelUp() {
-			this.level++;
-			this.exp -= this.getLevel() * 10;
-			this.vit += randomStats();
-			this.atk += randomStats();
-			this.def += randomStats();
-			this.spAtk += randomStats();
-			this.spDef += randomStats();
-			this.speed += randomStats();
-			checkMaxStats();
-		}
+
+	@Override
+	public String toString() {
+		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
+	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
+//	}
 
 }
+
+//	@Override
+//	public String toString() {
+//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
+//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
+//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
+//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
+//	}

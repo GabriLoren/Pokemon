@@ -6,17 +6,26 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.SeleccionarJugadorController">
    <children>
       <ImageView fitHeight="406.0" fitWidth="497.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/vistaPrincipal.jpg" />
+            <Image url="@../img/fondoPrimero.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="TxtInsertarJugador" layoutX="156.0" layoutY="125.0" />
-      <Button fx:id="btbcargarEntrenador" layoutX="184.0" layoutY="170.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
-      <Label fx:id="lblMostrarUsuario" layoutX="107.0" layoutY="23.0" prefHeight="59.0" prefWidth="303.0" />
-      <Button fx:id="btbCrearUsuario" layoutX="184.0" layoutY="216.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
+      <TextField fx:id="TxtInsertarJugador" layoutX="208.0" layoutY="81.0" />
+      <Button fx:id="btbcargarEntrenador" layoutX="235.0" layoutY="137.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
+      <Label fx:id="lblMostrarUsuario" layoutX="164.0" layoutY="14.0" prefHeight="59.0" prefWidth="303.0" textFill="#cd1616">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Button fx:id="btbCrearUsuario" layoutX="235.0" layoutY="191.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
+      <Label layoutX="361.0" layoutY="76.0" prefHeight="36.0" prefWidth="121.0" text="Username">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

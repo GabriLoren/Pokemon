@@ -20,8 +20,8 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarTodosLosEntrenadores;
+import crud.CargarEntrenador;
+import crud.CargarTodosLosEntrenadores;
 import funcionalidades.Batalla;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

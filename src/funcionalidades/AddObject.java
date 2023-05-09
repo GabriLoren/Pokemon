@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import cargar.CargarMoves;
+import crud.CargarMoves;
 import modelo.Obj;
 import modelo.Pokemon;
 import modelo.Trainer;

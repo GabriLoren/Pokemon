@@ -10,10 +10,11 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarTodosLosEntrenadores;
+import crud.CargarEntrenador;
+import crud.CargarTodosLosEntrenadores;
 import funcionalidades.ActualizarPokedollarEntrenador;
 import funcionalidades.Batalla;
 import javafx.event.ActionEvent;
@@ -487,7 +488,7 @@ public class BatallaController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1)throws NoSuchElementException {
 		// TODO Auto-generated method stub
 
 		equipoJugador = new LinkedList<Pokemon>(entrenadorJugador.getEquipoPokemon());
@@ -499,6 +500,8 @@ public class BatallaController implements Initializable {
 		entrenadorAleatorio = CargarEntrenador.obtenerEntrenadorAleatorio();
 
 		equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
+		
+		System.out.println("equipo maquina "+equipoMaquina.toString());
 
 		pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
 

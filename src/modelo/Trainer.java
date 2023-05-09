@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import cargar.CargarPokemonEnEntrenador;
+import crud.PokemonEntrenadorCrud;
 import funcionalidades.GenerarID;
 
 public class Trainer {
@@ -26,7 +26,6 @@ public class Trainer {
 	private LinkedList<Pokemon> todosLosPokemon;
 	private LinkedList<Pokemon> equipoPokemon;
 	private LinkedList<Obj> objetos;
-	
 
 	public Trainer(int id, String name, int pokeDollar) {
 		super();
@@ -35,22 +34,16 @@ public class Trainer {
 		this.todosLosPokemon = new LinkedList<Pokemon>();
 		this.equipoPokemon = new LinkedList<Pokemon>();
 		this.objetos = new LinkedList<>();
-		this.pokeDollar=pokeDollar;
+		this.pokeDollar = pokeDollar;
 	}
-	
-	
 
 	public int getPokeDollar() {
 		return pokeDollar;
 	}
 
-
-
 	public void setPokeDollar(int pokeDollar) {
 		this.pokeDollar = pokeDollar;
 	}
-
-
 
 	public LinkedList<Obj> getObjetos() {
 		return objetos;
@@ -92,14 +85,30 @@ public class Trainer {
 		this.equipoPokemon = equipoPokemon;
 	}
 
-	public void insertraPokemonCapturado(Pokemon pokemon) {
-		pokemon.setEquipo(false);
-		
-		pokemon.setStatus(null);
-		
-		pokemon.setNickname(pokemon.getName());
+	// inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
+	public void capturar(Pokemon pokemon) {
 
-		this.todosLosPokemon.add(pokemon);
+		pokemon.setStatus("sinEstado");
+	
+		pokemon.setNickname(pokemon.getName());
+		
+		pokemon.setIdPokedex(pokemon.getId());
+
+		if (pokemon.getEquipo().equals("SI")) {
+			
+			this.equipoPokemon.add(pokemon);
+		}
+			
+		else {
+			
+			this.todosLosPokemon.add(pokemon);
+		}
+			
+
+		
+
+		PokemonEntrenadorCrud.insertarEnBbDdElPokemonEncontrado(pokemon, this);
+
 	}
 
 	public void insertarObjetoComprado(Obj objeto) {
@@ -124,9 +133,9 @@ public class Trainer {
 		return pokemonsEntrenador;
 
 	}
-	
-	//igual que el anterior pero static
-	public static String mostraTodosLosPokemonsStatic( LinkedList<Pokemon>todosLosPokemon) {
+
+	// igual que el anterior pero static
+	public static String mostraTodosLosPokemonsStatic(LinkedList<Pokemon> todosLosPokemon) {
 		String pokemonsEntrenador = "";
 		if (todosLosPokemon.size() > 0) {
 
@@ -143,7 +152,5 @@ public class Trainer {
 		return pokemonsEntrenador;
 
 	}
-	
- 
 
 }

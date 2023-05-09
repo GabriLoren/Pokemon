@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import cargar.CargarTodosLosEntrenadores;
+import crud.CargarTodosLosEntrenadores;
 import modelo.Trainer;
 
 public class CrearUsuarioNuevo {
@@ -41,7 +41,7 @@ public static boolean crearUsuarioNuevo(String nombreUsuarioNuevo) {
 
 		try {
 
-			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/curso_sql", "root", "");
+			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 			String sentecia = "INSERT INTO ENTRENADOR (ID,NOMBRE,POKEDOLLAR) VALUES (?,?,?)";
 			PreparedStatement miPSt = miCon.prepareStatement(sentecia);
 			miPSt.setLong(1, entrenador.getId());

@@ -14,10 +14,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-import cargar.CargarEntrenador;
-import cargar.CargarPokemonEnEntrenador;
-import cargar.CargarTodosLosObjetos;
-import cargar.CargarTodosPokemons;
+import crud.CargarEntrenador;
+import crud.CargarTodosLosObjetos;
+import crud.CargarTodosPokemons;
 import funcionalidades.InsertarEnEquipo;
 import javafx.event.ActionEvent;
 
