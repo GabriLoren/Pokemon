@@ -26,6 +26,7 @@ public class Pokemon {
 	private Obj object;
 	private String equipo;
 	private String imagen;
+	private String nombreObjeto;
 
 	public Pokemon(Pokemon p) {
 
@@ -417,7 +418,6 @@ public class Pokemon {
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
 	}
-
 
 //	@Override
 //	public String toString() {

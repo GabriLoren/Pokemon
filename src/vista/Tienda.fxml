@@ -36,7 +36,7 @@
             <TableColumn fx:id="defensaSpPokemon" prefWidth="75.0" text="DEFENSASP" />
             <TableColumn fx:id="velocidadPokemon" prefWidth="75.0" text="VELOCIDAD" />
             <TableColumn fx:id="estaminaPokemon" prefWidth="75.0" text="ESTAMINA" />
-            <TableColumn fx:id="estaminaPokemon" prefWidth="75.0" text="OBJETO" />
+            <TableColumn fx:id="objetoPokemon" prefWidth="75.0" text="OBJETO" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="248.0" layoutY="11.0" prefHeight="21.0" prefWidth="48.0" text="TIENDA" textAlignment="CENTER" />

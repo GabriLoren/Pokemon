@@ -236,7 +236,7 @@ public class PokemonEntrenadorCrud {
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?  WHERE ID=?";
+					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?, ID_OBJETO=?  WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -253,7 +253,8 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(8, pokemon.getFertility());
 			miPSt.setString(9, pokemon.getEquipo());
 			miPSt.setString(10, pokemon.getNickname());
-			miPSt.setLong(11, pokemon.getId());
+			miPSt.setInt(11, pokemon.getObject().getId());
+			miPSt.setLong(12, pokemon.getId());
 
 			miPSt.executeUpdate();
 

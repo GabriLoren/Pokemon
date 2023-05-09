@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-import funcionalidades.AddObject;
 import funcionalidades.ComprobarUsuarioExiste;
 import modelo.Pokemon;
 import modelo.Trainer;

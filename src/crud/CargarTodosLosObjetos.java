@@ -11,42 +11,40 @@ import modelo.Obj;
 import modelo.Pokemon;
 
 public class CargarTodosLosObjetos {
-	
-	private static LinkedList<Obj>todosLosObjetos=new LinkedList<>();
-	
+
+	private static LinkedList<Obj> todosLosObjetos = new LinkedList<>();
+
 	private static int id;
-	private static  String nombre;
+	private static String nombre;
 	private static int precio;
-	private static int atk;
-	private static int def;
-	private static int spDef;
-	private static int speed;
-	private static int stamina;
-	
+	private static double atk;
+	private static double def;
+	private static double spDef;
+	private static double speed;
+	private static double stamina;
+
 	public static void cargarTododLosObjetos() {
-		
-		
+
 		try {
 
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			Statement miSt = miCon.createStatement();
 
-			ResultSet miRs = miSt.executeQuery("SELECT * FROM OBJECT");
+			ResultSet miRs = miSt.executeQuery("SELECT * FROM OBJECTO");
 
 			while (miRs.next()) {
 
 				id = miRs.getInt(1);
 				nombre = miRs.getString(2);
-				precio=miRs.getInt("precio");
-				atk=miRs.getInt("ataque");
-				def=miRs.getInt("defensa");
-				spDef=miRs.getInt("defensa_sp");
-				speed=miRs.getInt("velocidad");
-				stamina=miRs.getInt("estamina");
-		
+				precio = miRs.getInt("precio");
+				atk = miRs.getDouble("ataque");
+				def = miRs.getDouble("defensa");
+				spDef = miRs.getDouble("defensa_sp");
+				speed = miRs.getDouble("velocidad");
+				stamina = miRs.getDouble("estamina");
 
-				Obj objeto = new Obj(id, nombre, precio,atk, def, spDef, 2, stamina);
+				Obj objeto = new Obj(id, nombre, precio, atk, def, spDef, speed, stamina);
 				todosLosObjetos.add(objeto);
 			}
 			System.out.println("metodo cargarTododLosObjetos funciona");

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-import funcionalidades.AddObject;
 import modelo.Trainer;
 
 public class CargarTodosLosEntrenadores {
@@ -63,7 +62,7 @@ public class CargarTodosLosEntrenadores {
 						System.out.println();
 
 						//tengo que quitar el comentario
-//						AddObject.cargarObjetosEnEntrenador(entrenador);
+						AddObject.cargarObjetosEnEntrenador(entrenador);
 
 				TodosLosEntrenadores.add(entrenador);
 

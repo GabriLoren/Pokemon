@@ -72,6 +72,9 @@ public class CargarTodosPokemons {
 
 				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),Types.valueOf(tipo2));
 				pokemons.add(pokemon);
+				
+				System.out.println("tipo1 de pokemon "+pokemon.getType1());
+				System.out.println("tipo2 de pokemon "+pokemon.getType2());
 			}
 			System.out.println("metodo cargarPokemonDesdeBbDd funciona");
 		} catch (SQLException e) {
