@@ -35,7 +35,7 @@ public class GeneraPokemonAleatorio {
 			
 			//generamos el id a partir del último id de la tabla POKEMON_TRAINER ya que por defecto el pokemon encontrado tiene el id del pokemon que hay
 			//en la tabla pokemon donde están los pokemon por defecto
-			int idGenerado = GenerarID.generaID("SELECT POKEMON_ID FROM POKEMON_TRAINER");
+			int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
 			
 			//añadimos un movimiento por defecto que tienen los pokemon cuando lo encontramos
 			
