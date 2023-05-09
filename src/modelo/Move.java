@@ -4,17 +4,13 @@ public class Move {
 
 	private int id;
 	private String name;
-	private MoveCategory category;
+	private String category;
 	private int power;
 	private Types type;
-	private Status status;
+	private String status;
 	private int turns;
 	private double buff;
 	private int staminaCost;
-	private Stats stat;
-	private DmgTypes dmgTypes;
-	private int lvlRequirement;
-	
 
 //	public Move() {
 //		super();
@@ -33,8 +29,8 @@ public class Move {
 
 	}
 
-	public Move(String name, int id, MoveCategory category, int power, Types type, Status status, int turns, double buff,
-			int staminaCost, Stats stat, DmgTypes dmgType, int lvlRequirement) {
+	public Move(String name, int id, String category, int power, Types type, String status, int turns, double buff,
+			int staminaCost) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -45,9 +41,6 @@ public class Move {
 		this.turns = turns;
 		this.buff = buff;
 		this.staminaCost=staminaCost;
-		this.stat = stat;
-		this.dmgTypes = dmgType;
-		this.setLvlRequirement(lvlRequirement);
 	}
 
 	public String getName() {
@@ -58,7 +51,7 @@ public class Move {
 		return id;
 	}
 
-	public MoveCategory getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
@@ -70,7 +63,7 @@ public class Move {
 		return type;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
@@ -90,7 +83,7 @@ public class Move {
 		this.name = name;
 	}
 
-	public void setCategory(MoveCategory category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -102,7 +95,7 @@ public class Move {
 		this.type = type;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -120,30 +113,6 @@ public class Move {
 
 	public void setStaminaCost(int staminaCost) {
 		this.staminaCost = staminaCost;
-	}
-
-	public Stats getStat() {
-		return stat;
-	}
-
-	public void setStat(Stats stat) {
-		this.stat = stat;
-	}
-
-	public DmgTypes getDmgTypes() {
-		return dmgTypes;
-	}
-
-	public void setDmgTypes(DmgTypes dmgTypes) {
-		this.dmgTypes = dmgTypes;
-	}
-
-	public int getLvlRequirement() {
-		return lvlRequirement;
-	}
-
-	public void setLvlRequirement(int lvlRequirement) {
-		this.lvlRequirement = lvlRequirement;
 	}
 
 	@Override
