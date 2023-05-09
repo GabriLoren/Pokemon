@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modelo.Pokemon;
 import modelo.Trainer;
+import modelo.Types;
 import javafx.scene.control.TableColumn;
 
 public class InsertarEnEquio2Controller implements Initializable {
@@ -179,12 +180,28 @@ public class InsertarEnEquio2Controller implements Initializable {
 		moteEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("nickname"));
 		nombreEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("name"));
 		ataqueEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("atk"));
+		defensaEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("def"));
+		ataqueSpEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spAtk"));
+		defensaSpEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spDef"));
 		vitalidadEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("vit"));
+		velocidadEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("speed"));
+		estaminaEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("stamina"));
+		nivelEquipo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("level"));
+		
+		
+		
 
 		mote.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("nickname"));
 		nombre.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("name"));
 		ataque.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("atk"));
+		defensa.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("def"));
+		ataqueSp.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spAtk"));
+		defensaSp.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spDef"));
 		vitalidad.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("vit"));
+		velocidad.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("speed"));
+		estamina.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("stamina"));
+		nivel.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("level"));
+
 
 	}
 }

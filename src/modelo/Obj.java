@@ -39,7 +39,7 @@ public class Obj {
 		super();
 		this.id=id;
 		this.name=name;
-		this.precio=precio;
+		this.setPrecio(precio);
 		this.atk = atk;
 		this.def = def;
 		this.spDef = spDef;
@@ -87,6 +87,14 @@ public class Obj {
 	@Override
 	public String toString() {
 		return  name;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 	

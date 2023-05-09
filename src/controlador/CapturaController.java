@@ -241,6 +241,7 @@ public class CapturaController implements Initializable {
 		imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 
 //		InsertarMoteController.setPokemon(pokemon);
+	
 
 	}
 
