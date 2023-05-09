@@ -56,6 +56,7 @@ id_movimiento3 int,
 id_movimiento4 int,
 id_objeto int,
 fertilidad int,
+exp int,
 equipo varchar(2));
 
 CREATE table objecto(

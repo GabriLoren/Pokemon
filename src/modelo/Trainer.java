@@ -102,6 +102,8 @@ public class Trainer {
 		
 		pokemon.setSpeed(r.nextInt(10-1)+1);
 		
+	
+		
 		
 	
 		pokemon.setNickname(pokemon.getName());

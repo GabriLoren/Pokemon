@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 import crud.CargarEntrenador;
 import crud.CargarTodosLosEntrenadores;
+import crud.PokemonEntrenadorCrud;
 import funcionalidades.ActualizarPokedollarEntrenador;
 import funcionalidades.Batalla;
 import javafx.event.ActionEvent;
@@ -315,17 +316,23 @@ public class BatallaController implements Initializable {
 			if (movimietoMaquina == null)
 				turnoOponente = "";
 		}
-
+		//ataca jugador
 		else if (Batalla.comprobraEstamina(pokemonElegidoJugador, movimietoJugador)) {
 
 			if (Batalla.atacar(pokemonElegidoJugador, pokemonElegidoMaquina, movimietoJugador)) {
 				
 				turnoJugador = "has elegido " + movimietoJugador.getName();
-
+				
+				//si entra es que el jugador ha matado al pokemon de la máquina
 				if (Batalla.vidaPokemonAtacado(pokemonElegidoMaquina)) {
 					System.out.println("valor del contadorMaquina " + contadorMaquina);
 
 					contadorMaquina++;
+					
+					//al matar a la máquina el pokemonjugador gana experiencia
+					pokemonElegidoJugador.giveExp(pokemonElegidoMaquina);
+					
+					PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonElegidoJugador);
 
 					if (contadorMaquina < equipoMaquina.size())
 						pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
@@ -352,11 +359,17 @@ public class BatallaController implements Initializable {
 					turnoOponente = "la máquina ha elegido " + movimietoMaquina.getName();
 
 					if (Batalla.vidaPokemonAtacado(pokemonElegidoJugador)) {
+						
+						//al matar al pokemonjugador la máquina gana experiencia
+						pokemonElegidoMaquina.giveExp(pokemonElegidoJugador);
+						
+						
 
 						contadorJugador++;
 
 						equipoJugador.remove(pokemonElegidoJugador);
 
+						//si mata la máquina al jugador entra para que el jugador elija otro pokemon
 						if (equipoJugador.size() > 0) {
 
 							// se abre la ventana con los pokemon del jugador para que seleccione otro

@@ -93,7 +93,7 @@ public class Pokemon {
 	}
 
 	public Pokemon(int id, int idPokedex, String name, String nickname, int vit, int atk, int def, int spAtk, int spDef,
-			int speed, int stamina, int level, int fertility, String equipo, String status, String imagen) {
+			int speed, int stamina, int level, int fertility, String equipo, String status, String imagen, int exp) {
 		super();
 		this.id = id;
 		this.idPokedex = idPokedex;
@@ -112,6 +112,7 @@ public class Pokemon {
 		this.moves = new LinkedList<Move>();
 		this.status = status;
 		this.setImagen(imagen);
+		this.exp=exp;
 
 	}
 
