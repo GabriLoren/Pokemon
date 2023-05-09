@@ -25,6 +25,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Move;
 import modelo.Pokemon;
@@ -33,7 +34,6 @@ import modelo.Trainer;
 public class BatallaController implements Initializable {
 	@FXML
 	private Button atacar;
-
 	@FXML
 	private Button cambiar;
 	@FXML
@@ -46,7 +46,6 @@ public class BatallaController implements Initializable {
 	private ProgressBar barraEstaminaMaquina;
 	@FXML
 	private ProgressBar barraEstaminaJugador;
-
 	@FXML
 	private ImageView imagenOponente;
 	@FXML
@@ -63,6 +62,9 @@ public class BatallaController implements Initializable {
 	Pokemon pokemonElegido;
 
 	Image imagenAtaqueJugador;
+
+	// imagen de fondo de la vista ResultadoCombate
+	static Image imagenResultado;
 //--------------------------------------------------------------------------------------
 
 	private static int contadorJugador = 0;
@@ -72,9 +74,9 @@ public class BatallaController implements Initializable {
 	// todos los entrenadores que hay en la base de datos
 	private static LinkedList<Trainer> todosLosEntrenadores = CargarTodosLosEntrenadores.getTodosLosEntrenadores();
 
-	private static Trainer entrenadorJugador = CargarEntrenador.getEntrenador();
+	static Trainer entrenadorJugador = CargarEntrenador.getEntrenador();
 
-	private static Trainer entrenadorAleatorio;
+	static Trainer entrenadorAleatorio;
 
 	// hacemos una copia para no eliminarlos del equipo permanentemente
 	static LinkedList<Pokemon> equipoJugador;
@@ -83,7 +85,7 @@ public class BatallaController implements Initializable {
 
 	static Pokemon pokemonElegidoJugador;
 
-	private static Pokemon pokemonElegidoMaquina;
+	static Pokemon pokemonElegidoMaquina;
 
 	static LinkedList<Move> movimientosPokemonEnCombate;
 
@@ -94,6 +96,8 @@ public class BatallaController implements Initializable {
 	private String turnoJugador;
 
 	private String turnoOponente;
+
+	static String resultado;
 
 //--------------------------------------------------------------------------------------------
 
@@ -168,6 +172,7 @@ public class BatallaController implements Initializable {
 
 		barra.setProgress(vidaJugadorDouble);
 
+		// el jugador pierde
 		if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
 
 			contadorJugador = 0;
@@ -178,9 +183,29 @@ public class BatallaController implements Initializable {
 
 			Batalla.restablecerVidaYEstamina(entrenadorAleatorio.getEquipoPokemon());
 
+			//la foto de fondo de la vista ResultadoCombate cambia dependiendo de si gana o pierde el combate
+			imagenResultado = new Image(getClass().getResourceAsStream("/img/fondoPrimero.jpg"));
+
+			resultado = "Lo siento, has perdido\n" + "Tu saldo actual es de " + entrenadorJugador.getPokeDollar()
+					+ " pokedollares";
+
 			// se cierra la ventana actual
 			Stage stage2 = (Stage) this.atacar.getScene().getWindow();
 			stage2.close();
+
+			// se abre cuando se termina el combate, indica como ha concluido
+			FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/vista/ResultadoCombate.fxml"));
+
+			Parent root2 = loader2.load();
+
+			Scene scene2 = new Scene(root2);
+
+			Stage stage3 = new Stage();
+
+			stage3.initModality(Modality.APPLICATION_MODAL); // (hace que la ventana sea modal)
+
+			stage3.setScene(scene2);
+			stage3.showAndWait();
 
 		}
 
@@ -316,22 +341,22 @@ public class BatallaController implements Initializable {
 			if (movimietoMaquina == null)
 				turnoOponente = "";
 		}
-		//ataca jugador
+		// ataca jugador
 		else if (Batalla.comprobraEstamina(pokemonElegidoJugador, movimietoJugador)) {
 
 			if (Batalla.atacar(pokemonElegidoJugador, pokemonElegidoMaquina, movimietoJugador)) {
-				
+
 				turnoJugador = "has elegido " + movimietoJugador.getName();
-				
-				//si entra es que el jugador ha matado al pokemon de la máquina
+
+				// si entra es que el jugador ha matado al pokemon de la máquina
 				if (Batalla.vidaPokemonAtacado(pokemonElegidoMaquina)) {
 					System.out.println("valor del contadorMaquina " + contadorMaquina);
 
 					contadorMaquina++;
-					
-					//al matar a la máquina el pokemonjugador gana experiencia
+
+					// al matar a la máquina el pokemonjugador gana experiencia
 					pokemonElegidoJugador.giveExp(pokemonElegidoMaquina);
-					
+
 					PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonElegidoJugador);
 
 					if (contadorMaquina < equipoMaquina.size())
@@ -359,17 +384,15 @@ public class BatallaController implements Initializable {
 					turnoOponente = "la máquina ha elegido " + movimietoMaquina.getName();
 
 					if (Batalla.vidaPokemonAtacado(pokemonElegidoJugador)) {
-						
-						//al matar al pokemonjugador la máquina gana experiencia
+
+						// al matar al pokemonjugador la máquina gana experiencia
 						pokemonElegidoMaquina.giveExp(pokemonElegidoJugador);
-						
-						
 
 						contadorJugador++;
 
 						equipoJugador.remove(pokemonElegidoJugador);
 
-						//si mata la máquina al jugador entra para que el jugador elija otro pokemon
+						// si mata la máquina al jugador entra para que el jugador elija otro pokemon
 						if (equipoJugador.size() > 0) {
 
 							// se abre la ventana con los pokemon del jugador para que seleccione otro
@@ -410,8 +433,6 @@ public class BatallaController implements Initializable {
 				pokemonElegidoMaquina.recuperarEstamina();
 			}
 
-			
-
 			vidaJugador = pokemonElegidoJugador.getVit();
 
 			double vidaJugadorDouble = vidaJugador / 100;
@@ -434,8 +455,6 @@ public class BatallaController implements Initializable {
 			// pierde la máquina
 			if (contadorMaquina == entrenadorAleatorio.getEquipoPokemon().size()) {
 
-				muestraTurno.setText("has ganado el combate");
-
 				contadorJugador = 0;
 
 				contadorMaquina = 0;
@@ -446,14 +465,36 @@ public class BatallaController implements Initializable {
 
 				Batalla.premioGanadorBatalla(entrenadorJugador, entrenadorAleatorio);
 
+				resultado = "Enhorabuena, has ganado\n" + "Tu saldo actual es de " + entrenadorJugador.getPokeDollar()
+						+ " pokedollares";
+				
+				//la foto de fondo de la vista ResultadoCombate cambia dependiendo de si gana o pierde el combate
+				imagenResultado = new Image(getClass().getResourceAsStream("/img/fondoPrimero.jpg"));
+
+				movimietoJugador = null;
+
 				// se cierra la ventana actual
 				Stage stage2 = (Stage) this.atacar.getScene().getWindow();
 				stage2.close();
 
+				// se abre cuando se termina el combate, indica como ha concluido
+				FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/vista/ResultadoCombate.fxml"));
+
+				Parent root2 = loader2.load();
+
+				Scene scene2 = new Scene(root2);
+
+				Stage stage3 = new Stage();
+
+//				stage.initModality(Modality.APPLICATION_MODAL); //(hace que la ventana sea modal)
+
+				stage3.setScene(scene2);
+				stage3.showAndWait();
+
 			}
 
 			// pierde el jugador
-			else if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
+			if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
 
 				contadorJugador = 0;
 
@@ -465,9 +506,31 @@ public class BatallaController implements Initializable {
 
 				Batalla.premioGanadorBatalla(entrenadorAleatorio, entrenadorJugador);
 
+				resultado = "Lo siento, has perdido\n" + "Tu saldo actual es de " + entrenadorJugador.getPokeDollar()
+						+ " pokedollares";
+				
+				//la foto de fondo de la vista ResultadoCombate cambia dependiendo de si gana o pierde el combate
+				imagenResultado = new Image(getClass().getResourceAsStream("/img/fondoPrimero.jpg"));
+
+				movimietoJugador = null;
+
 //				 se cierra la ventana actual
 				Stage stage2 = (Stage) this.atacar.getScene().getWindow();
 				stage2.close();
+
+				// se abre cuando se termina el combate, indica como ha concluido
+				FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/vista/ResultadoCombate.fxml"));
+
+				Parent root2 = loader2.load();
+
+				Scene scene2 = new Scene(root2);
+
+				Stage stage3 = new Stage();
+
+//				stage.initModality(Modality.APPLICATION_MODAL); //(hace que la ventana sea modal)
+
+				stage3.setScene(scene2);
+				stage3.showAndWait();
 
 			}
 
@@ -491,8 +554,10 @@ public class BatallaController implements Initializable {
 		Batalla.restablecerVidaYEstamina(entrenadorJugador.getEquipoPokemon());
 
 		Batalla.restablecerVidaYEstamina(entrenadorAleatorio.getEquipoPokemon());
-		
-		movimietoJugador=null;
+
+		Batalla.premioGanadorBatalla(entrenadorAleatorio, entrenadorJugador);
+
+		movimietoJugador = null;
 
 		// se cierra la ventana actual
 		Stage stage2 = (Stage) this.atacar.getScene().getWindow();
@@ -501,7 +566,7 @@ public class BatallaController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1)throws NoSuchElementException {
+	public void initialize(URL arg0, ResourceBundle arg1) throws NoSuchElementException {
 		// TODO Auto-generated method stub
 
 		equipoJugador = new LinkedList<Pokemon>(entrenadorJugador.getEquipoPokemon());
@@ -513,8 +578,8 @@ public class BatallaController implements Initializable {
 		entrenadorAleatorio = CargarEntrenador.obtenerEntrenadorAleatorio();
 
 		equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
-		
-		System.out.println("equipo maquina "+equipoMaquina.toString());
+
+		System.out.println("equipo maquina " + equipoMaquina.toString());
 
 		pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
 
@@ -527,7 +592,6 @@ public class BatallaController implements Initializable {
 		imagenOponente.setImage(imagenMaquina);
 
 		barra.setProgress(1);
-		
 
 	}
 }
