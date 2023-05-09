@@ -18,9 +18,9 @@ public class PokemonEntrenadorCrud {
 	public static void insertarEnBbDdElPokemonEncontrado(Pokemon pokemon, Trainer entrenador) {
 
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
-		
-		int idPokedex=pokemon.getId();
-		
+
+		int idPokedex = pokemon.getId();
+
 		pokemon.setId(idGenerado);
 
 		try {
@@ -28,8 +28,8 @@ public class PokemonEntrenadorCrud {
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "INSERT INTO POKEMON_ENTRENADOR (ID,ID_POKEDEX,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,NIVEL,"
-					+ "FERTILIDAD,EQUIPO,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "FERTILIDAD,EQUIPO,ID_MOVIMIENTO1,ID_MOVIMIENTO2,ID_MOVIMIENTO3,ID_MOVIMIENTO4,ID_OBJETO)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement miPSt = miCon.prepareStatement(sentencia);
 			miPSt.setLong(1, pokemon.getId());// id
@@ -46,11 +46,11 @@ public class PokemonEntrenadorCrud {
 //			miPSt.setLong(10, pokemon.getStamina());
 			miPSt.setLong(11, pokemon.getLevel());
 			miPSt.setLong(12, pokemon.getFertility());
-			
-			
-			if(entrenador.getEquipoPokemon().size()<6)
-			miPSt.setString(13, "SI");
-			else miPSt.setString(13, "NO");
+
+			if (entrenador.getEquipoPokemon().size() < 6)
+				miPSt.setString(13, "SI");
+			else
+				miPSt.setString(13, "NO");
 //			miPSt.setString(15, pokemon.getImagen());
 			// AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA
 			// MOVE
@@ -59,6 +59,7 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(15, 0);
 			miPSt.setLong(16, 0);
 			miPSt.setLong(17, 0);
+			miPSt.setLong(18, 0);// Por defecto no tiene objeto por lo tanto el id_objeto es 0
 
 			miPSt.executeUpdate();
 
@@ -67,10 +68,11 @@ public class PokemonEntrenadorCrud {
 		}
 
 	}
+
 	public static void insertarEnBbDdElPokemonHijo(Pokemon pokemon, Trainer entrenador) {
 
 		int idGenerado = GenerarID.generaID("SELECT ID FROM POKEMON_ENTRENADOR");
-		
+
 		pokemon.setId(idGenerado);
 
 		try {
@@ -94,11 +96,11 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(10, pokemon.getSpeed());
 			miPSt.setLong(11, pokemon.getLevel());
 			miPSt.setLong(12, pokemon.getFertility());
-			
-			
-			if(entrenador.getEquipoPokemon().size()<6)
-			miPSt.setString(13, "SI");
-			else miPSt.setString(13, "NO");
+
+			if (entrenador.getEquipoPokemon().size() < 6)
+				miPSt.setString(13, "SI");
+			else
+				miPSt.setString(13, "NO");
 //			miPSt.setString(15, pokemon.getImagen());
 			// AL CAPTURARLO TODOS TIENEN EL MISMO MOVIMIENTO POR AHORA, EL ID 1 DE LA TABLA
 			// MOVE
@@ -158,7 +160,7 @@ public class PokemonEntrenadorCrud {
 			while (miRs.next()) {
 
 				id = Integer.parseInt(miRs.getString(1));
-				idPokedex=miRs.getInt("id_pokedex");
+				idPokedex = miRs.getInt("id_pokedex");
 				nombre = miRs.getString("nombre");
 				mote = miRs.getString(3);
 				vida = miRs.getInt(5);
@@ -176,7 +178,7 @@ public class PokemonEntrenadorCrud {
 				id_movimiento4 = miRs.getInt("id_movimiento4");
 				fertilidad = miRs.getInt("fertilidad");
 				imagen = miRs.getString("imagen");
-				
+
 				System.out.println("movimiento1 " + id_movimiento1);
 				System.out.println("movimiento1 " + id_movimiento2);
 				System.out.println("movimiento1 " + id_movimiento3);
@@ -184,8 +186,8 @@ public class PokemonEntrenadorCrud {
 
 //				System.out.println(equipo);
 
-				Pokemon pokemon = new Pokemon(id,idPokedex, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp, velocidad,
-						stamina, nivel, fertilidad, equipo, estado, imagen);
+				Pokemon pokemon = new Pokemon(id, idPokedex, nombre, mote, vida, ataque, defensa, ataqueSp, defensaSp,
+						velocidad, stamina, nivel, fertilidad, equipo, estado, imagen);
 
 				System.out.println("estos son los movimientos " + pokemon.getMoves().toString());
 
@@ -253,7 +255,13 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(8, pokemon.getFertility());
 			miPSt.setString(9, pokemon.getEquipo());
 			miPSt.setString(10, pokemon.getNickname());
-			miPSt.setInt(11, pokemon.getObject().getId());
+			try {
+				miPSt.setInt(11, pokemon.getObject().getId());
+			} catch (Exception e) {
+				// TODO: handle exception
+				miPSt.setInt(11, 0);
+			}
+			
 			miPSt.setLong(12, pokemon.getId());
 
 			miPSt.executeUpdate();
