@@ -184,7 +184,7 @@ public class BatallaController implements Initializable {
 			Batalla.restablecerVidaYEstamina(entrenadorAleatorio.getEquipoPokemon());
 
 			//la foto de fondo de la vista ResultadoCombate cambia dependiendo de si gana o pierde el combate
-			imagenResultado = new Image(getClass().getResourceAsStream("/img/fondoPrimero.jpg"));
+			imagenResultado = new Image(getClass().getResourceAsStream("/img/resultadoCombatePierde.jpg"));
 
 			resultado = "Lo siento, has perdido\n" + "Tu saldo actual es de " + entrenadorJugador.getPokeDollar()
 					+ " pokedollares";
@@ -510,7 +510,7 @@ public class BatallaController implements Initializable {
 						+ " pokedollares";
 				
 				//la foto de fondo de la vista ResultadoCombate cambia dependiendo de si gana o pierde el combate
-				imagenResultado = new Image(getClass().getResourceAsStream("/img/fondoPrimero.jpg"));
+				imagenResultado = new Image(getClass().getResourceAsStream("/img/resultadoCombatePierde.jpg"));
 
 				movimietoJugador = null;
 
