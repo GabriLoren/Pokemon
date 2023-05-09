@@ -89,7 +89,7 @@ public class Batalla {
 		switch (movimientoPokemon1.getCategory()) {
 		case "ATAQUE": {
 
-			pokemon2.setVit(pokemon2.getVit() - movimientoPokemon1.getPower());
+			pokemon2.setVit(pokemon2.getVit() - (movimientoPokemon1.getPower() * (pokemon1.getAtk()/pokemon2.getDef())));
 
 			break;
 		}

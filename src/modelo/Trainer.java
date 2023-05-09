@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Random;
 
 import crud.PokemonEntrenadorCrud;
 import funcionalidades.GenerarID;
@@ -87,8 +88,13 @@ public class Trainer {
 
 	// inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
 	public void capturar(Pokemon pokemon) {
-
+		Random r = new Random();
+		
 		pokemon.setStatus("sinEstado");
+		
+		pokemon.setAtk(r.nextInt(10-1)+1);
+		
+		pokemon.setDef(r.nextInt(10-1)+1);
 	
 		pokemon.setNickname(pokemon.getName());
 		
