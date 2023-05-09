@@ -95,6 +95,14 @@ public class Trainer {
 		pokemon.setAtk(r.nextInt(10-1)+1);
 		
 		pokemon.setDef(r.nextInt(10-1)+1);
+		
+		pokemon.setSpAtk(r.nextInt(10-1)+1);
+		
+		pokemon.setSpDef(r.nextInt(10-1)+1);
+		
+		pokemon.setSpeed(r.nextInt(10-1)+1);
+		
+		
 	
 		pokemon.setNickname(pokemon.getName());
 		
