@@ -36,7 +36,7 @@ public class Batalla {
 	// Checks if a pokemon's move shares type with any of the pokemon types and if
 	// it does it returns 1.5 otherwise it returns 1
 	private static double stab(Pokemon p, Move m) {
-		if (p.getType().equals(m.getType()) || p.getType2().equals(m.getType())) {
+		if (p.getType1().equals(m.getType()) || p.getType2().equals(m.getType())) {
 			return 1.5;
 		} else {
 			return 1;
@@ -53,7 +53,7 @@ public class Batalla {
 		int result = rnd.nextInt(high - low) + low;
 		if (m.getDmgTypes().equals(DmgTypes.PHYSICAL)) {
 			if ((int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef()))
-					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
 					* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
 				return 1;
 			} else {
@@ -61,7 +61,7 @@ public class Batalla {
 			}
 		} else {
 			if ((int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getSpAtk() / r.getSpDef()))
-					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
 					* TypeChart.getAdvantageValue(r.getType2(), m.getType())) == 1) {
 				return 1;
 			} else {
@@ -309,12 +309,12 @@ public class Batalla {
 		int dmg = 0;
 		if (m.getDmgTypes().equals(DmgTypes.PHYSICAL)) {
 			dmg = (int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower() * (p.getAtk() / r.getDef()))
-					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType(), m.getType())
+					/ 50 + 2) * stab(p, m) * TypeChart.getAdvantageValue(r.getType1(), m.getType())
 					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
 		} else {
 			dmg = (int) ((((((2 * p.getLevel() * (critChance())) / 5) + 2) * m.getPower()
 					* (p.getSpAtk() / r.getSpDef())) / 50 + 2) * stab(p, m)
-					* TypeChart.getAdvantageValue(r.getType(), m.getType())
+					* TypeChart.getAdvantageValue(r.getType1(), m.getType())
 					* TypeChart.getAdvantageValue(r.getType2(), m.getType()) * dmgRnd(p, r, m));
 		}
 		return dmg;

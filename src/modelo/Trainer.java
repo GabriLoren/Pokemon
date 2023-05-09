@@ -88,7 +88,7 @@ public class Trainer {
 	// inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
 	public void capturar(Pokemon pokemon) {
 
-		pokemon.setStatus("sinEstado");
+		pokemon.setStatus(Status.NULL);
 	
 		pokemon.setNickname(pokemon.getName());
 		
