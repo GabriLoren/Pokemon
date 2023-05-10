@@ -97,7 +97,7 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(10, pokemon.getSpeed());
 			miPSt.setLong(11, pokemon.getLevel());
 			miPSt.setLong(12, pokemon.getFertility());
-			miPSt.setLong(13, 0);
+//			miPSt.setLong(13, 0);
 
 			if (entrenador.getEquipoPokemon().size() < 6)
 				miPSt.setString(13, "SI");
@@ -111,6 +111,7 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(15, 0);
 			miPSt.setLong(16, 0);
 			miPSt.setLong(17, 0);
+			miPSt.setLong(18, 0);
 
 			miPSt.executeUpdate();
 
@@ -174,7 +175,7 @@ public class PokemonEntrenadorCrud {
 				velocidad = miRs.getInt(10);
 				stamina = miRs.getInt("stamina");
 				nivel = miRs.getInt(12);
-				equipo = miRs.getString(18);
+				equipo = miRs.getString("equipo");
 				id_movimiento1 = miRs.getInt("id_movimiento1");
 				id_movimiento2 = miRs.getInt("id_movimiento2");
 				id_movimiento3 = miRs.getInt("id_movimiento3");

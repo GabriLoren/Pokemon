@@ -174,7 +174,7 @@ public class TiendaController implements Initializable {
 		ataqueSpPokemon.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spAtk"));
 		defensaSpPokemon.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("spDef"));
 		velocidadPokemon.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("speed"));
-		objetoPokemon.setCellValueFactory(new PropertyValueFactory<Obj, String>(this.toString()));
+		objetoPokemon.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("object"));
 		
 	}
 
