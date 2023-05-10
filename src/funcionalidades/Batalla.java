@@ -8,7 +8,6 @@ import modelo.Move;
 import modelo.Pokemon;
 import modelo.Trainer;
 
-
 public class Batalla {
 
 	private static int turnos = 0;
@@ -40,14 +39,26 @@ public class Batalla {
 	}
 
 	/**
-	 * @param pokemon1 pokemon atacante
-	 * @param pokemon2 pokemon defensor
+	 * @param pokemon1           pokemon atacante
+	 * @param pokemon2           pokemon defensor
 	 * @param movimientoPokemon1 movimiento elegido en ese turno
 	 * @return true si ha podido efectuar un movimiento y false si no ha podido
 	 *         debido a que se encuentra en un estado que se lo impide y pasa el
 	 *         turno sin atacar
 	 */
 	public static boolean atacar(Pokemon pokemon1, Pokemon pokemon2, Move movimientoPokemon1) {
+
+		System.out.println();
+		System.out.println("pokemon1 ataque antes del añadir objeto " + pokemon1.toString());
+
+		System.out.println();
+
+		pokemon1.aplicarObjeto();
+
+		System.out.println("pokemon1 ataque depues del añadir objeto " + pokemon1.toString());
+		System.out.println();
+
+		pokemon2.aplicarObjeto();
 
 		if (turnos == 3 && pokemon1.getStatus().equals("CONGELADO")) {
 			pokemon1.setStatus("SINESTADO");
@@ -89,7 +100,8 @@ public class Batalla {
 		switch (movimientoPokemon1.getCategory()) {
 		case "ATAQUE": {
 
-			pokemon2.setVit(pokemon2.getVit() - (movimientoPokemon1.getPower() * (pokemon1.getAtk()/pokemon2.getDef())));
+			pokemon2.setVit(
+					pokemon2.getVit() - (movimientoPokemon1.getPower() * (pokemon1.getAtk() / pokemon2.getDef())));
 
 			break;
 		}

@@ -159,7 +159,7 @@ public class PokemonEntrenadorCrud {
 			int id_movimiento3 = 0;
 			int id_movimiento4 = 0;
 			int exp=0;
-//			id_objeto int);
+			int id_objeto =0;
 
 			while (miRs.next()) {
 
@@ -183,6 +183,7 @@ public class PokemonEntrenadorCrud {
 				fertilidad = miRs.getInt("fertilidad");
 				imagen = miRs.getString("imagen");
 				exp=miRs.getInt("exp");
+				id_objeto=miRs.getInt("id_objeto");
 
 				System.out.println("movimiento1 " + id_movimiento1);
 				System.out.println("movimiento1 " + id_movimiento2);
@@ -195,11 +196,18 @@ public class PokemonEntrenadorCrud {
 						velocidad, stamina, nivel, fertilidad, equipo, estado, imagen,exp);
 
 				System.out.println("estos son los movimientos " + pokemon.getMoves().toString());
+				
+				
+				pokemon.setObject(CargarTodosLosObjetos.obtenerObjeto(id_objeto));
+				
 
 				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
 				comprobarSiExisteMovimiento(pokemon, id_movimiento2);
 				comprobarSiExisteMovimiento(pokemon, id_movimiento3);
 				comprobarSiExisteMovimiento(pokemon, id_movimiento4);
+				
+				
+				
 
 				// para hacer pruebas cargo los mismo movimientos a todos los pokemon de todos
 				// los entrenadores

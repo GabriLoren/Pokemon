@@ -86,42 +86,64 @@ public class Trainer {
 		this.equipoPokemon = equipoPokemon;
 	}
 
+//	public void comprobarSiTieneObjetoComprado(Obj objetoComprado) {
+//		
+//		boolean objetoRepetido=false;
+//
+//		for (int i = 0; i < this.objetos.size(); i++) {
+//
+//			if (objetos.get(i).getName().equalsIgnoreCase(objetoComprado.getName())) {
+//
+//				objetos.get(i).setCantidad(objetos.get(i).getCantidad() + 1);
+//				
+//				//si entra el objeto lo tiene repetido y por tanto solo
+//				//hay que actualizar el número de objetos del mismo tipo
+//				objetoRepetido=true;
+//				break;
+//
+//			}
+//
+//			//si no lo tiene repetido lo inserta por primera vez en la lista de objetos
+//			//del entrenador(mochila)
+//			if(objetoRepetido==false) {
+//				
+//				objetoComprado.setCantidad(1);
+//				this.objetos.add(objetoComprado);	
+//			}
+//			
+//
+//		}
+//	}
+
 	// inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
 	public void capturar(Pokemon pokemon) {
 		Random r = new Random();
-		
+
 		pokemon.setStatus("sinEstado");
-		
-		pokemon.setAtk(r.nextInt(10-1)+1);
-		
-		pokemon.setDef(r.nextInt(10-1)+1);
-		
-		pokemon.setSpAtk(r.nextInt(10-1)+1);
-		
-		pokemon.setSpDef(r.nextInt(10-1)+1);
-		
-		pokemon.setSpeed(r.nextInt(10-1)+1);
-		
-	
-		
-		
-	
+
+		pokemon.setAtk(r.nextInt(10 - 1) + 1);
+
+		pokemon.setDef(r.nextInt(10 - 1) + 1);
+
+		pokemon.setSpAtk(r.nextInt(10 - 1) + 1);
+
+		pokemon.setSpDef(r.nextInt(10 - 1) + 1);
+
+		pokemon.setSpeed(r.nextInt(10 - 1) + 1);
+
 		pokemon.setNickname(pokemon.getName());
-		
+
 		pokemon.setIdPokedex(pokemon.getId());
 
 		if (pokemon.getEquipo().equals("SI")) {
-			
+
 			this.equipoPokemon.add(pokemon);
 		}
-			
+
 		else {
-			
+
 			this.todosLosPokemon.add(pokemon);
 		}
-			
-
-		
 
 		PokemonEntrenadorCrud.insertarEnBbDdElPokemonEncontrado(pokemon, this);
 

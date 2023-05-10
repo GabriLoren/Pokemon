@@ -13,10 +13,7 @@ import funcionalidades.ComprobarUsuarioExiste;
 import modelo.Pokemon;
 import modelo.Trainer;
 
-/**
- * @author 34661
- *
- */
+
 public class CargarEntrenador {
 
 	private static Trainer entrenador;
@@ -78,7 +75,7 @@ public class CargarEntrenador {
 
 		Trainer entrenadorContrincante;
 
-		// podriamos controlar esta excepcion si nos dav timepo a acabar la aplicación
+		// podriamos controlar esta excepcion si nos da timepo a acabar la aplicación
 		int posicionEntrenador = -1;
 
 		do {

@@ -1,1 +1,1 @@
-equipo maquina [Pokemon [id=2, name=PIKACHU, nickname=JUANITO15, vit=100, atk=3, def=2, spAtk=8, spDef=6, speed=9, stamina=100, level=1, moves=[PATADA ATAQUE power=10], fertility=5, gender=false, type=null, status=SinEstado, object=null, equipo=SI]]
+equipo maquina [Pokemon [id=3, name=PIKACHU, nickname=AAA, vit=100, atk=3, def=7, spAtk=4, spDef=1, speed=2, stamina=100, level=1, moves=[PATADA ATAQUE power=10], fertility=5, gender=false, type=null, status=SinEstado, object=NULO, equipo=SI]]

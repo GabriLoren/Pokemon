@@ -1,14 +1,13 @@
 package crud;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-
 import modelo.Obj;
-import modelo.Pokemon;
 
 public class CargarTodosLosObjetos {
 
@@ -20,6 +19,7 @@ public class CargarTodosLosObjetos {
 	private static double atk;
 	private static double def;
 	private static double spDef;
+	private static double spAtk;
 	private static double speed;
 	private static double stamina;
 
@@ -41,10 +41,12 @@ public class CargarTodosLosObjetos {
 				atk = miRs.getDouble("ataque");
 				def = miRs.getDouble("defensa");
 				spDef = miRs.getDouble("defensa_sp");
+				spDef = miRs.getDouble("defensa_sp");
+				spAtk=miRs.getDouble("ataque_sp");
 				speed = miRs.getDouble("velocidad");
 				stamina = miRs.getDouble("estamina");
 
-				Obj objeto = new Obj(id, nombre, precio, atk, def, spDef, speed, stamina);
+				Obj objeto = new Obj(id, nombre, precio, atk, def, spDef,spAtk, speed, stamina);
 				todosLosObjetos.add(objeto);
 			}
 			System.out.println("metodo cargarTododLosObjetos funciona");
@@ -55,6 +57,22 @@ public class CargarTodosLosObjetos {
 
 	public static LinkedList<Obj> getTodosLosObjetos() {
 		return todosLosObjetos;
+	}
+
+	public static Obj obtenerObjeto(int idObjeto) {
+
+		Obj objetoPokemon = null;
+
+		for (int i = 0; i < todosLosObjetos.size(); i++) {
+
+			if (idObjeto == todosLosObjetos.get(i).getId()) {
+
+				objetoPokemon = todosLosObjetos.get(i);
+
+			}
+		}
+		return objetoPokemon;
+
 	}
 
 }

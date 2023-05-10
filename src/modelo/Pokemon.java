@@ -112,7 +112,7 @@ public class Pokemon {
 		this.moves = new LinkedList<Move>();
 		this.status = status;
 		this.setImagen(imagen);
-		this.exp=exp;
+		this.exp = exp;
 
 	}
 
@@ -453,6 +453,27 @@ public class Pokemon {
 			this.levelUp();
 		}
 	}
+	
+	//aplica los cambios en las estadísticas que el objeto proporiona, si se llama
+	//al metodo y no tiene un objeto no implica ningun cambio en el pokemon
+	public void aplicarObjeto() {
+		
+		
+		if(object.getId()!=0) {
+			
+			this.atk*=this.object.getAtk();
+			this.def*=this.object.getDef();
+			this.spDef*=this.object.getSpDef();
+			this.speed*=this.object.getSpeed();
+			this.stamina*=this.object.getStamina();
+			
+		}
+		
+		
+	}
+	
+	
+	
 
 	@Override
 	public String toString() {
@@ -461,21 +482,4 @@ public class Pokemon {
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
 	}
-
-//	@Override
-//	public String toString() {
-//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
-//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
-//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
-//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
-//	}
-
 }
-
-//	@Override
-//	public String toString() {
-//		return "Pokemon [id=" + id + ", name=" + name + ", nickname=" + nickname + ", vit=" + vit + ", atk=" + atk
-//				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
-//				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
-//				+ ", type=" + type + ", status=" + status + ", object=" + object + "]";
-//	}

@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 
+import crud.AddObject;
 import crud.CargarTodosLosEntrenadores;
 import crud.CargarTodosPokemons;
 import funcionalidades.Criar;
@@ -9,33 +10,14 @@ import funcionalidades.Criar;
 
 public class pruebas {
 	
+
 	public static void main(String[] args) {
 		
-		CargarTodosLosEntrenadores.cargarTodosLosEntrenadores();
+		Trainer t=new Trainer(1, null, 0);
+		Obj o=new Obj(1, null);
 		
-		CargarTodosPokemons.cargarPokemonDesdeBbDd();
+		System.out.println(AddObject.objtenerCantidadDeObjetos(t, o)); 
 		
-		Trainer t=new Trainer(0, null, 0);
-		
-		LinkedList<Pokemon>p=CargarTodosPokemons.getPokemon();
-		
-		t.setEquipoPokemon(p);
-		
-		t.getEquipoPokemon().removeLast();
-		
-				
-		for(int i=0;i<p.size();i++) {
-			
-			System.out.println(p.get(i).getName());
-		}
-		
-	System.out.println();
-	
-	
-	for(int i=0;i<p.size();i++) {
-		
-		System.out.println(p.get(i).getName());
-	}
 		
 	}
 
