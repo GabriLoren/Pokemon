@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -579,6 +581,27 @@ public class BatallaController implements Initializable {
 
 		equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
 
+		 try {
+		      // Creates a FileWriter
+		      FileWriter file = new FileWriter("batallaLogger.txt");
+
+		      // Creates a BufferedWriter
+		      BufferedWriter output = new BufferedWriter(file);
+
+		      // Writes data to the file
+		      output.write("equipo maquina " + equipoMaquina.toString());
+
+		      // Flushes data to the destination
+		      output.flush();
+		      System.out.println("Data is flushed to the file.");
+
+		      output.close();
+		    }
+
+		    catch(Exception e) {
+		      e.getStackTrace();
+		    }
+		
 		System.out.println("equipo maquina " + equipoMaquina.toString());
 
 		pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);
