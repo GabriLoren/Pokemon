@@ -66,5 +66,23 @@ class PokemonJUnit {
 		p.aplicarObjeto();
 		assertEquals(15, p.getAtk());
 	}
+	
+	@Test
+	void testQuitarObjeto() {
+		Pokemon p = new Pokemon(0, "Gengar", 100);
+		Obj o = new Obj();
+		o.setId(3);
+		o.setAtk(1.5);
+		p.setAtk(10);
+		p.setDef(10);
+		p.setSpAtk(10);
+		p.setSpDef(10);
+		p.setSpeed(10);
+		p.setStamina(100);
+		p.setObject(o);
+		p.aplicarObjeto();
+		p.quitarObjeto();
+		assertEquals(10, p.getAtk());
+	}
 
 }
