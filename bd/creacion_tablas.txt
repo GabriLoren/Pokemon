@@ -81,8 +81,3 @@ id_objeto Int,
 id_entrenador int,
 cantidad int);
 
-
-
-
-
-SELECT PE.*,P.nombre,P.imagen,P.tipo1,P.tipo2,P.stamina FROM POKEMON_ENTRENADOR PE JOIN pokemon P ON PE.id_pokedex=P.id WHERE ID_ENTRENADOR=1;
