@@ -440,8 +440,7 @@ public class Pokemon {
 		}
 	}
 
-	// aplica los cambios en las estadísticas que el objeto proporiona, si se llama
-	// al metodo y no tiene un objeto no implica ningun cambio en el pokemon
+	// aplica los cambios en las estadísticas que el objeto proporciona
 	public void aplicarObjeto() {
 		this.atk *= this.object.getAtk();
 		this.def *= this.object.getDef();
@@ -449,6 +448,20 @@ public class Pokemon {
 		this.speed *= this.object.getSpeed();
 		this.stamina *= this.object.getStamina();
 	}
+	
+	
+	
+	
+	// revierte los cambios en las estadísticas que el objeto proporciona
+	public void quitarObjeto() {
+		this.atk /= this.object.getAtk();
+		this.def /= this.object.getDef();
+		this.spDef /= this.object.getSpDef();
+		this.speed /= this.object.getSpeed();
+		this.stamina /= this.object.getStamina();
+	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -456,5 +469,13 @@ public class Pokemon {
 				+ ", def=" + def + ", spAtk=" + spAtk + ", spDef=" + spDef + ", speed=" + speed + ", stamina=" + stamina
 				+ ", level=" + level + ", moves=" + moves + ", fertility=" + fertility + ", gender=" + gender
 				+ ", type=" + type1 + ", status=" + status + ", object=" + object + ", equipo=" + equipo + "]";
+	}
+
+	public String getNombreObjeto() {
+		return nombreObjeto;
+	}
+
+	public void setNombreObjeto(String nombreObjeto) {
+		this.nombreObjeto = nombreObjeto;
 	}
 }

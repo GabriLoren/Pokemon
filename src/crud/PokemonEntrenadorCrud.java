@@ -200,6 +200,8 @@ public class PokemonEntrenadorCrud {
 				
 				pokemon.setObject(CargarTodosLosObjetos.obtenerObjeto(id_objeto));
 				
+				System.out.println("Este es el objeto "+pokemon.getObject());
+				
 
 				comprobarSiExisteMovimiento(pokemon, id_movimiento1);
 				comprobarSiExisteMovimiento(pokemon, id_movimiento2);

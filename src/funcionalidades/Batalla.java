@@ -53,7 +53,6 @@ public class Batalla {
 
 		System.out.println();
 
-		pokemon1.aplicarObjeto();
 
 		System.out.println("pokemon1 ataque depues del añadir objeto " + pokemon1.toString());
 		System.out.println();

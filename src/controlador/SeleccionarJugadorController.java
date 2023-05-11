@@ -101,6 +101,13 @@ public class SeleccionarJugadorController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+//		String path = "C:/Users/34661/Desktop/eclipse-workspace/pruebaSonido/src/sonido.mp3";
+//		File archivo = new File(path);
+//		Media media = new Media(archivo.toURI().toString());
+//		MediaPlayer	mediaPlayer = new MediaPlayer(media);
+//		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+//		mediaPlayer.play();
 
 
 		// cargamos todos los movimientos
