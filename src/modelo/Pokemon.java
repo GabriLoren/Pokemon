@@ -403,23 +403,9 @@ public class Pokemon {
 
 	}
 
-	// pone el objeto al pokemon
-	public void apllyObj(Obj objetc) {
-
-		this.object = objetc;
-
-		this.atk *= objetc.getAtk();
-		this.def *= objetc.getDef();
-		this.spAtk = 0;
-		this.spDef = 0;
-		this.speed = 0;
-		this.stamina = 0;
-
-	}
-
 	public void recuperarEstamina() {
 
-		stamina += 20;
+		stamina += (int) (20 * this.object.getStamina());
 	}
 
 	// Generates a number between 1 and 5
@@ -453,27 +439,16 @@ public class Pokemon {
 			this.levelUp();
 		}
 	}
-	
-	//aplica los cambios en las estadísticas que el objeto proporiona, si se llama
-	//al metodo y no tiene un objeto no implica ningun cambio en el pokemon
+
+	// aplica los cambios en las estadísticas que el objeto proporiona, si se llama
+	// al metodo y no tiene un objeto no implica ningun cambio en el pokemon
 	public void aplicarObjeto() {
-		
-		
-		if(object.getId()!=0) {
-			
-			this.atk*=this.object.getAtk();
-			this.def*=this.object.getDef();
-			this.spDef*=this.object.getSpDef();
-			this.speed*=this.object.getSpeed();
-			this.stamina*=this.object.getStamina();
-			
-		}
-		
-		
+		this.atk *= this.object.getAtk();
+		this.def *= this.object.getDef();
+		this.spDef *= this.object.getSpDef();
+		this.speed *= this.object.getSpeed();
+		this.stamina *= this.object.getStamina();
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {

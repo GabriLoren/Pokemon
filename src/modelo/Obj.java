@@ -117,6 +117,34 @@ public class Obj {
 		return stamina;
 	}
 
+	public double getSpAtk() {
+		return spAtk;
+	}
+
+	public void setSpAtk(double spAtk) {
+		this.spAtk = spAtk;
+	}
+
+	public void setAtk(double atk) {
+		this.atk = atk;
+	}
+
+	public void setDef(double def) {
+		this.def = def;
+	}
+
+	public void setSpDef(double spDef) {
+		this.spDef = spDef;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public void setStamina(double stamina) {
+		this.stamina = stamina;
+	}
+
 	@Override
 	public String toString() {
 		return name;
