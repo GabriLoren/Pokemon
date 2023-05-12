@@ -2,6 +2,7 @@ package funcionalidades;
 
 import java.util.LinkedList;
 
+import crud.CargarTodosLosObjetos;
 import crud.PokemonEntrenadorCrud;
 import modelo.Move;
 import modelo.Pokemon;
@@ -11,14 +12,14 @@ public class Criar {
 
 	// Aquí se inserta los movimientos de los dos padres
 	private static LinkedList<Move> movimientosPadres = new LinkedList<Move>();
-
+//
 	private static LinkedList<Move> movimientosHijo = new LinkedList<Move>();
-
-	private static Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
-
-//	private static Pokemon pokemonHijo = new Pokemon(0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, null);
+//
+//	private static Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
 
 	public static void Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
+
+		Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
 
 		// tendrá por defecto el nivel 1
 		pokemonHijo.setLevel(1);
@@ -44,6 +45,9 @@ public class Criar {
 		else
 			entrenador.getTodosLosPokemon().add(pokemonHijo);
 //		entrenador.getTodosLosPokemon().add(pokemonHijo);
+
+		// se le inserta el objeto por defecto que es lo mismo que no tener objeto
+		pokemonHijo.setObject(CargarTodosLosObjetos.getTodosLosObjetos().getFirst());
 
 		// insertamos el hijo en la BbDd
 		PokemonEntrenadorCrud.insertarEnBbDdElPokemonHijo(pokemonHijo, entrenador);

@@ -111,9 +111,9 @@ public class CriarController implements Initializable {
 	@FXML
 	private TableColumn tipo2;
 
-	private Trainer entrenador = CargarEntrenador.getEntrenador();
+	private Trainer entrenador;
 
-	private LinkedList<Pokemon> equipoPokemon = entrenador.getEquipoPokemon();
+	private LinkedList<Pokemon> equipoPokemon;
 
 	// Event Listener on Button[#seleccionar].onAction
 	@FXML
@@ -161,10 +161,14 @@ public class CriarController implements Initializable {
 
 		// si no seleccionamos un pokemon antes de pulsar el boton criar nos salta
 		// un error
-		try {
+//		try {
 
 			Pokemon pokemon1 = pokemonSeleccionado.get(0);
 			Pokemon pokemon2 = pokemonSeleccionado.get(1);
+			
+			System.out.println("p1 "+pokemon1);
+			System.out.println("p2 "+pokemon2);
+			
 			Criar.Criar(pokemon1, pokemon2, entrenador);
 
 			// mostramos en la tablaHijo el hijo recien creado
@@ -183,9 +187,9 @@ public class CriarController implements Initializable {
 			ataqueHijo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("atk"));
 			vitalidadHijo.setCellValueFactory(new PropertyValueFactory<Pokemon, String>("vit"));
 
-		} catch (Exception e) {
-			System.out.println("Selecciona primero los  2 padres");
-		}
+//		} catch (Exception e) {
+//			System.out.println("Selecciona primero los  2 padres");
+//		}
 
 	}
 
@@ -263,6 +267,10 @@ public class CriarController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+	entrenador = CargarEntrenador.getEntrenador();
+
+	 equipoPokemon = entrenador.getEquipoPokemon();
 
 		// actualizamos el entrenador por si hemos capturado algun pokemon nuevo
 //		entrenador=CargarEntrenador.getEntrenador();
