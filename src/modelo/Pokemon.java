@@ -29,6 +29,7 @@ public class Pokemon {
 	private String imagen;
 	private String nombreObjeto;
 	private int exp;
+	private String sonido;
 
 	public Pokemon(Pokemon p) {
 
@@ -113,11 +114,12 @@ public class Pokemon {
 		this.status = status;
 		this.setImagen(imagen);
 		this.exp = exp;
+		
 
 	}
 
 	public Pokemon(int id, String name, int vit, int atk, int def, int spAtk, int spDef, int speed, int stamina,
-			int level, int fertility, String imagen, Types tipo1, Types tipo2) {
+			int level, int fertility, String imagen, Types tipo1, Types tipo2,String sonido) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -135,7 +137,7 @@ public class Pokemon {
 		this.setImagen(imagen);
 		this.type1 = tipo1;
 		this.setType2(tipo2);
-
+		this.setSonido(sonido);
 	}
 
 //	public Pokemon(String name, String mote) {
@@ -478,4 +480,14 @@ public class Pokemon {
 	public void setNombreObjeto(String nombreObjeto) {
 		this.nombreObjeto = nombreObjeto;
 	}
+
+	public String getSonido() {
+		return sonido;
+	}
+
+	public void setSonido(String sonido) {
+		this.sonido = sonido;
+	}
+
+	
 }

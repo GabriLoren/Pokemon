@@ -2,13 +2,13 @@ package controlador;
 
 import javafx.fxml.FXML;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -25,6 +25,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import modelo.Pokemon;
 import modelo.Trainer;
@@ -36,9 +38,13 @@ public class CapturaController implements Initializable {
 	private Button bucarPokemon;
 	@FXML
 	private Label pokemonEncontrado;
-
 	@FXML
 	private ImageView imgPokemon;
+
+	MediaPlayer mediaPlayer1;
+	String path;
+	File archivo;
+	Media media;
 
 //	@FXML
 //	private ImageView imgPokeball;
@@ -93,6 +99,24 @@ public class CapturaController implements Initializable {
 
 			imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 			Thread.sleep(1000);
+
+//			path ="C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\"+pokemon.getSonido();
+//			archivo = new File(path);
+//			media = new Media(archivo.toURI().toString());
+//			mediaPlayer = new MediaPlayer(media);
+//			mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+//			mediaPlayer.play();
+
+		} else {
+
+			path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\captura.mp3";
+			archivo = new File(path);
+			media = new Media(archivo.toURI().toString());
+			MediaPlayer mediaPlayer = new MediaPlayer(media);
+//			mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+			mediaPlayer.play();
+
+			mediaPlayer1.stop();
 		}
 
 //		if(pokemon==null&&capturarPokemon.getText().equals(event)) pokemonEncontrado.setText("Aún no has encontrado ningun pokemon");
@@ -144,6 +168,7 @@ public class CapturaController implements Initializable {
 	@FXML
 	public void capturarPokemon(ActionEvent event) throws IOException, InterruptedException {
 
+
 		if (capturarPokemon.getText().equals("MOTE")) {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/InsertarMote.fxml"));
@@ -174,12 +199,12 @@ public class CapturaController implements Initializable {
 		if (pokemon != null) {
 
 			if (aletorio == cazado) {
-				
-				//SI NO ESTA EL EQUIPO COMPLETO LO METE AL EQUIPO
+
+				// SI NO ESTA EL EQUIPO COMPLETO LO METE AL EQUIPO
 				if (entrenador.getEquipoPokemon().size() < 6) {
 					pokemon.setEquipo("SI");
 				}
-					
+
 				else {
 					pokemon.setEquipo("NO");
 				}
@@ -187,6 +212,7 @@ public class CapturaController implements Initializable {
 //				Captura.captura(pokemon, entrenador.getId());// inserta el pokemon capturado en la BbDd
 				entrenador.capturar(pokemon);// inserta el pokemon capturado en LinkedList<Pokemon> y en la BbDd
 												// todosLosPokemon;
+
 //				FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/InsertarMote.fxml"));
 //
 //				Parent root = loader.load();
@@ -197,13 +223,12 @@ public class CapturaController implements Initializable {
 //		
 //
 //				stage.setScene(scene);
-//				stage.show();
 
 				capturarPokemon.setText("MOTE");
+//				mediaPlayer.stop();
 				Thread.sleep(1000);
 
-			} // else pokemonEncontrado.setText("No has conseguido, atrapalo inténtalo de
-				// nuevo");
+			}
 
 		}
 	}
@@ -229,6 +254,10 @@ public class CapturaController implements Initializable {
 	@FXML
 	public void bucarPokemon(ActionEvent event) {
 
+		if (mediaPlayer1 != null) {
+			mediaPlayer1.stop();
+		}
+
 		pokemonEncontrado.setText("");
 
 		capturarPokemon.setText("CAPTURAR");
@@ -241,8 +270,14 @@ public class CapturaController implements Initializable {
 
 		imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 
+		String path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\" + pokemon.getSonido();
+		File archivo = new File(path);
+		Media media = new Media(archivo.toURI().toString());
+		mediaPlayer1 = new MediaPlayer(media);
+		mediaPlayer1.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer1.play();
+
 //		InsertarMoteController.setPokemon(pokemon);
-	
 
 	}
 

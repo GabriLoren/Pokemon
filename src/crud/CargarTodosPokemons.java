@@ -31,6 +31,7 @@ public class CargarTodosPokemons {
 	static String imagen;
 	static String tipo1;
 	static String tipo2;
+	static String sonido;
 	
 	
 	
@@ -62,7 +63,7 @@ public class CargarTodosPokemons {
 				imagen= miRs.getString("imagen");
 				tipo1=miRs.getString("tipo1");
 				tipo2=miRs.getString("tipo2");
-				
+				sonido=miRs.getString("sonido");
 //				if(miRs.getString("tipo2")!=null) {
 //					tipo2=miRs.getString("tipo2");
 //				}tipo2
@@ -70,7 +71,7 @@ public class CargarTodosPokemons {
 				
 				
 
-				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),Types.valueOf(tipo2));
+				pokemon = new Pokemon(id, nombre, vida, ataque,defensa,ataqueSp,defensaSp,velocidad,stamina,nivel,fertilidad,imagen,Types.valueOf(tipo1),Types.valueOf(tipo2),sonido);
 				pokemons.add(pokemon);
 				
 				System.out.println("tipo1 de pokemon "+pokemon.getType1());

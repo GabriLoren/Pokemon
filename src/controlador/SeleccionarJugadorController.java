@@ -41,6 +41,8 @@ public class SeleccionarJugadorController implements Initializable {
 	private Label lblMostrarUsuario;
 	@FXML
 	private Button btbCrearUsuario;
+	
+	MediaPlayer	mediaPlayer;
 
 	// Event Listener on Button[#btbcargarEntrenador].onMousePressed
 	@FXML
@@ -74,6 +76,7 @@ public class SeleccionarJugadorController implements Initializable {
 			Stage stage2 = (Stage) this.TxtInsertarJugador.getScene().getWindow();
 			stage2.close();
 
+			mediaPlayer.stop();
 		}
 		// SI NO HAY NINGUN ENTRENADOR CREADO AÚN SALTA LA EXCEPCION
 		// NullPointerException YA QUE LA LINKEDLIST QUE ALBERGA TODOS LOS ENTRENADORES
@@ -108,6 +111,14 @@ public class SeleccionarJugadorController implements Initializable {
 //		MediaPlayer	mediaPlayer = new MediaPlayer(media);
 //		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 //		mediaPlayer.play();
+		
+		
+		String path ="C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\sonido.mp3";
+		File archivo = new File(path);
+		Media media = new Media(archivo.toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer.play();
 
 
 		// cargamos todos los movimientos
@@ -121,6 +132,8 @@ public class SeleccionarJugadorController implements Initializable {
 
 		// cargamos todos los entrenadores existentes en el juego
 		CargarTodosLosEntrenadores.cargarTodosLosEntrenadores();
+		
+		System.out.println(CargarTodosPokemons.getPokemon().get(0).getSonido());
 
 	}
 
