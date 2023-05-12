@@ -96,11 +96,16 @@ public class CapturaController implements Initializable {
 
 		}
 
-		archivo = new File(path);
-		media = new Media(archivo.toURI().toString());
-		mediaPlayer2 = new MediaPlayer(media);
-//		mediaPlayer2.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer2.play();
+		if(!capturarPokemon.getText().equals("MOTE")) {
+			
+			archivo = new File(path);
+			media = new Media(archivo.toURI().toString());
+			mediaPlayer2 = new MediaPlayer(media);
+//			mediaPlayer2.setCycleCount(MediaPlayer.INDEFINITE);
+			mediaPlayer2.play();
+			
+		}
+
 
 		if (pokemon != null)
 			imgPokemon.setImage(new Image(getClass().getResourceAsStream("pokeball.png")));
