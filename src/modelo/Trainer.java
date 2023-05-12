@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
+import crud.CargarMoves;
+import crud.CargarTodosLosObjetos;
 import crud.PokemonEntrenadorCrud;
 import funcionalidades.GenerarID;
 
@@ -145,6 +147,9 @@ public class Trainer {
 			this.todosLosPokemon.add(pokemon);
 		}
 
+		// se le inserta el objeto por defecto que es lo mismo que no tener objeto
+		pokemon.setObject(CargarTodosLosObjetos.getTodosLosObjetos().getFirst());
+		
 		PokemonEntrenadorCrud.insertarEnBbDdElPokemonEncontrado(pokemon, this);
 
 	}
