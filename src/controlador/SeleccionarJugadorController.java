@@ -113,7 +113,7 @@ public class SeleccionarJugadorController implements Initializable {
 //		mediaPlayer.play();
 		
 		
-		String path ="C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\sonido.mp3";
+		String path ="C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\cancionPokemon.mp3";
 		File archivo = new File(path);
 		Media media = new Media(archivo.toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
