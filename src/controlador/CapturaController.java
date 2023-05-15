@@ -88,11 +88,11 @@ public class CapturaController implements Initializable {
 
 		if (aletorio == cazado) {
 
-			path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\captura.mp3";
+			path = "src\\sound\\captura.mp3";
 
 		} else {
 
-			path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\capturaFallida.mp3";
+			path = "src\\sound\\capturaFallida.mp3";
 
 		}
 
@@ -131,7 +131,7 @@ public class CapturaController implements Initializable {
 			imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 			Thread.sleep(5500);
 
-			path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\" + pokemon.getSonido();
+			path = "src\\sound\\" + pokemon.getSonido();
 			archivo = new File(path);
 			media = new Media(archivo.toURI().toString());
 			mediaPlayer1 = new MediaPlayer(media);
@@ -302,7 +302,7 @@ public class CapturaController implements Initializable {
 
 		imgPokemon.setImage(new Image(getClass().getResourceAsStream(pokemon.getImagen())));
 
-		String path = "C:\\Users\\34661\\Desktop\\eclipse-workspace\\Pokemon\\src\\sound\\" + pokemon.getSonido();
+		String path = "src\\sound\\" + pokemon.getSonido();
 		File archivo = new File(path);
 		Media media = new Media(archivo.toURI().toString());
 		mediaPlayer1 = new MediaPlayer(media);
