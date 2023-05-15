@@ -582,16 +582,12 @@ public class BatallaController implements Initializable {
 		equipoMaquina = new LinkedList<Pokemon>(entrenadorAleatorio.getEquipoPokemon());
 
 		 try {
-		      // Creates a FileWriter
-		      FileWriter file = new FileWriter("batallaLogger.txt");
+		      FileWriter file = new FileWriter("batallaLogger.txt", true);
 
-		      // Creates a BufferedWriter
 		      BufferedWriter output = new BufferedWriter(file);
 
-		      // Writes data to the file
 		      output.write("equipo maquina " + equipoMaquina.toString());
 
-		      // Flushes data to the destination
 		      output.flush();
 		      System.out.println("Data is flushed to the file.");
 
