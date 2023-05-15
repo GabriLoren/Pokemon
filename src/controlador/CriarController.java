@@ -169,14 +169,15 @@ public class CriarController implements Initializable {
 			System.out.println("p1 "+pokemon1);
 			System.out.println("p2 "+pokemon2);
 			
-			Criar.Criar(pokemon1, pokemon2, entrenador);
+			
+			//Pokemon resultante de la crianza
+			Pokemon pokemonHijo=Criar.Criar(pokemon1, pokemon2, entrenador);
 
 			// mostramos en la tablaHijo el hijo recien creado
+			
 			ObservableList<Pokemon> pokemonCriado = tablaHijo.getItems();
 
-			// obtenemos el último pokemon añadido a los pokemon del entrenador que es el
-			// hijo recien creado
-			Pokemon pokemonHijo = entrenador.getTodosLosPokemon().getLast();
+		
 
 			pokemonCriado.add(pokemonHijo);
 

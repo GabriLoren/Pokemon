@@ -17,7 +17,7 @@ public class Criar {
 //
 //	private static Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
 
-	public static void Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
+	public static Pokemon Criar(Pokemon pokemon1, Pokemon pokemon2, Trainer entrenador) {
 
 		Pokemon pokemonHijo = new Pokemon(0, 0, null, 0, 0, 0, 0, 0, 0, 0, 0, "");
 
@@ -57,6 +57,8 @@ public class Criar {
 		pokemon2.setFertility(pokemon2.getFertility() - 1);
 		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon1);
 		PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemon2);
+		
+		return pokemonHijo;
 
 	}
 
