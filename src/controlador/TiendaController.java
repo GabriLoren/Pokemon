@@ -189,6 +189,8 @@ public class TiendaController implements Initializable {
 
 		ObservableList<Obj> o = mochila.getSelectionModel().getSelectedItems();
 
+		
+		
 		Pokemon pokeonSeleccionado = p.get(0);
 
 		Obj objetoSeleccionado = o.get(0);
