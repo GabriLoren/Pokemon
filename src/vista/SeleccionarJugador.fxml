@@ -16,13 +16,13 @@
          </image>
       </ImageView>
       <TextField fx:id="TxtInsertarJugador" layoutX="208.0" layoutY="81.0" />
-      <Button fx:id="btbcargarEntrenador" layoutX="235.0" layoutY="137.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
+      <Button fx:id="btbcargarEntrenador" layoutX="236.0" layoutY="136.0" mnemonicParsing="false" onMousePressed="#mostrarLblEnBlanco" onMouseReleased="#cargarEntrenador" prefHeight="25.0" prefWidth="94.0" text="Comenzar" />
       <Label fx:id="lblMostrarUsuario" layoutX="164.0" layoutY="14.0" prefHeight="59.0" prefWidth="303.0" textFill="#cd1616">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Label>
-      <Button fx:id="btbCrearUsuario" layoutX="235.0" layoutY="191.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
-      <Label layoutX="361.0" layoutY="76.0" prefHeight="36.0" prefWidth="121.0" text="Username">
+      <Button fx:id="btbCrearUsuario" layoutX="236.0" layoutY="187.0" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="25.0" prefWidth="94.0" text="Crear Usuario" />
+      <Label layoutX="249.0" layoutY="37.0" prefHeight="36.0" prefWidth="80.0" text="USERNAME">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
