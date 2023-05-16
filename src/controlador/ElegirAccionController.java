@@ -44,6 +44,7 @@ public class ElegirAccionController {
 //				stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		
 		
@@ -68,6 +69,7 @@ public class ElegirAccionController {
 //				stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
@@ -86,6 +88,7 @@ public class ElegirAccionController {
 //		stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
@@ -104,6 +107,7 @@ public class ElegirAccionController {
 //		stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 
 	}
@@ -123,6 +127,7 @@ public class ElegirAccionController {
 //		stage.initModality(Modality.APPLICATION_MODAL); //(hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 
 //		TiendaController.getLblMisObjetos().setText("a");
@@ -145,6 +150,7 @@ public class ElegirAccionController {
 //		stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
@@ -164,6 +170,7 @@ public class ElegirAccionController {
 //				stage.initModality(Modality.APPLICATION_MODAL); //(hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 }

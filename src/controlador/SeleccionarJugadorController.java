@@ -71,6 +71,7 @@ public class SeleccionarJugadorController implements Initializable {
 			Stage stage = new Stage();
 
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.show();
 			// se cierra la ventana actual
 			Stage stage2 = (Stage) this.TxtInsertarJugador.getScene().getWindow();
@@ -98,6 +99,7 @@ public class SeleccionarJugadorController implements Initializable {
 		stage.initModality(Modality.APPLICATION_MODAL); // (hace que la ventana sea modal)
 
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 	}
 
