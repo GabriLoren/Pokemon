@@ -117,7 +117,12 @@ public class Trainer {
 //		}
 //	}
 
-	// inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
+	
+	/**
+	 * @param Pokemon pokemon
+	 * 
+	 * Inserta en la BbDd y en la lista todosLosPokemon el pokemon capturado
+	 */
 	public void capturar(Pokemon pokemon) {
 		Random r = new Random();
 
@@ -154,6 +159,11 @@ public class Trainer {
 
 	}
 
+	/**
+	 * @param Obj objeto
+	 * 
+	 * Inserta el objeto comprado en la colección de objetos del entrenador
+	 */
 	public void insertarObjetoComprado(Obj objeto) {
 
 		this.objetos.add(objeto);
