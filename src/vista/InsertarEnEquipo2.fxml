@@ -16,9 +16,9 @@
             <Image url="@../img/vistaEquipo.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="quitar" layoutX="423.0" layoutY="449.0" mnemonicParsing="false" onAction="#quitar" prefHeight="25.0" prefWidth="92.0" text="QUITAR" />
-      <Button fx:id="seleccionar" layoutX="286.0" layoutY="449.0" mnemonicParsing="false" onAction="#seleccionar" prefHeight="25.0" prefWidth="100.0" text="SELECCIONAR" />
-      <TableView fx:id="tablaEquipo" layoutX="8.0" layoutY="240.0" prefHeight="180.0" prefWidth="826.0">
+      <Button fx:id="quitar" layoutX="430.0" layoutY="476.0" mnemonicParsing="false" onAction="#quitar" prefHeight="25.0" prefWidth="92.0" text="QUITAR" />
+      <Button fx:id="seleccionar" layoutX="296.0" layoutY="476.0" mnemonicParsing="false" onAction="#seleccionar" prefHeight="25.0" prefWidth="100.0" text="SELECCIONAR" />
+      <TableView fx:id="tablaEquipo" layoutX="5.0" layoutY="269.0" prefHeight="180.0" prefWidth="826.0">
          <columns>
             <TableColumn fx:id="moteEquipo" prefWidth="68.0" text="MOTE" />
             <TableColumn fx:id="nombreEquipo" prefWidth="82.0" text="NOMBRE" />
@@ -34,7 +34,7 @@
             <TableColumn fx:id="tipo2Equipo" prefWidth="49.0" text="TIPO2" />
          </columns>
       </TableView>
-      <TableView fx:id="tabla" layoutX="5.0" layoutY="77.0" prefHeight="155.0" prefWidth="826.0">
+      <TableView fx:id="tabla" layoutX="5.0" layoutY="55.0" prefHeight="155.0" prefWidth="826.0">
         <columns>
           <TableColumn fx:id="mote" prefWidth="68.0" text="MOTE" />
           <TableColumn fx:id="nombre" prefWidth="82.0" text="NOMBRE" />
@@ -50,7 +50,12 @@
             <TableColumn fx:id="tipo2" prefWidth="61.0" text="TIPO2" />
         </columns>
       </TableView>
-      <Label fx:id="lblEquipoComplero" alignment="CENTER" layoutX="21.0" layoutY="433.0" prefHeight="58.0" prefWidth="251.0" textFill="#fffefe">
+      <Label fx:id="lblEquipoComplero" alignment="CENTER" layoutX="14.0" layoutY="459.0" prefHeight="58.0" prefWidth="251.0" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="259.0" layoutY="210.0" prefHeight="58.0" prefWidth="251.0" text="EQUIPO" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
