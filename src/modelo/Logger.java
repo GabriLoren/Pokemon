@@ -17,8 +17,6 @@ public class Logger {
         String fechaFormateada = simpleDateFormat.format(new Date());
         logPath += fechaFormateada + ".log";
 
-        if (bufferedWriter != null)
-            return bufferedWriter;
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(logPath, true));
         } catch (IOException e) {
@@ -27,17 +25,17 @@ public class Logger {
         return bufferedWriter;
     }
 
-    public static void write(String line) {
+    public static void write(BufferedWriter writer, String line) {
         try {
-            getOrCreateFileWriter().write(line);
+            writer.write(line);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void close(){
+    public static void close(BufferedWriter writer){
         try {
-            bufferedWriter.close();
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

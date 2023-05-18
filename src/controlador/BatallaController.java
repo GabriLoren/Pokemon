@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +29,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.Logger;
@@ -106,6 +109,10 @@ public class BatallaController implements Initializable {
 	private String data;
 
 	private int turno;
+	
+	private MediaPlayer mediaPlayer;
+	
+	private BufferedWriter log;
 
 //--------------------------------------------------------------------------------------------
 
@@ -185,12 +192,12 @@ public class BatallaController implements Initializable {
 		// el jugador pierde
 		if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
 
-			Logger.getOrCreateFileWriter();
+			log = Logger.getOrCreateFileWriter();
 			Date date = new Date();
 			data = date.toString() + " INFO finPierdeCombate " + entrenadorJugador.getName() + " pierde contra "
 					+ entrenadorAleatorio.getName() + ", turno = " + turno + "\n";
-			Logger.write(data);
-			Logger.close();
+			Logger.write(log, data);
+			Logger.close(log);
 
 			contadorJugador = 0;
 
@@ -325,11 +332,12 @@ public class BatallaController implements Initializable {
 
 		muestraTurno.setText(turnoJugador + "\n" + "\n" + turnoOponente);
 		
-		Logger.getOrCreateFileWriter();
+		log = Logger.getOrCreateFileWriter();
 		Date date = new Date();
 		data = date.toString() + " INFO cambio1 " + entrenadorJugador.getName() + " cambia a su pokemon por "
 				+ pokemonElegidoJugador.getName() + ", turno = " + turno + "\n";
-		Logger.write(data);
+		Logger.write(log, data);
+		Logger.close(log);
 
 	}
 
@@ -377,14 +385,15 @@ public class BatallaController implements Initializable {
 				if (Batalla.vidaPokemonAtacado(pokemonElegidoMaquina)) {
 					System.out.println("valor del contadorMaquina " + contadorMaquina);
 					
-					Logger.getOrCreateFileWriter();
+					log = Logger.getOrCreateFileWriter();
 					Date date = new Date();
 					data = date.toString() + " INFO debilitado2 pokemon = {" + pokemonElegidoJugador.getName() + ", "
 							+ pokemonElegidoJugador.getLevel() + ", " + entrenadorJugador.getName() + "}, pokemonRival = {"
 							+ pokemonElegidoMaquina.getName() + ", " + pokemonElegidoMaquina.getLevel() + ", "
 							+ entrenadorAleatorio.getName() + "}, turno = " + turno + "\n";
-					Logger.write(data);
-
+					Logger.write(log, data);
+					Logger.close(log);
+					
 					contadorMaquina++;
 
 					// al matar a la máquina el pokemon jugador gana experiencia
@@ -399,11 +408,12 @@ public class BatallaController implements Initializable {
 
 					imagenOponente.setImage(imagenMaquina);
 
-					Logger.getOrCreateFileWriter();
+					log = Logger.getOrCreateFileWriter();
 					date = new Date();
 					data = date.toString() + " INFO cambio2 " + entrenadorAleatorio.getName() + " cambia a su pokemon por "
 							+ pokemonElegidoMaquina.getName() + ", turno = " + turno + "\n";
-					Logger.write(data);
+					Logger.write(log, data);
+					Logger.close(log);
 //					
 				}
 
@@ -425,13 +435,14 @@ public class BatallaController implements Initializable {
 
 						// al matar al pokemonjugador la máquina gana experiencia
 						
-						Logger.getOrCreateFileWriter();
+						log = Logger.getOrCreateFileWriter();
 						Date date = new Date();
 						data = date.toString() + " INFO debilitado1 pokemon = {" + pokemonElegidoJugador.getName() + ", "
 								+ pokemonElegidoJugador.getLevel() + ", " + entrenadorJugador.getName() + "}, pokemonRival = {"
 								+ pokemonElegidoMaquina.getName() + ", " + pokemonElegidoMaquina.getLevel() + ", "
 								+ entrenadorAleatorio.getName() + "}, turno = " + turno + "\n";
-						Logger.write(data);
+						Logger.write(log, data);
+						Logger.close(log);
 						
 						pokemonElegidoMaquina.giveExp(pokemonElegidoJugador);
 
@@ -502,12 +513,14 @@ public class BatallaController implements Initializable {
 			// pierde la máquina
 			if (contadorMaquina == entrenadorAleatorio.getEquipoPokemon().size()) {
 
-				Logger.getOrCreateFileWriter();
+				log = Logger.getOrCreateFileWriter();
 				Date date = new Date();
 				data = date.toString() + " INFO finGanaCombate " + entrenadorJugador.getName() + " gana contra "
 						+ entrenadorAleatorio.getName() + ", turno = " + turno + "\n";
-				Logger.write(data);
-				Logger.close();
+				Logger.write(log, data);
+				Logger.close(log);
+				
+				mediaPlayer.stop();
 
 				contadorJugador = 0;
 
@@ -551,12 +564,14 @@ public class BatallaController implements Initializable {
 			// pierde el jugador
 			if (contadorJugador == entrenadorJugador.getEquipoPokemon().size()) {
 
-				Logger.getOrCreateFileWriter();
+				log = Logger.getOrCreateFileWriter();
 				Date date = new Date();
 				data = date.toString() + " INFO finPierdeCombate " + entrenadorJugador.getName() + " pierde contra "
 						+ entrenadorAleatorio.getName() + ", turno = " + turno + "\n";
-				Logger.write(data);
-				Logger.close();
+				Logger.write(log, data);
+				Logger.close(log);
+				
+				mediaPlayer.stop();
 
 				contadorJugador = 0;
 
@@ -611,7 +626,9 @@ public class BatallaController implements Initializable {
 	public void salir(ActionEvent event) {
 		// TODO Autogenerated
 
-		Logger.close();
+		mediaPlayer.stop();
+		Logger.close(log);
+		
 
 		contadorJugador = 0;
 
@@ -676,14 +693,22 @@ public class BatallaController implements Initializable {
 
 		barra.setProgress(1);
 
-		Logger.getOrCreateFileWriter();
+		log = Logger.getOrCreateFileWriter();
 		Date date = new Date();
 		turno = 1;
 		data = date.toString() + " INFO inicioCombate pokemon = {" + pokemonElegidoJugador.getName() + ", "
 				+ pokemonElegidoJugador.getLevel() + ", " + entrenadorJugador.getName() + "}, pokemonRival = {"
 				+ pokemonElegidoMaquina.getName() + ", " + pokemonElegidoMaquina.getLevel() + ", "
 				+ entrenadorAleatorio.getName() + "}, turno = " + turno + "\n";
-		Logger.write(data);
+		Logger.write(log, data);
+		Logger.close(log);
+		
+		String path ="src\\sound\\battle.mp3";
+		File archivo = new File(path);
+		Media media = new Media(archivo.toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer.play();
 
 	}
 }

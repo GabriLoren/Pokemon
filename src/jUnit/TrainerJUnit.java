@@ -27,15 +27,4 @@ class TrainerJUnit {
 		t.insertarObjetoComprado(o);
 		assertTrue(t.getObjetos().contains(o));
 	}
-
-	@Test
-	void testMostraTodosLosPokemons() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testMostraTodosLosPokemonsStatic() {
-		fail("Not yet implemented");
-	}
-
 }
