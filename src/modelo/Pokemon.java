@@ -3,6 +3,8 @@ package modelo;
 import java.util.LinkedList;
 import java.util.Random;
 
+import crud.CargarMoves;
+
 public class Pokemon {
 
 	private int id;
@@ -439,15 +441,18 @@ public class Pokemon {
 		this.spAtk += randomStats();
 		this.spDef += randomStats();
 		this.speed += randomStats();
+		if (this.level % 3 == 0) {
+			this.aprenderMove();
+		}
 	}
 
 	/**
 	 * @param Pokemon pr
 	 * 
-	 * Active pokemon gets experience after defeating a pokemon based
-	 * on the following formula ([POKEMON_LEVEL] +
-	 * [RIVAL_POKEMON_LEVEL] * 10) / 4, then if the exp value of the
-	 * pokemon exceeds or equals its level times 10 it levels up
+	 *                Active pokemon gets experience after defeating a pokemon based
+	 *                on the following formula ([POKEMON_LEVEL] +
+	 *                [RIVAL_POKEMON_LEVEL] * 10) / 4, then if the exp value of the
+	 *                pokemon exceeds or equals its level times 10 it levels up
 	 */
 	public void giveExp(Pokemon pr) {
 		this.setExp(this.getExp() + ((this.getLevel() + pr.getLevel() * 10) / 4));
@@ -456,7 +461,6 @@ public class Pokemon {
 		}
 	}
 
-	
 	/**
 	 * Aplica los cambios en las estadísticas que el objeto proporciona
 	 */
@@ -468,7 +472,6 @@ public class Pokemon {
 		this.stamina *= this.object.getStamina();
 	}
 
-	
 	/**
 	 * Revierte los cambios en las estadísticas que el objeto proporciona
 	 */
@@ -478,6 +481,30 @@ public class Pokemon {
 		this.spDef /= this.object.getSpDef();
 		this.speed /= this.object.getSpeed();
 		this.stamina /= this.object.getStamina();
+	}
+
+	/**
+	 * Randomly selects a move from all the available moves and learns it if the
+	 * Pokemon does not already have it, if the pokemon has 4 moves the first move
+	 * gets replaced
+	 */
+	public void aprenderMove() {
+		LinkedList<Move> moves = CargarMoves.getMovimientos();
+		Random r = new Random();
+		int resultado = r.nextInt(moves.size());
+		Move mov = moves.get(resultado);
+		while (this.moves.contains(mov)) {
+			r = new Random();
+			resultado = r.nextInt(moves.size());
+			mov = moves.get(resultado);
+		}
+		if (this.moves.size() < 4) {
+			this.moves.add(mov);
+		} else {
+			this.moves.remove();
+			this.moves.add(mov);
+		}
+
 	}
 
 	@Override

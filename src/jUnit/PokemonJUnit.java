@@ -84,5 +84,10 @@ class PokemonJUnit {
 		p.quitarObjeto();
 		assertEquals(10, p.getAtk());
 	}
+	
+	@Test
+	void testAprenderMove() {
+		
+	}
 
 }

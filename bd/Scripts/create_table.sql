@@ -1,91 +1,93 @@
-CREATE TABLE pokedex(
-pokedex_num INT PRIMARY KEY,
-name VARCHAR(20) UNIQUE NOT NULL,
-type1 VARCHAR(10),
-type2 VARCHAR(10),
-base_vit INT,
-base_atk INT,
-base_def INT,
-base_sdef INT,
-base_satk INT,
-base_spd INT,
-max_vit INT,
-max_atk INT,
-max_def INT,
-max_sdef INT,
-max_satk INT,
-max_spd INT,
-base_lvl INT DEFAULT(1),
-evolution_lvl INT,
-sprite VARCHAR(50)
+create or replace database pokemon;
+
+create table pokemon.entrenador(
+id int,
+nombre varchar(20),
+pokedollar int);
+
+INSERT INTO pokemon.ENTRENADOR VALUES (0,'ADMIN',9999);
+
+create table pokemon.pokemon(
+id int,
+nombre varchar(20),
+vida int,
+ataque int,
+defensa	int,
+ataqueSp int,
+defensaSpint int,
+velocidad int,
+stamina	int,
+nivel int,
+tipo1 varchar(20),
+tipo2 varchar(20),    
+imagen varchar(20),
+sonido varchar(20));
+
+INSERT INTO pokemon.POKEMON VALUES(1,'CHARMANDER',100,100,100,100,100,100,100,1,'FIRE','NULL','ch.png','charmander.mp3');
+INSERT INTO pokemon.POKEMON VALUES(2,'PIKACHU',100,100,100,100,100,100,100,1,'ELECTRIC','NULL','pk.png','pikachu.mp3');
+INSERT INTO pokemon.POKEMON VALUES(3,'RATATA',100,100,100,100,100,100,100,1,'NORMAL','NULL','ratata.png','ratata.mp3');
+INSERT INTO pokemon.POKEMON VALUES(4,'SQUIRTLE',100,100,100,100,100,100,100,1,'NORMAL','NULL','sc.png','squirtle.mp3');
+
+
+
+create table pokemon.movimiento(
+id int,
+nombre varchar(20),
+categoria varchar(20),
+potencia int,
+tipo varchar(20),
+estado varchar(20),
+turnos int,
+coste_estamina int,
+mejora float);
+
+
+insert into pokemon.movimiento (id,nombre,categoria,potencia,coste_estamina) VALUES(1,'PATADA','ATAQUE',10,20);
+
+insert into pokemon.movimiento (id,nombre,categoria,potencia,coste_estamina) VALUES(2,'PUTIASO','ATAQUE',40,20);
+
+create table pokemon.pokemon_entrenador(
+id int,
+id_pokedex int,
+mote varchar(20),
+id_entrenador int,
+vida int,
+ataque int,
+defensa	int,
+ataque_sp int,
+defensa_sp int,
+velocidad int,
+nivel int,
+id_movimiento1 int,
+id_movimiento2 int,
+id_movimiento3 int,
+id_movimiento4 int,
+id_objeto int,
+fertilidad int,
+exp int,
+equipo varchar(2));
+
+INSERT INTO pokemon.POKEMON_ENTRENADOR VALUES (0, 1, 'PAQUITO69', 99, 100, 5, 5, 5, 5, 5, 1, 1, 0, 0, 0, 0, 5, 0, 'SI');
+
+CREATE table pokemon.objecto(
+id INT,
+nombre varchar(20),
+precio int,
+ataque double,
+defensa double,
+defensa_sp double,
+ataque_sp double,
+velocidad double,
+estamina double
 );
 
-CREATE TABLE trainer(
-trainer_id INT PRIMARY KEY,
-name VARCHAR(20) UNIQUE NOT NULL,
-pokedollar INT
-);
 
-CREATE TABLE obj(
-obj_id INT PRIMARY KEY,
-name VARCHAR(10) UNIQUE NOT NULL,
-buff DOUBLE,
-debuff DOUBLE
-);
+INSERT INTO pokemon.objecto VALUES (0,'NULO',0,1,1,1,1,1,1);
+INSERT INTO pokemon.objecto VALUES (1,'PESA',20,1.2,1.2,1,1,0.8,1);
+INSERT INTO pokemon.objecto VALUES (2,'PLUMA',30,1,0.8,0.8,1,1.3,1);
 
-CREATE TABLE move(
-move_id INT PRIMARY KEY,
-name VARCHAR(20) UNIQUE NOT NULL,
-type VARCHAR(10),
-power INT,
-status VARCHAR(20),
-turns INT,
-buff DOUBLE,
-stat VARCHAR(10),
-stamina_cost INT,
-lvl_requirement INT,
-category VARCHAR(10),
-dmg_type VARCHAR(10)
-);
+create table pokemon.objeto_entrenador(
+id_objeto Int,
+id_entrenador int,
+cantidad int);
 
-CREATE TABLE pokemon_trainer(
-pokemon_id INT PRIMARY KEY,
-pokedex_num INT,
-trainer_id INT,
-nickname VARCHAR(20),
-type1 VARCHAR(10),
-type2 VARCHAR(10),
-vitality INT,
-attack INT,
-defense INT,
-sp_defense INT,
-sp_attack INT,
-speed INT,
-stamina INT,
-gender CHAR(1),
-level INT,
-in_team BOOLEAN,
-exp INT,
-fertility INT,
-move1 INT,
-move2 INT,
-move3 INT,
-move4 INT,
-object INT,
-CONSTRAINT pokedex_fk FOREIGN KEY (pokedex_num) REFERENCES pokedex(pokedex_num),
-CONSTRAINT trainer_fk FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id),
-CONSTRAINT move1_fk FOREIGN KEY (move1) REFERENCES move(move_id),
-CONSTRAINT move2_fk FOREIGN KEY (move2) REFERENCES move(move_id),
-CONSTRAINT move3_fk FOREIGN KEY (move3) REFERENCES move(move_id),
-CONSTRAINT move4_fk FOREIGN KEY (move4) REFERENCES move(move_id),
-CONSTRAINT object_fk FOREIGN KEY (object) REFERENCES obj(obj_id)
-);
-
-CREATE TABLE obj_trainer(
-obj_trainer_id INT PRIMARY KEY,
-obj_id INT,
-trainer_id INT,
-quantity INT,
-CONSTRAINT obj_trainer_fk FOREIGN KEY (obj_id) REFERENCES obj(obj_id),
-CONSTRAINT trainer_obj_fk FOREIGN KEY (trainer_id) REFERENCES trainer(trainer_id)
-);

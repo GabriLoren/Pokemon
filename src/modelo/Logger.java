@@ -15,7 +15,7 @@ public class Logger {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String fechaFormateada = simpleDateFormat.format(new Date());
-        logPath += fechaFormateada + ".log";
+        logPath = "logs/" + fechaFormateada + ".log";
 
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(logPath, true));
