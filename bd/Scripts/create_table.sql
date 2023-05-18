@@ -5,7 +5,7 @@ id int,
 nombre varchar(20),
 pokedollar int);
 
-INSERT INTO pokemon.ENTRENADOR VALUES (0,'ADMIN',9999);
+INSERT INTO pokemon.ENTRENADOR VALUES (0,'ADMIN',2000);
 
 create table pokemon.pokemon(
 id int,
@@ -67,7 +67,7 @@ fertilidad int,
 exp int,
 equipo varchar(2));
 
-INSERT INTO pokemon.POKEMON_ENTRENADOR VALUES (0, 1, 'PAQUITO69', 99, 100, 5, 5, 5, 5, 5, 1, 1, 0, 0, 0, 0, 5, 0, 'SI');
+INSERT INTO pokemon.POKEMON_ENTRENADOR VALUES (0, 1, 'PAQUITO69', 0, 100, 5, 5, 5, 5, 5, 1, 1, 0, 0, 0, 0, 5, 0, 'SI');
 
 CREATE table pokemon.objecto(
 id INT,
