@@ -61,7 +61,6 @@ public class PokemonEntrenadorCrud {
 			miPSt.setLong(17, 0);
 			miPSt.setLong(18, pokemon.getObject().getId());
 			miPSt.setLong(19, 0);
-			
 
 			miPSt.executeUpdate();
 
@@ -161,7 +160,6 @@ public class PokemonEntrenadorCrud {
 			int id_movimiento4 = 0;
 			int exp = 0;
 			int id_objeto = 0;
-			
 
 			while (miRs.next()) {
 
@@ -186,7 +184,6 @@ public class PokemonEntrenadorCrud {
 				imagen = miRs.getString("imagen");
 				exp = miRs.getInt("exp");
 				id_objeto = miRs.getInt("id_objeto");
-				
 
 				System.out.println("movimiento1 " + id_movimiento1);
 				System.out.println("movimiento1 " + id_movimiento2);
@@ -251,7 +248,7 @@ public class PokemonEntrenadorCrud {
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?, ID_OBJETO=?, EXP=?  WHERE ID=?";
+					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?, ID_OBJETO=?, EXP=?,  ID_MOVIMIENTO1=?,ID_MOVIMIENTO2=?,ID_MOVIMIENTO3=?,ID_MOVIMIENTO4=? WHERE ID=?";
 
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -276,7 +273,13 @@ public class PokemonEntrenadorCrud {
 			}
 
 			miPSt.setInt(12, pokemon.getExp());
-			miPSt.setLong(13, pokemon.getId());
+			miPSt.setInt(13, pokemon.getMoves().get(0).getId());
+			miPSt.setInt(14, pokemon.getMoves().get(1).getId());
+			miPSt.setInt(15, pokemon.getMoves().get(2).getId());
+			miPSt.setInt(16, pokemon.getMoves().get(3).getId());
+			
+			
+			miPSt.setLong(17, pokemon.getId());
 
 			miPSt.executeUpdate();
 
