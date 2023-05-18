@@ -1,0 +1,5 @@
+Thu May 18 10:37:47 CEST 2023 INFO inicioCombate pokemon = {RATATA, 1, GAYBRIEL}, pokemonRival = {PIKACHU, 1, JOSE}, turno = 1
+Thu May 18 10:37:54 CEST 2023 INFO debilitado1 pokemon = {RATATA, 1, GAYBRIEL}, pokemonRival = {PIKACHU, 1, JOSE}, turno = 6
+Thu May 18 10:38:00 CEST 2023 INFO debilitado2 pokemon = {RATATA, 1, GAYBRIEL}, pokemonRival = {PIKACHU, 1, JOSE}, turno = 9
+Thu May 18 10:38:00 CEST 2023 INFO cambio2 JOSE cambia a su pokemon por PIKACHU, turno = 9
+Thu May 18 10:38:00 CEST 2023 INFO finGanaCombate GAYBRIEL gana contra JOSE, turno = 9
