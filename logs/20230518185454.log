@@ -1,0 +1,3 @@
+Thu May 18 18:54:54 CEST 2023 INFO debilitado2 pokemon = {RATATA, 2, JORGE}, pokemonRival = {RATATA, 8, GABRIEL}, turno = 3
+Thu May 18 18:54:54 CEST 2023 INFO cambio2 GABRIEL cambia a su pokemon por RATATA, turno = 3
+Thu May 18 18:54:54 CEST 2023 INFO finGanaCombate JORGE gana contra GABRIEL, turno = 3

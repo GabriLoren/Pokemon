@@ -395,11 +395,14 @@ public class BatallaController implements Initializable {
 					Logger.close(log);
 					
 					contadorMaquina++;
+					
 
 					// al matar a la máquina el pokemon jugador gana experiencia
 					pokemonElegidoJugador.giveExp(pokemonElegidoMaquina);
 
 					PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonElegidoJugador);
+					
+					PokemonEntrenadorCrud.actualizarMovimientoPokemonEnBbDd(pokemonElegidoJugador);
 
 					if (contadorMaquina < equipoMaquina.size())
 						pokemonElegidoMaquina = equipoMaquina.get(contadorMaquina);

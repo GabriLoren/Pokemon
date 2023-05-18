@@ -77,6 +77,7 @@ public class Entrenar2Controller implements Initializable {
 				}
 				tabla.setItems(metodo());
 
+
 			}
 
 		}

@@ -46,6 +46,8 @@ insert into pokemon.movimiento (id,nombre,categoria,potencia,coste_estamina) VAL
 
 insert into pokemon.movimiento (id,nombre,categoria,potencia,coste_estamina) VALUES(2,'PUTIASO','ATAQUE',40,20);
 
+insert into pokemon.movimiento (id,nombre,categoria,potencia,coste_estamina) VALUES(3,'CABEZAZO','ATAQUE',30,20);
+
 create table pokemon.pokemon_entrenador(
 id int,
 id_pokedex int,
