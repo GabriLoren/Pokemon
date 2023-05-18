@@ -248,8 +248,10 @@ public class PokemonEntrenadorCrud {
 			Connection miCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/pokemon", "root", "");
 
 			String sentencia = "UPDATE POKEMON_ENTRENADOR SET VIDA=?, ATAQUE=? ,defensa=?, ATAQUE_SP=?,DEFENSA_SP=?,"
-					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?, ID_OBJETO=?, EXP=?,  ID_MOVIMIENTO1=?,ID_MOVIMIENTO2=?,ID_MOVIMIENTO3=?,ID_MOVIMIENTO4=? WHERE ID=?";
+					+ "VELOCIDAD=?,NIVEL=?, FERTILIDAD=?,  EQUIPO=? ,MOTE=?, ID_OBJETO=?, EXP=?  WHERE ID=?";
 
+//			,ID_MOVIMIENTO1=?,ID_MOVIMIENTO2=?,ID_MOVIMIENTO3=?,ID_MOVIMIENTO4=?
+			
 //					(ID,NOMBRE,MOTE,ID_ENTRENADOR,VIDA,ATAQUE,DEFENSA,ATAQUE_SP,DEFENSA_SP,VELOCIDAD,STAMINA,NIVEL)"
 //					+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -273,13 +275,13 @@ public class PokemonEntrenadorCrud {
 			}
 
 			miPSt.setInt(12, pokemon.getExp());
-			miPSt.setInt(13, pokemon.getMoves().get(0).getId());
-			miPSt.setInt(14, pokemon.getMoves().get(1).getId());
-			miPSt.setInt(15, pokemon.getMoves().get(2).getId());
-			miPSt.setInt(16, pokemon.getMoves().get(3).getId());
+//			miPSt.setInt(13, pokemon.getMoves().get(0).getId());
+//			miPSt.setInt(14, pokemon.getMoves().get(1).getId());
+//			miPSt.setInt(15, pokemon.getMoves().get(2).getId());
+//			miPSt.setInt(16, pokemon.getMoves().get(3).getId());
 			
 			
-			miPSt.setLong(17, pokemon.getId());
+			miPSt.setLong(13, pokemon.getId());
 
 			miPSt.executeUpdate();
 
