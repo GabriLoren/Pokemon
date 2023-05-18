@@ -56,6 +56,9 @@ public class CapturaController implements Initializable {
 
 	@FXML
 	private Label lblMote;
+	
+	@FXML
+	private Label lblInsertarMote;
 
 	@FXML
 	private Button btnInsertarMote;
@@ -191,7 +194,7 @@ public class CapturaController implements Initializable {
 
 		} else {
 
-			lblMote.setText("No se pueden introducir palabrotas ni dejar el mote vacio");
+			lblInsertarMote.setText("No se puede dejar vacio");
 
 		}
 
