@@ -39,6 +39,7 @@ import modelo.Pokemon;
 import modelo.Trainer;
 
 public class BatallaController implements Initializable {
+	
 	@FXML
 	private Button atacar;
 	@FXML
@@ -398,7 +399,26 @@ public class BatallaController implements Initializable {
 					
 
 					// al matar a la máquina el pokemon jugador gana experiencia
-					pokemonElegidoJugador.giveExp(pokemonElegidoMaquina);
+					
+					if(pokemonElegidoJugador.giveExp(pokemonElegidoMaquina)) {
+						
+//						AprenderMovimientoController.lblAprenderMov.setText("HAS APRENDIDO "+pokemonElegidoJugador.getMoves().getLast());
+						
+						// abre la ventana si ha aprendido un movimiento nuevo
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/AprenderMovimiento.fxml"));
+
+						Parent root = loader.load();
+
+						Scene scene = new Scene(root);
+
+						Stage stage = new Stage();
+//										stage.initModality(Modality.APPLICATION_MODAL); (hace que la ventana sea modal)
+						stage.setScene(scene);
+
+						// espera hasta que se cierre ElegirMovimientos para seguir ejecutando códifo
+						stage.showAndWait();
+						
+					}
 
 					PokemonEntrenadorCrud.actualizarPokemonEnBbDd(pokemonElegidoJugador);
 					

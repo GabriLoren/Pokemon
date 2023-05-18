@@ -432,7 +432,7 @@ public class Pokemon {
 	 * all its stats increase by a random number between 1 and 5 which is generated
 	 * by calling the randomStats() method
 	 */
-	public void levelUp() {
+	public boolean levelUp() {
 		this.setExp(this.getExp() - this.getLevel() * 10);
 		this.level++;
 		this.vit += randomStats();
@@ -443,7 +443,9 @@ public class Pokemon {
 		this.speed += randomStats();
 		if (this.level % 3 == 0) {
 			this.aprenderMove();
+			return true;
 		}
+		return false;
 	}
 
 	/**
@@ -454,11 +456,16 @@ public class Pokemon {
 	 *                [RIVAL_POKEMON_LEVEL] * 10) / 4, then if the exp value of the
 	 *                pokemon exceeds or equals its level times 10 it levels up
 	 */
-	public void giveExp(Pokemon pr) {
+	public boolean giveExp(Pokemon pr) {
+		boolean AprendeMov=false;
+		
 		this.setExp(this.getExp() + ((this.getLevel() + pr.getLevel() * 10) / 4));
 		while (this.getExp() >= (this.getLevel() * 10)) {
-			this.levelUp();
+			
+			 AprendeMov=this.levelUp();
+			
 		}
+		return AprendeMov;
 	}
 
 	/**
