@@ -176,7 +176,7 @@ public class PokemonEntrenadorCrud {
 				defensaSp = miRs.getInt(9);
 				velocidad = miRs.getInt(10);
 				stamina = miRs.getInt("stamina");
-				nivel = miRs.getInt(12);
+				nivel = miRs.getInt("nivel");
 				equipo = miRs.getString("equipo");
 				id_movimiento1 = miRs.getInt("id_movimiento1");
 				id_movimiento2 = miRs.getInt("id_movimiento2");
