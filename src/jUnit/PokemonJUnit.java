@@ -85,9 +85,5 @@ class PokemonJUnit {
 		assertEquals(10, p.getAtk());
 	}
 	
-	@Test
-	void testAprenderMove() {
-		
-	}
 
 }
